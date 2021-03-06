@@ -23,6 +23,11 @@ public class App extends Application {
     private double xOffset = 0;
     private double yOffset = 0;
 
+    // ádolaisjdasoidj
+    // làm task gì dód
+    //sadasdasdadasdasds
+
+
     @Override
     public void start(final Stage primaryStage) {
         try {
