@@ -2,7 +2,6 @@ package controllers;
 
 import entities.Employee;
 import javafx.application.Platform;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -11,15 +10,11 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
-import javafx.scene.input.MouseEvent;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.resource.transaction.spi.TransactionStatus;
 import repositories.EmployeeRepository;
 import utils.HibernateUtils;
-
-import java.util.Timer;
-import java.util.TimerTask;
 
 public class LoginController {
 
