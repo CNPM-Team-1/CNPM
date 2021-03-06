@@ -5,7 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1f8284b2-b40e-4c93-9775-e2961d0aa2c4" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/LoginController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/entities/Merchandise.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/entities/Order.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/entities/OrderDetail.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documentation/Thiết kế/Thiết kế dữ liệu/ERD.png" beforeDir="false" afterPath="$PROJECT_DIR$/../Documentation/Thiết kế/Thiết kế dữ liệu/ERD.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/hibernate.cfg.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/hibernate.cfg.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -85,15 +90,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
           <option name="containerStateName" value="" />
         </value>
       </option>
-      <option name="TEST_OBJECT" value="CLASS" />
-      <properties />
-      <listeners />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -119,6 +122,7 @@
       <workItem from="1614928675160" duration="1382000" />
       <workItem from="1614931792698" duration="115000" />
       <workItem from="1615001850411" duration="10450000" />
+      <workItem from="1615014422719" duration="3002000" />
     </task>
     <servers />
   </component>
