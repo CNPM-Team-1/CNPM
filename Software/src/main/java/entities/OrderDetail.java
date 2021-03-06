@@ -27,7 +27,7 @@ public class OrderDetail {
     public OrderDetail(String id, String orderId, String merchandiseId, int quantity, int amount) {
         this.id = id;
         this.orderId = orderId;
-        this. merchandiseId = merchandiseId;
+        this.merchandiseId = merchandiseId;
         this.quantity = quantity;
         this.amount = amount;
     }

@@ -19,11 +19,11 @@ public class Roles {
     @Column(name = "updated_date")
     private Date updatedDate;
 
-    public Roles(){
+    public Roles() {
 
     }
 
-    public Roles(String id, String name, Date createdDate, Date updatedDate){
+    public Roles(String id, String name, Date createdDate, Date updatedDate) {
         this.id = id;
         this.name = name;
         this.createdDate = createdDate;
@@ -33,6 +33,7 @@ public class Roles {
     public String getId() {
         return id;
     }
+
     public void setId(String id) {
         this.id = id;
     }
@@ -40,6 +41,7 @@ public class Roles {
     public String getName() {
         return name;
     }
+
     public void setName(String name) {
         this.name = name;
     }
@@ -47,6 +49,7 @@ public class Roles {
     public Date getCreatedDate() {
         return createdDate;
     }
+
     public void setCreatedDate(Date createdDate) {
         this.createdDate = createdDate;
     }
@@ -54,6 +57,7 @@ public class Roles {
     public Date getUpdatedDate() {
         return updatedDate;
     }
+
     public void setUpdatedDate(Date updatedDate) {
         this.updatedDate = updatedDate;
     }

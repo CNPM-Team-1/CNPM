@@ -16,7 +16,7 @@ public class RolesDetail {
     @Column(name = "employee_id")
     private String employeeId;
 
-    public RolesDetail(){
+    public RolesDetail() {
 
     }
 
@@ -29,6 +29,7 @@ public class RolesDetail {
     public String getId() {
         return id;
     }
+
     public void setId(String id) {
         this.id = id;
     }
@@ -36,6 +37,7 @@ public class RolesDetail {
     public String getRolesId() {
         return rolesId;
     }
+
     public void setRolesId(String rolesId) {
         this.rolesId = rolesId;
     }
@@ -43,6 +45,7 @@ public class RolesDetail {
     public String getEmployeeId() {
         return employeeId;
     }
+
     public void setEmployeeId(String employeeId) {
         this.employeeId = employeeId;
     }

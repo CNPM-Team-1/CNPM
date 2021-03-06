@@ -22,11 +22,11 @@ public class Receipt {
     @Column(name = "update_date")
     private Date updateDate;
 
-    public Receipt(){
+    public Receipt() {
 
     }
 
-    public Receipt(String id, String orderId, String employeeId, Date createdDate, Date updateDate){
+    public Receipt(String id, String orderId, String employeeId, Date createdDate, Date updateDate) {
         this.id = id;
         this.orderId = orderId;
         this.employeeId = employeeId;
@@ -34,23 +34,26 @@ public class Receipt {
         this.updateDate = updateDate;
     }
 
-    public String getId(){
+    public String getId() {
         return id;
     }
+
     public void setId(String id) {
         this.id = id;
     }
 
-    public String getOrderId(){
+    public String getOrderId() {
         return orderId;
     }
+
     public void setOrderId(String order_id) {
         this.orderId = orderId;
     }
 
-    public String getEmployeeId(){
+    public String getEmployeeId() {
         return employeeId;
     }
+
     public void setEmployeeId(String employee_id) {
         this.employeeId = employeeId;
     }
@@ -58,6 +61,7 @@ public class Receipt {
     public Date getCreatedDate() {
         return createdDate;
     }
+
     public void setCreatedDate(Date createdDate) {
         this.createdDate = createdDate;
     }
@@ -65,6 +69,7 @@ public class Receipt {
     public Date getUpdateDate() {
         return updateDate;
     }
+
     public void setUpdateDate(Date updateDate) {
         this.updateDate = updateDate;
     }
