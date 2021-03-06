@@ -1,0 +1,36 @@
+.bodyborder {
+    -fx-background-radius: 10px;
+
+    -fx-background-color: #fff;
+
+    -fx-pref-width: 330px;
+    -fx-pref-height: 530px;
+}
+
+.font {
+    -fx-font-weight: 600;
+    -fx-font-family: Arial,sans-serif;
+}
+
+.login-text-field{
+    -fx-background-radius: 10px;
+}
+
+.login-button{
+    -fx-background-color: rgba(189,89,212,.8);
+    -fx-text-fill: #fff;
+    -fx-background-radius: 25px;
+    -fx-font-size: 18px;
+}
+
+.login-button:hover{
+    -fx-background-color: #4b2354;
+}
+
+.close-button{
+    -fx-text-alignment: top;
+}
+
+.close-button:hover{
+    -fx-text-fill: red;
+}
