@@ -11,29 +11,29 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="300.0" prefWidth="330.0" styleClass="bodyborder" stylesheets="@../css/test.css" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.LoginController">
+<AnchorPane prefHeight="518.0" prefWidth="330.0" styleClass="bodyborder" stylesheets="@../css/style.css" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.LoginController">
    <children>
-      <Label fx:id="status" layoutX="28.0" layoutY="289.0" prefHeight="22.0" prefWidth="274.0" styleClass="font" stylesheets="@../css/test.css" textFill="RED">
+      <Label fx:id="status" layoutX="28.0" layoutY="289.0" prefHeight="22.0" prefWidth="274.0" styleClass="font" stylesheets="@../css/style.css" textFill="RED">
          <font>
             <Font size="16.0" />
          </font>
       </Label>
-      <Label layoutX="104.0" layoutY="84.0" prefHeight="45.0" prefWidth="123.0" styleClass="font" stylesheets="@../css/test.css" text="Đăng Nhập" wrapText="true">
+      <Label layoutX="99.0" layoutY="84.0" prefHeight="45.0" prefWidth="132.0" styleClass="font" stylesheets="@../css/style.css" text="Đăng Nhập" wrapText="true">
          <font>
             <Font size="24.0" />
          </font>
       </Label>
-      <TextField fx:id="userEmail" layoutX="28.0" layoutY="157.0" onKeyPressed="#enterLogin" prefHeight="50.0" prefWidth="274.0" promptText="Email" styleClass="login-text-field" stylesheets="@../css/test.css">
+      <TextField fx:id="userEmail" layoutX="28.0" layoutY="157.0" onAction="#enterLogin" prefHeight="50.0" prefWidth="274.0" promptText="Email" styleClass="login-text-field" stylesheets="@../css/style.css">
          <font>
             <Font size="18.0" />
          </font>
       </TextField>
-      <PasswordField fx:id="userPassword" layoutX="28.0" layoutY="225.0" onKeyPressed="#enterLogin" prefHeight="50.0" prefWidth="274.0" promptText="Password" styleClass="login-text-field" stylesheets="@../css/test.css">
+      <PasswordField fx:id="userPassword" layoutX="28.0" layoutY="225.0" onAction="#enterLogin" prefHeight="50.0" prefWidth="274.0" promptText="Password" styleClass="login-text-field" stylesheets="@../css/style.css">
          <font>
             <Font size="18.0" />
          </font>
       </PasswordField>
-      <Button fx:id="loginButton" layoutX="111.0" layoutY="339.0" mnemonicParsing="false" onAction="#login" prefHeight="39.0" prefWidth="109.0" stylesheets="@../css/test.css" text="Button">
+      <Button fx:id="loginButton" layoutX="111.0" layoutY="339.0" mnemonicParsing="false" onAction="#login" prefHeight="39.0" prefWidth="109.0" stylesheets="@../css/style.css" text="Button">
          <styleClass>
             <String fx:value="login-button" />
             <String fx:value="font" />

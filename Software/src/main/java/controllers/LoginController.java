@@ -1,20 +1,24 @@
 package controllers;
 
 import entities.Employee;
-import javafx.application.Platform;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.KeyCode;
-import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseEvent;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.resource.transaction.spi.TransactionStatus;
 import repositories.EmployeeRepository;
 import utils.HibernateUtils;
+import utils.StageHelper;
+
+import java.util.Arrays;
 
 public class LoginController {
 
@@ -30,39 +34,69 @@ public class LoginController {
     private ImageView close;
 
     @FXML
-    void close() {
-        Platform.exit();
+    void close(MouseEvent mouseEvent) {
+        StageHelper.closeStage(mouseEvent);
     }
 
     @FXML
-    void login() throws InterruptedException {
-        SessionFactory factory = HibernateUtils.getSessionFactory();
-        Session session = factory.getCurrentSession();
-        session.beginTransaction();
+    void login(ActionEvent actionEvent) {
+        try {
+            SessionFactory factory = HibernateUtils.getSessionFactory();
+            Session session = factory.getCurrentSession();
+            session.beginTransaction();
 
-        if (userEmail.getText().isEmpty()) {
-            status.setText("Chưa nhập email");
-        } else if (userPassword.getText().isEmpty()) {
-            status.setText("Chưa nhập mật khẩu");
-        } else {
-            Employee employee = EmployeeRepository.getByEmail(userEmail.getText(), session);
-            if (employee != null && employee.getPassword().equals(userPassword.getText())) {
-                System.out.println("Đăng nhập thành công");
-                // TODO: change stage to menu stage
+            if (userEmail.getText().isEmpty()) {
+                status.setText("Chưa nhập email");
+            } else if (userPassword.getText().isEmpty()) {
+                status.setText("Chưa nhập mật khẩu");
             } else {
-                status.setText("Sai email hoặc mật khẩu");
+                Employee employee = EmployeeRepository.getByEmail(userEmail.getText(), session);
+                if (employee != null && employee.getPassword().equals(userPassword.getText())) {
+                    Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("fxml/MainNavigator.fxml"));
+                    StageHelper.closeStage(actionEvent);
+                    StageHelper.startStage(root);
+                } else {
+                    status.setText("Sai email hoặc mật khẩu");
+                }
             }
-        }
 
-        if (session.getTransaction().getStatus() != TransactionStatus.COMMITTED) {
-            session.getTransaction().commit();
+            if (session.getTransaction().getStatus() != TransactionStatus.COMMITTED) {
+                session.getTransaction().commit();
+            }
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+            System.out.println(Arrays.toString(ex.getStackTrace()));
         }
     }
 
     @FXML
-    void enterLogin(KeyEvent event) throws InterruptedException {
-        if (event.getCode() == KeyCode.ENTER) {
-            login();
+    void enterLogin(ActionEvent actionEvent) {
+        try {
+            SessionFactory factory = HibernateUtils.getSessionFactory();
+            Session session = factory.getCurrentSession();
+            session.beginTransaction();
+
+            if (userEmail.getText().isEmpty()) {
+                status.setText("Chưa nhập email");
+            } else if (userPassword.getText().isEmpty()) {
+                status.setText("Chưa nhập mật khẩu");
+            } else {
+                Employee employee = EmployeeRepository.getByEmail(userEmail.getText(), session);
+                if (employee != null && employee.getPassword().equals(userPassword.getText())) {
+                    Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("fxml/MainNavigator.fxml"));
+                    StageHelper.closeStage(actionEvent);
+                    StageHelper.startStage(root);
+                } else {
+                    status.setText("Sai email hoặc mật khẩu");
+                }
+            }
+
+            if (session.getTransaction().getStatus() != TransactionStatus.COMMITTED) {
+                session.getTransaction().commit();
+            }
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+            System.out.println(Arrays.toString(ex.getStackTrace()));
         }
     }
 
