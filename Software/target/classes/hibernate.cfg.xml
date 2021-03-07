@@ -39,6 +39,9 @@
 		<mapping class="entities.Merchandise"/>
 		<mapping class="entities.Order"/>
 		<mapping class="entities.OrderDetail"/>
+		<mapping class="entities.Receipt"/>
+		<mapping class="entities.RolesDetail"/>
+		<mapping class="entities.Roles"/>
 
 	</session-factory>
 </hibernate-configuration>

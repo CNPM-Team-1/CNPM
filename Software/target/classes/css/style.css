@@ -1,0 +1,62 @@
+.bodyborder {
+    -fx-background-radius: 10px;
+    -fx-background-color: #fff;
+}
+
+.navigation-body-border {
+    -fx-background-radius: 5px;
+    -fx-background-color:  #e0e0e0;
+}
+
+.navigation-radius {
+    -fx-background-radius: 5px;
+    -fx-background-color: #fff;
+}
+
+.font {
+    -fx-font-weight: 700;
+    -fx-font-family: Arial, sans-serif;
+}
+
+.login-text-field {
+    -fx-background-radius: 10px;
+}
+
+.login-button {
+    -fx-background-color: rgba(189, 89, 212, .8);
+    -fx-text-fill: #fff;
+    -fx-background-radius: 25px;
+    -fx-font-size: 18px;
+}
+
+.login-button:hover {
+    -fx-background-color: #4b2354;
+}
+
+.close-button {
+    -fx-text-alignment: top;
+}
+
+.close-button:hover {
+    -fx-text-fill: red;
+}
+
+.navigation-hbox {
+    /*-fx-border-color: #ffffff;*/
+    -fx-background-color: #88c94d;
+    -fx-border-width: 0px 0px 0px 0px;
+}
+
+.navigation-button {
+    -fx-font-weight: 700;
+    -fx-font-size: 20px;
+    /*-fx-border-color: #ffffff;*/
+    /*-fx-border-width: 0px 1px 0px 1px;*/
+    -fx-text-fill: #fff;
+}
+
+.navigation-button:hover {
+    -fx-border-color: #000000;
+    -fx-border-width: 0px 0px 3px 0px;
+    -fx-text-fill: #fff;
+}
