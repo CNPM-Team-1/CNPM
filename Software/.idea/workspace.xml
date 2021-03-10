@@ -5,49 +5,50 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b5ea20d7-1c8e-440f-81c2-ca4792b5ccf8" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/entities/WorkShift.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/entities/WorkTable.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__antlr_antlr_2_7_7.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_classmate_1_3_4.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_google_protobuf_protobuf_java_3_6_1.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_jfoenix_jfoenix_9_0_10.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_sun_istack_istack_commons_runtime_3_0_7.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_sun_xml_fastinfoset_FastInfoset_1_2_15.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__javax_activation_javax_activation_api_1_2_0.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__javax_persistence_javax_persistence_api_2_2.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__javax_xml_bind_jaxb_api_2_3_1.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__junit_junit_4_11.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__mysql_mysql_connector_java_8_0_18.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__net_bytebuddy_byte_buddy_1_9_5.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_derby_derby_10_7_1_1.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_dom4j_dom4j_2_1_1.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_glassfish_jaxb_jaxb_runtime_2_3_1.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_glassfish_jaxb_txw2_2_3_1.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_hamcrest_hamcrest_core_1_3.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_hibernate_common_hibernate_commons_annotations_5_1_0_Final.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_hibernate_hibernate_core_5_4_0_Final.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_javassist_javassist_3_24_0_GA.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_jboss_jandex_2_0_5_Final.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_jboss_logging_jboss_logging_3_3_2_Final.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_jboss_spec_javax_transaction_jboss_transaction_api_1_2_spec_1_1_1_Final.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_jvnet_staxex_stax_ex_1_8.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_mindrot_jbcrypt_0_3m.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_base_14.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_base_win_14.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_controls_14.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_controls_win_14.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_fxml_14.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_fxml_win_14.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_graphics_14.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_graphics_win_14.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_aop_5_2_5_RELEASE.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_beans_5_2_5_RELEASE.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_context_5_2_5_RELEASE.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_core_5_2_5_RELEASE.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_expression_5_2_5_RELEASE.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_jcl_5_2_5_RELEASE.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_web_5_2_5_RELEASE.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/jbcrypt_0_3m.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Libraris/javafx-sdk-11.0.2/legal/javafx.base/ADDITIONAL_LICENSE_INFO" beforeDir="false" afterPath="$PROJECT_DIR$/../Libraris/javafx-sdk-11.0.2/legal/javafx.base/ADDITIONAL_LICENSE_INFO" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Libraris/javafx-sdk-11.0.2/legal/javafx.base/ASSEMBLY_EXCEPTION" beforeDir="false" afterPath="$PROJECT_DIR$/../Libraris/javafx-sdk-11.0.2/legal/javafx.base/ASSEMBLY_EXCEPTION" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Libraris/javafx-sdk-11.0.2/legal/javafx.base/LICENSE" beforeDir="false" afterPath="$PROJECT_DIR$/../Libraris/javafx-sdk-11.0.2/legal/javafx.base/LICENSE" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Libraris/javafx-sdk-11.0.2/legal/javafx.controls/ADDITIONAL_LICENSE_INFO" beforeDir="false" afterPath="$PROJECT_DIR$/../Libraris/javafx-sdk-11.0.2/legal/javafx.controls/ADDITIONAL_LICENSE_INFO" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Libraris/javafx-sdk-11.0.2/legal/javafx.controls/ASSEMBLY_EXCEPTION" beforeDir="false" afterPath="$PROJECT_DIR$/../Libraris/javafx-sdk-11.0.2/legal/javafx.controls/ASSEMBLY_EXCEPTION" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Libraris/javafx-sdk-11.0.2/legal/javafx.controls/LICENSE" beforeDir="false" afterPath="$PROJECT_DIR$/../Libraris/javafx-sdk-11.0.2/legal/javafx.controls/LICENSE" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Libraris/javafx-sdk-11.0.2/legal/javafx.fxml/ADDITIONAL_LICENSE_INFO" beforeDir="false" afterPath="$PROJECT_DIR$/../Libraris/javafx-sdk-11.0.2/legal/javafx.fxml/ADDITIONAL_LICENSE_INFO" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Libraris/javafx-sdk-11.0.2/legal/javafx.fxml/ASSEMBLY_EXCEPTION" beforeDir="false" afterPath="$PROJECT_DIR$/../Libraris/javafx-sdk-11.0.2/legal/javafx.fxml/ASSEMBLY_EXCEPTION" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Libraris/javafx-sdk-11.0.2/legal/javafx.fxml/LICENSE" beforeDir="false" afterPath="$PROJECT_DIR$/../Libraris/javafx-sdk-11.0.2/legal/javafx.fxml/LICENSE" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Libraris/javafx-sdk-11.0.2/legal/javafx.graphics/ADDITIONAL_LICENSE_INFO" beforeDir="false" afterPath="$PROJECT_DIR$/../Libraris/javafx-sdk-11.0.2/legal/javafx.graphics/ADDITIONAL_LICENSE_INFO" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Libraris/javafx-sdk-11.0.2/legal/javafx.graphics/ASSEMBLY_EXCEPTION" beforeDir="false" afterPath="$PROJECT_DIR$/../Libraris/javafx-sdk-11.0.2/legal/javafx.graphics/ASSEMBLY_EXCEPTION" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Libraris/javafx-sdk-11.0.2/legal/javafx.graphics/LICENSE" beforeDir="false" afterPath="$PROJECT_DIR$/../Libraris/javafx-sdk-11.0.2/legal/javafx.graphics/LICENSE" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Libraris/javafx-sdk-11.0.2/legal/javafx.graphics/jpeg_fx.md" beforeDir="false" afterPath="$PROJECT_DIR$/../Libraris/javafx-sdk-11.0.2/legal/javafx.graphics/jpeg_fx.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Libraris/javafx-sdk-11.0.2/legal/javafx.media/ADDITIONAL_LICENSE_INFO" beforeDir="false" afterPath="$PROJECT_DIR$/../Libraris/javafx-sdk-11.0.2/legal/javafx.media/ADDITIONAL_LICENSE_INFO" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Libraris/javafx-sdk-11.0.2/legal/javafx.media/ASSEMBLY_EXCEPTION" beforeDir="false" afterPath="$PROJECT_DIR$/../Libraris/javafx-sdk-11.0.2/legal/javafx.media/ASSEMBLY_EXCEPTION" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Libraris/javafx-sdk-11.0.2/legal/javafx.media/LICENSE" beforeDir="false" afterPath="$PROJECT_DIR$/../Libraris/javafx-sdk-11.0.2/legal/javafx.media/LICENSE" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Libraris/javafx-sdk-11.0.2/legal/javafx.media/applecoreaudio.md" beforeDir="false" afterPath="$PROJECT_DIR$/../Libraris/javafx-sdk-11.0.2/legal/javafx.media/applecoreaudio.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Libraris/javafx-sdk-11.0.2/legal/javafx.media/glib.md" beforeDir="false" afterPath="$PROJECT_DIR$/../Libraris/javafx-sdk-11.0.2/legal/javafx.media/glib.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Libraris/javafx-sdk-11.0.2/legal/javafx.media/gstreamer.md" beforeDir="false" afterPath="$PROJECT_DIR$/../Libraris/javafx-sdk-11.0.2/legal/javafx.media/gstreamer.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Libraris/javafx-sdk-11.0.2/legal/javafx.media/libffi.md" beforeDir="false" afterPath="$PROJECT_DIR$/../Libraris/javafx-sdk-11.0.2/legal/javafx.media/libffi.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Libraris/javafx-sdk-11.0.2/legal/javafx.swing/ADDITIONAL_LICENSE_INFO" beforeDir="false" afterPath="$PROJECT_DIR$/../Libraris/javafx-sdk-11.0.2/legal/javafx.swing/ADDITIONAL_LICENSE_INFO" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Libraris/javafx-sdk-11.0.2/legal/javafx.swing/ASSEMBLY_EXCEPTION" beforeDir="false" afterPath="$PROJECT_DIR$/../Libraris/javafx-sdk-11.0.2/legal/javafx.swing/ASSEMBLY_EXCEPTION" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Libraris/javafx-sdk-11.0.2/legal/javafx.swing/LICENSE" beforeDir="false" afterPath="$PROJECT_DIR$/../Libraris/javafx-sdk-11.0.2/legal/javafx.swing/LICENSE" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Libraris/javafx-sdk-11.0.2/legal/javafx.web/ADDITIONAL_LICENSE_INFO" beforeDir="false" afterPath="$PROJECT_DIR$/../Libraris/javafx-sdk-11.0.2/legal/javafx.web/ADDITIONAL_LICENSE_INFO" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Libraris/javafx-sdk-11.0.2/legal/javafx.web/ASSEMBLY_EXCEPTION" beforeDir="false" afterPath="$PROJECT_DIR$/../Libraris/javafx-sdk-11.0.2/legal/javafx.web/ASSEMBLY_EXCEPTION" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Libraris/javafx-sdk-11.0.2/legal/javafx.web/LICENSE" beforeDir="false" afterPath="$PROJECT_DIR$/../Libraris/javafx-sdk-11.0.2/legal/javafx.web/LICENSE" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Libraris/javafx-sdk-11.0.2/legal/javafx.web/icu_web.md" beforeDir="false" afterPath="$PROJECT_DIR$/../Libraris/javafx-sdk-11.0.2/legal/javafx.web/icu_web.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Libraris/javafx-sdk-11.0.2/legal/javafx.web/libxml2.md" beforeDir="false" afterPath="$PROJECT_DIR$/../Libraris/javafx-sdk-11.0.2/legal/javafx.web/libxml2.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Libraris/javafx-sdk-11.0.2/legal/javafx.web/libxslt.md" beforeDir="false" afterPath="$PROJECT_DIR$/../Libraris/javafx-sdk-11.0.2/legal/javafx.web/libxslt.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Libraris/javafx-sdk-11.0.2/legal/javafx.web/webkit.md" beforeDir="false" afterPath="$PROJECT_DIR$/../Libraris/javafx-sdk-11.0.2/legal/javafx.web/webkit.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Libraris/javafx-sdk-11.0.2/lib/javafx-swt.jar" beforeDir="false" afterPath="$PROJECT_DIR$/../Libraris/javafx-sdk-11.0.2/lib/javafx-swt.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Libraris/javafx-sdk-11.0.2/lib/javafx.base.jar" beforeDir="false" afterPath="$PROJECT_DIR$/../Libraris/javafx-sdk-11.0.2/lib/javafx.base.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Libraris/javafx-sdk-11.0.2/lib/javafx.controls.jar" beforeDir="false" afterPath="$PROJECT_DIR$/../Libraris/javafx-sdk-11.0.2/lib/javafx.controls.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Libraris/javafx-sdk-11.0.2/lib/javafx.fxml.jar" beforeDir="false" afterPath="$PROJECT_DIR$/../Libraris/javafx-sdk-11.0.2/lib/javafx.fxml.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Libraris/javafx-sdk-11.0.2/lib/javafx.graphics.jar" beforeDir="false" afterPath="$PROJECT_DIR$/../Libraris/javafx-sdk-11.0.2/lib/javafx.graphics.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Libraris/javafx-sdk-11.0.2/lib/javafx.media.jar" beforeDir="false" afterPath="$PROJECT_DIR$/../Libraris/javafx-sdk-11.0.2/lib/javafx.media.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Libraris/javafx-sdk-11.0.2/lib/javafx.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../Libraris/javafx-sdk-11.0.2/lib/javafx.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Libraris/javafx-sdk-11.0.2/lib/javafx.swing.jar" beforeDir="false" afterPath="$PROJECT_DIR$/../Libraris/javafx-sdk-11.0.2/lib/javafx.swing.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Libraris/javafx-sdk-11.0.2/lib/javafx.web.jar" beforeDir="false" afterPath="$PROJECT_DIR$/../Libraris/javafx-sdk-11.0.2/lib/javafx.web.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Libraris/javafx-sdk-11.0.2/lib/src.zip" beforeDir="false" afterPath="$PROJECT_DIR$/../Libraris/javafx-sdk-11.0.2/lib/src.zip" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_base_mac_14.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_base_win_14.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_controls_mac_14.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_controls_win_14.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_fxml_mac_14.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_fxml_win_14.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_graphics_mac_14.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_graphics_win_14.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Software.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Software.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/hibernate.cfg.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/hibernate.cfg.xml" afterDir="false" />
@@ -77,6 +78,13 @@
       <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
     </file-type-list>
   </component>
+  <component name="MavenImportPreferences">
+    <option name="importingSettings">
+      <MavenImportingSettings>
+        <option name="jdkForImporter" value="14" />
+      </MavenImportingSettings>
+    </option>
+  </component>
   <component name="ProjectId" id="1pPpNstBIfnaGnpuIHG1VUTMIle" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
@@ -102,7 +110,7 @@
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.17" />
     <property name="project.structure.side.proportion" value="0.39312038" />
-    <property name="settings.editor.selected.configurable" value="reference.settings.project.maven.repository.indices" />
+    <property name="settings.editor.selected.configurable" value="reference.settings.project.maven.importing" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -116,7 +124,7 @@
     <configuration name="App" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="start.App" />
       <module name="Software" />
-      <option name="VM_PARAMETERS" value="--module-path $PROJECT_DIR$/../Libraris/javafx-sdk-11.0.2/lib --add-modules javafx.controls,javafx.fxml" />
+      <option name="VM_PARAMETERS" value="--module-path &quot;C:\Program Files\javafx-sdk-11.0.2\lib&quot; --add-modules javafx.controls,javafx.fxml" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="start.*" />
@@ -127,15 +135,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
           <option name="containerStateName" value="" />
         </value>
       </option>
-      <option name="TEST_OBJECT" value="CLASS" />
-      <properties />
-      <listeners />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -157,6 +163,8 @@
       <workItem from="1615094545529" duration="736000" />
       <workItem from="1615095504754" duration="5845000" />
       <workItem from="1615101398980" duration="5336000" />
+      <workItem from="1615367081521" duration="92000" />
+      <workItem from="1615367179526" duration="361000" />
     </task>
     <servers />
   </component>
