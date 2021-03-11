@@ -49,7 +49,7 @@
                   <Insets left="10.0" />
                </padding>
             </Label>
-            <FontAwesomeIconView glyphName="USD" layoutX="68.0" layoutY="37.0" />
+            <FontAwesomeIconView layoutX="76.0" layoutY="34.0" />
          </children>
       </AnchorPane>
    </children>
