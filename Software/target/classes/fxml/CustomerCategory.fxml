@@ -79,13 +79,13 @@
                         </JFXButton>
                      </children>
                   </HBox>
-                  <TableView prefHeight="340.0" prefWidth="1218.0" GridPane.rowIndex="1">
+                  <TableView prefHeight="340.0" prefWidth="1218.0" styleClass="table-font" stylesheets="@../css/style.css" GridPane.rowIndex="1">
                     <columns>
-                      <TableColumn prefWidth="177.0" text="Họ Tên" />
-                      <TableColumn minWidth="0.0" prefWidth="127.0" text="SĐT" />
-                        <TableColumn minWidth="0.0" prefWidth="262.0" text="Email" />
-                        <TableColumn prefWidth="419.0" text="Địa Chỉ" />
-                        <TableColumn prefWidth="104.0" text="Loại" />
+                      <TableColumn prefWidth="163.0" text="Họ Tên" />
+                      <TableColumn minWidth="0.0" prefWidth="133.0" text="SĐT" />
+                        <TableColumn minWidth="0.0" prefWidth="270.0" text="Email" />
+                        <TableColumn prefWidth="399.0" text="Địa Chỉ" />
+                        <TableColumn prefWidth="124.0" text="Loại" />
                     </columns>
                   </TableView>
                </children>
