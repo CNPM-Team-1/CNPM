@@ -3,6 +3,7 @@
 <?import com.jfoenix.controls.JFXButton?>
 <?import java.lang.String?>
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
@@ -24,7 +25,7 @@
             <Insets left="10.0" />
          </padding>
       </Label>
-      <AnchorPane layoutX="23.0" layoutY="59.0" prefHeight="591.0" prefWidth="1233.0" style="-fx-background-radius: 5px; -fx-background-color: #fff;">
+      <AnchorPane layoutX="23.0" layoutY="59.0" prefHeight="591.0" prefWidth="1233.0" style="-fx-background-radius: 5px; -fx-background-color: #fff; -fx-border-color: #ebecee; -fx-border-radius: 5px;">
          <opaqueInsets>
             <Insets />
          </opaqueInsets>
@@ -60,6 +61,9 @@
                            <HBox.margin>
                               <Insets left="10.0" top="7.0" />
                            </HBox.margin>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
                         </JFXButton>
                         <JFXButton fx:id="addButton" onAction="#addButtonActionListener" stylesheets="@../css/style.css" text="+ Thêm mới">
                            <styleClass>
@@ -69,6 +73,9 @@
                            <HBox.margin>
                               <Insets left="730.0" top="7.0" />
                            </HBox.margin>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
                         </JFXButton>
                      </children>
                   </HBox>
