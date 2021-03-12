@@ -60,3 +60,7 @@
     -fx-border-width: 0px 0px 3px 0px;
     -fx-text-fill: #fff;
 }
+
+.button-order {
+    -fx-background-color: #E0E0E0;
+}

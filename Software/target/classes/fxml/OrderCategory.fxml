@@ -1,55 +1,93 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextField?>
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import java.lang.String?>
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane prefHeight="662.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <AnchorPane layoutX="23.0" layoutY="59.0" prefHeight="591.0" prefWidth="1233.0" style="-fx-background-radius: 5px; -fx-background-color: #fff;" styleClass="navigation-button" stylesheets="@../css/style.css">
+      <AnchorPane layoutX="23.0" layoutY="59.0" prefHeight="591.0" prefWidth="1233.0" style="-fx-background-radius: 5px; -fx-background-color: ACD983;">
          <opaqueInsets>
             <Insets />
          </opaqueInsets>
          <children>
-            <GridPane layoutX="43.0" layoutY="48.0" prefHeight="327.0" prefWidth="1017.0">
+            <GridPane layoutX="43.0" layoutY="104.0" prefHeight="321.0" prefWidth="1132.0">
               <columnConstraints>
                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
               </columnConstraints>
               <rowConstraints>
-                <RowConstraints maxHeight="110.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                <RowConstraints maxHeight="294.0" minHeight="10.0" prefHeight="294.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="133.0" minHeight="10.0" prefHeight="67.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="294.0" minHeight="10.0" prefHeight="254.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <TableView prefHeight="364.0" prefWidth="1017.0" GridPane.rowIndex="1">
+                  <TableView prefHeight="254.0" prefWidth="1090.0" GridPane.rowIndex="1">
                     <columns>
                       <TableColumn prefWidth="236.0" text="Mã đơn hàng" />
                       <TableColumn prefWidth="297.0" text="Nhân viên" />
-                        <TableColumn prefWidth="247.0" text="Ngày tạo" />
-                        <TableColumn prefWidth="236.0" text="Trạng thái" />
+                        <TableColumn prefWidth="205.0" text="Ngày tạo" />
+                        <TableColumn prefWidth="138.0" text="Trạng thái" />
+                        <TableColumn prefWidth="140.0" />
                     </columns>
                   </TableView>
-                  <TextField />
+                  <HBox prefHeight="33.0" prefWidth="909.0">
+                     <children>
+                        <JFXButton fx:id="add_order_button" prefHeight="49.0" prefWidth="147.0" stylesheets="@../css/style.css" text="Tạo đơn hàng">
+                           <graphic>
+                              <FontAwesomeIconView glyphName="PLUS" size="15.0" />
+                           </graphic>
+                           <HBox.margin>
+                              <Insets left="20.0" />
+                           </HBox.margin>
+                           <styleClass>
+                              <String fx:value="button-order" />
+                              <String fx:value="font_button" />
+                           </styleClass>
+                        </JFXButton>
+                        <JFXButton fx:id="update_order_button" prefHeight="49.0" prefWidth="147.0" styleClass="button-order" stylesheets="@../css/style.css" text="Cập nhật đơn hàng">
+                           <graphic>
+                              <FontAwesomeIconView glyphName="FILE" size="15" />
+                           </graphic>
+                           <HBox.margin>
+                              <Insets left="20.0" />
+                           </HBox.margin>
+                        </JFXButton>
+                        <JFXTextField fx:id="search_textfield" prefHeight="26.0" prefWidth="183.0">
+                           <HBox.margin>
+                              <Insets left="600.0" top="15.0" />
+                           </HBox.margin>
+                        </JFXTextField>
+                        <FontAwesomeIconView glyphName="SEARCH" size="20.0">
+                           <HBox.margin>
+                              <Insets top="15.0" />
+                           </HBox.margin>
+                        </FontAwesomeIconView>
+                     </children>
+                     <GridPane.margin>
+                        <Insets />
+                     </GridPane.margin>
+                  </HBox>
                </children>
             </GridPane>
-            <Button layoutX="1098.0" layoutY="136.0" mnemonicParsing="false" text="Search" />
-            <Label layoutX="96.0" layoutY="11.0" prefHeight="37.0" prefWidth="200.0" styleClass="font" stylesheets="@../css/style.css" text="Đơn Hàng" textFill="#2b2733">
+            <Label layoutX="136.0" layoutY="30.0" prefHeight="37.0" prefWidth="200.0" styleClass="font" stylesheets="@../css/style.css" text="Đơn Hàng" textFill="#2b2733">
                <font>
-                  <Font size="29.0" />
+                  <Font size="25.0" />
                </font>
                <padding>
                   <Insets left="10.0" />
                </padding>
             </Label>
-            <FontAwesomeIconView layoutX="76.0" layoutY="34.0" />
+            <FontAwesomeIconView glyphName="ARCHIVE" layoutX="71.0" layoutY="63.0" size="40" text="" />
          </children>
       </AnchorPane>
    </children>
