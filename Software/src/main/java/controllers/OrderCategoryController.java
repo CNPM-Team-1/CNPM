@@ -40,14 +40,6 @@ public class OrderCategoryController implements Initializable {
 
     }
 
-    @FXML
-    public void initialize() {
-        assert add_order_button != null : "fx:id=\"add_order_button\" was not injected: check your FXML file 'OrderCategory.fxml'.";
-        assert update_order_button != null : "fx:id=\"update_order_button\" was not injected: check your FXML file 'OrderCategory.fxml'.";
-        assert search_textfield != null : "fx:id=\"search_textfield\" was not injected: check your FXML file 'OrderCategory.fxml'.";
-
-    }
-
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 

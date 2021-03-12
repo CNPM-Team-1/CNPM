@@ -5,8 +5,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.stage.Stage;
 import org.hibernate.SessionFactory;
-import utils.HibernateUtils;
-import utils.StageHelper;
 
 import java.util.Arrays;
 
