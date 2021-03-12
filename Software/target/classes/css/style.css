@@ -32,14 +32,14 @@
 }
 
 .search-bar {
-    -fx-background-radius: 25px;
+    -fx-background-radius: 5px;
     -fx-font-size: 18px;
 }
 
 .login-button {
     -fx-background-color: rgba(189, 89, 212, .8);
     -fx-text-fill: #fff;
-    -fx-background-radius: 25px;
+    -fx-background-radius: 5px;
     -fx-font-size: 18px;
 }
 

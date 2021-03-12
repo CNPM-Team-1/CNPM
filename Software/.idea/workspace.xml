@@ -5,13 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b5ea20d7-1c8e-440f-81c2-ca4792b5ccf8" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/controllers/CustomerAddController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/fxml/CustomerAdd.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/CustomerCategoryController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/CustomerCategoryController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/css/style.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/fxml/CustomerCategory.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/fxml/CustomerCategory.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controllers/CustomerCategoryController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controllers/CustomerCategoryController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/fxml/Login.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/fxml/Login.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/css/style.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/fxml/CustomerCategory.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/fxml/CustomerCategory.fxml" afterDir="false" />
     </list>
@@ -96,15 +93,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
           <option name="containerStateName" value="" />
         </value>
       </option>
-      <option name="TEST_OBJECT" value="CLASS" />
-      <properties />
-      <listeners />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -134,6 +129,7 @@
       <workItem from="1615447550905" duration="249000" />
       <workItem from="1615447911023" duration="10209000" />
       <workItem from="1615464879961" duration="1712000" />
+      <workItem from="1615530013290" duration="1277000" />
     </task>
     <servers />
   </component>
