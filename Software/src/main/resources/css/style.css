@@ -1,11 +1,22 @@
 .bodyborder {
     -fx-background-radius: 10px;
     -fx-background-color: #fff;
+    -fx-border-color: black;
+    -fx-border-radius: 5px;
+}
+
+.borderoutline {
+    -fx-background-radius: 5px;
+    -fx-border-radius: 5px;
+    -fx-background-color: #fff;
+    /*-fx-border-style: line;*/
+    -fx-border-color: black;
+    -fx-border-width: 1.5;
 }
 
 .navigation-body-border {
     -fx-background-radius: 5px;
-    -fx-background-color:  #e0e0e0;
+    -fx-background-color: #f5f8f5;
 }
 
 .navigation-radius {
@@ -18,16 +29,41 @@
     -fx-font-family: Arial, sans-serif;
 }
 
+
+
+.table-font {
+    -fx-font-weight: 700;
+    -fx-font-size: 16px;
+    -fx-font-family: Arial, sans-serif;
+}
+
 .login-text-field {
     -fx-background-radius: 10px;
+}
+
+.search-bar {
+    -fx-background-radius: 5px;
+    -fx-font-size: 18px;
 }
 
 .login-button {
     -fx-background-color: rgba(189, 89, 212, .8);
     -fx-text-fill: #fff;
-    -fx-background-radius: 25px;
+    -fx-background-radius: 5px;
     -fx-font-size: 18px;
 }
+
+.add-button {
+    -fx-background-color: rgba(189, 89, 212, .8);
+    -fx-text-fill: #fff;
+    -fx-background-radius: 5px;
+    -fx-font-size: 16px;
+}
+
+.add-button:hover {
+    -fx-background-color: #4b2354;
+}
+
 
 .login-button:hover {
     -fx-background-color: #4b2354;
@@ -44,7 +80,6 @@
 .navigation-hbox {
     /*-fx-border-color: #ffffff;*/
     -fx-background-color: #88c94d;
-    -fx-border-width: 0px 0px 0px 0px;
 }
 
 .navigation-button {
