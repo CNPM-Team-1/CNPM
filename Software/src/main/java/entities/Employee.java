@@ -8,7 +8,8 @@ import java.util.Date;
 
 @Entity
 @Table(name = "employee")
-public class Employee {
+public class
+Employee {
     @Id
     @Column(name = "id")
     private String id;
@@ -40,6 +41,7 @@ public class Employee {
         this.createdDate = createdDate;
         this.updatedDate = updatedDate;
     }
+
 
     public String getId() {
         return id;
