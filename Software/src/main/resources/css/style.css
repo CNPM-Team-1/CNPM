@@ -96,6 +96,13 @@
     -fx-text-fill: #fff;
 }
 
-.button-order {
-    -fx-background-color: #E0E0E0;
+.add-button1 {
+    -fx-background-color: #ACD983;
+    -fx-text-fill: #000000;
+    -fx-background-radius: 5px;
+    -fx-font-size: 15px;
+}
+
+.text-color {
+    -fx-text-fill: #000000;
 }
