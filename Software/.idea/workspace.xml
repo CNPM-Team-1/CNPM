@@ -6,6 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="b5ea20d7-1c8e-440f-81c2-ca4792b5ccf8" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/utils/BCryptHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/utils/BCryptHelper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/fxml/SalaryCategory.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/fxml/SalaryCategory.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -137,7 +139,9 @@
       <workItem from="1615464879961" duration="1712000" />
       <workItem from="1615530013290" duration="4467000" />
       <workItem from="1615535702550" duration="1003000" />
-      <workItem from="1615627061838" duration="317000" />
+      <workItem from="1615627061838" duration="1121000" />
+      <workItem from="1615628226243" duration="772000" />
+      <workItem from="1615640318108" duration="1199000" />
     </task>
     <servers />
   </component>
