@@ -5,7 +5,6 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
@@ -24,31 +23,20 @@
             <Insets />
          </opaqueInsets>
          <children>
-            <JFXButton fx:id="addButton" layoutX="117.0" layoutY="406.0" onAction="#Add" text="ADD" />
-            <JFXButton fx:id="updateButton" layoutX="250.0" layoutY="407.0" onAction="#Update" text="UPDATE" />
-            <JFXButton fx:id="deleteButton" layoutX="384.0" layoutY="405.0" onAction="#Delete" text="DELETE" />
-            <TextField fx:id="idText" layoutX="188.0" layoutY="71.0" />
-            <TextField fx:id="nameText" layoutX="186.0" layoutY="116.0" />
-            <TextField fx:id="typeText" layoutX="186.0" layoutY="172.0" />
-            <TextField fx:id="branchText" layoutX="188.0" layoutY="215.0" />
-            <TextField fx:id="priceText" layoutX="184.0" layoutY="271.0" />
-            <TextField fx:id="importText" layoutX="188.0" layoutY="324.0" />
-            <Label fx:id="idLabel" layoutX="82.0" layoutY="76.0" text="ID" />
-            <Label fx:id="nameLabel" layoutX="82.0" layoutY="118.0" text="NAME" />
-            <Label fx:id="typeLabel" layoutX="82.0" layoutY="170.0" text="TYPE" />
-            <Label fx:id="branchLabel" layoutX="82.0" layoutY="217.0" text="BRANCH" />
-            <Label fx:id="priceLabel" layoutX="81.0" layoutY="283.0" text="PRICE" />
-            <Label fx:id="importPriceLabel" layoutX="82.0" layoutY="336.0" text="IMPORT PRICE" />
-            <TableView fx:id="tableMerchandise" layoutX="484.0" layoutY="61.0" prefHeight="295.0" prefWidth="734.0">
+            <JFXButton fx:id="addButton" layoutX="160.0" layoutY="482.0" onAction="#Add" styleClass="add-button" stylesheets="@../css/style.css" text="ADD" />
+            <JFXButton fx:id="updateButton" layoutX="501.0" layoutY="480.0" onAction="#Update" styleClass="add-button" stylesheets="@../css/style.css" text="UPDATE" />
+            <JFXButton fx:id="deleteButton" layoutX="840.0" layoutY="480.0" onAction="#Delete" styleClass="add-button" stylesheets="@../css/style.css" text="DELETE" />
+            <TableView fx:id="tableMerchandise" layoutX="25.0" layoutY="51.0" prefHeight="392.0" prefWidth="1203.0">
               <columns>
-                <TableColumn fx:id="idColumn" prefWidth="75.0" text="ID" />
-                <TableColumn fx:id="nameColumn" prefWidth="96.33331298828125" text="NAME" />
-                  <TableColumn fx:id="typeColumn" prefWidth="86.33331298828125" text="TYPE" />
-                  <TableColumn fx:id="BranchColumn" prefWidth="89.0" text="BRANCH" />
-                  <TableColumn fx:id="priceColumn" prefWidth="82.5" text="PRICE" />
-                  <TableColumn fx:id="ipriceColumn" prefWidth="99.0" text="IMPORT PRICE" />
-                  <TableColumn fx:id="createColumn" prefWidth="95.83331298828125" text="CREATE DATE" />
-                  <TableColumn fx:id="updateColumn" prefWidth="109.0" text="UPDATE DATE" />
+                <TableColumn fx:id="idColumn" prefWidth="111.16667175292969" text="ID" />
+                <TableColumn fx:id="nameColumn" prefWidth="147.8333282470703" text="NAME" />
+                  <TableColumn fx:id="typeColumn" prefWidth="111.66665649414062" text="TYPE" />
+                  <TableColumn fx:id="BranchColumn" prefWidth="152.83334350585938" text="BRANCH" />
+                  <TableColumn fx:id="priceColumn" prefWidth="135.83331298828125" text="PRICE" />
+                  <TableColumn fx:id="ipriceColumn" prefWidth="158.16668701171875" text="IMPORT PRICE" />
+                  <TableColumn fx:id="createColumn" prefWidth="137.5" text="CREATE DATE" />
+                  <TableColumn fx:id="updateColumn" prefWidth="144.5" text="UPDATE DATE" />
+                  <TableColumn fx:id="editColumn" prefWidth="100.3333740234375" text="EDIT" />
               </columns>
             </TableView>
          </children>
