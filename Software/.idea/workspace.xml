@@ -5,17 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b5ea20d7-1c8e-440f-81c2-ca4792b5ccf8" name="Default Changelist" comment="">
-<<<<<<< HEAD
       <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/.idea/sqldialects.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/controllers/MerchandiseCategoryController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/MerchandiseCategoryController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/css/style.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/fxml/MerchandiseCategory.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/fxml/MerchandiseCategory.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/controllers/MerchandiseCategoryController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controllers/MerchandiseCategoryController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/fxml/MerchandiseCategory.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/fxml/MerchandiseCategory.fxml" afterDir="false" />
-=======
-      <change beforePath="$PROJECT_DIR$/src/main/resources/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/css/style.css" afterDir="false" />
->>>>>>> dev
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -57,37 +54,18 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
-<<<<<<< HEAD
     <property name="DatabaseDriversLRU" value="mysql" />
-=======
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
->>>>>>> dev
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-<<<<<<< HEAD
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="node.js.detected.package.eslint" value="true" />
-    <property name="node.js.detected.package.tslint" value="true" />
-    <property name="node.js.path.for.package.eslint" value="project" />
-    <property name="node.js.path.for.package.tslint" value="project" />
-    <property name="node.js.selected.package.eslint" value="(autodetect)" />
-    <property name="node.js.selected.package.tslint" value="(autodetect)" />
-    <property name="nodejs_package_manager_path" value="npm" />
-    <property name="project.structure.last.edited" value="SDKs" />
-    <property name="project.structure.proportion" value="0.17" />
-    <property name="project.structure.side.proportion" value="0.39312038" />
-    <property name="restartRequiresConfirmation" value="false" />
-    <property name="settings.editor.selected.configurable" value="reference.settings.project.maven.repository.indices" />
-=======
     <property name="last_opened_file_path" value="C:/Program Files/SceneBuilder/SceneBuilder.exe" />
     <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.17" />
     <property name="project.structure.side.proportion" value="0.39312038" />
     <property name="settings.editor.selected.configurable" value="copyright" />
->>>>>>> dev
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -112,9 +90,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-<<<<<<< HEAD
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
-=======
     <configuration name="Test" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="controllers.Test" />
       <module name="Software" />
@@ -129,13 +104,14 @@
       </method>
     </configuration>
     <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
->>>>>>> dev
       <option name="arquillianRunConfiguration">
         <value>
           <option name="containerStateName" value="" />
         </value>
       </option>
       <option name="TEST_OBJECT" value="class" />
+      <properties />
+      <listeners />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -157,11 +133,9 @@
       <workItem from="1615094545529" duration="736000" />
       <workItem from="1615095504754" duration="5845000" />
       <workItem from="1615101398980" duration="5336000" />
-<<<<<<< HEAD
       <workItem from="1615359540289" duration="376000" />
       <workItem from="1615360042144" duration="568000" />
       <workItem from="1615446716163" duration="5870000" />
-=======
       <workItem from="1615351777053" duration="5898000" />
       <workItem from="1615361726107" duration="279000" />
       <workItem from="1615366933699" duration="444000" />
@@ -172,7 +146,6 @@
       <workItem from="1615464879961" duration="1712000" />
       <workItem from="1615530013290" duration="4467000" />
       <workItem from="1615535702550" duration="1003000" />
->>>>>>> dev
     </task>
     <servers />
   </component>
