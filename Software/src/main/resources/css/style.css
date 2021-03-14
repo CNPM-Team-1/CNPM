@@ -92,6 +92,18 @@
     -fx-background-color: #4b2354;
 }
 
+.dialog-close-button {
+    -fx-background-color: #929898;
+    -fx-background-radius: 5px;
+    -fx-font-size: 16px;
+    -fx-text-fill: white;
+}
+
+.dialog-close-button:hover {
+    -fx-background-color: #253031;
+    -fx-text-fill: white;
+    -fx-cursor: hand;
+}
 
 .close-button {
     -fx-background-color: #525252;
