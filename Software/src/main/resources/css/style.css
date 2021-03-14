@@ -130,6 +130,16 @@
     -fx-text-fill: #fff;
 }
 
+.add-button1 {
+    -fx-background-color: #ACD983;
+    -fx-text-fill: #000000;
+    -fx-background-radius: 5px;
+    -fx-font-size: 15px;
+}
+
+.text-color {
+    -fx-text-fill: #000000;
+}
 .delete-button {
     -fx-background-color: #ff3548;
     -fx-background-radius: 5px;

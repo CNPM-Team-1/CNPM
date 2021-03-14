@@ -7,3 +7,8 @@ public class UUIDHelper {
         return UUID.randomUUID();
     }
 }
+
+
+///////
+//Order order = new Order();
+//order.setId(UUIDHelper.generateType4UUID());
