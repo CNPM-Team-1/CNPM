@@ -19,6 +19,9 @@ public class MainNavigatorController implements Initializable {
     static int idx_cur = 0;
 
     @FXML
+    private AnchorPane Host;
+
+    @FXML
     private JFXButton orderButton;
 
     @FXML
@@ -41,6 +44,16 @@ public class MainNavigatorController implements Initializable {
 
     @FXML
     private AnchorPane contentPanel;
+
+    //  For other class call function from this class
+    public static MainNavigatorController instance;
+
+    public MainNavigatorController() { instance = this; }
+
+    public static MainNavigatorController getInstance() { return instance; }
+    public AnchorPane getHost() { return this.Host; }
+
+    //////////////////
 
     @FXML
     void close(MouseEvent mouseEvent) {
