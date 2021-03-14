@@ -15,33 +15,25 @@ public class StageHelper {
     public static void startStage(Parent root) {
         final Stage stage = new Stage();
         Scene scene = new Scene(root);
-
         // Hide Stage
         stage.initStyle(StageStyle.TRANSPARENT);
         scene.setFill(Color.TRANSPARENT);
-
-        // Draggable
-        final double[] xOffset = {0};
-        final double[] yOffset = {0};
-        root.setOnMousePressed(new EventHandler<MouseEvent>(){
-            @Override
-            public void handle(MouseEvent event) {
-                xOffset[0] = event.getSceneX();
-                yOffset[0] = event.getSceneY();
-            }
-        });
-        root.setOnMouseDragged(new EventHandler<MouseEvent>(){
-            @Override
-            public void handle(MouseEvent event) {
-                stage.setX(event.getScreenX() - xOffset[0]);
-                stage.setY(event.getScreenY() - yOffset[0]);
-            }
-        });
+        setDraggable(root, stage);
 
         stage.setScene(scene);
         stage.show();
+    }
 
-
+    public static void startStage(Parent root, Object a) {
+        final Stage stage = new Stage();
+        Scene scene = new Scene(root);
+        // Hide Stage
+        stage.initStyle(StageStyle.TRANSPARENT);
+        scene.setFill(Color.TRANSPARENT);
+        setDraggable(root, stage);
+        stage.setUserData(a);
+        stage.setScene(scene);
+        stage.show();
     }
 
     public static void closeStage(ActionEvent actionEvent) {
@@ -54,5 +46,25 @@ public class StageHelper {
         Node node = (Node) mouseEvent.getSource();
         Stage stage = (Stage) node.getScene().getWindow();
         stage.close();
+    }
+
+    public static void setDraggable(Parent root, Stage stage) {
+        // Draggable
+        final double[] xOffset = {0};
+        final double[] yOffset = {0};
+        root.setOnMousePressed(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                xOffset[0] = event.getSceneX();
+                yOffset[0] = event.getSceneY();
+            }
+        });
+        root.setOnMouseDragged(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                stage.setX(event.getScreenX() - xOffset[0]);
+                stage.setY(event.getScreenY() - yOffset[0]);
+            }
+        });
     }
 }

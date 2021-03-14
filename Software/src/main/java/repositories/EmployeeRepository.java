@@ -1,8 +1,8 @@
 package repositories;
 
-import entities.Employee;
 import org.hibernate.Session;
 import org.hibernate.query.Query;
+import entities.Employee;
 
 import java.util.Arrays;
 

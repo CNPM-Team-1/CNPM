@@ -1,10 +1,7 @@
 package entities;
 
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.Date;
 
 @Entity
@@ -20,18 +17,18 @@ public class Receipt {
     @Column(name = "created_date")
     private Date createdDate;
     @Column(name = "update_date")
-    private Date updateDate;
+    private Date updatedDate;
 
     public Receipt() {
 
     }
 
-    public Receipt(String id, String orderId, String employeeId, Date createdDate, Date updateDate) {
+    public Receipt(String id, String orderId, String employeeId, Date createdDate, Date updatedDate) {
         this.id = id;
         this.orderId = orderId;
         this.employeeId = employeeId;
         this.createdDate = createdDate;
-        this.updateDate = updateDate;
+        this.updatedDate = updatedDate;
     }
 
     public String getId() {
@@ -67,10 +64,20 @@ public class Receipt {
     }
 
     public Date getUpdateDate() {
-        return updateDate;
+        return updatedDate;
     }
 
     public void setUpdateDate(Date updateDate) {
-        this.updateDate = updateDate;
+        this.updatedDate = updateDate;
+    }
+
+    @PrePersist
+    protected void onCreate() {
+        createdDate = new Date();
+    }
+
+    @PreUpdate
+    protected void onUpdate() {
+        updatedDate = new Date();
     }
 }

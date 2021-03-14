@@ -8,6 +8,10 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/utils/BCryptHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/utils/BCryptHelper.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/fxml/SalaryCategory.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/fxml/SalaryCategory.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/utils/AlertBoxHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/utils/AlertBoxHelper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/css/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/css/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/utils/AlertBoxHelper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/utils/AlertBoxHelper.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -17,7 +21,9 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="Enum" />
         <option value="FxmlFile" />
+        <option value="CSS File" />
         <option value="Class" />
       </list>
     </option>
@@ -33,12 +39,8 @@
       <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
     </file-type-list>
   </component>
-  <component name="MavenImportPreferences">
-    <option name="importingSettings">
-      <MavenImportingSettings>
-        <option name="jdkForImporter" value="14" />
-      </MavenImportingSettings>
-    </option>
+  <component name="ProblemsViewState">
+    <option name="selectedIndex" value="1" />
   </component>
   <component name="ProjectId" id="1pPpNstBIfnaGnpuIHG1VUTMIle" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
@@ -55,11 +57,12 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="C:/Program Files/SceneBuilder/SceneBuilder.exe" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../bm-agency" />
+    <property name="nodejs_package_manager_path" value="npm" />
     <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.17" />
     <property name="project.structure.side.proportion" value="0.39312038" />
-    <property name="settings.editor.selected.configurable" value="reference.settings.project.maven.repository.indices" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -129,6 +132,10 @@
       <workItem from="1615094545529" duration="736000" />
       <workItem from="1615095504754" duration="5845000" />
       <workItem from="1615101398980" duration="5336000" />
+      <workItem from="1615352654740" duration="7958000" />
+      <workItem from="1615389325807" duration="612000" />
+      <workItem from="1615447019677" duration="10516000" />
+      <workItem from="1615470006845" duration="5849000" />
       <workItem from="1615351777053" duration="5898000" />
       <workItem from="1615361726107" duration="279000" />
       <workItem from="1615366933699" duration="444000" />
@@ -142,6 +149,20 @@
       <workItem from="1615627061838" duration="1121000" />
       <workItem from="1615628226243" duration="772000" />
       <workItem from="1615640318108" duration="1199000" />
+      <workItem from="1615565579448" duration="2117000" />
+      <workItem from="1615622572793" duration="6954000" />
+      <workItem from="1615535702550" duration="1665000" />
+      <workItem from="1615541430085" duration="4469000" />
+      <workItem from="1615547816241" duration="2370000" />
+      <workItem from="1615608097340" duration="2161000" />
+      <workItem from="1615620790812" duration="5000" />
+      <workItem from="1615620852688" duration="402000" />
+      <workItem from="1615623036289" duration="45000" />
+      <workItem from="1615623170075" duration="3805000" />
+      <workItem from="1615705832251" duration="965000" />
+      <workItem from="1615706810221" duration="43000" />
+      <workItem from="1615706869013" duration="84000" />
+      <workItem from="1615706965707" duration="9826000" />
     </task>
     <servers />
   </component>
