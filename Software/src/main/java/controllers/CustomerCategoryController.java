@@ -12,6 +12,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.stereotype.Service;
@@ -58,7 +59,6 @@ public class CustomerCategoryController implements Initializable {
     public static CustomerCategoryController getInstance() {
         return instance;
     }
-    public JFXButton getAddButton() { return this.addButton; };
     ///
 
     @Override
@@ -75,8 +75,9 @@ public class CustomerCategoryController implements Initializable {
         try {
             Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("fxml/CustomerAdd.fxml")));
             StageHelper.startStage(root);
-            // Hide add customer button
-            addButton.setDisable(true);
+            // Hide host
+            AnchorPane host = MainNavigatorController.instance.getHost();
+            host.setDisable(true);
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
             System.out.println(Arrays.toString(ex.getStackTrace()));
@@ -110,6 +111,9 @@ public class CustomerCategoryController implements Initializable {
                     customerHolder.setCustomer(customer);
                     Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("fxml/CustomerUpdate.fxml")));
                     StageHelper.startStage(root);
+                    // Hide host
+                    AnchorPane host = MainNavigatorController.instance.getHost();
+                    host.setDisable(true);
                 }
             } catch (Exception ex) {
                 System.out.println(ex.getMessage());

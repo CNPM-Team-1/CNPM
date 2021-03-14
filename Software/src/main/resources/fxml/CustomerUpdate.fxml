@@ -128,5 +128,10 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </JFXButton>
+      <Label fx:id="errorMessage" layoutX="88.0" layoutY="240.0" prefHeight="20.0" prefWidth="208.0" styleClass="top-font" stylesheets="@../css/style.css" textFill="RED">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
     </children>
 </AnchorPane>

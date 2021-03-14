@@ -99,19 +99,21 @@ public class CustomerAddController implements Initializable {
 
             // Refresh content table
             CustomerCategoryController.getInstance().refresh();
+
+            // Unhide host
+            AnchorPane host = MainNavigatorController.instance.getHost();
+            host.setDisable(false);
         } else {
             errorMessage.setText(validateInsert.get(0));
+            session.getTransaction().commit();
         }
-        // Unhide add customer button
-        JFXButton button = CustomerCategoryController.instance.getAddButton();
-        button.setDisable(false);
     }
 
     @FXML
     void close(MouseEvent event) {
         StageHelper.closeStage(event);
-        // Unhide add customer button
-        JFXButton button = CustomerCategoryController.instance.getAddButton();
-        button.setDisable(false);
+        // Unhide host
+        AnchorPane host = MainNavigatorController.instance.getHost();
+        host.setDisable(false);
     }
 }

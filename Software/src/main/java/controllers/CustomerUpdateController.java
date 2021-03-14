@@ -17,8 +17,10 @@ import org.hibernate.SessionFactory;
 import utils.AlertBoxHelper;
 import utils.HibernateUtils;
 import utils.StageHelper;
+import validation.CustomerValidation;
 
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class CustomerUpdateController implements Initializable {
@@ -52,6 +54,8 @@ public class CustomerUpdateController implements Initializable {
     private TextField addressHolder;
     @FXML
     private JFXButton deleteButton;
+    @FXML
+    private Label errorMessage;
 
     // Get Customer from CustomerCategoryController select(MouseEvent event)
     CustomerHolder customerHolder = CustomerHolder.getInstance();
@@ -79,6 +83,10 @@ public class CustomerUpdateController implements Initializable {
         // Clear customer holder
         customerHolder.setCustomer(null);
         StageHelper.closeStage(event);
+
+        // Unhide host
+        AnchorPane host = MainNavigatorController.instance.getHost();
+        host.setDisable(false);
     }
 
     @FXML
@@ -95,20 +103,34 @@ public class CustomerUpdateController implements Initializable {
         customer.setAddress(addressHolder.getText());
         customer.setType(typeHolder.getValue());
 
-        StageHelper.closeStage(event);
+        List<String> validateUpdate = CustomerValidation.validateUpdate(session, customer);
+        if (validateUpdate.size() == 0) {
+            StageHelper.closeStage(event);
 
-        // Show alert box
-        AlertBoxHelper.showMessageBox("Cập nhật thành công");
+            // Show alert box
+            AlertBoxHelper.showMessageBox("Cập nhật thành công");
 
-        // Update customer info
-        session.saveOrUpdate(customer);
-        session.getTransaction().commit();
+            // Update customer info
+            session = factory.openSession();
+            session.beginTransaction();
+            session.saveOrUpdate(customer);
+            session.getTransaction().commit();
 
-        // Refresh content table
-        CustomerCategoryController.getInstance().refresh();
+            // Refresh content table
+            CustomerCategoryController.getInstance().refresh();
 
-        // Set customer holder
-        customerHolder.setCustomer(customer);
+            // Set customer holder
+            customerHolder.setCustomer(customer);
+
+            // Unhide host
+            AnchorPane host = MainNavigatorController.instance.getHost();
+            host.setDisable(false);
+        } else {
+            errorMessage.setText(validateUpdate.get(0));
+            if (session.getTransaction().isActive()) {
+                session.getTransaction().commit();
+            }
+        }
     }
 
     @FXML
@@ -132,5 +154,9 @@ public class CustomerUpdateController implements Initializable {
 
         // Clear customer holder
         customerHolder.setCustomer(null);
+
+        // Unhide host
+        AnchorPane host = MainNavigatorController.instance.getHost();
+        host.setDisable(false);
     }
 }

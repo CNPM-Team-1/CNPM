@@ -41,11 +41,11 @@ public class CustomerRepository{
         }
     }
 
-    public static List<Customer> getByName(Session session, String name) {
+    public static Customer getByName(Session session, String name) {
         try {
             String sql = "Select c from " + Customer.class.getName() + " c where c.fullName = '" + name + "'";
             Query<Customer> query = session.createQuery(sql);
-            List<Customer> result = query.list();
+            Customer result = query.getSingleResult();
             return result;
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
@@ -54,11 +54,11 @@ public class CustomerRepository{
         }
     }
 
-    public static List<Customer> getByPhone(Session session, String phone) {
+    public static Customer getByPhone(Session session, String phone) {
         try {
             String sql = "Select c from " + Customer.class.getName() + " c where c.phone = '" + phone + "'";
             Query<Customer> query = session.createQuery(sql);
-            List<Customer> result = query.list();
+            Customer result = query.getSingleResult();
             return result;
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
@@ -67,11 +67,11 @@ public class CustomerRepository{
         }
     }
 
-    public static List<Customer> getByEmail(Session session, String email) {
+    public static Customer getByEmail(Session session, String email) {
         try {
             String sql = "Select c from " + Customer.class.getName() + " c where c.email = '" + email + "'";
             Query<Customer> query = session.createQuery(sql);
-            List<Customer> result = query.list();
+            Customer result = query.getSingleResult();
             return result;
         } catch (Exception ex) {
             System.out.println(ex.getMessage());

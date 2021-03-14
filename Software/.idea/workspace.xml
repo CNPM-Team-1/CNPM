@@ -5,90 +5,23 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b5ea20d7-1c8e-440f-81c2-ca4792b5ccf8" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_mapstruct_mapstruct_1_4_2_Final.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_projectlombok_lombok_1_18_16.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/controllers/CustomerUpdateController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/entities/SalaryDetail.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/holders/CustomerHolder.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/utils/AlertBoxHelper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/utils/ComboxBoxHelper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/utils/TableHelper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/validation/CustomerValidation.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/fxml/CustomerUpdate.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Software.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Software.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/controllers/CustomerAddController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/CustomerAddController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/controllers/CustomerCategoryController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/CustomerCategoryController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/entities/Customer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/entities/Customer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/entities/Employee.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/entities/Employee.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/entities/Merchandise.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/entities/Merchandise.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/entities/Order.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/entities/Order.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/entities/OrderDetail.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/entities/OrderDetail.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/entities/Receipt.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/entities/Receipt.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/entities/Roles.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/entities/Roles.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/entities/salary.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/entities/Salary.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/entities/salary_detail.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/CustomerUpdateController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/CustomerUpdateController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/MainNavigatorController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/MainNavigatorController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/repositories/CustomerRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/repositories/CustomerRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/repositories/EmployeeRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/repositories/EmployeeRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/utils/StageHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/utils/StageHelper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/css/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/fxml/CustomerAdd.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/fxml/CustomerAdd.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/fxml/CustomerCategory.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/fxml/CustomerCategory.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/fxml/EmployeeCategory.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/fxml/EmployeeCategory.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/fxml/Login.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/fxml/Login.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/validation/CustomerValidation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/validation/CustomerValidation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/fxml/CustomerUpdate.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/fxml/CustomerUpdate.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/fxml/MainNavigator.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/fxml/MainNavigator.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/fxml/MerchandiseCategory.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/fxml/MerchandiseCategory.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/fxml/OrderCategory.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/fxml/OrderCategory.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/fxml/ReceiptCategory.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/fxml/ReceiptCategory.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/fxml/Statistic.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/fxml/Statistic.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/hibernate.cfg.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/hibernate.cfg.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/org/example/AppTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/example/AppTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controllers/CustomerAddController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controllers/CustomerCategoryController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controllers/EmployeeCategoryController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controllers/LoginController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controllers/MainNavigatorController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controllers/MerchandiseCategoryController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controllers/OrderCategoryController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controllers/ReceiptCategoryController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controllers/StatisticController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/css/style.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/entities/Customer.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/entities/Employee.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/entities/Merchandise.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/entities/Order.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/entities/OrderDetail.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/entities/Receipt.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/entities/Roles.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/entities/RolesDetail.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/entities/salary.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/entities/salary_detail.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/enums/OrderTypeEnum.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/enums/StatusEnum.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/fxml/CustomerAdd.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/fxml/CustomerCategory.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/fxml/EmployeeCategory.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/fxml/Login.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/fxml/MainNavigator.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/fxml/MerchandiseCategory.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/fxml/OrderCategory.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/fxml/ReceiptCategory.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/fxml/Statistic.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/hibernate.cfg.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/image/close_button.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/repositories/CustomerRepository.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/repositories/EmployeeRepository.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/start/App.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/utils/BCryptHelper.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/utils/HibernateUtils.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/utils/StageHelper$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/utils/StageHelper$2.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/utils/StageHelper.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/utils/UUIDHelper.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/org/example/AppTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controllers/CustomerAddController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controllers/CustomerAddController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controllers/CustomerCategoryController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controllers/CustomerCategoryController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controllers/CustomerUpdateController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controllers/CustomerUpdateController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controllers/MainNavigatorController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controllers/MainNavigatorController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/fxml/CustomerUpdate.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/fxml/CustomerUpdate.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/fxml/MainNavigator.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/fxml/MainNavigator.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/repositories/CustomerRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/repositories/CustomerRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/validation/CustomerValidation.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/validation/CustomerValidation.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -228,7 +161,7 @@
       <workItem from="1615705832251" duration="965000" />
       <workItem from="1615706810221" duration="43000" />
       <workItem from="1615706869013" duration="84000" />
-      <workItem from="1615706965707" duration="5160000" />
+      <workItem from="1615706965707" duration="9826000" />
     </task>
     <servers />
   </component>
@@ -249,31 +182,5 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/repositories/CustomerRepository.java</url>
-          <line>45</line>
-          <option name="timeStamp" value="27" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/repositories/CustomerRepository.java</url>
-          <line>48</line>
-          <option name="timeStamp" value="28" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/repositories/CustomerRepository.java</url>
-          <line>58</line>
-          <option name="timeStamp" value="29" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/repositories/CustomerRepository.java</url>
-          <line>61</line>
-          <option name="timeStamp" value="30" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>
