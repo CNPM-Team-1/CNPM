@@ -5,7 +5,9 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
+import utils.StageHelper;
 
 public class OrderAddController {
 
@@ -19,8 +21,7 @@ public class OrderAddController {
     private JFXButton close_button;
 
     @FXML
-    void close(ActionEvent event) {
-        Stage stage = (Stage) close_button.getScene().getWindow();
-        stage.close();
+    void close(MouseEvent event) {
+        StageHelper.closeStage(event);
     }
 }

@@ -31,9 +31,9 @@ public class OrderCategoryController {
     private JFXTextField search_textfield;
 
     @FXML
-    void addButton_order(ActionEvent event) {
+    void addOrder(ActionEvent event) {
         try {
-            Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("fxml/OrderAddCategory.fxml")));
+            Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("fxml/OrderAdd.fxml")));
             StageHelper.startStage(root);
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
@@ -42,15 +42,7 @@ public class OrderCategoryController {
     }
 
     @FXML
-    void updateButton_order(ActionEvent event) {
-        try {
-            Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("fxml/OrderUpdateCategory.fxml")));
-            StageHelper.startStage(root);
-        } catch (Exception ex) {
-            System.out.println(ex.getMessage());
-            System.out.println(Arrays.toString(ex.getStackTrace()));
-        }
+    void search(ActionEvent event) {
+
     }
-
-
 }

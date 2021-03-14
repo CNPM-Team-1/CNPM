@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import java.lang.String?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="568.0" prefWidth="511.0" styleClass="borderoutline" stylesheets="@../css/style.css" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.OrderAddController">
+   <children>
+      <Label layoutX="14.0" layoutY="17.0" styleClass="top-font" stylesheets="@../css/style.css" text="Cập nhật đơn đặt hàng">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <TableView layoutX="14.0" layoutY="279.0" prefHeight="202.0" prefWidth="486.0" stylesheets="@../css/style.css">
+         <columns>
+            <TableColumn prefWidth="136.0" text="Tên hàng" />
+            <TableColumn minWidth="7.0" prefWidth="86.0" text="Số lượng" />
+            <TableColumn prefWidth="97.0" text="Giá tiền" />
+            <TableColumn prefWidth="166.0" text="Tổng tiền" />
+         </columns>
+         <styleClass>
+            <String fx:value="top-font" />
+            <String fx:value="table-font" />
+         </styleClass>
+      </TableView>
+      <JFXButton layoutX="429.0" layoutY="504.0" prefHeight="32.0" prefWidth="70.0" stylesheets="@../css/style.css" text="Lưu">
+         <styleClass>
+            <String fx:value="save-button" />
+            <String fx:value="button-font" />
+         </styleClass>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
+      <JFXButton layoutX="14.0" layoutY="236.0" prefHeight="32.0" prefWidth="70.0" stylesheets="@../css/style.css" text="Thêm">
+         <styleClass>
+            <String fx:value="save-button" />
+            <String fx:value="button-font" />
+         </styleClass>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
+      <JFXButton fx:id="close_button" layoutX="12.0" layoutY="504.0" onMouseClicked="#close" prefHeight="32.0" prefWidth="70.0" stylesheets="@../css/style.css" text="Hủy">
+         <styleClass>
+            <String fx:value="button-font" />
+            <String fx:value="close-button" />
+         </styleClass>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
+      <ImageView fx:id="close" fitHeight="29.0" fitWidth="32.0" layoutX="471.0" layoutY="16.0" onMouseClicked="#close" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../image/close_button.png" />
+         </image>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </ImageView>
+      <HBox layoutX="14.0" layoutY="38.0" prefHeight="62.0" prefWidth="486.0">
+         <children>
+            <GridPane prefHeight="62.0" prefWidth="280.0">
+               <columnConstraints>
+                  <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="109.0" minWidth="10.0" prefWidth="95.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="246.40001220703124" minWidth="10.0" prefWidth="153.0" />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints minHeight="0.0" prefHeight="0.0" vgrow="SOMETIMES" />
+               </rowConstraints>
+               <children>
+                  <Label fx:id="full_name" styleClass="font" stylesheets="@../css/style.css" text="Khách hàng">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Label>
+                  <ComboBox fx:id="typeHolder1" focusTraversable="false" prefHeight="25.0" prefWidth="198.0" promptText="Chọn khách hàng" styleClass="top-font" stylesheets="@../css/style.css" visibleRowCount="2" GridPane.columnIndex="1">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </ComboBox>
+               </children>
+            </GridPane>
+            <GridPane prefHeight="155.0" prefWidth="250.0">
+               <columnConstraints>
+                  <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="223.80003662109374" minWidth="10.0" prefWidth="70.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="247.199951171875" minWidth="10.0" prefWidth="163.0" />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints minHeight="0.0" prefHeight="0.0" vgrow="SOMETIMES" />
+               </rowConstraints>
+               <children>
+                  <Label fx:id="phone" styleClass="font" stylesheets="@../css/style.css" text="SĐT:">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="phoneHolder" prefHeight="25.0" prefWidth="135.0" promptText="Nhập số điện thoại" styleClass="top-font" stylesheets="@../css/style.css" GridPane.columnIndex="1" />
+               </children>
+               <HBox.margin>
+                  <Insets left="20.0" />
+               </HBox.margin>
+            </GridPane>
+         </children>
+      </HBox>
+      <HBox alignment="CENTER_LEFT" layoutX="14.0" layoutY="93.0" prefHeight="44.0" prefWidth="486.0" style="-fx-border-width: 0px 0px 1px 0px; -fx-border-color: #b3b3b3;">
+         <children>
+            <Label fx:id="address" styleClass="font" stylesheets="@../css/style.css" text="Địa Chỉ:">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <TextField fx:id="addressHolder" prefHeight="25.0" prefWidth="391.0" promptText="Nhập địa chỉ khách hàng" styleClass="top-font" stylesheets="@../css/style.css">
+               <HBox.margin>
+                  <Insets left="38.0" />
+               </HBox.margin>
+            </TextField>
+         </children>
+      </HBox>
+      <Label fx:id="address1" layoutX="13.0" layoutY="162.0" prefHeight="17.0" prefWidth="64.0" styleClass="font" stylesheets="@../css/style.css" text="Tên HH:">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <ComboBox layoutX="109.0" layoutY="158.0" prefHeight="25.0" prefWidth="152.0" promptText="Chọn hàng hoá" styleClass="top-font" stylesheets="@../css/style.css" />
+      <Label fx:id="address11" layoutX="14.0" layoutY="202.0" prefHeight="25.0" prefWidth="79.0" styleClass="font" stylesheets="@../css/style.css" text="Số lượng:">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <TextField fx:id="phoneHolder1" layoutX="109.0" layoutY="202.0" prefHeight="25.0" prefWidth="152.0" promptText="Nhập số lượng" styleClass="top-font" stylesheets="@../css/style.css" />
+      <JFXButton layoutX="102.0" layoutY="504.0" prefHeight="32.0" prefWidth="57.0" stylesheets="@../css/style.css" text="KH+">
+         <styleClass>
+            <String fx:value="close-button" />
+            <String fx:value="button-font" />
+         </styleClass>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
+      <JFXButton layoutX="178.0" layoutY="504.0" prefHeight="32.0" prefWidth="57.0" stylesheets="@../css/style.css" text="HH+">
+         <styleClass>
+            <String fx:value="close-button" />
+            <String fx:value="button-font" />
+         </styleClass>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
+   </children>
+</AnchorPane>
