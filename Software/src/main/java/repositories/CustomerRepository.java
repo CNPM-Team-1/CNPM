@@ -79,15 +79,5 @@ public class CustomerRepository{
             return null;
         }
     }
-
-//    public static void deleteById(Session session, String id) {
-//        try {
-//            String sql = "Delete from " + Customer.class.getName() + " c where c.id = '" + id + "'";
-//            Query query = session.createQuery(sql);
-//            query.executeUpdate();
-//        } catch (Exception ex) {
-//            System.out.println(ex.getMessage());
-//            System.out.println(Arrays.toString(ex.getStackTrace()));
-//        }
-//    }
+    
 }
