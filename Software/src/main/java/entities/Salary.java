@@ -1,15 +1,11 @@
 package entities;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.Date;
 
 @Entity
 @Table(name = "salary")
-
-public class salary {
+public class Salary {
     @Id
     @Column(name = "id")
     private String id;
@@ -19,13 +15,13 @@ public class salary {
     private int amount;
     @Column(name = "created_date")
     private Date createdDate;
-    @Column(name = "updated_date")
+    @Column(name = "update_date")
     private Date updatedDate;
 
-    public salary() {
+    public Salary() {
     }
 
-    public salary(String id, String employeeId, int amount, Date createdDate, Date updatedDate) {
+    public Salary(String id, String employeeId, int amount, Date createdDate, Date updatedDate) {
         this.id = id;
         this.employeeId = employeeId;
         this.amount = amount;
@@ -72,7 +68,14 @@ public class salary {
     public void setUpdatedDate(Date updatedDate) {
         this.updatedDate = updatedDate;
     }
+
+    @PrePersist
+    protected void onCreate() {
+        createdDate = new Date();
+    }
+
+    @PreUpdate
+    protected void onUpdate() {
+        updatedDate = new Date();
+    }
 }
-
-
-

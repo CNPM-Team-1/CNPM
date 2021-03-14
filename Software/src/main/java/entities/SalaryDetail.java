@@ -2,16 +2,13 @@ package entities;
 
 import enums.StatusEnum;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.Date;
 
 @Entity
 @Table(name = "salary_detail")
 
-public class salary_detail {
+public class SalaryDetail {
     @Id
     @Column(name = "id")
     private String id;
@@ -26,10 +23,10 @@ public class salary_detail {
     @Column(name = "updated_date")
     private Date updatedDate;
 
-    public salary_detail() {
+    public SalaryDetail() {
     }
 
-    public salary_detail(String id, String employeeId, int amount, StatusEnum paymentstatus, Date createdDate, Date updatedDate) {
+    public SalaryDetail(String id, String employeeId, int amount, StatusEnum paymentstatus, Date createdDate, Date updatedDate) {
         this.id = id;
         this.employeeId = employeeId;
         this.amount = amount;
@@ -84,5 +81,15 @@ public class salary_detail {
 
     public void setUpdatedDate(Date updatedDate) {
         this.updatedDate = updatedDate;
+    }
+
+    @PrePersist
+    protected void onCreate() {
+        createdDate = new Date();
+    }
+
+    @PreUpdate
+    protected void onUpdate() {
+        updatedDate = new Date();
     }
 }
