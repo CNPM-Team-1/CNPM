@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
-<?import com.jfoenix.controls.JFXTextField?>
-<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
-<?import java.net.URL?>
+<?import java.lang.String?>
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
@@ -22,67 +22,70 @@
             <Insets />
          </opaqueInsets>
          <children>
-            <GridPane layoutX="43.0" layoutY="26.0" prefHeight="520.0" prefWidth="1132.0">
+            <GridPane layoutX="7.0" layoutY="14.0" prefHeight="552.0" prefWidth="1218.0">
               <columnConstraints>
                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
               </columnConstraints>
               <rowConstraints>
-                <RowConstraints maxHeight="133.0" minHeight="10.0" prefHeight="63.0" vgrow="SOMETIMES" />
-                <RowConstraints maxHeight="457.0" minHeight="10.0" prefHeight="457.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="475.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <TableView prefHeight="500.0" prefWidth="1132.0" style="-fx-border-color: ACD983;" styleClass="table-font" stylesheets="@../css/style.css" GridPane.rowIndex="1">
+                  <TableView prefHeight="340.0" prefWidth="1218.0" styleClass="table-font" stylesheets="@../css/style.css" GridPane.rowIndex="1">
                     <columns>
-                      <TableColumn prefWidth="236.0" text="Mã đơn hàng" />
-                      <TableColumn prefWidth="297.0" text="Nhân viên" />
-                        <TableColumn prefWidth="205.0" text="Ngày tạo" />
-                        <TableColumn prefWidth="138.0" text="Trạng thái" />
-                        <TableColumn prefWidth="94.0" text="Số lượng" />
-                        <TableColumn prefWidth="75.0" text="Còn nợ" />
+                        <TableColumn prefWidth="116.0" text="Ngày tạo" />
+                      <TableColumn prefWidth="257.0" text="Khách hàng" />
+                      <TableColumn prefWidth="252.0" text="Tổng số lượng" />
+                        <TableColumn prefWidth="198.0" text="Tổng tiền" />
+                        <TableColumn prefWidth="224.0" text="Trạng thái thanh toán" />
+                        <TableColumn minWidth="4.0" prefWidth="170.0" text="Loại" />
                     </columns>
                   </TableView>
-                  <HBox prefHeight="67.0" prefWidth="1132.0">
+                  <HBox prefHeight="100.0" prefWidth="1218.0">
                      <children>
-                        <JFXButton fx:id="button_add" onAction="#addButton_order" prefHeight="32.0" prefWidth="113.0" style="-fx-background-color: ACD983;" text="Tạo">
-                           <HBox.margin>
-                              <Insets left="20.0" />
-                           </HBox.margin>
+                        <TextField fx:id="searchBar" prefHeight="33.0" prefWidth="222.0" promptText="Nhập tên khách hàng cần tìm" stylesheets="@../css/style.css">
                            <font>
-                              <Font size="19.0" />
+                              <Font size="17.0" />
                            </font>
-                           <stylesheets>
-                              <URL value="@../css/style.css" />
-                              <URL value="@../css/hover.css" />
-                           </stylesheets>
+                           <styleClass>
+                              <String fx:value="search-bar" />
+                              <String fx:value="font" />
+                           </styleClass>
+                           <HBox.margin>
+                              <Insets left="12.0" top="7.0" />
+                           </HBox.margin>
+                        </TextField>
+                        <JFXButton fx:id="searchButton" onAction="#addButtonActionListener" prefHeight="33.0" prefWidth="106.0" stylesheets="@../css/style.css" text="Tìm Kiếm">
+                           <styleClass>
+                              <String fx:value="login-button" />
+                              <String fx:value="font" />
+                           </styleClass>
+                           <HBox.margin>
+                              <Insets left="10.0" top="7.0" />
+                           </HBox.margin>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
                         </JFXButton>
-                        <JFXButton fx:id="button_update" onAction="#updateButton_order" prefHeight="32.0" prefWidth="119.0" style="-fx-background-color: ACD983;" stylesheets="@../css/style.css" text="Cập nhật">
+                        <JFXButton fx:id="addButton" onAction="#addButtonActionListener" stylesheets="@../css/style.css" text="+ Thêm mới">
+                           <styleClass>
+                              <String fx:value="login-button" />
+                              <String fx:value="font" />
+                           </styleClass>
                            <HBox.margin>
-                              <Insets left="20.0" />
+                              <Insets left="730.0" top="7.0" />
                            </HBox.margin>
-                           <font>
-                              <Font size="19.0" />
-                           </font>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
                         </JFXButton>
-                        <JFXTextField fx:id="search_textfield" prefHeight="26.0" prefWidth="183.0">
-                           <HBox.margin>
-                              <Insets left="650.0" top="25.0" />
-                           </HBox.margin>
-                        </JFXTextField>
-                        <FontAwesomeIconView glyphName="SEARCH" size="20.0">
-                           <HBox.margin>
-                              <Insets top="25.0" />
-                           </HBox.margin>
-                        </FontAwesomeIconView>
                      </children>
-                     <GridPane.margin>
-                        <Insets />
-                     </GridPane.margin>
                   </HBox>
                </children>
             </GridPane>
          </children>
       </AnchorPane>
-      <Label layoutX="58.0" layoutY="10.0" prefHeight="49.0" prefWidth="220.0" styleClass="font" stylesheets="@../css/style.css" text="Đơn Hàng" textFill="#2b2733">
+      <Label layoutX="14.0" layoutY="12.0" prefHeight="37.0" prefWidth="183.0" styleClass="font" stylesheets="@../css/style.css" text="Đơn Hàng" textFill="#2b2733">
          <font>
             <Font size="29.0" />
          </font>
