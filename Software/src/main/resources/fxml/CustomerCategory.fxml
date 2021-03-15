@@ -41,19 +41,19 @@
                <children>
                   <HBox prefHeight="100.0" prefWidth="200.0">
                      <children>
-                        <TextField fx:id="searchBar" prefHeight="33.0" prefWidth="222.0" stylesheets="@../css/style.css">
+                        <TextField fx:id="searchBar" focusTraversable="false" prefHeight="33.0" prefWidth="222.0" promptText="Nhập tên hoặc SĐT" stylesheets="@../css/style.css">
                            <font>
                               <Font size="17.0" />
                            </font>
                            <styleClass>
                               <String fx:value="search-bar" />
-                              <String fx:value="font" />
+                              <String fx:value="top-font" />
                            </styleClass>
                            <HBox.margin>
                               <Insets left="12.0" top="7.0" />
                            </HBox.margin>
                         </TextField>
-                        <JFXButton fx:id="searchButton" onAction="#searchButtonActionListener" prefHeight="33.0" prefWidth="106.0" stylesheets="@../css/style.css" text="Tìm Kiếm">
+                        <JFXButton fx:id="searchButton" focusTraversable="false" onAction="#search" prefHeight="33.0" prefWidth="110.0" stylesheets="@../css/style.css" text="Tìm Kiếm">
                            <styleClass>
                               <String fx:value="login-button" />
                               <String fx:value="font" />
@@ -65,13 +65,13 @@
                               <Cursor fx:constant="HAND" />
                            </cursor>
                         </JFXButton>
-                        <JFXButton fx:id="addButton" onAction="#addButtonActionListener" stylesheets="@../css/style.css" text="+ Thêm mới">
+                        <JFXButton fx:id="addButton" focusTraversable="false" onAction="#insert" stylesheets="@../css/style.css" text="+ Thêm mới">
                            <styleClass>
                               <String fx:value="login-button" />
                               <String fx:value="font" />
                            </styleClass>
                            <HBox.margin>
-                              <Insets left="730.0" top="7.0" />
+                              <Insets left="726.0" top="7.0" />
                            </HBox.margin>
                            <cursor>
                               <Cursor fx:constant="HAND" />
@@ -79,13 +79,13 @@
                         </JFXButton>
                      </children>
                   </HBox>
-                  <TableView prefHeight="340.0" prefWidth="1218.0" styleClass="table-font" stylesheets="@../css/style.css" GridPane.rowIndex="1">
+                  <TableView fx:id="contentTable" editable="true" focusTraversable="false" onMouseClicked="#select" prefHeight="340.0" prefWidth="1218.0" styleClass="table-font" stylesheets="@../css/style.css" GridPane.rowIndex="1">
                     <columns>
-                      <TableColumn prefWidth="163.0" text="Họ Tên" />
-                      <TableColumn minWidth="0.0" prefWidth="133.0" text="SĐT" />
-                        <TableColumn minWidth="0.0" prefWidth="270.0" text="Email" />
-                        <TableColumn prefWidth="399.0" text="Địa Chỉ" />
-                        <TableColumn prefWidth="124.0" text="Loại" />
+                      <TableColumn fx:id="nameCol" prefWidth="163.0" text="Họ Tên" />
+                      <TableColumn fx:id="phoneCol" minWidth="0.0" prefWidth="163.0" text="SĐT" />
+                        <TableColumn fx:id="emailCol" minWidth="0.0" prefWidth="300.0" text="Email" />
+                        <TableColumn fx:id="addressCol" prefWidth="478.0" text="Địa Chỉ" />
+                        <TableColumn fx:id="typeCol" prefWidth="113.0" text="Loại" />
                     </columns>
                   </TableView>
                </children>

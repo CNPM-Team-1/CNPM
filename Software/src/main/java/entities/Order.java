@@ -1,9 +1,6 @@
 package entities;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.Date;
 
 @Entity
@@ -81,5 +78,15 @@ public class Order {
 
     public void setUpdatedDate(Date updatedDate) {
         this.updatedDate = updatedDate;
+    }
+
+    @PrePersist
+    protected void onCreate() {
+        createdDate = new Date();
+    }
+
+    @PreUpdate
+    protected void onUpdate() {
+        updatedDate = new Date();
     }
 }
