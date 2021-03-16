@@ -14,7 +14,7 @@
     <children>
         <HBox prefHeight="58.0" prefWidth="1280.0" stylesheets="@../css/style.css">
             <children>
-                <JFXButton fx:id="orderButton" focusTraversable="false" onAction="#openOrderCategory" prefHeight="58.0" prefWidth="194.0" stylesheets="@../css/style.css" text="Quản lí đơn hàng">
+                <JFXButton fx:id="orderButton" alignment="BASELINE_LEFT" focusTraversable="false" onAction="#openOrderCategory" prefHeight="58.0" prefWidth="132.0" stylesheets="@../css/style.css" text="Đơn hàng">
                     <font>
                         <Font size="16.0" />
                     </font>
@@ -29,7 +29,7 @@
                   <String fx:value="font" />
                </styleClass>
                 </JFXButton>
-                <JFXButton fx:id="customerButton" focusTraversable="false" layoutX="10.0" layoutY="10.0" onAction="#openCustomerCategory" prefHeight="58.0" prefWidth="231.0" stylesheets="@../css/style.css" text="Quản lí khách hàng">
+                <JFXButton fx:id="customerButton" alignment="BASELINE_LEFT" focusTraversable="false" layoutX="10.0" layoutY="10.0" onAction="#openCustomerCategory" prefHeight="58.0" prefWidth="144.0" stylesheets="@../css/style.css" text="Khách hàng">
                     <font>
                         <Font size="16.0" />
                     </font>
@@ -41,7 +41,7 @@
                   <String fx:value="font" />
                </styleClass>
                 </JFXButton>
-                <JFXButton fx:id="receiptButton" focusTraversable="false" layoutX="192.0" layoutY="10.0" onAction="#openReceiptCategory" prefHeight="58.0" prefWidth="188.0" stylesheets="@../css/style.css" text="Quản lí hoá đơn">
+                <JFXButton fx:id="receiptButton" alignment="BASELINE_LEFT" focusTraversable="false" layoutX="192.0" layoutY="10.0" onAction="#openReceiptCategory" prefHeight="58.0" prefWidth="110.0" stylesheets="@../css/style.css" text="Hoá đơn">
                     <font>
                         <Font size="16.0" />
                     </font>
@@ -53,7 +53,7 @@
                   <String fx:value="font" />
                </styleClass>
                 </JFXButton>
-                <JFXButton fx:id="employeeButton" focusTraversable="false" layoutX="101.0" layoutY="10.0" onAction="#openEmployeeCategory" prefHeight="58.0" prefWidth="220.0" stylesheets="@../css/style.css" text="Quản lí nhân viên">
+                <JFXButton fx:id="employeeButton" alignment="BASELINE_LEFT" focusTraversable="false" layoutX="101.0" layoutY="10.0" onAction="#openEmployeeCategory" prefHeight="58.0" prefWidth="127.0" stylesheets="@../css/style.css" text="Nhân viên">
                     <font>
                         <Font size="16.0" />
                     </font>
@@ -65,7 +65,7 @@
                   <String fx:value="font" />
                </styleClass>
                 </JFXButton>
-                <JFXButton fx:id="merchandiseButton" focusTraversable="false" layoutX="403.0" layoutY="10.0" onAction="#openMerchandiseCategory" prefHeight="58.0" prefWidth="205.0" stylesheets="@../css/style.css" text="Quản lí hàng hoá">
+                <JFXButton fx:id="merchandiseButton" alignment="BASELINE_LEFT" focusTraversable="false" layoutX="403.0" layoutY="10.0" onAction="#openMerchandiseCategory" prefHeight="58.0" prefWidth="122.0" stylesheets="@../css/style.css" text="Hàng hoá">
                     <font>
                         <Font size="16.0" />
                     </font>
@@ -77,7 +77,7 @@
                   <String fx:value="font" />
                </styleClass>
                 </JFXButton>
-                <JFXButton fx:id="statisticButton" focusTraversable="false" layoutX="692.0" layoutY="10.0" onAction="#openStatistic" prefHeight="58.0" prefWidth="121.0" stylesheets="@../css/style.css" text="Thống kê">
+                <JFXButton fx:id="statisticButton" alignment="BASELINE_LEFT" focusTraversable="false" layoutX="692.0" layoutY="10.0" onAction="#openStatistic" prefHeight="58.0" prefWidth="121.0" stylesheets="@../css/style.css" text="Thống kê">
                     <font>
                         <Font size="16.0" />
                     </font>
@@ -94,7 +94,7 @@
                         <Image url="@../image/close_button.png" />
                     </image>
                     <HBox.margin>
-                        <Insets left="70.0" top="16.0" />
+                        <Insets left="475.0" top="16.0" />
                     </HBox.margin>
                     <cursor>
                         <Cursor fx:constant="HAND" />
