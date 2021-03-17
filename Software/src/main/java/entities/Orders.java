@@ -4,8 +4,8 @@ import javax.persistence.*;
 import java.util.Date;
 
 @Entity
-@Table(name = "order")
-public class Order {
+@Table(name = "orders")
+public class Orders {
     @Id
     @Column(name = "id")
     private String id;
@@ -16,14 +16,14 @@ public class Order {
     @Column(name = "status")
     private String status;
     @Column(name = "created_date")
-    private Date createdDate;
+    private String createdDate;
     @Column(name = "updated_date")
     private Date updatedDate;
 
-    public Order() {
+    public Orders() {
     }
 
-    public Order(String id, String type, String customerId, String status, Date createdDate, Date updatedDate) {
+    public Orders(String id, String type, String customerId, String status, String createdDate, Date updatedDate) {
         this.id = id;
         this.type = type;
         this.customerId = customerId;
@@ -64,11 +64,11 @@ public class Order {
         this.status = status;
     }
 
-    public Date getCreatedDate() {
+    public String getCreatedDate() {
         return createdDate;
     }
 
-    public void setCreatedDate(Date createdDate) {
+    public void setCreatedDate(String createdDate) {
         this.createdDate = createdDate;
     }
 
@@ -78,15 +78,5 @@ public class Order {
 
     public void setUpdatedDate(Date updatedDate) {
         this.updatedDate = updatedDate;
-    }
-
-    @PrePersist
-    protected void onCreate() {
-        createdDate = new Date();
-    }
-
-    @PreUpdate
-    protected void onUpdate() {
-        updatedDate = new Date();
     }
 }

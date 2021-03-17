@@ -1,10 +1,9 @@
 package utils;
 
 import entities.Customer;
-import entities.Order;
+import entities.Orders;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.scene.control.Tab;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -37,19 +36,20 @@ public class TableHelper {
         table.setItems(data);
     }
 
-    public static void setOrderTable(List<Order> orderList, TableView<Order> table,
-                                     TableColumn<Order, String> typeCol,
-                                     TableColumn<Order, String> cusCol,
-                                     TableColumn<Order, String> statusCol,
-                                     TableColumn<Order, String> dateCol) {
+    public static void setOrderTable(List<Orders> orderList,
+                                     TableView<Orders> table,
+                                     TableColumn<Orders, String> statusCol,
+                                     TableColumn<Orders, String> typeCol,
+                                     TableColumn<Orders, String> cusCol,
+                                     TableColumn<Orders, String> dateCol) {
         table.getItems().clear();
-        ObservableList<Order> data = FXCollections.observableList(orderList);
+        ObservableList<Orders> data = FXCollections.observableList(orderList);
 
         // Associate data with columns
-        typeCol.setCellValueFactory(new PropertyValueFactory<>("type"));
-        cusCol.setCellValueFactory(new PropertyValueFactory<>("customer_id"));
         statusCol.setCellValueFactory(new PropertyValueFactory<>("status"));
-        dateCol.setCellValueFactory(new PropertyValueFactory<>("created_date"));
+        typeCol.setCellValueFactory(new PropertyValueFactory<>("type"));
+        cusCol.setCellValueFactory(new PropertyValueFactory<>("customerId"));
+        dateCol.setCellValueFactory(new PropertyValueFactory<>("createdDate"));
 
         // Add item table
         table.getItems().clear();

@@ -2,7 +2,8 @@ package controllers;
 
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
-import entities.Order;
+import entities.Customer;
+import entities.Orders;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -18,34 +19,42 @@ import utils.HibernateUtils;
 import utils.StageHelper;
 import utils.TableHelper;
 
+import java.awt.*;
 import java.net.URL;
-import java.util.Arrays;
+import java.util.*;
 import java.util.List;
-import java.util.Objects;
-import java.util.ResourceBundle;
 
 public class OrderCategoryController implements Initializable {
 
     @FXML
-    private JFXButton button_add;
+    private TextField search_Bar;
+
     @FXML
-    private JFXButton button_update;
+    private JFXButton searchButton;
+
     @FXML
-    private JFXTextField search_textfield;
+    private JFXButton addButton;
+
     @FXML
-    private TableView<Order> contentTable;
+    private TableView<Orders> contentTable;
+
     @FXML
-    private TableColumn<Order, String> dateCol;
+    private TableColumn<Orders, String> dateCol;
+
     @FXML
-    private TableColumn<Order, String> cusCol;
+    private TableColumn<Orders, String> cusCol;
+
     @FXML
-    private TableColumn<Order, String> quantityCol;
+    private TableColumn<Orders, String> quantityCol;
+
     @FXML
-    private TableColumn<Order, String> amountCol;
+    private TableColumn<Orders, String> amountCol;
+
     @FXML
-    private TableColumn<Order, String> statusCol;
+    private TableColumn<Orders, String> statusCol;
+
     @FXML
-    private TableColumn<Order, String> typeCol;
+    private TableColumn<Orders, String> typeCol;
 
     // For other class cal function from this class
     public static OrderCategoryController instance;
@@ -64,8 +73,8 @@ public class OrderCategoryController implements Initializable {
         SessionFactory factory = HibernateUtils.getSessionFactory();
         Session session = factory.getCurrentSession();
 
-        List<Order> orderList = OrderRepository.getAll(session);
-        TableHelper.setOrderTable(orderList, contentTable, typeCol, cusCol, statusCol, dateCol);
+        List<Orders> orderList = OrderRepository.getAll(session);
+        TableHelper.setOrderTable(orderList, contentTable, statusCol, typeCol, cusCol, dateCol);
     }
 
     @FXML
@@ -82,9 +91,19 @@ public class OrderCategoryController implements Initializable {
         }
     }
 
-    @FXML
-    void search(ActionEvent event) {
-
-    }
+//    @FXML
+//    void search(ActionEvent event) {
+//        try {
+//            SessionFactory factory = HibernateUtils.getSessionFactory();
+//            Session session = factory.getCurrentSession();
+//
+//            String keySearch = search_Bar.getText();
+//            List<Orders> ordersList = OrderRepository.getByCustomerId(session, keySearch);
+//            TableHelper.setOrderTable(ordersList, contentTable, statusCol, typeCol, cusCol, dateCol);
+//        } catch (Exception ex) {
+//            System.out.println(ex.getMessage());
+//            System.out.println(Arrays.toString(ex.getStackTrace()));
+//        }
+//    }
 
 }

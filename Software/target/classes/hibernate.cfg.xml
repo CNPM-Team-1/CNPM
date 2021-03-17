@@ -37,7 +37,7 @@
 		<mapping class="entities.Customer"/>
 		<mapping class="entities.Employee"/>
 		<mapping class="entities.Merchandise"/>
-		<mapping class="entities.Order"/>
+		<mapping class="entities.Orders"/>
 		<mapping class="entities.OrderDetail"/>
 		<mapping class="entities.Receipt"/>
 		<mapping class="entities.RolesDetail"/>
