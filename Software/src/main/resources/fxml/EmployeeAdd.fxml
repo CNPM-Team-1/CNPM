@@ -7,6 +7,7 @@
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -60,11 +61,11 @@
                         <Font size="15.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="passwordHolder" layoutX="84.0" layoutY="95.0" promptText="Nhập mật khẩu" styleClass="top-font" stylesheets="@../css/style.css" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                  <PasswordField fx:id="passwordHolder" focusTraversable="false" promptText="Nhập mật khẩu" styleClass="top-font" stylesheets="@../css/style.css" GridPane.columnIndex="1" GridPane.rowIndex="2">
                      <font>
                         <Font size="14.0" />
                      </font>
-                  </TextField>
+                  </PasswordField>
                </children>
             </GridPane>
             <GridPane prefHeight="195.0" prefWidth="230.0">
@@ -98,7 +99,7 @@
                         <Font size="15.0" />
                      </font>
                   </Label>
-                  <ComboBox fx:id="roleHolder" prefHeight="30.0" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                  <ComboBox fx:id="roleHolder" prefHeight="30.0" prefWidth="150.0" promptText="Chọn chức vụ" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                </children>
                <HBox.margin>
                   <Insets left="20.0" />
@@ -135,7 +136,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </ImageView>
-      <Label fx:id="errorMessage" layoutX="118.0" layoutY="240.0" prefHeight="17.0" prefWidth="276.0" styleClass="top-font" stylesheets="@../css/style.css" textFill="RED">
+      <Label fx:id="errorMessage" layoutX="105.0" layoutY="263.0" prefHeight="26.0" prefWidth="304.0" styleClass="top-font" stylesheets="@../css/style.css" textFill="RED">
          <font>
             <Font size="16.0" />
          </font>

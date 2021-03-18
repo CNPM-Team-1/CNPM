@@ -102,7 +102,7 @@
             </JFXListView>
             <TableView fx:id="permissionTable" onMouseClicked="#select" prefHeight="200.0" prefWidth="200.0" stylesheets="@../css/style.css">
               <columns>
-                <TableColumn fx:id="nameCol" prefWidth="200.0" text="- Quyền" />
+                <TableColumn fx:id="nameCol" prefWidth="191.0" text="- Quyền" />
               </columns>
                <styleClass>
                   <String fx:value="table-view" />

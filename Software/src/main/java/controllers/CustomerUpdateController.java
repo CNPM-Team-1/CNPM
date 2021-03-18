@@ -63,7 +63,7 @@ public class CustomerUpdateController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        // Add value to type Combobox
+        // Add value to type ComboBox
         typeHolder.getItems().addAll("Khách hàng", "Nhà cung cấp");
 
         // Set Customer in update window

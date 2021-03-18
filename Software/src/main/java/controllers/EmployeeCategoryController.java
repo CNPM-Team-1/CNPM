@@ -3,6 +3,7 @@ package controllers;
 import com.jfoenix.controls.JFXButton;
 import entities.Customer;
 import entities.Employee;
+import holders.EmployeeHolder;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -104,6 +105,35 @@ public class EmployeeCategoryController implements Initializable {
 
     @FXML
     void select(MouseEvent event) {
+        if (event.getClickCount() == 2) {
+            try {
+                Employee employee = contentTable.getSelectionModel().getSelectedItem();
+                contentTable.getSelectionModel().clearSelection();
+                // Store Employee to use in another class
+                if (employee != null) {
+                    EmployeeHolder employeeHolder = EmployeeHolder.getInstance();
+                    employeeHolder.setEmployee(employee);
+                    Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("fxml/EmployeeUpdate.fxml")));
+                    StageHelper.startStage(root);
+                    // Hide host
+                    AnchorPane host = MainNavigatorController.instance.getHost();
+                    host.setDisable(true);
+                }
 
+
+            } catch (Exception ex) {
+                System.out.println(ex.getMessage());
+                System.out.println(Arrays.toString(ex.getStackTrace()));
+            }
+        }
+    }
+
+    // Refresh table
+    public void refresh() {
+        SessionFactory factory = HibernateUtils.getSessionFactory();
+        Session session = factory.getCurrentSession();
+
+        List<Employee> employeeList = EmployeeRepository.getAll(session);
+        TableHelper.setEmployeeTable(employeeList, contentTable, nameCol, phoneCol, emailCol, dateOfBirthCol);
     }
 }

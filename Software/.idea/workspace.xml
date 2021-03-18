@@ -5,41 +5,29 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b5ea20d7-1c8e-440f-81c2-ca4792b5ccf8" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/controllers/RolesAddController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/controllers/RolesCategoryController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/controllers/RolesUpdateController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/entities/EmployeeRoles.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/entities/Permissions.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/holders/RolesHolder.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/repositories/PermissionRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/repositories/RolesDetailRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/repositories/RolesRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/validation/RolesValidation.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/fxml/RoleAdd.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/fxml/RoleUpdate.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/fxml/RolesAdd.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/fxml/RolesCategory.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/fxml/RolesUpdate.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/fxml/RoleAdd.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/fxml/RoleUpdate.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/holders/EmployeeHolder.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/repositories/EmployeeRolesRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/MainNavigatorController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/MainNavigatorController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/entities/Merchandise.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/entities/Merchandise.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/entities/Roles.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/entities/Roles.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/entities/RolesDetail.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/entities/RolesDetail.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/utils/TableHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/utils/TableHelper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/validation/CustomerValidation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/validation/CustomerValidation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/fxml/MainNavigator.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/fxml/MainNavigator.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/hibernate.cfg.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/hibernate.cfg.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controllers/CustomerCategoryController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controllers/CustomerCategoryController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controllers/MainNavigatorController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controllers/MainNavigatorController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/entities/Merchandise.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/entities/Merchandise.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/entities/Roles.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/entities/Roles.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/entities/RolesDetail.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/entities/RolesDetail.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/fxml/MainNavigator.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/fxml/MainNavigator.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/hibernate.cfg.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/hibernate.cfg.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/CustomerUpdateController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/CustomerUpdateController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/EmployeeAddController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/EmployeeAddController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/EmployeeCategoryController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/EmployeeCategoryController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/EmployeeUpdateController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/EmployeeUpdateController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/LoginController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/entities/Employee.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/entities/Employee.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/validation/EmployeeValidation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/validation/EmployeeValidation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/fxml/EmployeeAdd.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/fxml/EmployeeAdd.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/fxml/EmployeeUpdate.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/fxml/EmployeeUpdate.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controllers/EmployeeAddController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controllers/EmployeeAddController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controllers/EmployeeCategoryController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controllers/EmployeeCategoryController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controllers/EmployeeUpdateController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controllers/EmployeeUpdateController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controllers/LoginController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controllers/LoginController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/entities/Employee.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/entities/Employee.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/fxml/EmployeeAdd.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/fxml/EmployeeAdd.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/fxml/EmployeeUpdate.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/fxml/EmployeeUpdate.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/fxml/RoleAdd.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/fxml/RoleAdd.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/fxml/RoleUpdate.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/fxml/RoleUpdate.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/utils/TableHelper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/utils/TableHelper.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/validation/CustomerValidation.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/validation/CustomerValidation.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/validation/EmployeeValidation.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/validation/EmployeeValidation.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -188,7 +176,7 @@
       <workItem from="1615706810221" duration="43000" />
       <workItem from="1615706869013" duration="84000" />
       <workItem from="1615706965707" duration="9826000" />
-      <workItem from="1616047484419" duration="21901000" />
+      <workItem from="1616047484419" duration="33508000" />
     </task>
     <servers />
   </component>
@@ -209,5 +197,21 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/controllers/EmployeeUpdateController.java</url>
+          <line>148</line>
+          <option name="timeStamp" value="101" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/controllers/EmployeeUpdateController.java</url>
+          <line>193</line>
+          <option name="timeStamp" value="103" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
