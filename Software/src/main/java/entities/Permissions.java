@@ -4,11 +4,11 @@ import javax.persistence.*;
 import java.util.Date;
 
 @Entity
-@Table(name = "roles")
-public class Roles {
+@Table(name = "permissions")
+public class Permissions {
     @Id
-    @Column(name = "id")
-    private String id;
+    @Column(name = "code")
+    private String code;
     @Column(name = "name")
     private String name;
     @Temporal(TemporalType.DATE)
@@ -18,23 +18,22 @@ public class Roles {
     @Column(name = "updated_date")
     private Date updatedDate;
 
-    public Roles() {
-
+    public Permissions() {
     }
 
-    public Roles(String id, String name, Date createdDate, Date updatedDate) {
-        this.id = id;
+    public Permissions(String code, String name, Date createdDate, Date updatedDate) {
+        this.code = code;
         this.name = name;
         this.createdDate = createdDate;
         this.updatedDate = updatedDate;
     }
 
-    public String getId() {
-        return id;
+    public String getCode() {
+        return code;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public void setCode(String code) {
+        this.code = code;
     }
 
     public String getName() {
@@ -62,12 +61,8 @@ public class Roles {
     }
 
     @PrePersist
-    protected void onCreate() {
-        createdDate = new Date();
-    }
+    protected void onCreate() { createdDate = new Date(); }
 
     @PreUpdate
-    protected void onUpdate() {
-        updatedDate = new Date();
-    }
+    protected void onUpdate() { updatedDate = new Date(); }
 }
