@@ -11,19 +11,18 @@ public class RolesDetail {
     @Id
     @Column(name = "id")
     private String id;
-    @Column(name = "roles_id")
-    private String rolesId;
-    @Column(name = "employee_id")
-    private String employeeId;
+    @Column(name = "role_id")
+    private String roleId;
+    @Column(name = "permission_code")
+    private String permissionCode;
 
     public RolesDetail() {
-
     }
 
-    public RolesDetail(String id, String rolesId, String employeeId) {
+    public RolesDetail(String id, String roleId, String permissionCode) {
         this.id = id;
-        this.employeeId = employeeId;
-        this.rolesId = rolesId;
+        this.roleId = roleId;
+        this.permissionCode = permissionCode;
     }
 
     public String getId() {
@@ -34,19 +33,19 @@ public class RolesDetail {
         this.id = id;
     }
 
-    public String getRolesId() {
-        return rolesId;
+    public String getRoleId() {
+        return roleId;
     }
 
-    public void setRolesId(String rolesId) {
-        this.rolesId = rolesId;
+    public void setRoleId(String roleId) {
+        this.roleId = roleId;
     }
 
-    public String getEmployeeId() {
-        return employeeId;
+    public String getPermissionCode() {
+        return permissionCode;
     }
 
-    public void setEmployeeId(String employeeId) {
-        this.employeeId = employeeId;
+    public void setPermissionCode(String permissionCode) {
+        this.permissionCode = permissionCode;
     }
 }
