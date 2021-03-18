@@ -15,10 +15,12 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.resource.transaction.spi.TransactionStatus;
 import repositories.EmployeeRepository;
+import utils.BCryptHelper;
 import utils.HibernateUtils;
 import utils.StageHelper;
 
 import java.util.Arrays;
+import java.util.Objects;
 
 public class LoginController {
 
@@ -50,9 +52,13 @@ public class LoginController {
             } else if (userPassword.getText().isEmpty()) {
                 status.setText("Chưa nhập mật khẩu");
             } else {
+                // Get employee by email
                 Employee employee = EmployeeRepository.getByEmail(userEmail.getText(), session);
-                if (employee != null && employee.getPassword().equals(userPassword.getText())) {
-                    Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("fxml/MainNavigator.fxml"));
+
+                // Check if password is valid
+//                if (employee != null && employee.getPassword().equals(userPassword.getText())) {
+                if (employee != null && BCryptHelper.check(userPassword.getText(), employee.getPassword())) {
+                    Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("fxml/MainNavigator.fxml")));
                     StageHelper.closeStage(actionEvent);
                     StageHelper.startStage(root);
                 } else {
@@ -82,7 +88,8 @@ public class LoginController {
                 status.setText("Chưa nhập mật khẩu");
             } else {
                 Employee employee = EmployeeRepository.getByEmail(userEmail.getText(), session);
-                if (employee != null && employee.getPassword().equals(userPassword.getText())) {
+//                if (employee != null && employee.getPassword().equals(userPassword.getText())) {
+                if (employee != null && BCryptHelper.check(userPassword.getText(), employee.getPassword())) {
                     Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("fxml/MainNavigator.fxml"));
                     StageHelper.closeStage(actionEvent);
                     StageHelper.startStage(root);
