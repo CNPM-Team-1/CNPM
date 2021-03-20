@@ -70,6 +70,7 @@ public class LoginController {
                 session.getTransaction().commit();
             }
         } catch (Exception ex) {
+            status.setText("Lỗi đăng nhập");
             System.out.println(ex.getMessage());
             System.out.println(Arrays.toString(ex.getStackTrace()));
         }

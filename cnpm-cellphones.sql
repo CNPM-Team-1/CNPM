@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.4
+-- version 5.0.3
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3307
--- Generation Time: Mar 20, 2021 at 01:09 AM
--- Server version: 10.4.17-MariaDB
--- PHP Version: 8.0.2
+-- Generation Time: Mar 20, 2021 at 01:20 AM
+-- Server version: 10.4.14-MariaDB
+-- PHP Version: 7.2.34
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -70,9 +70,7 @@ CREATE TABLE `employee` (
 --
 
 INSERT INTO `employee` (`id`, `full_name`, `birth_day`, `phone`, `email`, `password`, `created_date`, `updated_date`) VALUES
-('46e3eab3-a865-47a4-a8d5-6b88ab475576', 'Hải Huy', '2000-06-24', '0979487155', 'auhaihuy246@gmail.com', '$2a$09$k.OVaGflTfxXWW7ddIJc0unkNWz.zCciasCWHFnegYd0FDLCDB2PW', '2021-03-18', NULL),
-('1a2e63bb-76d5-4375-9c84-96d246522224', 'Admin', '2021-03-19', '0908215136', 'admin@gmail.com', '$2a$09$OKsae4EItSmPiqZPkaXYIuYOM5kgVkhMbqxXjdMIv0LqA5RMN9A9u', '2021-03-18', NULL),
-('f527371a-de2b-47ef-a230-6cdafed19cbe', 'a', '2021-04-15', '0334567897', 'a', 'a', '2021-03-18', '2021-03-18');
+('1a2e63bb-76d5-4375-9c84-96d246522224', 'Admin', '2021-03-19', '0908215136', 'admin@gmail.com', '$2a$09$OKsae4EItSmPiqZPkaXYIuYOM5kgVkhMbqxXjdMIv0LqA5RMN9A9u', '2021-03-18', NULL);
 
 -- --------------------------------------------------------
 
@@ -91,9 +89,7 @@ CREATE TABLE `employee_roles` (
 --
 
 INSERT INTO `employee_roles` (`id`, `roles_id`, `employee_id`) VALUES
-('c5376850-b43f-41f0-98db-27275776bb3c', 'c3faf74c-563b-48dc-9eaf-d5277273899e', '46e3eab3-a865-47a4-a8d5-6b88ab475576'),
-('b828ec0d-6c00-4762-ab12-b79251f19383', 'c3faf74c-563b-48dc-9eaf-d5277273899e', '1a2e63bb-76d5-4375-9c84-96d246522224'),
-('33a437ce-f824-4b27-bedb-eaa50bf813c0', 'c3faf74c-563b-48dc-9eaf-d5277273899e', 'f527371a-de2b-47ef-a230-6cdafed19cbe');
+('b828ec0d-6c00-4762-ab12-b79251f19383', 'c3faf74c-563b-48dc-9eaf-d5277273899e', '1a2e63bb-76d5-4375-9c84-96d246522224');
 
 -- --------------------------------------------------------
 
