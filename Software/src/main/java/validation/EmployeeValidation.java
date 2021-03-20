@@ -32,7 +32,7 @@ public class EmployeeValidation {
         } else if (employeeEmail != null) {
             msg.add("Email đã được sử dụng");
         }
-        if (employee.getPassword() == null) {
+        if (employee.getPassword() == null || employee.getPassword().isEmpty()) {
             msg.add("Chưa điền mật khẩu");
         }
 
@@ -64,6 +64,9 @@ public class EmployeeValidation {
                 msg.add("Chưa điền email");
             } else if (employeeEmail != null && !employeeEmail.getId().equals(employee.getId())) {
                 msg.add("Email đã được sử dụng");
+            }
+            if (employee.getPassword() == null || employee.getPassword().isEmpty()) {
+                msg.add("Chưa điền mật khẩu");
             }
 
             return msg;

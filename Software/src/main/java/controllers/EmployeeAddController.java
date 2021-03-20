@@ -16,6 +16,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.resource.transaction.spi.TransactionStatus;
 import repositories.RolesRepository;
 import utils.*;
 import validation.EmployeeValidation;
@@ -58,6 +59,7 @@ public class EmployeeAddController implements Initializable {
         for (Roles item : rolesList) {
             roleHolder.getItems().add(item.getName());
         }
+        roleHolder.setValue(rolesList.get(0).getName());
     }
 
     @FXML
@@ -74,13 +76,14 @@ public class EmployeeAddController implements Initializable {
         Session session = factory.getCurrentSession();
         session.beginTransaction();
 
+        System.out.print(dateOfBirthHolder.getValue());
         Employee employee = new Employee();
         employee.setId(UUIDHelper.generateType4UUID().toString());
         employee.setFullName(nameHolder.getText());
-        employee.setBirthDay(Date.from(dateOfBirthHolder.getValue().atStartOfDay(ZoneId.of("Etc/GMT+8")).toInstant()));
+        employee.setBirthDay(dateOfBirthHolder.getValue() != null ? Date.from(dateOfBirthHolder.getValue().atStartOfDay(ZoneId.of("Etc/GMT+8")).toInstant()) : null);
         employee.setPhone(phoneHolder.getText());
         employee.setEmail(emailHolder.getText());
-        employee.setPassword(BCryptHelper.encode(passwordHolder.getText()));
+        employee.setPassword(passwordHolder.getText().isEmpty() ? null : BCryptHelper.encode(passwordHolder.getText()));
 
         List<String> validateInsert = EmployeeValidation.validateInsert(session, employee);
         if (roleHolder.getItems() == null) {
@@ -115,7 +118,9 @@ public class EmployeeAddController implements Initializable {
             host.setDisable(false);
         } else {
             errorMessage.setText(validateInsert.get(0));
-            session.getTransaction().commit();
+            if (session.getTransaction().getStatus() != TransactionStatus.COMMITTED) {
+                session.getTransaction().commit();
+            }
         }
     }
 }
