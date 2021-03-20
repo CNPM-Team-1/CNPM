@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
+<?import java.lang.String?>
+<?import java.net.URL?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
@@ -18,27 +21,43 @@
             <Insets left="10.0" />
          </padding>
       </Label>
-      <AnchorPane layoutX="23.0" layoutY="59.0" prefHeight="591.0" prefWidth="1233.0" style="-fx-background-radius: 5px; -fx-background-color: #fff;">
+      <AnchorPane layoutX="14.0" layoutY="57.0" prefHeight="591.0" prefWidth="1233.0" style="-fx-background-radius: 5px; -fx-background-color: #fff;">
          <opaqueInsets>
             <Insets />
          </opaqueInsets>
          <children>
-            <JFXButton fx:id="addButton" layoutX="160.0" layoutY="482.0" onAction="#Add" styleClass="add-button" stylesheets="@../css/style.css" text="ADD" />
-            <JFXButton fx:id="updateButton" layoutX="501.0" layoutY="480.0" onAction="#Update" styleClass="add-button" stylesheets="@../css/style.css" text="UPDATE" />
-            <JFXButton fx:id="deleteButton" layoutX="840.0" layoutY="480.0" onAction="#Delete" styleClass="add-button" stylesheets="@../css/style.css" text="DELETE" />
-            <TableView fx:id="tableMerchandise" layoutX="25.0" layoutY="51.0" prefHeight="392.0" prefWidth="1203.0">
+            <JFXButton fx:id="addButton" layoutX="1060.0" layoutY="28.0" onAction="#Add" stylesheets="@../css/style.css" text="+ Thêm mới">
+               <styleClass>
+                  <String fx:value="login-button" />
+                  <String fx:value="font" />
+               </styleClass></JFXButton>
+            <TableView fx:id="tableMerchandise" layoutX="26.0" layoutY="83.0" onMouseClicked="#Update" prefHeight="489.0" prefWidth="1172.0" styleClass="table-font" stylesheets="@../css/style.css">
               <columns>
-                <TableColumn fx:id="idColumn" prefWidth="111.16667175292969" text="ID" />
-                <TableColumn fx:id="nameColumn" prefWidth="147.8333282470703" text="NAME" />
-                  <TableColumn fx:id="typeColumn" prefWidth="111.66665649414062" text="TYPE" />
-                  <TableColumn fx:id="BranchColumn" prefWidth="152.83334350585938" text="BRANCH" />
-                  <TableColumn fx:id="priceColumn" prefWidth="135.83331298828125" text="PRICE" />
-                  <TableColumn fx:id="ipriceColumn" prefWidth="158.16668701171875" text="IMPORT PRICE" />
-                  <TableColumn fx:id="createColumn" prefWidth="137.5" text="CREATE DATE" />
-                  <TableColumn fx:id="updateColumn" prefWidth="144.5" text="UPDATE DATE" />
-                  <TableColumn fx:id="editColumn" prefWidth="100.3333740234375" text="EDIT" />
+                <TableColumn fx:id="idColumn" prefWidth="171.5" text="ID" />
+                <TableColumn fx:id="nameColumn" prefWidth="139.0" text="NAME" />
+                  <TableColumn fx:id="typeColumn" prefWidth="130.83331298828125" text="TYPE" />
+                  <TableColumn fx:id="BranchColumn" prefWidth="134.66665649414062" text="BRANCH" />
+                  <TableColumn fx:id="priceColumn" prefWidth="120.33331298828125" text="PRICE" />
+                  <TableColumn fx:id="ipriceColumn" prefWidth="164.0" text="IMPORT PRICE" />
+                  <TableColumn fx:id="createColumn" prefWidth="136.5" text="CREATE DATE" />
+                  <TableColumn fx:id="updateColumn" prefWidth="173.5" text="UPDATE DATE" />
               </columns>
             </TableView>
+            <TextField fx:id="searchTF" layoutX="54.0" layoutY="27.0" promptText="Nhập tên hoặc SĐT" stylesheets="@../css/style.css">
+               <styleClass>
+                  <String fx:value="search-bar" />
+                  <String fx:value="top-font" />
+               </styleClass></TextField>
+            <JFXButton fx:id="SearchButton" layoutX="293.0" layoutY="29.0" onAction="#Search" text="Tìm Kiếm">
+               <stylesheets>
+                  <URL value="@../css/style.css" />
+                  <URL value="@../css/table.css" />
+               </stylesheets>
+               <styleClass>
+                  <String fx:value="font" />
+                  <String fx:value="login-button" />
+               </styleClass>
+            </JFXButton>
          </children>
       </AnchorPane>
    </children>

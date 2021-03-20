@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.MerchandiseUpdateController">
+   <children>
+      <JFXButton fx:id="UpdateButton" layoutX="158.0" layoutY="308.0" onAction="#Update" styleClass="add-button" stylesheets="@../css/style.css" text="Update" />
+      <JFXButton fx:id="cancelButton" layoutX="406.0" layoutY="308.0" onAction="#Cancel" styleClass="add-button" stylesheets="@../css/style.css" text="Cancel" />
+      <Label fx:id="idLB" layoutX="42.0" layoutY="120.0" text="ID" />
+      <Label fx:id="typeLB" layoutX="42.0" layoutY="223.0" text="Type" />
+      <Label fx:id="priceLB" layoutX="320.0" layoutY="170.0" text="Price" />
+      <Label fx:id="imLB" layoutX="320.0" layoutY="223.0" text="Import Price" />
+      <Label fx:id="nameLB" layoutX="42.0" layoutY="170.0" text="Name" />
+      <Label fx:id="branchLB" layoutX="320.0" layoutY="120.0" text="Branch" />
+      <TextField fx:id="idTF" layoutX="95.0" layoutY="115.0" />
+      <TextField fx:id="branchTF" layoutX="417.0" layoutY="115.0" />
+      <TextField fx:id="nameTF" layoutX="95.0" layoutY="165.0" />
+      <TextField fx:id="priceTF" layoutX="417.0" layoutY="165.0" />
+      <TextField fx:id="importPriceTF" layoutX="417.0" layoutY="218.0" />
+      <TextField fx:id="typeTF" layoutX="95.0" layoutY="218.0" />
+   </children>
+</AnchorPane>

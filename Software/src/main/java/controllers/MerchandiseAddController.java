@@ -5,10 +5,14 @@ import com.jfoenix.controls.JFXButton;
 import entities.Merchandise;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
+import javafx.stage.Stage;
 import org.hibernate.Session;
 import utils.HibernateUtils;
+import utils.StageHelper;
 
 import javax.swing.*;
 import java.sql.Connection;
@@ -82,5 +86,6 @@ public class MerchandiseAddController extends JFrame  {
     }
     @FXML
     void Cancel(ActionEvent event) {
+        StageHelper.closeStage(event);
     }
 }

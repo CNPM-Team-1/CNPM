@@ -8,24 +8,24 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
-import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
+import javafx.scene.Scene;
+import javafx.scene.control.*;
 
 import javafx.event.ActionEvent;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Stage;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.w3c.dom.events.MouseEvent;
+import repositories.MerchandiseRepository;
+import utils.HibernateUtils;
 import utils.StageHelper;
+import utils.TableHelper;
 
 import java.net.URL;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.Statement;
-import java.util.Arrays;
+import java.sql.*;
+import java.util.*;
 import java.util.Date;
-import java.util.Objects;
-import java.util.ResourceBundle;
 
 public class MerchandiseCategoryController implements Initializable {
 
@@ -37,23 +37,9 @@ public class MerchandiseCategoryController implements Initializable {
 
     @FXML
     private JFXButton deleteButton;
-    @FXML
-    private TextField idText;
 
     @FXML
-    private TextField nameText;
-
-    @FXML
-    private TextField typeText;
-
-    @FXML
-    private TextField branchText;
-
-    @FXML
-    private TextField priceText;
-
-    @FXML
-    private TextField importText;
+    private JFXButton SearchButton;
 
     @FXML
     private Label idLabel;
@@ -98,12 +84,14 @@ public class MerchandiseCategoryController implements Initializable {
     private TableColumn<Merchandise, Date> updateColumn;
 
     @FXML
-    private TableColumn<Merchandise, Boolean> editColumn;
-
-    @FXML
     private TableView<Merchandise> tableMerchandise;
     private Connection conn;
     private ObservableList<Merchandise> list;
+    @FXML
+    private TextField searchTF;
+    @FXML
+    private JFXButton refresh;
+
     @FXML
     void Add(ActionEvent event) {
         try {
@@ -113,33 +101,40 @@ public class MerchandiseCategoryController implements Initializable {
             System.out.println(ex.getMessage());
             System.out.println(Arrays.toString(ex.getStackTrace()));
         }
-
-
     }
 
     @FXML
-    void Delete(ActionEvent event) {
-
-    }
-
-    @FXML
-    void Update(ActionEvent event) {
-
+    public void Update(javafx.scene.input.MouseEvent e) {
+        try {
+            URL fxmlLocation = getClass().getClassLoader().getResource("fxml/MerchandiseUpdate.fxml");
+            FXMLLoader loader = new FXMLLoader(fxmlLocation);
+            Parent root = loader.load();
+            MerchandiseUpdateController controller = loader.<MerchandiseUpdateController>getController();
+            Merchandise select = tableMerchandise.getSelectionModel().getSelectedItem();
+            controller.setTextMerchandise(select);
+            Scene newScene = new Scene(root);
+            Stage newStage = new Stage();
+            newStage.setScene(newScene);
+            newStage.show();
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+            System.out.println(Arrays.toString(ex.getStackTrace()));
+        }
     }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-    TableViewDisplay();
-
+        TableViewDisplay();
     }
-    public void TableViewDisplay(){
+
+    public void TableViewDisplay() {
 
         final String DB_URL = "jdbc:mysql://localhost:8889/cnpm-cellphones";
         String username = "root";
         String password = "root";
         try {
             // Create a connection to the database.
-            conn = DriverManager.getConnection(DB_URL,username,password);
+            conn = DriverManager.getConnection(DB_URL, username, password);
             Statement stmt = conn.createStatement();
             list = FXCollections.observableArrayList();
             String sqlStatement = "SELECT * FROM MERCHANDISE";
@@ -169,6 +164,48 @@ public class MerchandiseCategoryController implements Initializable {
         } catch (Exception ex) {
             System.out.println("ERROR: " + ex.getMessage());
         }
-
     }
+    @FXML
+    void Delete(ActionEvent event) {
+        Merchandise select = tableMerchandise.getSelectionModel().getSelectedItem();
+        final String DB_URL = "jdbc:mysql://localhost:8889/cnpm-cellphones";
+        String username = "root";
+        String password = "root";
+        try {
+            conn = DriverManager.getConnection(DB_URL, username, password);
+            Statement stmt = conn.createStatement();
+            String sqlStatement = "DELETE FROM MERCHANDISE WHERE id ='" + select.getId() + "'";
+            System.out.println(sqlStatement);
+            stmt.executeUpdate(sqlStatement);
+            list.remove(select);
+
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+    }
+    @FXML
+    void Search(ActionEvent event) {
+        try {
+            SessionFactory factory = HibernateUtils.getSessionFactory();
+            Session session = factory.getCurrentSession();
+
+            String keySearch = searchTF.getText();
+            List<Merchandise> MerchandiseList = MerchandiseRepository.getAll(session);
+            TableHelper.setMerchandiseTable(MerchandiseList, tableMerchandise, idColumn, nameColumn, typeColumn, BranchColumn, priceColumn, ipriceColumn);
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+            System.out.println(Arrays.toString(ex.getStackTrace()));
+        }
+    }
+
+    @FXML
+    void refresh(ActionEvent event) {
+        if(!list.isEmpty()){
+
+            list.removeAll();
+        }
+        TableViewDisplay();
+    }
+
+    
 }

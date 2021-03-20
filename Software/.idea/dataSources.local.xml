@@ -7,5 +7,10 @@
       <user-name>root</user-name>
       <schema-mapping />
     </data-source>
+    <data-source name="hibernate.cfg.xml/Hibernate" uuid="e9d3b869-4e72-4927-a7a7-befd84997e01">
+      <database-info product="" version="" jdbc-version="" driver-name="" driver-version="" dbms="MYSQL" exact-version="0" />
+      <user-name>root</user-name>
+      <schema-mapping />
+    </data-source>
   </component>
 </project>
