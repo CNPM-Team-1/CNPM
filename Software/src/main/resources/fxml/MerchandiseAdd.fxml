@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="333.0" prefWidth="596.0" style="-fx-background-color: withe;" stylesheets="@../css/style.css" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.MerchandiseAddController">
+<AnchorPane prefHeight="333.0" prefWidth="596.0" stylesheets="@../css/style.css" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.MerchandiseAddController">
    <children>
       <JFXButton fx:id="addButton" layoutX="531.0" layoutY="276.0" onAction="#Add" stylesheets="@../css/style.css" text="Lưu">
          <styleClass>

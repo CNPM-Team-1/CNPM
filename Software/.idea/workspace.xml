@@ -6,8 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="b5ea20d7-1c8e-440f-81c2-ca4792b5ccf8" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/MerchandiseCategoryController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/MerchandiseCategoryController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/fxml/MerchandiseAdd.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/fxml/MerchandiseAdd.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/fxml/MerchandiseUpdate.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/fxml/MerchandiseUpdate.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/fxml/MerchandiseCategory.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/fxml/MerchandiseCategory.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/fxml/MerchandiseUpdate.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/fxml/MerchandiseUpdate.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -169,7 +171,7 @@
       <workItem from="1615828807811" duration="16972000" />
       <workItem from="1615950616026" duration="805000" />
       <workItem from="1616050771294" duration="4252000" />
-      <workItem from="1616211576698" duration="1740000" />
+      <workItem from="1616211576698" duration="2881000" />
     </task>
     <servers />
   </component>

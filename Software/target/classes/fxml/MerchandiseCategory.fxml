@@ -26,12 +26,12 @@
             <Insets />
          </opaqueInsets>
          <children>
-            <JFXButton fx:id="addButton" layoutX="1060.0" layoutY="28.0" onAction="#Add" stylesheets="@../css/style.css" text="+ Thêm mới">
+            <JFXButton fx:id="addButton" layoutX="1078.0" layoutY="28.0" onAction="#Add" stylesheets="@../css/style.css" text="+ Thêm mới">
                <styleClass>
                   <String fx:value="login-button" />
                   <String fx:value="font" />
                </styleClass></JFXButton>
-            <TableView fx:id="tableMerchandise" layoutX="26.0" layoutY="83.0" onMouseClicked="#Update" prefHeight="489.0" prefWidth="1172.0" styleClass="table-font" stylesheets="@../css/style.css">
+            <TableView fx:id="tableMerchandise" layoutX="11.0" layoutY="83.0" onMouseClicked="#Update" prefHeight="489.0" prefWidth="1214.0" styleClass="table-font" stylesheets="@../css/style.css">
               <columns>
                 <TableColumn fx:id="idColumn" prefWidth="171.5" text="ID" />
                 <TableColumn fx:id="nameColumn" prefWidth="139.0" text="NAME" />
@@ -43,12 +43,12 @@
                   <TableColumn fx:id="updateColumn" prefWidth="173.5" text="UPDATE DATE" />
               </columns>
             </TableView>
-            <TextField fx:id="searchTF" layoutX="54.0" layoutY="27.0" promptText="Nhập tên hoặc SĐT" stylesheets="@../css/style.css">
+            <TextField fx:id="searchTF" layoutX="34.0" layoutY="27.0" promptText="Nhập tên hoặc SĐT" stylesheets="@../css/style.css">
                <styleClass>
                   <String fx:value="search-bar" />
                   <String fx:value="top-font" />
                </styleClass></TextField>
-            <JFXButton fx:id="SearchButton" layoutX="293.0" layoutY="29.0" onAction="#Search" text="Tìm Kiếm">
+            <JFXButton fx:id="SearchButton" layoutX="276.0" layoutY="28.0" onAction="#Search" text="Tìm Kiếm">
                <stylesheets>
                   <URL value="@../css/style.css" />
                   <URL value="@../css/table.css" />

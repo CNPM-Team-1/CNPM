@@ -4,30 +4,29 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<?import javafx.scene.text.*?>
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-
-
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.MerchandiseUpdateController">
+<AnchorPane prefHeight="338.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.MerchandiseUpdateController">
    <children>
-      <JFXButton fx:id="UpdateButton" layoutX="158.0" layoutY="308.0" onAction="#Update" styleClass="add-button" stylesheets="@../css/style.css" text="Update" />
-      <JFXButton fx:id="cancelButton" layoutX="406.0" layoutY="308.0" onAction="#Cancel" styleClass="add-button" stylesheets="@../css/style.css" text="Cancel" />
-      <Label fx:id="idLB" layoutX="42.0" layoutY="120.0" text="ID" />
-      <Label fx:id="typeLB" layoutX="42.0" layoutY="223.0" text="Type" />
-      <Label fx:id="priceLB" layoutX="320.0" layoutY="170.0" text="Price" />
-      <Label fx:id="imLB" layoutX="320.0" layoutY="223.0" text="Import Price" />
-      <Label fx:id="nameLB" layoutX="42.0" layoutY="170.0" text="Name" />
-      <Label fx:id="branchLB" layoutX="320.0" layoutY="120.0" text="Branch" />
-      <TextField fx:id="idTF" layoutX="95.0" layoutY="115.0" />
-      <TextField fx:id="branchTF" layoutX="417.0" layoutY="115.0" />
-      <TextField fx:id="nameTF" layoutX="95.0" layoutY="165.0" />
-      <TextField fx:id="priceTF" layoutX="417.0" layoutY="165.0" />
-      <TextField fx:id="importPriceTF" layoutX="417.0" layoutY="218.0" />
-      <TextField fx:id="typeTF" layoutX="95.0" layoutY="218.0" />
+      <JFXButton fx:id="UpdateButton" layoutX="495.0" layoutY="276.0" onAction="#Update" styleClass="login-button" stylesheets="@../css/style.css" text="Cập Nhật" />
+      <JFXButton fx:id="cancelButton" layoutX="39.0" layoutY="276.0" onAction="#Cancel" styleClass="close-button" stylesheets="@../css/style.css" text="Đóng" />
+      <Label fx:id="idLB" layoutX="42.0" layoutY="93.0" styleClass="font" stylesheets="@../css/style.css" text="ID :" />
+      <Label fx:id="typeLB" layoutX="43.0" layoutY="200.0" styleClass="font" stylesheets="@../css/style.css" text="Loại :" />
+      <Label fx:id="priceLB" layoutX="300.0" layoutY="142.0" styleClass="font" stylesheets="@../css/style.css" text="Giá :" />
+      <Label fx:id="imLB" layoutX="300.0" layoutY="201.0" styleClass="font" stylesheets="@../css/style.css" text="Giá Nhập khẩu :" />
+      <Label fx:id="nameLB" layoutX="40.0" layoutY="142.0" styleClass="font" stylesheets="@../css/style.css" text="Họ Tên :" />
+      <Label fx:id="branchLB" layoutX="300.0" layoutY="93.0" styleClass="font" stylesheets="@../css/style.css" text="Thương Hiệu :" />
+      <TextField fx:id="idTF" layoutX="95.0" layoutY="88.0" promptText="Nhập ID" />
+      <TextField fx:id="branchTF" layoutX="406.0" layoutY="88.0" promptText="Nhập Thương Hiệu" />
+      <TextField fx:id="nameTF" layoutX="95.0" layoutY="137.0" promptText="Nhập Họ Tên" />
+      <TextField fx:id="priceTF" layoutX="406.0" layoutY="137.0" promptText="Nhập Giá " />
+      <TextField fx:id="importPriceTF" layoutX="406.0" layoutY="195.0" promptText="Nhập Giá Nhập Khẩu" />
+      <TextField fx:id="typeTF" layoutX="95.0" layoutY="195.0" promptText="Nhập Loại" />
+      <Label layoutX="24.0" layoutY="28.0" styleClass="top-font" stylesheets="@../css/style.css" text="Cập nhật thông tin hàng hoá">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <JFXButton fx:id="Delete" layoutX="406.0" layoutY="279.0" prefHeight="32.0" prefWidth="73.0" styleClass="delete-button" stylesheets="@../css/style.css" text="Xoá" />
    </children>
 </AnchorPane>
