@@ -5,18 +5,28 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b5ea20d7-1c8e-440f-81c2-ca4792b5ccf8" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_base_win_14.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_controls_win_14.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_fxml_win_14.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_graphics_win_14.xml" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/holders/EmployeeHolder.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/repositories/EmployeeRolesRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/CustomerUpdateController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/CustomerUpdateController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/controllers/EmployeeAddController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/EmployeeAddController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/EmployeeCategoryController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/EmployeeCategoryController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/EmployeeUpdateController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/EmployeeUpdateController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/controllers/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/LoginController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/repositories/EmployeeRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/repositories/EmployeeRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/entities/Employee.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/entities/Employee.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/validation/EmployeeValidation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/validation/EmployeeValidation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/fxml/EmployeeAdd.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/fxml/EmployeeAdd.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/fxml/EmployeeUpdate.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/fxml/EmployeeUpdate.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/controllers/EmployeeAddController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controllers/EmployeeAddController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controllers/EmployeeCategoryController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controllers/EmployeeCategoryController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controllers/EmployeeUpdateController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controllers/EmployeeUpdateController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/controllers/LoginController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controllers/LoginController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/repositories/EmployeeRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/repositories/EmployeeRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/entities/Employee.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/entities/Employee.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/fxml/EmployeeAdd.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/fxml/EmployeeAdd.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/fxml/EmployeeUpdate.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/fxml/EmployeeUpdate.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/fxml/RoleAdd.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/fxml/RoleAdd.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/fxml/RoleUpdate.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/fxml/RoleUpdate.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/utils/TableHelper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/utils/TableHelper.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/validation/EmployeeValidation.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/validation/EmployeeValidation.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -106,17 +116,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
-      <option name="arquillianRunConfiguration">
-        <value>
-          <option name="containerStateName" value="" />
-        </value>
-      </option>
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <list>
       <item itemvalue="Application.App" />
       <item itemvalue="Application.Test" />
@@ -200,76 +199,6 @@
           <url>file://$PROJECT_DIR$/src/main/java/controllers/EmployeeUpdateController.java</url>
           <line>193</line>
           <option name="timeStamp" value="103" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/controllers/EmployeeAddController.java</url>
-          <line>98</line>
-          <option name="timeStamp" value="154" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/controllers/EmployeeAddController.java</url>
-          <line>104</line>
-          <option name="timeStamp" value="155" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/repositories/EmployeeRepository.java</url>
-          <line>45</line>
-          <option name="timeStamp" value="164" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/repositories/EmployeeRepository.java</url>
-          <line>47</line>
-          <option name="timeStamp" value="165" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/repositories/EmployeeRepository.java</url>
-          <line>57</line>
-          <option name="timeStamp" value="166" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/repositories/EmployeeRepository.java</url>
-          <line>59</line>
-          <option name="timeStamp" value="167" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/validation/EmployeeValidation.java</url>
-          <line>19</line>
-          <option name="timeStamp" value="169" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/validation/EmployeeValidation.java</url>
-          <line>36</line>
-          <option name="timeStamp" value="170" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/utils/TableHelper.java</url>
-          <line>45</line>
-          <option name="timeStamp" value="171" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/utils/TableHelper.java</url>
-          <line>56</line>
-          <option name="timeStamp" value="172" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/controllers/EmployeeCategoryController.java</url>
-          <line>135</line>
-          <option name="timeStamp" value="173" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/controllers/EmployeeCategoryController.java</url>
-          <line>136</line>
-          <option name="timeStamp" value="174" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/repositories/EmployeeRepository.java</url>
-          <line>28</line>
-          <option name="timeStamp" value="175" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/repositories/EmployeeRepository.java</url>
-          <line>34</line>
-          <option name="timeStamp" value="176" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

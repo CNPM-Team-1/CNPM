@@ -45,9 +45,7 @@ public class LoginController {
         try {
             SessionFactory factory = HibernateUtils.getSessionFactory();
             Session session = factory.getCurrentSession();
-            if (!session.getTransaction().isActive()) {
-                session.beginTransaction();
-            }
+            session.beginTransaction();
 
             if (userEmail.getText().isEmpty()) {
                 status.setText("Chưa nhập email");
@@ -56,7 +54,7 @@ public class LoginController {
             } else {
                 // Get employee by email
                 Employee employee = EmployeeRepository.getByEmail(userEmail.getText(), session);
-                session.getTransaction().commit();
+
                 // Check if password is valid
 //                if (employee != null && employee.getPassword().equals(userPassword.getText())) {
                 if (employee != null && BCryptHelper.check(userPassword.getText(), employee.getPassword())) {
@@ -91,7 +89,6 @@ public class LoginController {
                 status.setText("Chưa nhập mật khẩu");
             } else {
                 Employee employee = EmployeeRepository.getByEmail(userEmail.getText(), session);
-                session.getTransaction().commit();
 //                if (employee != null && employee.getPassword().equals(userPassword.getText())) {
                 if (employee != null && BCryptHelper.check(userPassword.getText(), employee.getPassword())) {
                     Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("fxml/MainNavigator.fxml"));

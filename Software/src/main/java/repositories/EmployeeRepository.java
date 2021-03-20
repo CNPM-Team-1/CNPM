@@ -15,8 +15,10 @@ public class EmployeeRepository {
             String sql = "Select e from " + Employee.class.getName() + " e where e.email = '" + email + "'";
             Query<Employee> query = session.createQuery(sql);
             Employee result = query.getSingleResult();
+            session.getTransaction().commit();
             return result;
         } catch (Exception ex) {
+            session.getTransaction().commit();
             System.out.println(ex.getMessage());
             System.out.println(Arrays.toString(ex.getStackTrace()));
             return null;
@@ -25,9 +27,7 @@ public class EmployeeRepository {
 
     public static List<Employee> getAll(Session session) {
         try {
-            if (!session.getTransaction().isActive()) {
-                session.beginTransaction();
-            }
+            session.beginTransaction();
             String sql = "Select c from " + Employee.class.getName() + " c";
             Query<Employee> query = session.createQuery(sql);
             List<Employee> result = query.getResultList();
