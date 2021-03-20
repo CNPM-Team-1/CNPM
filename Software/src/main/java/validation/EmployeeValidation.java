@@ -14,8 +14,8 @@ public class EmployeeValidation {
         List<String> msg = new ArrayList<>();
 
         Employee employeeName = EmployeeRepository.getByName(session, employee.getFullName());
-        Employee employeeEmail = EmployeeRepository.getByEmail(employee.getEmail(), session);
         Employee employeePhone = EmployeeRepository.getByPhone(session, employee.getPhone());
+        Employee employeeEmail = EmployeeRepository.getByEmail(employee.getEmail(), session);
 
         if (employee.getFullName() == null || employee.getFullName().isEmpty()) {
             msg.add("Chưa điền tên");
@@ -34,6 +34,9 @@ public class EmployeeValidation {
         }
         if (employee.getPassword() == null) {
             msg.add("Chưa điền mật khẩu");
+        }
+        if (employee.getBirthDay() == null) {
+            msg.add("Chưa chọn ngày sinh");
         }
 
         return msg;
@@ -64,6 +67,12 @@ public class EmployeeValidation {
                 msg.add("Chưa điền email");
             } else if (employeeEmail != null && !employeeEmail.getId().equals(employee.getId())) {
                 msg.add("Email đã được sử dụng");
+            }
+            if (employee.getPassword() == null) {
+                msg.add("Chưa điền mật khẩu");
+            }
+            if (employee.getBirthDay() == null) {
+                msg.add("Chưa chọn ngày sinh");
             }
 
             return msg;
