@@ -152,7 +152,7 @@
 
 .navigation-hbox {
     /*-fx-border-color: #ffffff;*/
-    -fx-background-color: #88c94d;
+    -fx-background-color: #008bfe;
 }
 
 .navigation-button {
@@ -164,9 +164,8 @@
 }
 
 .navigation-button:hover {
-    -fx-border-color: #000000;
+    -fx-border-color: #e4cc82;
     -fx-border-width: 0px 0px 3px 0px;
-    -fx-text-fill: #fff;
 }
 
 .add-button1 {

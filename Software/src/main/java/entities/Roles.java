@@ -11,8 +11,10 @@ public class Roles {
     private String id;
     @Column(name = "name")
     private String name;
+    @Temporal(TemporalType.DATE)
     @Column(name = "created_date")
     private Date createdDate;
+    @Temporal(TemporalType.DATE)
     @Column(name = "updated_date")
     private Date updatedDate;
 

@@ -11,6 +11,7 @@ public class Employee {
     private String id;
     @Column(name = "full_name")
     private String fullName;
+    @Temporal(TemporalType.DATE)
     @Column(name = "birth_day")
     private Date birthDay;
     @Column(name = "phone")
@@ -19,8 +20,10 @@ public class Employee {
     private String email;
     @Column(name = "password")
     private String password;
+    @Temporal(TemporalType.DATE)
     @Column(name = "created_date")
     private Date createdDate;
+    @Temporal(TemporalType.DATE)
     @Column(name = "updated_date")
     private Date updatedDate;
 

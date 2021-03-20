@@ -31,7 +31,7 @@
                 <RowConstraints minHeight="10.0" prefHeight="475.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <TableView prefHeight="340.0" prefWidth="1218.0" styleClass="table-font" stylesheets="@../css/style.css" GridPane.rowIndex="1">
+                  <TableView focusTraversable="false" prefHeight="340.0" prefWidth="1218.0" styleClass="table-font" stylesheets="@../css/style.css" GridPane.rowIndex="1">
                     <columns>
                         <TableColumn prefWidth="116.0" text="Ngày tạo" />
                       <TableColumn prefWidth="257.0" text="Khách hàng" />

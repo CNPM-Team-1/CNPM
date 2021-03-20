@@ -88,7 +88,7 @@
                         <Font size="15.0" />
                      </font>
                   </Label>
-                  <ComboBox fx:id="typeHolder1" focusTraversable="false" prefHeight="25.0" prefWidth="198.0" promptText="Chọn khách hàng" styleClass="top-font" stylesheets="@../css/style.css" visibleRowCount="2" GridPane.columnIndex="1">
+                  <ComboBox fx:id="typeHolder1" focusTraversable="false" prefHeight="30.0" prefWidth="198.0" promptText="Chọn khách hàng" styleClass="top-font" stylesheets="@../css/style.css" visibleRowCount="2" GridPane.columnIndex="1">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
@@ -109,7 +109,10 @@
                         <Font size="15.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="phoneHolder" prefHeight="25.0" prefWidth="135.0" promptText="Nhập số điện thoại" styleClass="top-font" stylesheets="@../css/style.css" GridPane.columnIndex="1" />
+                  <TextField fx:id="phoneHolder" prefHeight="25.0" prefWidth="135.0" promptText="Nhập số điện thoại" styleClass="top-font" stylesheets="@../css/style.css" GridPane.columnIndex="1">
+                     <font>
+                        <Font size="14.0" />
+                     </font></TextField>
                </children>
                <HBox.margin>
                   <Insets left="20.0" />
@@ -136,13 +139,16 @@
             <Font size="15.0" />
          </font>
       </Label>
-      <ComboBox layoutX="109.0" layoutY="158.0" prefHeight="25.0" prefWidth="152.0" promptText="Chọn hàng hoá" styleClass="top-font" stylesheets="@../css/style.css" />
+      <ComboBox layoutX="109.0" layoutY="156.0" prefHeight="30.0" prefWidth="152.0" promptText="Chọn hàng hoá" styleClass="top-font" stylesheets="@../css/style.css" />
       <Label fx:id="address11" layoutX="14.0" layoutY="202.0" prefHeight="25.0" prefWidth="79.0" styleClass="font" stylesheets="@../css/style.css" text="Số lượng:">
          <font>
             <Font size="15.0" />
          </font>
       </Label>
-      <TextField fx:id="phoneHolder1" layoutX="109.0" layoutY="202.0" prefHeight="25.0" prefWidth="152.0" promptText="Nhập số lượng" styleClass="top-font" stylesheets="@../css/style.css" />
+      <TextField fx:id="phoneHolder1" layoutX="109.0" layoutY="202.0" prefHeight="25.0" prefWidth="152.0" promptText="Nhập số lượng" styleClass="top-font" stylesheets="@../css/style.css">
+         <font>
+            <Font size="14.0" />
+         </font></TextField>
       <JFXButton layoutX="102.0" layoutY="504.0" prefHeight="32.0" prefWidth="57.0" stylesheets="@../css/style.css" text="KH+">
          <styleClass>
             <String fx:value="close-button" />
