@@ -1,12 +1,14 @@
 package utils;
 
 import entities.Customer;
+import entities.Receipt;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 
+import java.util.Date;
 import java.util.List;
 
 public class TableHelper {
@@ -33,4 +35,25 @@ public class TableHelper {
         table.getItems().clear();
         table.setItems(data);
     }
+/*
+    public static void setReceiptTable(List<Receipt> receiptList,
+                                        TableView<Receipt> contentTable,
+                                        TableColumn<Receipt, Date> dateCol,
+                                        TableColumn<Receipt, String> nameCol,
+                                        TableColumn<Receipt, Integer> quantityCol,
+                                        TableColumn<Receipt, Integer> amountCol) {
+        table.getItems().clear();
+        ObservableList<Receipt> data = FXCollections.observableList(receiptList);
+
+        // Associate data with columns
+        dateCol.setCellValueFactory(new PropertyValueFactory<>("fullName"));
+        nameCol.setCellValueFactory(new PropertyValueFactory<>("phone"));
+        quantityCol.setCellValueFactory(new PropertyValueFactory<>("email"));
+        amountCol.setCellValueFactory(new PropertyValueFactory<>("address"));
+
+        // Add item table
+
+        table.getItems().clear();
+        table.setItems(data);
+    } */
 }

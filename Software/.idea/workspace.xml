@@ -6,10 +6,12 @@
   <component name="ChangeListManager">
     <list default="true" id="b5ea20d7-1c8e-440f-81c2-ca4792b5ccf8" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/utils/AlertBoxHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/utils/AlertBoxHelper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/css/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/css/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/utils/AlertBoxHelper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/utils/AlertBoxHelper.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/ReceiptCategoryController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/ReceiptCategoryController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/utils/TableHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/utils/TableHelper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/fxml/ReceiptCategory.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/fxml/ReceiptCategory.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controllers/ReceiptCategoryController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controllers/ReceiptCategoryController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/fxml/ReceiptCategory.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/fxml/ReceiptCategory.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/utils/TableHelper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/utils/TableHelper.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -98,17 +100,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
-      <option name="arquillianRunConfiguration">
-        <value>
-          <option name="containerStateName" value="" />
-        </value>
-      </option>
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <list>
       <item itemvalue="Application.App" />
       <item itemvalue="Application.Test" />
@@ -158,6 +149,11 @@
       <workItem from="1615706810221" duration="43000" />
       <workItem from="1615706869013" duration="84000" />
       <workItem from="1615706965707" duration="9826000" />
+      <workItem from="1615873538213" duration="681000" />
+      <workItem from="1615874432571" duration="569000" />
+      <workItem from="1615888587631" duration="1405000" />
+      <workItem from="1615902968402" duration="669000" />
+      <workItem from="1616208833146" duration="87000" />
     </task>
     <servers />
   </component>
