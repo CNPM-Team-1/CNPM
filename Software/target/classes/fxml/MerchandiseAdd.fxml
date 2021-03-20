@@ -5,28 +5,40 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" stylesheets="@../css/style.css" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.MerchandiseAddController">
+<AnchorPane prefHeight="354.0" prefWidth="601.0" style="-fx-background-color: withe;" stylesheets="@../css/style.css" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.MerchandiseAddController">
    <children>
-      <JFXButton fx:id="addButton" layoutX="148.0" layoutY="298.0" onAction="#Add" styleClass="add-button" stylesheets="@../css/style.css" text="Add" />
-      <JFXButton fx:id="cancelButton" layoutX="396.0" layoutY="298.0" onAction="#Cancel" styleClass="add-button" stylesheets="@../css/style.css" text="Cancel" />
-      <Label fx:id="idLB" layoutX="32.0" layoutY="110.0" text="ID" />
-      <Label fx:id="typeLB" layoutX="32.0" layoutY="213.0" text="Type" />
-      <Label fx:id="priceLB" layoutX="310.0" layoutY="160.0" text="Price" />
-      <Label fx:id="imLB" layoutX="310.0" layoutY="213.0" text="Import Price" />
-      <Label fx:id="nameLB" layoutX="32.0" layoutY="160.0" text="Name" />
-      <Label fx:id="branchLB" layoutX="310.0" layoutY="110.0" text="Branch" />
-      <TextField fx:id="idTF" layoutX="85.0" layoutY="105.0" />
-      <TextField fx:id="branchTF" layoutX="407.0" layoutY="105.0" />
-      <TextField fx:id="nameTF" layoutX="85.0" layoutY="155.0" />
-      <TextField fx:id="priceTF" layoutX="407.0" layoutY="155.0" />
-      <TextField fx:id="importPriceTF" layoutX="407.0" layoutY="208.0" />
-      <TextField fx:id="typeTF" layoutX="85.0" layoutY="208.0" />
+      <JFXButton fx:id="addButton" layoutX="454.0" layoutY="276.0" onAction="#Add" stylesheets="@../css/style.css" text="Lưu">
+         <styleClass>
+            <String fx:value="save-button" />
+            <String fx:value="button-font" />
+         </styleClass></JFXButton>
+      <JFXButton fx:id="cancelButton" layoutX="85.0" layoutY="276.0" onAction="#Cancel" stylesheets="@../css/style.css" text="Huỷ">
+         <styleClass>
+            <String fx:value="button-font" />
+            <String fx:value="close-button" />
+         </styleClass></JFXButton>
+      <Label fx:id="idLB" layoutX="32.0" layoutY="110.0" styleClass="font" stylesheets="@../css/style.css" text="ID" />
+      <Label fx:id="typeLB" layoutX="32.0" layoutY="213.0" styleClass="font" stylesheets="@../css/style.css" text="Loại" />
+      <Label fx:id="priceLB" layoutX="310.0" layoutY="160.0" styleClass="font" stylesheets="@../css/style.css" text="Giá" />
+      <Label fx:id="imLB" layoutX="310.0" layoutY="213.0" styleClass="font" stylesheets="@../css/style.css" text="Giá Nhập khẩu" />
+      <Label fx:id="nameLB" layoutX="32.0" layoutY="160.0" styleClass="font" stylesheets="@../css/style.css" text="Họ Tên" />
+      <Label fx:id="branchLB" layoutX="310.0" layoutY="110.0" styleClass="font" stylesheets="@../css/style.css" text="Thương Hiệu" />
+      <TextField fx:id="idTF" layoutX="85.0" layoutY="105.0" promptText="Nhập ID " />
+      <TextField fx:id="branchTF" layoutX="407.0" layoutY="105.0" promptText="Nhập Thương Hiệu" />
+      <TextField fx:id="nameTF" layoutX="85.0" layoutY="155.0" promptText=" Nhập Họ Tên" />
+      <TextField fx:id="priceTF" layoutX="407.0" layoutY="155.0" promptText="Nhập Giá" />
+      <TextField fx:id="importPriceTF" layoutX="407.0" layoutY="208.0" promptText="Nhập Giá Nhập Khẩu" />
+      <TextField fx:id="typeTF" layoutX="85.0" layoutY="208.0" promptText="Nhập Loại" />
+      <Label layoutX="32.0" layoutY="23.0" prefHeight="51.0" prefWidth="243.0" styleClass="top-font" stylesheets="@../css/style.css" text="Thêm Hàng Hoá">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
    </children>
    <styleClass>
+      <String fx:value="top-font" />
       <String fx:value="bodyborder" />
-      <String fx:value="borderoutline" />
-      <String fx:value="close-button" />
-      <String fx:value="navigation-hbox" />
    </styleClass>
 </AnchorPane>
