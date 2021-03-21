@@ -19,8 +19,10 @@ public class Merchandise {
     private Integer importPrice;
     @Column(name = "price")
     private Integer price;
+    @Temporal(TemporalType.DATE)
     @Column(name = "created_date")
     private Date createdDate;
+    @Temporal(TemporalType.DATE)
     @Column(name = "updated_date")
     private Date updatedDate;
 

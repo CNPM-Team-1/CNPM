@@ -36,11 +36,12 @@
 		<!-- Names of the annotated entity class -->
 		<mapping class="entities.Customer"/>
 		<mapping class="entities.Employee"/>
+		<mapping class="entities.EmployeeRoles"/>
 		<mapping class="entities.Merchandise"/>
 		<mapping class="entities.Orders"/>
 		<mapping class="entities.OrderDetail"/>
+		<mapping class="entities.Permissions"/>
 		<mapping class="entities.Receipt"/>
-		<mapping class="entities.RolesDetail"/>
 		<mapping class="entities.Roles"/>
 		<mapping class="entities.RolesDetail"/>
 		<mapping class="entities.Salary"/>

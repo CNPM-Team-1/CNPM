@@ -1,6 +1,8 @@
 package controllers;
 
 import com.jfoenix.controls.JFXButton;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -20,28 +22,26 @@ public class MainNavigatorController implements Initializable {
 
     @FXML
     private AnchorPane Host;
-
     @FXML
     private JFXButton orderButton;
-
     @FXML
     private JFXButton customerButton;
-
     @FXML
     private JFXButton receiptButton;
-
     @FXML
     private JFXButton employeeButton;
-
     @FXML
     private JFXButton merchandiseButton;
-
     @FXML
     private JFXButton statisticButton;
-
+    @FXML
+    private JFXButton rolesButton;
+    @FXML
+    private JFXButton timeTableButton;
     @FXML
     private ImageView close;
-
+    @FXML
+    private ImageView minimize;
     @FXML
     private AnchorPane contentPanel;
 
@@ -60,6 +60,11 @@ public class MainNavigatorController implements Initializable {
         StageHelper.closeStage(mouseEvent);
     }
 
+    @FXML
+    void minimizeWindow(MouseEvent event) {
+        StageHelper.minimizeStage(event);
+    }
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         try {
@@ -69,6 +74,7 @@ public class MainNavigatorController implements Initializable {
             grid.add((AnchorPane) FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("fxml/EmployeeCategory.fxml"))));
             grid.add((AnchorPane) FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("fxml/MerchandiseCategory.fxml"))));
             grid.add((AnchorPane) FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("fxml/Statistic.fxml"))));
+            grid.add((AnchorPane) FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("fxml/RolesCategory.fxml"))));
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
             System.out.println(Arrays.toString(ex.getStackTrace()));
@@ -109,6 +115,12 @@ public class MainNavigatorController implements Initializable {
     void openStatistic(ActionEvent event) {
         contentPanel.getChildren().clear();
         contentPanel.getChildren().add(grid.get(5));
+    }
+
+    @FXML
+    void openRolesCategory(ActionEvent event) {
+        contentPanel.getChildren().clear();
+        contentPanel.getChildren().add(grid.get(6));
     }
 
 }
