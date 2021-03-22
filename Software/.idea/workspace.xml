@@ -5,21 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b5ea20d7-1c8e-440f-81c2-ca4792b5ccf8" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/dataModel/MerchandiseModel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/MerchandiseAddController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/MerchandiseAddController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/controllers/MerchandiseCategoryController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/MerchandiseCategoryController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/MerchandiseUpdateController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/MerchandiseUpdateController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/entities/Merchandise.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/entities/Merchandise.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/utils/NumberHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/utils/NumberHelper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/utils/TableHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/utils/TableHelper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/fxml/MerchandiseUpdate.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/fxml/MerchandiseUpdate.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controllers/MerchandiseAddController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controllers/MerchandiseAddController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/repositories/MerchandiseRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/repositories/MerchandiseRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/controllers/MerchandiseCategoryController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controllers/MerchandiseCategoryController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controllers/MerchandiseUpdateController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controllers/MerchandiseUpdateController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/fxml/MerchandiseUpdate.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/fxml/MerchandiseUpdate.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/utils/NumberHelper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/utils/NumberHelper.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/utils/TableHelper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/utils/TableHelper.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -110,19 +99,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
-      <option name="arquillianRunConfiguration">
-        <value>
-          <option name="containerStateName" value="" />
-        </value>
-      </option>
-      <option name="TEST_OBJECT" value="CLASS" />
-      <properties />
-      <listeners />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <list>
       <item itemvalue="Application.App" />
       <item itemvalue="Application.Test" />
@@ -182,6 +158,7 @@
       <workItem from="1616322917178" duration="9427000" />
       <workItem from="1616403631287" duration="8050000" />
       <workItem from="1616418902241" duration="2518000" />
+      <workItem from="1616431335183" duration="635000" />
     </task>
     <servers />
   </component>

@@ -63,8 +63,8 @@ public class MerchandiseCategoryController implements Initializable {
         Session session = factory.getCurrentSession();
 
         List<Merchandise> merchandiseList = MerchandiseRepository.getAll(session);
+        assert merchandiseList != null;
         TableHelper.setMerchandiseTable(merchandiseList, contentTable, nameCol, branchCol, priceCol);
-
     }
 
     @FXML
@@ -106,7 +106,18 @@ public class MerchandiseCategoryController implements Initializable {
 
     @FXML
     void search(ActionEvent event) {
+        try {
+            SessionFactory factory = HibernateUtils.getSessionFactory();
+            Session session = factory.getCurrentSession();
 
+            String keySearch = searchBar.getText();
+            List<Merchandise> merchandiseList = MerchandiseRepository.getLikeNameAndBranch(session, keySearch);
+            assert merchandiseList != null;
+            TableHelper.setMerchandiseTable(merchandiseList, contentTable, nameCol, branchCol, priceCol);
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+            System.out.println(Arrays.toString(ex.getStackTrace()));
+        }
     }
 
     // Refresh table
@@ -115,6 +126,7 @@ public class MerchandiseCategoryController implements Initializable {
         Session session = factory.getCurrentSession();
 
         List<Merchandise> merchandiseList = MerchandiseRepository.getAll(session);
+        assert merchandiseList != null;
         TableHelper.setMerchandiseTable(merchandiseList, contentTable, nameCol, branchCol, priceCol);
     }
 }
