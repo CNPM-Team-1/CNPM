@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3307
--- Generation Time: Mar 20, 2021 at 01:20 AM
+-- Generation Time: Mar 22, 2021 at 09:35 AM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.2.34
 
@@ -70,7 +70,8 @@ CREATE TABLE `employee` (
 --
 
 INSERT INTO `employee` (`id`, `full_name`, `birth_day`, `phone`, `email`, `password`, `created_date`, `updated_date`) VALUES
-('1a2e63bb-76d5-4375-9c84-96d246522224', 'Admin', '2021-03-19', '0908215136', 'admin@gmail.com', '$2a$09$OKsae4EItSmPiqZPkaXYIuYOM5kgVkhMbqxXjdMIv0LqA5RMN9A9u', '2021-03-18', NULL);
+('1a2e63bb-76d5-4375-9c84-96d246522224', 'Admin', '2021-03-19', '0908215136', 'admin@gmail.com', '$2a$09$OKsae4EItSmPiqZPkaXYIuYOM5kgVkhMbqxXjdMIv0LqA5RMN9A9u', '2021-03-18', NULL),
+('81915f39-dd3e-42e7-8db0-d7dc8bb3f783', 'Fast Account', '2021-03-21', '0908706541', 'a', '$2a$09$ndFgZtuc4Q.s.xOJEGB6uOZ7xnFcySX.5DRATm65PDHrdgyGPuhry', '2021-03-21', NULL);
 
 -- --------------------------------------------------------
 
@@ -89,7 +90,8 @@ CREATE TABLE `employee_roles` (
 --
 
 INSERT INTO `employee_roles` (`id`, `roles_id`, `employee_id`) VALUES
-('b828ec0d-6c00-4762-ab12-b79251f19383', 'c3faf74c-563b-48dc-9eaf-d5277273899e', '1a2e63bb-76d5-4375-9c84-96d246522224');
+('b828ec0d-6c00-4762-ab12-b79251f19383', 'c3faf74c-563b-48dc-9eaf-d5277273899e', '1a2e63bb-76d5-4375-9c84-96d246522224'),
+('58bfa103-ea60-4384-a6e7-df54fb0a84f1', 'c3faf74c-563b-48dc-9eaf-d5277273899e', '81915f39-dd3e-42e7-8db0-d7dc8bb3f783');
 
 -- --------------------------------------------------------
 
@@ -98,30 +100,24 @@ INSERT INTO `employee_roles` (`id`, `roles_id`, `employee_id`) VALUES
 --
 
 CREATE TABLE `merchandise` (
-  `id` text COLLATE utf8mb4_vietnamese_ci DEFAULT NULL,
+  `id` text COLLATE utf8mb4_vietnamese_ci NOT NULL,
   `name` text COLLATE utf8mb4_vietnamese_ci DEFAULT NULL,
   `type` text COLLATE utf8mb4_vietnamese_ci DEFAULT NULL,
   `branch` text COLLATE utf8mb4_vietnamese_ci DEFAULT NULL,
-  `import_price` int(11) DEFAULT NULL,
-  `price` int(11) DEFAULT NULL,
+  `import_price` int(20) DEFAULT NULL,
+  `price` int(20) DEFAULT NULL,
   `created_date` date DEFAULT NULL,
   `updated_date` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_vietnamese_ci;
 
--- --------------------------------------------------------
-
 --
--- Table structure for table `order`
+-- Dumping data for table `merchandise`
 --
 
-CREATE TABLE `order` (
-  `id` text COLLATE utf8mb4_vietnamese_ci DEFAULT NULL,
-  `type` text COLLATE utf8mb4_vietnamese_ci DEFAULT NULL,
-  `customer_id` text COLLATE utf8mb4_vietnamese_ci DEFAULT NULL,
-  `status` text COLLATE utf8mb4_vietnamese_ci DEFAULT NULL,
-  `created_date` date DEFAULT NULL,
-  `updated_date` date DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_vietnamese_ci;
+INSERT INTO `merchandise` (`id`, `name`, `type`, `branch`, `import_price`, `price`, `created_date`, `updated_date`) VALUES
+('6cee9f21-345e-4348-b516-da65870f1bed', 'iphone 12', 'điện thoại', 'apple', 20000000, 21000000, NULL, NULL),
+('407730fb-f46a-437b-9641-22c6f076696f', 'ốp lưng iphone 12', 'ốp lưng', NULL, 15000, 89000, NULL, NULL),
+('421b6d29-f3c1-4cf3-9917-37fe0aa86ec8', 'ốp lưng iphone 11', 'ốp lưng', NULL, 15000, 89000, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -131,12 +127,20 @@ CREATE TABLE `order` (
 
 CREATE TABLE `orders` (
   `id` varchar(255) COLLATE utf8mb4_vietnamese_ci NOT NULL,
-  `created_date` varchar(255) COLLATE utf8mb4_vietnamese_ci DEFAULT NULL,
   `customer_id` varchar(255) COLLATE utf8mb4_vietnamese_ci DEFAULT NULL,
   `status` varchar(255) COLLATE utf8mb4_vietnamese_ci DEFAULT NULL,
   `type` varchar(255) COLLATE utf8mb4_vietnamese_ci DEFAULT NULL,
+  `created_date` date DEFAULT NULL,
   `updated_date` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_vietnamese_ci;
+
+--
+-- Dumping data for table `orders`
+--
+
+INSERT INTO `orders` (`id`, `customer_id`, `status`, `type`, `created_date`, `updated_date`) VALUES
+('2185eb17-85fb-480a-8f14-0c5fe0cae39d', '4ddb0779-2394-440a-b015-75d7a1290f2a', 'COMPLETED', 'xuất', NULL, NULL),
+('a631029f-52c0-4cb6-8d5e-71abae9d4a81', '7f91758c-02ac-4538-a606-d9dbb47b5397', 'COMPLETED', 'xuất', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -151,6 +155,15 @@ CREATE TABLE `order_detail` (
   `quantity` int(11) DEFAULT NULL,
   `amount` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_vietnamese_ci;
+
+--
+-- Dumping data for table `order_detail`
+--
+
+INSERT INTO `order_detail` (`id`, `order_id`, `merchandise_id`, `quantity`, `amount`) VALUES
+('f66f0a2b-4c26-4b91-8f10-c9150a9cd2b7', '2185eb17-85fb-480a-8f14-0c5fe0cae39d', '6cee9f21-345e-4348-b516-da65870f1bed', 1, 21000000),
+('5217aacf-f9bd-480f-ab3d-47b8bd4ea163', '2185eb17-85fb-480a-8f14-0c5fe0cae39d', '407730fb-f46a-437b-9641-22c6f076696f', 1, 89000),
+('6bdef7a0-7cbf-460d-8b40-6f0ea9e2b0b1', 'a631029f-52c0-4cb6-8d5e-71abae9d4a81', '421b6d29-f3c1-4cf3-9917-37fe0aa86ec8', 2, 178000);
 
 -- --------------------------------------------------------
 
@@ -288,9 +301,9 @@ CREATE TABLE `salary_detail` (
 
 CREATE TABLE `work_shift` (
   `id` text COLLATE utf8mb4_vietnamese_ci DEFAULT NULL,
-  `shift` text COLLATE utf8mb4_vietnamese_ci DEFAULT NULL,
-  `start_time` time DEFAULT NULL,
-  `end_time` time DEFAULT NULL,
+  `shift` text COLLATE utf8mb4_vietnamese_ci NOT NULL,
+  `start_time` text COLLATE utf8mb4_vietnamese_ci NOT NULL,
+  `end_time` text COLLATE utf8mb4_vietnamese_ci NOT NULL,
   `created_date` date DEFAULT NULL,
   `updated_date` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_vietnamese_ci;
