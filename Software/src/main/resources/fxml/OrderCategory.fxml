@@ -15,14 +15,14 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="662.0" prefWidth="1280.0" style="-fx-background-color: F5F8F5;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.OrderCategoryController">
+<AnchorPane prefHeight="662.0" prefWidth="1203.0" style="-fx-background-color: F5F8F5;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.OrderCategoryController">
    <children>
-      <AnchorPane layoutX="23.0" layoutY="59.0" prefHeight="591.0" prefWidth="1233.0" style="-fx-background-radius: 5px; -fx-background-color: FFFFFF; -fx-border-color: #ebecee; -fx-border-radius: 5px;">
+      <AnchorPane layoutX="23.0" layoutY="59.0" prefHeight="591.0" prefWidth="1157.0" style="-fx-background-radius: 5px; -fx-background-color: FFFFFF; -fx-border-color: #ebecee; -fx-border-radius: 5px;">
          <opaqueInsets>
             <Insets />
          </opaqueInsets>
          <children>
-            <GridPane layoutX="7.0" layoutY="14.0" prefHeight="552.0" prefWidth="1218.0">
+            <GridPane prefHeight="552.0" prefWidth="1128.0" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="7.0" AnchorPane.rightAnchor="7.0" AnchorPane.topAnchor="14.0">
               <columnConstraints>
                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
               </columnConstraints>
@@ -31,19 +31,19 @@
                 <RowConstraints minHeight="10.0" prefHeight="475.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <TableView prefHeight="340.0" prefWidth="1218.0" styleClass="table-font" stylesheets="@../css/style.css" GridPane.rowIndex="1">
+                  <TableView focusTraversable="false" prefHeight="340.0" prefWidth="1218.0" styleClass="table-font" stylesheets="@../css/style.css" GridPane.rowIndex="1">
                     <columns>
                         <TableColumn prefWidth="116.0" text="Ngày tạo" />
                       <TableColumn prefWidth="257.0" text="Khách hàng" />
-                      <TableColumn prefWidth="252.0" text="Tổng số lượng" />
-                        <TableColumn prefWidth="198.0" text="Tổng tiền" />
-                        <TableColumn prefWidth="224.0" text="Trạng thái thanh toán" />
-                        <TableColumn minWidth="4.0" prefWidth="170.0" text="Loại" />
+                      <TableColumn prefWidth="199.0" text="Tổng số lượng" />
+                        <TableColumn prefWidth="224.0" text="Tổng tiền" />
+                        <TableColumn prefWidth="202.0" text="Trạng thái thanh toán" />
+                        <TableColumn minWidth="4.0" prefWidth="142.0" text="Loại" />
                     </columns>
                   </TableView>
                   <HBox prefHeight="100.0" prefWidth="1218.0">
                      <children>
-                        <TextField fx:id="searchBar" prefHeight="33.0" prefWidth="222.0" promptText="Nhập tên khách hàng" stylesheets="@../css/style.css">
+                        <TextField fx:id="searchBar" focusTraversable="false" prefHeight="33.0" prefWidth="222.0" promptText="Nhập tên khách hàng" stylesheets="@../css/style.css">
                            <font>
                               <Font size="17.0" />
                            </font>
@@ -73,7 +73,7 @@
                               <String fx:value="font" />
                            </styleClass>
                            <HBox.margin>
-                              <Insets left="726.0" top="7.0" />
+                              <Insets left="649.0" top="7.0" />
                            </HBox.margin>
                            <cursor>
                               <Cursor fx:constant="HAND" />

@@ -1,8 +1,13 @@
 .bodyborder {
-    -fx-background-radius: 10px;
     -fx-background-color: #fff;
-    -fx-border-color: black;
-    -fx-border-radius: 5px;
+    /*-fx-border-color: black;*/
+    /*-fx-border-radius: 5px;*/
+    /*-fx-background-radius: 10px;*/
+}
+
+.shadow {
+    -fx-effect: dropshadow(three-pass-box, rgba(110,46,4, 0.8), 10, 0, 0, 0);
+    -fx-background-insets: 0.5;
 }
 
 .borderoutline {
@@ -15,14 +20,11 @@
 }
 
 .navigation-body-border {
-    -fx-background-radius: 5px;
+    /*-fx-background-radius: 5px;*/
     -fx-background-color: #f5f8f5;
 }
 
-.navigation-radius {
-    -fx-background-radius: 5px;
-    -fx-background-color: #fff;
-}
+/* Font */
 
 .top-font {
     -fx-font-weight: 300;
@@ -45,16 +47,57 @@
     -fx-font-family: Arial, sans-serif;
 }
 
-.login-text-field {
-    -fx-background-radius: 10px;
-}
-
 .search-bar {
     -fx-background-radius: 5px;
     -fx-font-size: 18px;
 }
 
+.software-name-font {
+    -fx-font-family: "Lato Semibold";
+    -fx-font-size: 17px;
+    -fx-font-weight: 700;
+}
+
+/* /Font*/
+
+.login-text-field {
+    -fx-background-radius: 10px;
+}
+
+/* Top Nav */
+
+.navigation-hbox {
+    -fx-background-color: #008bfe;
+    -fx-pref-height: 46px;
+}
+
+.navigation-button {
+    -fx-font-weight: 700;
+    -fx-font-size: 20px;
+    -fx-text-fill: #fff;
+}
+
+.navigation-button:hover {
+    -fx-background-color: #1e2022;
+}
+
+/* / Top Nax */
+
+/* Left Nav */
+
+.left-nav-button-font {
+    -fx-font-family: "Lato Semibold";
+    -fx-font-size: 11px;
+}
+
+.left-nav {
+    -fx-background-color: #262c32;
+}
+
+/* / Left Nav */
+
 /* Button */
+
 /*.login-button {*/
 /*    -fx-background-color: rgba(189, 89, 212, .8);*/
 /*    -fx-text-fill: #fff;*/
@@ -67,7 +110,8 @@
 /*}*/
 
 .login-button {
-    -fx-background-color: #0066ff;
+    /*-fx-background-color: #0066ff;*/
+    -fx-background-color: #008bfe;
     -fx-background-radius: 5px;
     -fx-font-size: 18px;
     -fx-text-fill: white;
@@ -75,11 +119,12 @@
 
 .login-button:hover {
     -fx-background-color: white;
-    -fx-text-fill: #0066ff;
-    -fx-border-color: #0066ff;
+    /*-fx-text-fill: #0066ff;*/
+    /*-fx-border-color: #0066ff;*/
+    -fx-text-fill: #008bfe;
+    -fx-border-color: #008bfe;
     -fx-border-radius: 5px;
 }
-
 
 .add-button {
     -fx-background-color: rgba(189, 89, 212, .8);
@@ -120,7 +165,8 @@
 }
 
 .update-button {
-    -fx-background-color: #0066ff;
+    /*-fx-background-color: #0066ff;*/
+    -fx-background-color: #008bfe;
     -fx-background-radius: 5px;
     -fx-font-size: 16px;
     -fx-text-fill: white;
@@ -128,14 +174,17 @@
 
 .update-button:hover {
     -fx-background-color: white;
-    -fx-border-color: #0066ff;
+    /*-fx-border-color: #0066ff;*/
+    /*-fx-text-fill: #0066ff;*/
+    -fx-border-color: #008bfe;
+    -fx-text-fill: #008bfe;
     -fx-border-radius: 5px;
     -fx-background-radius: 5px;
-    -fx-text-fill: #0066ff;
 }
 
 .save-button {
-    -fx-background-color: #0066ff;
+    /*-fx-background-color: #0066ff;*/
+    -fx-background-color: #008bfe;
     -fx-background-radius: 5px;
     -fx-font-size: 16px;
     -fx-text-fill: white;
@@ -143,30 +192,13 @@
 
 .save-button:hover {
     -fx-background-color: white;
-    -fx-border-color: #0066ff;
+    /*-fx-border-color: #0066ff;*/
+    /*-fx-text-fill: #0066ff;*/
+    -fx-border-color: #008bfe;
+    -fx-text-fill: #008bfe;
     -fx-background-radius: 5px;
     -fx-border-radius: 5px;
     -fx-border-width: 1px;
-    -fx-text-fill: #0066ff;
-}
-
-.navigation-hbox {
-    /*-fx-border-color: #ffffff;*/
-    -fx-background-color: #88c94d;
-}
-
-.navigation-button {
-    -fx-font-weight: 700;
-    -fx-font-size: 20px;
-    /*-fx-border-color: #ffffff;*/
-    /*-fx-border-width: 0px 1px 0px 1px;*/
-    -fx-text-fill: #fff;
-}
-
-.navigation-button:hover {
-    -fx-border-color: #000000;
-    -fx-border-width: 0px 0px 3px 0px;
-    -fx-text-fill: #fff;
 }
 
 .add-button1 {
@@ -179,6 +211,7 @@
 .text-color {
     -fx-text-fill: #000000;
 }
+
 .delete-button {
     -fx-background-color: #ff3548;
     -fx-background-radius: 5px;
@@ -217,15 +250,36 @@
 .table-row-cell:hover {
     -fx-cursor: hand;
 }
+
 /* /table */
 
 /* Dialog */
-.myDialog{
+.myDialog {
     -fx-background-color: #fff;
     -fx-border-color: black;
 }
 
-.myDialog > *.label.content{
+.myDialog > *.label.content {
     -fx-font-size: 16px;
     -fx-font-weight: bold;
 }
+
+/* Exit and minimize windows */
+
+.exit {
+    -fx-image: url("../image/close_button.png");
+}
+
+.exit:hover {
+    -fx-image: url("../image/close_button_hover.png");
+}
+
+.minimize {
+    -fx-image: url("../image/minimize_button.png");
+}
+
+.minimize:hover {
+    -fx-image: url("../image/minimize_button_hover.png");
+}
+
+/* /Exit and minimize windows */
