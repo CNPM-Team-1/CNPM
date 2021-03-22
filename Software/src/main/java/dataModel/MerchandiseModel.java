@@ -1,35 +1,21 @@
-package entities;
+package dataModel;
 
-import javax.persistence.*;
 import java.util.Date;
 
-@Entity
-@Table(name = "merchandise")
-public class Merchandise {
-    @Id
-    @Column(name = "id")
+public class MerchandiseModel {
     private String id;
-    @Column(name = "name")
     private String name;
-    @Column(name = "type")
     private String type;
-    @Column(name = "branch")
     private String branch;
-    @Column(name = "import_price")
     private String importPrice;
-    @Column(name = "price")
     private String price;
-    @Temporal(TemporalType.DATE)
-    @Column(name = "created_date")
     private Date createdDate;
-    @Temporal(TemporalType.DATE)
-    @Column(name = "updated_date")
     private Date updatedDate;
 
-    public Merchandise() {
+    public MerchandiseModel() {
     }
 
-    public Merchandise(String id, String name, String type, String branch, String importPrice, String price, Date createdDate, Date updatedDate) {
+    public MerchandiseModel(String id, String name, String type, String branch, String importPrice, String price, Date createdDate, Date updatedDate) {
         this.id = id;
         this.name = name;
         this.type = type;
@@ -102,15 +88,5 @@ public class Merchandise {
 
     public void setUpdatedDate(Date updatedDate) {
         this.updatedDate = updatedDate;
-    }
-
-    @PrePersist
-    protected void onCreate() {
-        createdDate = new Date();
-    }
-
-    @PreUpdate
-    protected void onUpdate() {
-        updatedDate = new Date();
     }
 }
