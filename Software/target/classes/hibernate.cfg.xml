@@ -8,7 +8,7 @@
 		<property name="connection.driver_class">com.mysql.jdbc.Driver</property>
 		<property name="connection.url">jdbc:mysql://localhost:3307/cnpm-cellphones?serverTimezone=UTC</property>
 		<property name="connection.username">root</property>
-		<property name="connection.password" />
+		<property name="connection.password"></property>
 
 		<!-- JDBC connection pool, use Hibernate internal connection pool -->
 		<property name="connection.pool_size">5</property>

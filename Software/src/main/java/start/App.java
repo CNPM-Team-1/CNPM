@@ -23,7 +23,6 @@ public class App extends Application {
     public void start(final Stage primaryStage) {
         try {
             SessionFactory factory = HibernateUtils.getSessionFactory();
-
             Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("fxml/Login.fxml"));
             StageHelper.startStage(root);
 

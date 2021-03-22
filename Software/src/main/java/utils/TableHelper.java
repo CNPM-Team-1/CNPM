@@ -1,8 +1,10 @@
 package utils;
 
 import dataModel.OrdersModel;
-import entities.Customer;
 import entities.Orders;
+import dataModel.MerchandiseModel;
+import entities.Customer;
+import entities.Merchandise;
 import entities.Permissions;
 import entities.Roles;
 import entities.Employee;
@@ -108,6 +110,29 @@ public class TableHelper {
         totalAmountCol.setCellValueFactory(new PropertyValueFactory<>("totalAmount"));
         statusCol.setCellValueFactory(new PropertyValueFactory<>("status"));
         typeCol.setCellValueFactory(new PropertyValueFactory<>("ordersType"));
+
+        // Add item table
+        table.getItems().clear();
+        table.setItems(data);
+    }
+    
+    public static void setMerchandiseTable(List<Merchandise> merchandiseList,
+                                        TableView<Merchandise> table,
+                                        TableColumn<Merchandise, String> nameCol,
+                                        TableColumn<Merchandise, String> branchCol,
+                                        TableColumn<Merchandise, Integer> priceCol) {
+        table.getItems().clear();
+        // Add comma for price and import price
+        for (Merchandise item : merchandiseList) {
+            item.setImportPrice(NumberHelper.addComma(item.getImportPrice()));
+            item.setPrice(NumberHelper.addComma(item.getPrice()));
+        }
+        ObservableList<Merchandise> data = FXCollections.observableList(merchandiseList);
+
+        // Associate data with columns
+        nameCol.setCellValueFactory(new PropertyValueFactory<>("name"));
+        branchCol.setCellValueFactory(new PropertyValueFactory<>("branch"));
+        priceCol.setCellValueFactory(new PropertyValueFactory<>("price"));
 
         // Add item table
         table.getItems().clear();
