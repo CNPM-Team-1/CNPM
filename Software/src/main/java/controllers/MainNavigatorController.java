@@ -18,7 +18,6 @@ import java.util.*;
 public class MainNavigatorController implements Initializable {
 
     static List<AnchorPane> grid = new ArrayList<>();
-    static int idx_cur = 0;
 
     @FXML
     private AnchorPane Host;

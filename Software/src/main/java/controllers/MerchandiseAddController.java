@@ -1,91 +1,91 @@
 package controllers;
 
-
 import com.jfoenix.controls.JFXButton;
 import entities.Merchandise;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
-import javafx.stage.Stage;
+import javafx.scene.layout.AnchorPane;
 import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import utils.AlertBoxHelper;
 import utils.HibernateUtils;
 import utils.StageHelper;
+import utils.UUIDHelper;
+import validation.MerchandiseValidation;
 
-import javax.swing.*;
-import java.sql.Connection;
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import java.util.List;
 
-public class MerchandiseAddController extends JFrame  {
-
+public class MerchandiseAddController {
+    @FXML
+    private AnchorPane host;
+    @FXML
+    private TextField nameHolder;
+    @FXML
+    private TextField priceHolder;
+    @FXML
+    private TextField importPriceHolder;
+    @FXML
+    private TextField typeHolder;
+    @FXML
+    private TextField branchHolder;
     @FXML
     private JFXButton addButton;
-
     @FXML
     private JFXButton cancelButton;
+    @FXML
+    private ImageView close;
+    @FXML
+    private Label errorMessage;
 
     @FXML
-    private Label idLB;
-
-    @FXML
-    private Label typeLB;
-
-    @FXML
-    private Label priceLB;
-
-    @FXML
-    private Label imLB;
-
-    @FXML
-    private Label nameLB;
-
-    @FXML
-    private Label branchLB;
-
-    @FXML
-    private TextField idTF;
-
-    @FXML
-    private TextField branchTF;
-
-    @FXML
-    private TextField nameTF;
-
-    @FXML
-    private TextField priceTF;
-
-    @FXML
-    private TextField importPriceTF;
-
-    @FXML
-    private TextField typeTF;
-    private Connection conn;
-
-    @FXML
-    void Add(ActionEvent event) {
-        SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
-        Date date = new Date();
-        System.out.println(formatter.format(date));
-        Session session = HibernateUtils.getSessionFactory().openSession();
-        session.beginTransaction();
-        //Add new Employee object
-        Merchandise emp = new Merchandise();
-        emp.setId(idTF.getText());
-        emp.setName(nameTF.getText());
-        emp.setType(typeTF.getText());
-        emp.setBranch(branchTF.getText());
-        emp.setPrice(Integer.parseInt(priceTF.getText()));
-        emp.setImportPrice(Integer.parseInt(importPriceTF.getText()));
-        emp.setCreatedDate(date);
-        emp.setUpdatedDate(date);
-        session.save(emp);
-        session.getTransaction().commit();
-    }
-    @FXML
-    void Cancel(ActionEvent event) {
+    void close(MouseEvent event) {
         StageHelper.closeStage(event);
+        // Unhide host
+        AnchorPane host = MainNavigatorController.instance.getHost();
+        host.setDisable(false);
+    }
+
+    @FXML
+    void save(ActionEvent event) {
+        SessionFactory factory = HibernateUtils.getSessionFactory();
+        Session session = factory.getCurrentSession();
+
+        Merchandise merchandise = new Merchandise();
+        merchandise.setId(UUIDHelper.generateType4UUID().toString());
+        merchandise.setName(nameHolder.getText());
+        merchandise.setBranch(branchHolder.getText());
+        merchandise.setType(typeHolder.getText());
+        merchandise.setImportPrice(Integer.parseInt(importPriceHolder.getText()));
+        merchandise.setPrice(Integer.parseInt(priceHolder.getText()));
+
+        List<String> validateInsert = MerchandiseValidation.validateInsert(session, merchandise);
+        if (validateInsert.size() == 0) {
+            // Save new merchandise
+            session = factory.openSession();
+            session.beginTransaction();
+            session.save(merchandise);
+            session.getTransaction().commit();
+
+            // Close stage
+            StageHelper.closeStage(event);
+
+            // Show alert box
+            AlertBoxHelper.showMessageBox("Thêm thành công");
+
+            // Refresh content table
+            MerchandiseCategoryController.getInstance().refresh();
+
+            // Unhide host
+            AnchorPane host = MainNavigatorController.instance.getHost();
+            host.setDisable(false);
+        } else {
+            errorMessage.setText(validateInsert.get(0));
+            session.getTransaction().commit();
+        }
     }
 }
+

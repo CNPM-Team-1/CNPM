@@ -4,8 +4,8 @@ import javax.persistence.*;
 import java.util.Date;
 
 @Entity
-@Table(name = "order")
-public class Order {
+@Table(name = "orders")
+public class Orders {
     @Id
     @Column(name = "id")
     private String id;
@@ -20,10 +20,10 @@ public class Order {
     @Column(name = "updated_date")
     private Date updatedDate;
 
-    public Order() {
+    public Orders() {
     }
 
-    public Order(String id, String type, String customerId, String status, Date createdDate, Date updatedDate) {
+    public Orders(String id, String type, String customerId, String status, Date createdDate, Date updatedDate) {
         this.id = id;
         this.type = type;
         this.customerId = customerId;

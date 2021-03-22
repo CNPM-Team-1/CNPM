@@ -5,21 +5,37 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b5ea20d7-1c8e-440f-81c2-ca4792b5ccf8" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/resources/image/close_button_hover.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/image/customer_button.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/image/employee_button.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/image/merchandise_button.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/image/minimize_button_hover.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/image/order_button.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/image/receipt_button.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/image/roles_button.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/image/statistic_button.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/image/timetable_button.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/holders/MerchandiseHolder.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/utils/NumberHelper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/validation/MerchandiseValidation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_base_mac_14.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_base_win_14.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_controls_mac_14.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_controls_win_14.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_fxml_mac_14.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_fxml_win_14.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_graphics_mac_14.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_graphics_win_14.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Software.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Software.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/MainNavigatorController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/MainNavigatorController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/MerchandiseAddController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/MerchandiseAddController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/MerchandiseCategoryController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/MerchandiseCategoryController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/MerchandiseUpdateController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/MerchandiseUpdateController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/entities/Order.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/entities/Orders.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/repositories/MerchandiseRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/repositories/MerchandiseRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/utils/TableHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/utils/TableHelper.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/fxml/MerchandiseAdd.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/fxml/MerchandiseAdd.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/fxml/MerchandiseCategory.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/fxml/MerchandiseCategory.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/fxml/MerchandiseUpdate.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/fxml/MerchandiseUpdate.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/hibernate.cfg.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/hibernate.cfg.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controllers/MainNavigatorController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controllers/MainNavigatorController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controllers/MerchandiseAddController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controllers/MerchandiseAddController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controllers/MerchandiseCategoryController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controllers/MerchandiseCategoryController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controllers/MerchandiseUpdateController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controllers/MerchandiseUpdateController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/entities/Order.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/fxml/MerchandiseAdd.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/fxml/MerchandiseAdd.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/fxml/MerchandiseCategory.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/fxml/MerchandiseCategory.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/fxml/MerchandiseUpdate.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/fxml/MerchandiseUpdate.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/hibernate.cfg.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/hibernate.cfg.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/repositories/MerchandiseRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/repositories/MerchandiseRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/utils/TableHelper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/utils/TableHelper.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -92,13 +108,7 @@
       <option name="ALTERNATIVE_JRE_PATH" value="14" />
       <option name="MAIN_CLASS_NAME" value="start.App" />
       <module name="Software" />
-      <option name="VM_PARAMETERS" value="--module-path $PROJECT_DIR$/../../../javafx-sdk-11.0.2/lib --add-modules javafx.controls,javafx.fxml" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="start.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
+      <option name="VM_PARAMETERS" value="--module-path &quot;C:\Program Files\javafx-sdk-11.0.2\lib&quot; --add-modules javafx.controls,javafx.fxml" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -116,15 +126,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
           <option name="containerStateName" value="" />
         </value>
       </option>
-      <option name="TEST_OBJECT" value="CLASS" />
-      <properties />
-      <listeners />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -186,6 +194,7 @@
       <workItem from="1616316012377" duration="333000" />
       <workItem from="1616317849400" duration="2649000" />
       <workItem from="1616322917178" duration="9427000" />
+      <workItem from="1616403631287" duration="8050000" />
     </task>
     <servers />
   </component>

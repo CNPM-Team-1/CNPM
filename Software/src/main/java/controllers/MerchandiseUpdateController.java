@@ -1,97 +1,166 @@
 package controllers;
 
-import antlr.ASTNULLType;
 import com.jfoenix.controls.JFXButton;
+import entities.Customer;
 import entities.Merchandise;
-import javafx.collections.FXCollections;
+import holders.MerchandiseHolder;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import utils.AlertBoxHelper;
+import utils.HibernateUtils;
+import utils.NumberHelper;
 import utils.StageHelper;
+import validation.MerchandiseValidation;
 
-import java.sql.*;
+import java.net.URL;
+import java.util.List;
+import java.util.ResourceBundle;
 
-
-public class MerchandiseUpdateController {
-
+public class MerchandiseUpdateController implements Initializable {
 
     @FXML
-    private JFXButton UpdateButton;
+    private AnchorPane host;
+
+    @FXML
+    private TextField nameHolder;
+
+    @FXML
+    private TextField priceHolder;
+
+    @FXML
+    private TextField importPriceHolder;
+
+    @FXML
+    private TextField typeHolder;
+
+    @FXML
+    private TextField branchHolder;
 
     @FXML
     private JFXButton cancelButton;
 
     @FXML
-    private Label idLB;
+    private ImageView close;
 
     @FXML
-    private Label typeLB;
+    private Label errorMessage;
 
     @FXML
-    private Label priceLB;
+    private JFXButton deleteButton;
 
     @FXML
-    private Label imLB;
+    private JFXButton updateButton;
 
-    @FXML
-    private Label nameLB;
+    // Get Merchandise from MerchandiseCategoryController select(MouseEvent event)
+    MerchandiseHolder merchandiseHolder = MerchandiseHolder.getInstance();
+    Merchandise merchandise = merchandiseHolder.getMerchandise();
 
-    @FXML
-    private Label branchLB;
-
-    @FXML
-    private TextField idTF;
-
-    @FXML
-    private TextField branchTF;
-
-    @FXML
-    private TextField nameTF;
-
-    @FXML
-    private TextField priceTF;
-
-    @FXML
-    private TextField importPriceTF;
-
-    @FXML
-    private TextField typeTF;
-
-    @FXML
-    void Cancel(ActionEvent event) {
-        StageHelper.closeStage(event);
-    }
-
-    @FXML
-    void Update(ActionEvent event) {
-
-        final String DB_URL = "jdbc:mysql://localhost:8889/cnpm-cellphones";
-        String username = "root";
-        String password = "root";
-        try {
-            // Create a connection to the database.
-            Connection conn = DriverManager.getConnection(DB_URL, username, password);
-            Statement stmt = conn.createStatement();
-            String sqlStatement = "UPDATE MERCHANDISE set id = '" + idTF.getText() + "'," + "name = '" + nameTF.getText() + "',"
-                    + "type = '" + typeTF.getText() + "'," + " branch = '" + branchTF.getText() + "'," + "price =" + priceTF.getText()
-                    + ",import_price =" + importPriceTF.getText() + " where id = '" + idTF.getText() + "';";
-            System.out.println(sqlStatement);
-            stmt.executeUpdate(sqlStatement);
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        // Set Merchandise in update window
+        if (merchandise != null) {
+            nameHolder.setText(merchandise.getName());
+            priceHolder.setText(NumberHelper.addComma(merchandise.getPrice().toString()));
+            importPriceHolder.setText(NumberHelper.addComma(merchandise.getImportPrice().toString()));
+            typeHolder.setText(merchandise.getType());
+            branchHolder.setText(merchandise.getBranch());
         }
     }
-        @FXML
-    public void setTextMerchandise(Merchandise m){
-        idTF.setText(m.getId());
-        nameTF.setText(m.getName());
-        typeTF.setText(m.getType());
-        branchTF.setText(m.getBranch());
-        priceTF.setText(String.valueOf(m.getPrice()));
-        importPriceTF.setText(String.valueOf(m.getImportPrice()));
+
+    @FXML
+    void update(ActionEvent event) {
+        try {
+            // Create session
+            SessionFactory factory = HibernateUtils.getSessionFactory();
+            Session session = factory.getCurrentSession();
+            session.beginTransaction();
+
+            Merchandise merchandise = merchandiseHolder.getMerchandise();
+            merchandise.setName(nameHolder.getText());
+            merchandise.setType(typeHolder.getText());
+            merchandise.setBranch(branchHolder.getText());
+            merchandise.setPrice(Integer.parseInt(NumberHelper.removeComma(priceHolder.getText())));
+            merchandise.setImportPrice(Integer.parseInt(NumberHelper.removeComma(importPriceHolder.getText())));
+
+            List<String> validateUpdate = MerchandiseValidation.validateUpdate(session, merchandise);
+            if (validateUpdate.size() == 0) {
+                // Close stage
+                StageHelper.closeStage(event);
+
+                // Update customer info
+                session = factory.openSession();
+                session.beginTransaction();
+                session.saveOrUpdate(merchandise);
+                session.getTransaction().commit();
+
+                // Show alert box
+                AlertBoxHelper.showMessageBox("Cập nhật thành công");
+
+                // Refresh content table
+                MerchandiseCategoryController.getInstance().refresh();
+
+                // Set merchandise holder
+                merchandiseHolder.setMerchandise(merchandise);
+
+                // Unhide host
+                AnchorPane host = MainNavigatorController.instance.getHost();
+                host.setDisable(false);
+            } else {
+                errorMessage.setText(validateUpdate.get(0));
+                if (session.getTransaction().isActive()) {
+                    session.getTransaction().commit();
+                }
+            }
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+            System.out.println(ex.getStackTrace().toString());
+        }
     }
 
+    @FXML
+    void delete(ActionEvent event) {
+        SessionFactory factory = HibernateUtils.getSessionFactory();
+        Session session = factory.getCurrentSession();
 
+        // Close stage
+        StageHelper.closeStage(event);
+
+        // Delete customer
+        session.beginTransaction();
+        Merchandise merchandise = merchandiseHolder.getMerchandise();
+        session.delete(merchandise);
+        session.getTransaction().commit();
+
+        // Show alert box
+        AlertBoxHelper.showMessageBox("Xoá thành công");
+
+        // Refresh content table
+        MerchandiseCategoryController.getInstance().refresh();
+
+        // Clear customer holder
+        merchandiseHolder.setMerchandise(null);
+
+        // Unhide host
+        AnchorPane host = MainNavigatorController.instance.getHost();
+        host.setDisable(false);
+    }
+
+    @FXML
+    void close(MouseEvent event) {
+        // Clear merchandise holder
+        merchandiseHolder.setMerchandise(null);
+        StageHelper.closeStage(event);
+
+        // Unhide host
+        AnchorPane host = MainNavigatorController.instance.getHost();
+        host.setDisable(false);
+    }
 }

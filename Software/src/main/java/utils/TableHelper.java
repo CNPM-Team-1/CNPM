@@ -7,6 +7,7 @@ import entities.Roles;
 import entities.Employee;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -87,27 +88,21 @@ public class TableHelper {
         table.getItems().clear();
         table.setItems(data);
     }
+
     public static void setMerchandiseTable(List<Merchandise> MerchandiseList,
                                         TableView<Merchandise> table,
-                                        TableColumn<Merchandise, String> id,
-                                        TableColumn<Merchandise, String> name,
-                                        TableColumn<Merchandise, String> type,
-                                        TableColumn<Merchandise, String> branch,
-                                        TableColumn<Merchandise, Integer> price,
-                                        TableColumn<Merchandise, Integer> importPrice) {
+                                        TableColumn<Merchandise, String> nameCol,
+                                        TableColumn<Merchandise, String> branchCol,
+                                        TableColumn<Merchandise, Integer> priceCol) {
         table.getItems().clear();
         ObservableList<Merchandise> data = FXCollections.observableList(MerchandiseList);
 
         // Associate data with columns
-        id.setCellValueFactory(new PropertyValueFactory<>("id"));
-        name.setCellValueFactory(new PropertyValueFactory<>("name"));
-        type.setCellValueFactory(new PropertyValueFactory<>("type"));
-        branch.setCellValueFactory(new PropertyValueFactory<>("branch"));
-        price.setCellValueFactory(new PropertyValueFactory<>("price"));
-        importPrice.setCellValueFactory(new PropertyValueFactory<>("import_price"));
+        nameCol.setCellValueFactory(new PropertyValueFactory<>("name"));
+        branchCol.setCellValueFactory(new PropertyValueFactory<>("branch"));
+        priceCol.setCellValueFactory(new PropertyValueFactory<>("price"));
 
         // Add item table
-
         table.getItems().clear();
         table.setItems(data);
     }
