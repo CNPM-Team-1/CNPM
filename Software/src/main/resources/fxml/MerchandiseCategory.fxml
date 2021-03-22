@@ -21,7 +21,7 @@
             <Insets left="10.0" />
          </padding>
       </Label>
-      <AnchorPane layoutX="14.0" layoutY="57.0" prefHeight="591.0" prefWidth="1233.0" style="-fx-background-radius: 5px; -fx-background-color: #fff;">
+      <AnchorPane layoutX="23.0" layoutY="59.0" prefHeight="591.0" prefWidth="1233.0" style="-fx-background-radius: 5px; -fx-background-color: #fff; -fx-background-color: #ebecee #ebecee; -fx-border-radius: 5px;">
          <opaqueInsets>
             <Insets />
          </opaqueInsets>
@@ -33,14 +33,14 @@
                </styleClass></JFXButton>
             <TableView fx:id="tableMerchandise" layoutX="11.0" layoutY="83.0" onMouseClicked="#Update" prefHeight="489.0" prefWidth="1214.0" styleClass="table-font" stylesheets="@../css/style.css">
               <columns>
-                <TableColumn fx:id="idColumn" prefWidth="171.5" text="ID" />
-                <TableColumn fx:id="nameColumn" prefWidth="139.0" text="NAME" />
-                  <TableColumn fx:id="typeColumn" prefWidth="130.83331298828125" text="TYPE" />
-                  <TableColumn fx:id="BranchColumn" prefWidth="134.66665649414062" text="BRANCH" />
-                  <TableColumn fx:id="priceColumn" prefWidth="120.33331298828125" text="PRICE" />
-                  <TableColumn fx:id="ipriceColumn" prefWidth="164.0" text="IMPORT PRICE" />
-                  <TableColumn fx:id="createColumn" prefWidth="136.5" text="CREATE DATE" />
-                  <TableColumn fx:id="updateColumn" prefWidth="173.5" text="UPDATE DATE" />
+                <TableColumn fx:id="idColumn" prefWidth="123.5" text="ID" />
+                <TableColumn fx:id="nameColumn" prefWidth="187.0" text="NAME" />
+                  <TableColumn fx:id="typeColumn" prefWidth="145.66665649414062" text="TYPE" />
+                  <TableColumn fx:id="BranchColumn" prefWidth="145.83334350585938" text="BRANCH" />
+                  <TableColumn fx:id="priceColumn" prefWidth="124.6666259765625" text="PRICE" />
+                  <TableColumn fx:id="ipriceColumn" prefWidth="166.66668701171875" text="IMPORT PRICE" />
+                  <TableColumn fx:id="createColumn" prefWidth="151.5" text="CREATE DATE" />
+                  <TableColumn fx:id="updateColumn" prefWidth="168.8333740234375" text="UPDATE DATE" />
               </columns>
             </TableView>
             <TextField fx:id="searchTF" layoutX="34.0" layoutY="27.0" promptText="Nhập tên hoặc SĐT" stylesheets="@../css/style.css">
