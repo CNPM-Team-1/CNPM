@@ -8,7 +8,7 @@ import org.hibernate.query.Query;
 import java.util.Arrays;
 import java.util.List;
 
-public class OrderRepository {
+public class OrdersRepository {
 
     public static List<Orders> getAll(Session session) {
         try {

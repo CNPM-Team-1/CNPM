@@ -1,5 +1,6 @@
 package utils;
 
+import dataModel.OrdersModel;
 import entities.Customer;
 import entities.Orders;
 import entities.Permissions;
@@ -7,6 +8,7 @@ import entities.Roles;
 import entities.Employee;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -88,20 +90,24 @@ public class TableHelper {
         table.setItems(data);
     }
 
-    public static void setOrderTable(List<Orders> orderList,
-                                     TableView<Orders> table,
-                                     TableColumn<Orders, String> statusCol,
-                                     TableColumn<Orders, String> typeCol,
-                                     TableColumn<Orders, String> cusCol,
-                                     TableColumn<Orders, String> dateCol) {
+    public static void setOrdersTable(List<OrdersModel> ordersModelList,
+                                     TableView<OrdersModel> table,
+                                     TableColumn<OrdersModel, Date> createdDateCol,
+                                     TableColumn<OrdersModel, String> customerNameCol,
+                                     TableColumn<OrdersModel, Integer> totalQuantityCol,
+                                     TableColumn<OrdersModel, Integer> totalAmountCol,
+                                     TableColumn<OrdersModel, String> statusCol,
+                                     TableColumn<OrdersModel, String> typeCol) {
         table.getItems().clear();
-        ObservableList<Orders> data = FXCollections.observableList(orderList);
+        ObservableList<OrdersModel> data = FXCollections.observableList(ordersModelList);
 
         // Associate data with columns
+        createdDateCol.setCellValueFactory(new PropertyValueFactory<>("createdDate"));
+        customerNameCol.setCellValueFactory(new PropertyValueFactory<>("customerName"));
+        totalQuantityCol.setCellValueFactory(new PropertyValueFactory<>("totalQuantity"));
+        totalAmountCol.setCellValueFactory(new PropertyValueFactory<>("totalAmount"));
         statusCol.setCellValueFactory(new PropertyValueFactory<>("status"));
-        typeCol.setCellValueFactory(new PropertyValueFactory<>("type"));
-        cusCol.setCellValueFactory(new PropertyValueFactory<>("customerId"));
-        dateCol.setCellValueFactory(new PropertyValueFactory<>("createdDate"));
+        typeCol.setCellValueFactory(new PropertyValueFactory<>("ordersType"));
 
         // Add item table
         table.getItems().clear();

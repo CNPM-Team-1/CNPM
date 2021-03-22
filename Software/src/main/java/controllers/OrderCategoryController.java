@@ -1,9 +1,8 @@
 package controllers;
 
-import com.jfoenix.controls.JFXButton;
-import com.jfoenix.controls.JFXTextField;
 import entities.Customer;
 import entities.Orders;
+import entities.OrdersDetail;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -12,49 +11,36 @@ import javafx.scene.Parent;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.layout.AnchorPane;
+import dataModel.OrdersModel;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import repositories.OrderRepository;
+import repositories.CustomerRepository;
+import repositories.OrdersDetailRepository;
+import repositories.OrdersRepository;
 import utils.HibernateUtils;
 import utils.StageHelper;
 import utils.TableHelper;
 
-import java.awt.*;
 import java.net.URL;
 import java.util.*;
-import java.util.List;
+import java.util.stream.Collectors;
 
 public class OrderCategoryController implements Initializable {
 
     @FXML
-    private TextField search_Bar;
-
+    private TableView<OrdersModel> contentTable;
     @FXML
-    private JFXButton searchButton;
-
+    private TableColumn<OrdersModel, Date> createdDateCol;
     @FXML
-    private JFXButton addButton;
-
+    private TableColumn<OrdersModel, String> customerNameCol;
     @FXML
-    private TableView<Orders> contentTable;
-
+    private TableColumn<OrdersModel, Integer> totalQuantityCol;
     @FXML
-    private TableColumn<Orders, String> dateCol;
-
+    private TableColumn<OrdersModel, Integer> totalAmountCol;
     @FXML
-    private TableColumn<Orders, String> cusCol;
-
+    private TableColumn<OrdersModel, String> statusCol;
     @FXML
-    private TableColumn<Orders, String> quantityCol;
-
-    @FXML
-    private TableColumn<Orders, String> amountCol;
-
-    @FXML
-    private TableColumn<Orders, String> statusCol;
-
-    @FXML
-    private TableColumn<Orders, String> typeCol;
+    private TableColumn<OrdersModel, String> typeCol;
 
     // For other class cal function from this class
     public static OrderCategoryController instance;
@@ -73,8 +59,38 @@ public class OrderCategoryController implements Initializable {
         SessionFactory factory = HibernateUtils.getSessionFactory();
         Session session = factory.getCurrentSession();
 
-        List<Orders> orderList = OrderRepository.getAll(session);
-        TableHelper.setOrderTable(orderList, contentTable, statusCol, typeCol, cusCol, dateCol);
+        // get all orders and orders detail and customer
+        List<Orders> ordersList = OrdersRepository.getAll(session);
+        session = factory.openSession();
+        List<OrdersDetail>  ordersDetailList = OrdersDetailRepository.getAll(session);
+        session = factory.openSession();
+        List<Customer> customerList = CustomerRepository.getAll(session);
+
+        // Check isNull
+        assert ordersList != null : "Orders list is empty";
+        assert ordersDetailList != null : "Orders Detail list is empty";
+        assert customerList != null : "Customer list is empty";
+
+        // Set orders model
+        List<OrdersModel> ordersModelList = new ArrayList<>();
+        for (Orders item : ordersList) {
+            List<OrdersDetail> ordersDetails = ordersDetailList.stream().filter(t -> t.getOrderId().equals(item.getId())).collect(Collectors.toList());
+            Customer ordersCustomer = customerList.stream().filter(t -> t.getId().equals(item.getCustomerId())).findAny().get();
+            Integer sumQuantity = ordersDetails.stream().mapToInt(OrdersDetail::getQuantity).sum();
+            Integer sumAmount = ordersDetails.stream().mapToInt(OrdersDetail::getAmount).sum();
+
+            OrdersModel ordersModel = new OrdersModel();
+            ordersModel.setCreatedDate(item.getCreatedDate());
+            ordersModel.setCustomerName(ordersCustomer.getFullName());
+            ordersModel.setTotalQuantity(sumQuantity);
+            ordersModel.setTotalAmount(sumAmount);
+            ordersModel.setStatus(item.getStatus());
+            ordersModel.setOrdersType(item.getType());
+            ordersModelList.add(ordersModel);
+        }
+
+        // Populate table
+        TableHelper.setOrdersTable(ordersModelList, contentTable, createdDateCol, customerNameCol, totalQuantityCol, totalAmountCol, statusCol, typeCol);
     }
 
     @FXML

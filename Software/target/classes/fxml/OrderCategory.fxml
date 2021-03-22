@@ -33,12 +33,12 @@
                <children>
                   <TableView fx:id="contentTable" editable="true" focusTraversable="false" prefHeight="340.0" prefWidth="1218.0" styleClass="table-font" stylesheets="@../css/style.css" GridPane.rowIndex="1">
                     <columns>
-                        <TableColumn fx:id="dateCol" prefWidth="116.0" text="Ngày tạo" />
-                        <TableColumn fx:id="cusCol" prefWidth="257.0" text="Khách hàng" />
-                        <TableColumn fx:id="quantityCol" prefWidth="252.0" text="Tổng số lượng" />
-                        <TableColumn fx:id="amountCol" prefWidth="198.0" text="Tổng tiền" />
+                        <TableColumn fx:id="createdDateCol" prefWidth="116.0" text="Ngày tạo" />
+                        <TableColumn fx:id="customerNameCol" prefWidth="257.0" text="Khách hàng" />
+                        <TableColumn fx:id="totalQuantityCol" prefWidth="252.0" text="Tổng số lượng" />
+                        <TableColumn fx:id="totalAmountCol" prefWidth="198.0" text="Tổng tiền" />
                         <TableColumn fx:id="statusCol" prefWidth="224.0" text="Trạng thái thanh toán" />
-                        <TableColumn fx:id="typeCol" minWidth="4.0" prefWidth="170.0" text="Loại" />
+                        <TableColumn fx:id="typeCol" minWidth="4.0" prefWidth="93.0" text="Loại" />
                     </columns>
                   </TableView>
                   <HBox prefHeight="100.0" prefWidth="1218.0">
@@ -55,7 +55,7 @@
                               <Insets left="12.0" top="7.0" />
                            </HBox.margin>
                         </TextField>
-                        <JFXButton fx:id="searchButton" onAction="#search" prefHeight="33.0" prefWidth="110.0" stylesheets="@../css/style.css" text="Tìm Kiếm">
+                        <JFXButton fx:id="searchButton" prefHeight="33.0" prefWidth="110.0" stylesheets="@../css/style.css" text="Tìm Kiếm">
                            <styleClass>
                               <String fx:value="login-button" />
                               <String fx:value="font" />

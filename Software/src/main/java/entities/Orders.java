@@ -16,14 +16,14 @@ public class Orders {
     @Column(name = "status")
     private String status;
     @Column(name = "created_date")
-    private String createdDate;
+    private Date createdDate;
     @Column(name = "updated_date")
     private Date updatedDate;
 
     public Orders() {
     }
 
-    public Orders(String id, String type, String customerId, String status, String createdDate, Date updatedDate) {
+    public Orders(String id, String type, String customerId, String status, Date createdDate, Date updatedDate) {
         this.id = id;
         this.type = type;
         this.customerId = customerId;
@@ -64,11 +64,11 @@ public class Orders {
         this.status = status;
     }
 
-    public String getCreatedDate() {
+    public Date getCreatedDate() {
         return createdDate;
     }
 
-    public void setCreatedDate(String createdDate) {
+    public void setCreatedDate(Date createdDate) {
         this.createdDate = createdDate;
     }
 

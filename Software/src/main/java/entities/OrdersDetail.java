@@ -5,7 +5,7 @@ import java.util.Date;
 
 @Entity
 @Table(name = "order_detail")
-public class OrderDetail {
+public class OrdersDetail {
     @Id
     @Column(name = "id")
     private String id;
@@ -18,10 +18,10 @@ public class OrderDetail {
     @Column(name = "amount")
     private int amount;
 
-    public OrderDetail() {
+    public OrdersDetail() {
     }
 
-    public OrderDetail(String id, String orderId, String merchandiseId, int quantity, int amount) {
+    public OrdersDetail(String id, String orderId, String merchandiseId, int quantity, int amount) {
         this.id = id;
         this.orderId = orderId;
         this.merchandiseId = merchandiseId;
