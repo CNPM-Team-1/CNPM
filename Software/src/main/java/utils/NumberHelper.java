@@ -1,8 +1,6 @@
 package utils;
 
 import java.text.DecimalFormat;
-import java.text.NumberFormat;
-import java.text.ParseException;
 
 public class NumberHelper {
 
@@ -12,7 +10,7 @@ public class NumberHelper {
         return formatter.format(amount);
     }
 
-    public static String removeComma(String number) throws ParseException {
+    public static String removeComma(String number) {
         return number.replaceAll("[^\\d.]", "");
     }
 }

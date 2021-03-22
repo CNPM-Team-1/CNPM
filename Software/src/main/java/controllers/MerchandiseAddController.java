@@ -7,14 +7,12 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.InputMethodEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import utils.AlertBoxHelper;
-import utils.HibernateUtils;
-import utils.StageHelper;
-import utils.UUIDHelper;
+import utils.*;
 import validation.MerchandiseValidation;
 
 import java.util.List;
@@ -59,8 +57,8 @@ public class MerchandiseAddController {
         merchandise.setName(nameHolder.getText());
         merchandise.setBranch(branchHolder.getText());
         merchandise.setType(typeHolder.getText());
-        merchandise.setImportPrice(Integer.parseInt(importPriceHolder.getText()));
-        merchandise.setPrice(Integer.parseInt(priceHolder.getText()));
+        merchandise.setImportPrice(importPriceHolder.getText());
+        merchandise.setPrice(priceHolder.getText());
 
         List<String> validateInsert = MerchandiseValidation.validateInsert(session, merchandise);
         if (validateInsert.size() == 0) {

@@ -10,6 +10,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.InputMethodEvent;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import org.hibernate.Session;
@@ -68,8 +70,8 @@ public class MerchandiseUpdateController implements Initializable {
         // Set Merchandise in update window
         if (merchandise != null) {
             nameHolder.setText(merchandise.getName());
-            priceHolder.setText(NumberHelper.addComma(merchandise.getPrice().toString()));
-            importPriceHolder.setText(NumberHelper.addComma(merchandise.getImportPrice().toString()));
+            priceHolder.setText(merchandise.getPrice());
+            importPriceHolder.setText(merchandise.getImportPrice());
             typeHolder.setText(merchandise.getType());
             branchHolder.setText(merchandise.getBranch());
         }
@@ -87,8 +89,8 @@ public class MerchandiseUpdateController implements Initializable {
             merchandise.setName(nameHolder.getText());
             merchandise.setType(typeHolder.getText());
             merchandise.setBranch(branchHolder.getText());
-            merchandise.setPrice(Integer.parseInt(NumberHelper.removeComma(priceHolder.getText())));
-            merchandise.setImportPrice(Integer.parseInt(NumberHelper.removeComma(importPriceHolder.getText())));
+            merchandise.setPrice(NumberHelper.removeComma(priceHolder.getText()));
+            merchandise.setImportPrice(NumberHelper.removeComma(importPriceHolder.getText()));
 
             List<String> validateUpdate = MerchandiseValidation.validateUpdate(session, merchandise);
             if (validateUpdate.size() == 0) {

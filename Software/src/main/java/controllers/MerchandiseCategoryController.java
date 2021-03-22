@@ -1,7 +1,6 @@
 package controllers;
 
 import com.jfoenix.controls.JFXButton;
-import entities.Customer;
 import entities.Merchandise;
 import holders.MerchandiseHolder;
 import javafx.event.ActionEvent;
@@ -16,7 +15,6 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import repositories.CustomerRepository;
 import repositories.MerchandiseRepository;
 import utils.HibernateUtils;
 import utils.StageHelper;
@@ -66,6 +64,7 @@ public class MerchandiseCategoryController implements Initializable {
 
         List<Merchandise> merchandiseList = MerchandiseRepository.getAll(session);
         TableHelper.setMerchandiseTable(merchandiseList, contentTable, nameCol, branchCol, priceCol);
+
     }
 
     @FXML
@@ -98,7 +97,6 @@ public class MerchandiseCategoryController implements Initializable {
                     AnchorPane host = MainNavigatorController.instance.getHost();
                     host.setDisable(true);
                 }
-
             } catch (Exception ex) {
                 System.out.println(ex.getMessage());
                 System.out.println(Arrays.toString(ex.getStackTrace()));
