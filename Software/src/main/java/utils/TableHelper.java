@@ -124,8 +124,8 @@ public class TableHelper {
         table.getItems().clear();
         // Add comma for price and import price
         for (Merchandise item : merchandiseList) {
-            item.setImportPrice(NumberHelper.addComma(item.getImportPrice()));
-            item.setPrice(NumberHelper.addComma(item.getPrice()));
+            item.setImportPrice(item.getImportPrice() != null ? NumberHelper.addComma(item.getImportPrice()) : null);
+            item.setPrice(item.getPrice() != null ? NumberHelper.addComma(item.getPrice()) : null);
         }
         ObservableList<Merchandise> data = FXCollections.observableList(merchandiseList);
 
