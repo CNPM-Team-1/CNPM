@@ -1,6 +1,8 @@
 package controllers;
 
 import com.jfoenix.controls.JFXButton;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -16,7 +18,6 @@ import java.util.*;
 public class MainNavigatorController implements Initializable {
 
     static List<AnchorPane> grid = new ArrayList<>();
-    static int idx_cur = 0;
 
     @FXML
     private AnchorPane Host;
@@ -33,9 +34,13 @@ public class MainNavigatorController implements Initializable {
     @FXML
     private JFXButton statisticButton;
     @FXML
-    private JFXButton roleButton;
+    private JFXButton rolesButton;
+    @FXML
+    private JFXButton timeTableButton;
     @FXML
     private ImageView close;
+    @FXML
+    private ImageView minimize;
     @FXML
     private AnchorPane contentPanel;
 
@@ -52,6 +57,11 @@ public class MainNavigatorController implements Initializable {
     @FXML
     void close(MouseEvent mouseEvent) {
         StageHelper.closeStage(mouseEvent);
+    }
+
+    @FXML
+    void minimizeWindow(MouseEvent event) {
+        StageHelper.minimizeStage(event);
     }
 
     @Override
@@ -107,7 +117,7 @@ public class MainNavigatorController implements Initializable {
     }
 
     @FXML
-    void openRoleCategory(ActionEvent event) {
+    void openRolesCategory(ActionEvent event) {
         contentPanel.getChildren().clear();
         contentPanel.getChildren().add(grid.get(6));
     }

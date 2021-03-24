@@ -16,9 +16,9 @@ public class Merchandise {
     @Column(name = "branch")
     private String branch;
     @Column(name = "import_price")
-    private Integer importPrice;
+    private String importPrice;
     @Column(name = "price")
-    private Integer price;
+    private String price;
     @Temporal(TemporalType.DATE)
     @Column(name = "created_date")
     private Date createdDate;
@@ -29,7 +29,7 @@ public class Merchandise {
     public Merchandise() {
     }
 
-    public Merchandise(String id, String name, String type, String branch, Integer importPrice, Integer price, Date createdDate, Date updatedDate) {
+    public Merchandise(String id, String name, String type, String branch, String importPrice, String price, Date createdDate, Date updatedDate) {
         this.id = id;
         this.name = name;
         this.type = type;
@@ -72,19 +72,19 @@ public class Merchandise {
         this.branch = branch;
     }
 
-    public Integer getImportPrice() {
+    public String getImportPrice() {
         return importPrice;
     }
 
-    public void setImportPrice(Integer importPrice) {
+    public void setImportPrice(String importPrice) {
         this.importPrice = importPrice;
     }
 
-    public Integer getPrice() {
+    public String getPrice() {
         return price;
     }
 
-    public void setPrice(Integer price) {
+    public void setPrice(String price) {
         this.price = price;
     }
 

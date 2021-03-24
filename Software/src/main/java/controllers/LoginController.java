@@ -34,10 +34,17 @@ public class LoginController {
     private Button loginButton;
     @FXML
     private ImageView close;
+    @FXML
+    private ImageView minimize;
 
     @FXML
     void close(MouseEvent mouseEvent) {
         StageHelper.closeStage(mouseEvent);
+    }
+
+    @FXML
+    void minimizeWindow(MouseEvent event) {
+        StageHelper.minimizeStage(event);
     }
 
     @FXML

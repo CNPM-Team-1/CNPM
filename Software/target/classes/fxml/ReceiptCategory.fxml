@@ -25,7 +25,7 @@
             <Insets left="10.0" />
          </padding>
       </Label>
-      <AnchorPane layoutX="23.0" layoutY="59.0" prefHeight="591.0" prefWidth="1233.0" style="-fx-background-radius: 5px; -fx-background-color: #fff;">
+      <AnchorPane layoutX="23.0" layoutY="59.0" prefHeight="591.0" prefWidth="1157.0" style="-fx-background-radius: 5px; -fx-background-color: #fff; -fx-border-color: #ebecee; -fx-border-radius: 5px;">
          <opaqueInsets>
             <Insets />
          </opaqueInsets>

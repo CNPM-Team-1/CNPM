@@ -1,12 +1,15 @@
 package utils;
 
+import dataModel.MerchandiseModel;
 import entities.Customer;
 import entities.Receipt;
+import entities.Merchandise;
 import entities.Permissions;
 import entities.Roles;
 import entities.Employee;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -108,4 +111,27 @@ public class TableHelper {
         table.getItems().clear();
         table.setItems(data);
     } */
+
+    public static void setMerchandiseTable(List<Merchandise> merchandiseList,
+                                        TableView<Merchandise> table,
+                                        TableColumn<Merchandise, String> nameCol,
+                                        TableColumn<Merchandise, String> branchCol,
+                                        TableColumn<Merchandise, Integer> priceCol) {
+        table.getItems().clear();
+        // Add comma for price and import price
+        for (Merchandise item : merchandiseList) {
+            item.setImportPrice(NumberHelper.addComma(item.getImportPrice()));
+            item.setPrice(NumberHelper.addComma(item.getPrice()));
+        }
+        ObservableList<Merchandise> data = FXCollections.observableList(merchandiseList);
+
+        // Associate data with columns
+        nameCol.setCellValueFactory(new PropertyValueFactory<>("name"));
+        branchCol.setCellValueFactory(new PropertyValueFactory<>("branch"));
+        priceCol.setCellValueFactory(new PropertyValueFactory<>("price"));
+
+        // Add item table
+        table.getItems().clear();
+        table.setItems(data);
+    }
 }

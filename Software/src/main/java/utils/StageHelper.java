@@ -48,6 +48,12 @@ public class StageHelper {
         stage.close();
     }
 
+    public static void minimizeStage(MouseEvent mouseEvent) {
+        Node node = (Node) mouseEvent.getSource();
+        Stage stage = (Stage) node.getScene().getWindow();
+        stage.setIconified(true);
+    }
+
     public static void setDraggable(Parent root, Stage stage) {
         // Draggable
         final double[] xOffset = {0};
