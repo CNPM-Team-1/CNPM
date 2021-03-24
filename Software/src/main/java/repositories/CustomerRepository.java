@@ -79,5 +79,20 @@ public class CustomerRepository{
             return null;
         }
     }
-    
+
+    public static Customer getById(Session session, String id) {
+        try {
+            session.beginTransaction();
+            String sql = "Select c from " + Customer.class.getName() + " c where c.id = '" + id + "'";
+            Query<Customer> query = session.createQuery(sql);
+            Customer result = query.getSingleResult();
+            session.getTransaction().commit();
+            return result;
+        } catch (Exception ex) {
+            session.getTransaction().commit();
+            System.out.println(ex.getMessage());
+            System.out.println(Arrays.toString(ex.getStackTrace()));
+            return null;
+        }
+    }
 }

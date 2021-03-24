@@ -1,5 +1,7 @@
 package utils;
 
+import dataModel.OrdersModel;
+import entities.Orders;
 import dataModel.MerchandiseModel;
 import entities.Customer;
 import entities.Receipt;
@@ -112,6 +114,30 @@ public class TableHelper {
         table.setItems(data);
     } */
 
+    public static void setOrdersTable(List<OrdersModel> ordersModelList,
+                                     TableView<OrdersModel> table,
+                                     TableColumn<OrdersModel, Date> createdDateCol,
+                                     TableColumn<OrdersModel, String> customerNameCol,
+                                     TableColumn<OrdersModel, Integer> totalQuantityCol,
+                                     TableColumn<OrdersModel, Integer> totalAmountCol,
+                                     TableColumn<OrdersModel, String> statusCol,
+                                     TableColumn<OrdersModel, String> typeCol) {
+        table.getItems().clear();
+        ObservableList<OrdersModel> data = FXCollections.observableList(ordersModelList);
+
+        // Associate data with columns
+        createdDateCol.setCellValueFactory(new PropertyValueFactory<>("createdDate"));
+        customerNameCol.setCellValueFactory(new PropertyValueFactory<>("customerName"));
+        totalQuantityCol.setCellValueFactory(new PropertyValueFactory<>("totalQuantity"));
+        totalAmountCol.setCellValueFactory(new PropertyValueFactory<>("totalAmount"));
+        statusCol.setCellValueFactory(new PropertyValueFactory<>("status"));
+        typeCol.setCellValueFactory(new PropertyValueFactory<>("ordersType"));
+
+        // Add item table
+        table.getItems().clear();
+        table.setItems(data);
+    }
+    
     public static void setMerchandiseTable(List<Merchandise> merchandiseList,
                                         TableView<Merchandise> table,
                                         TableColumn<Merchandise, String> nameCol,
@@ -120,8 +146,8 @@ public class TableHelper {
         table.getItems().clear();
         // Add comma for price and import price
         for (Merchandise item : merchandiseList) {
-            item.setImportPrice(NumberHelper.addComma(item.getImportPrice()));
-            item.setPrice(NumberHelper.addComma(item.getPrice()));
+            item.setImportPrice(item.getImportPrice() != null ? NumberHelper.addComma(item.getImportPrice()) : null);
+            item.setPrice(item.getPrice() != null ? NumberHelper.addComma(item.getPrice()) : null);
         }
         ObservableList<Merchandise> data = FXCollections.observableList(merchandiseList);
 
