@@ -14,19 +14,23 @@ public class Receipt {
     private String orderId;
     @Column(name = "employee_id")
     private String employeeId;
+    @Column(name = "description")
+    private String description;
+    @Temporal(TemporalType.DATE)
     @Column(name = "created_date")
     private Date createdDate;
-    @Column(name = "update_date")
+    @Temporal(TemporalType.DATE)
+    @Column(name = "updated_date")
     private Date updatedDate;
 
     public Receipt() {
-
     }
 
-    public Receipt(String id, String orderId, String employeeId, Date createdDate, Date updatedDate) {
+    public Receipt(String id, String orderId, String employeeId, String description, Date createdDate, Date updatedDate) {
         this.id = id;
         this.orderId = orderId;
         this.employeeId = employeeId;
+        this.description = description;
         this.createdDate = createdDate;
         this.updatedDate = updatedDate;
     }
@@ -43,7 +47,7 @@ public class Receipt {
         return orderId;
     }
 
-    public void setOrderId(String order_id) {
+    public void setOrderId(String orderId) {
         this.orderId = orderId;
     }
 
@@ -51,8 +55,16 @@ public class Receipt {
         return employeeId;
     }
 
-    public void setEmployeeId(String employee_id) {
+    public void setEmployeeId(String employeeId) {
         this.employeeId = employeeId;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public Date getCreatedDate() {
@@ -63,12 +75,12 @@ public class Receipt {
         this.createdDate = createdDate;
     }
 
-    public Date getUpdateDate() {
+    public Date getUpdatedDate() {
         return updatedDate;
     }
 
-    public void setUpdateDate(Date updateDate) {
-        this.updatedDate = updateDate;
+    public void setUpdatedDate(Date updatedDate) {
+        this.updatedDate = updatedDate;
     }
 
     @PrePersist

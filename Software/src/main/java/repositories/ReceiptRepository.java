@@ -1,21 +1,19 @@
 package repositories;
 
-import entities.Orders;
-import entities.OrdersDetail;
+import entities.Receipt;
 import org.hibernate.Session;
 import org.hibernate.query.Query;
 
 import java.util.Arrays;
 import java.util.List;
 
-public class OrdersDetailRepository {
-
-    public static List<OrdersDetail> getAll(Session session) {
+public class ReceiptRepository {
+    public static List<Receipt> getAll(Session session) {
         try {
             session.beginTransaction();
-            String sql = "Select o from " + OrdersDetail.class.getName() + " o";
-            Query<OrdersDetail> query = session.createQuery(sql);
-            List<OrdersDetail> result = query.getResultList();
+            String sql = "Select c from " + Receipt.class.getName() + " c";
+            Query<Receipt> query = session.createQuery(sql);
+            List<Receipt> result = query.getResultList();
             session.getTransaction().commit();
             return result;
         } catch (Exception ex) {
@@ -26,12 +24,12 @@ public class OrdersDetailRepository {
         }
     }
 
-    public static List<OrdersDetail> getByOrdersId(Session session, String ordersId) {
+    public static List<Receipt> getLikeName(Session session, String name) {
         try {
             session.beginTransaction();
-            String sql = "Select o from " + OrdersDetail.class.getName() + " o where o.orderId = '" + ordersId + "'";
-            Query<OrdersDetail> query = session.createQuery(sql);
-            List<OrdersDetail> result = query.getResultList();
+            String sql = "Select c from " + Receipt.class.getName() + " c where c.name like '%" + name + "%'";
+            Query<Receipt> query = session.createQuery(sql);
+            List<Receipt> result = query.getResultList();
             session.getTransaction().commit();
             return result;
         } catch (Exception ex) {

@@ -19,8 +19,10 @@ public class Customer {
     private String phone;
     @Column(name = "email")
     private String email;
+    @Temporal(TemporalType.DATE)
     @Column(name = "created_date")
     private Date createdDate;
+    @Temporal(TemporalType.DATE)
     @Column(name = "updated_date")
     private Date updatedDate;
 

@@ -1,17 +1,13 @@
 package utils;
 
+import dataModel.OrdersDetailModel;
 import dataModel.OrdersModel;
-import entities.Orders;
-import dataModel.MerchandiseModel;
-import entities.Customer;
-import entities.Receipt;
-import entities.Merchandise;
-import entities.Permissions;
-import entities.Roles;
-import entities.Employee;
+import dataModel.ReceiptModel;
+import dataModel.ReceiptOrdersModel;
+import entities.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.fxml.FXML;
+import javafx.scene.control.Tab;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -92,29 +88,30 @@ public class TableHelper {
         table.getItems().clear();
         table.setItems(data);
     }
-/*
-    public static void setReceiptTable(List<Receipt> receiptList,
-                                        TableView<Receipt> contentTable,
-                                        TableColumn<Receipt, Date> dateCol,
-                                        TableColumn<Receipt, String> nameCol,
-                                        TableColumn<Receipt, Integer> quantityCol,
-                                        TableColumn<Receipt, Integer> amountCol) {
+
+    public static void setReceiptTable(List<ReceiptModel> receiptModeltList,
+                                        TableView<ReceiptModel> table,
+                                        TableColumn<ReceiptModel, Date> dateCol,
+                                        TableColumn<ReceiptModel, String> nameCol,
+                                       TableColumn<ReceiptModel, String> descriptionCol,
+                                        TableColumn<ReceiptModel, Integer> quantityCol,
+                                        TableColumn<ReceiptModel, String> amountCol) {
         table.getItems().clear();
-        ObservableList<Receipt> data = FXCollections.observableList(receiptList);
+        ObservableList<ReceiptModel> data = FXCollections.observableList(receiptModeltList);
 
         // Associate data with columns
-        dateCol.setCellValueFactory(new PropertyValueFactory<>("fullName"));
-        nameCol.setCellValueFactory(new PropertyValueFactory<>("phone"));
-        quantityCol.setCellValueFactory(new PropertyValueFactory<>("email"));
-        amountCol.setCellValueFactory(new PropertyValueFactory<>("address"));
+        dateCol.setCellValueFactory(new PropertyValueFactory<>("createdDate"));
+        nameCol.setCellValueFactory(new PropertyValueFactory<>("customerName"));
+        descriptionCol.setCellValueFactory(new PropertyValueFactory<>("description"));
+        quantityCol.setCellValueFactory(new PropertyValueFactory<>("sumQuantity"));
+        amountCol.setCellValueFactory(new PropertyValueFactory<>("sumAmount"));
 
         // Add item table
-
         table.getItems().clear();
         table.setItems(data);
-    } */
+    }
 
-    public static void setOrdersTable(List<OrdersModel> ordersModelList,
+    public static void setOrdersModelTable(List<OrdersModel> ordersModelList,
                                      TableView<OrdersModel> table,
                                      TableColumn<OrdersModel, Date> createdDateCol,
                                      TableColumn<OrdersModel, String> customerNameCol,
@@ -157,6 +154,44 @@ public class TableHelper {
         priceCol.setCellValueFactory(new PropertyValueFactory<>("price"));
 
         // Add item table
+        table.getItems().clear();
+        table.setItems(data);
+    }
+
+    public static void setReceiptOrdersModelTable(List<ReceiptOrdersModel> receiptOrdersModelList,
+                                      TableView<ReceiptOrdersModel> table,
+                                      TableColumn<ReceiptOrdersModel, Date> dateCol,
+                                      TableColumn<ReceiptOrdersModel, String> descriptionCol,
+                                      TableColumn<ReceiptOrdersModel, String> employeeCol) {
+        table.getItems().clear();
+        ObservableList<ReceiptOrdersModel> data = FXCollections.observableList(receiptOrdersModelList);
+
+        // Associate data with columns
+        dateCol.setCellValueFactory(new PropertyValueFactory<>("createdDate"));
+        descriptionCol.setCellValueFactory(new PropertyValueFactory<>("description"));
+        employeeCol.setCellValueFactory(new PropertyValueFactory<>("employeeName"));
+
+        //Add item table
+        table.getItems().clear();
+        table.setItems(data);
+    }
+
+    public static void setOrdersDetailModelTable(List<OrdersDetailModel> ordersDetailModelList,
+                                                  TableView<OrdersDetailModel> table,
+                                                  TableColumn<OrdersDetailModel, String> merchandiseCol,
+                                                  TableColumn<OrdersDetailModel, Integer> quantityCol,
+                                                  TableColumn<OrdersDetailModel, Integer> amountCol,
+                                                  TableColumn<OrdersDetailModel, Integer> finalAmountCol) {
+        table.getItems().clear();
+        ObservableList<OrdersDetailModel> data = FXCollections.observableList(ordersDetailModelList);
+
+        // Associate data with columns
+        merchandiseCol.setCellValueFactory(new PropertyValueFactory<>("merchandiseName"));
+        quantityCol.setCellValueFactory(new PropertyValueFactory<>("quantity"));
+        amountCol.setCellValueFactory(new PropertyValueFactory<>("amount"));
+        finalAmountCol.setCellValueFactory(new PropertyValueFactory<>("finalAmount"));
+
+        //Add item table
         table.getItems().clear();
         table.setItems(data);
     }

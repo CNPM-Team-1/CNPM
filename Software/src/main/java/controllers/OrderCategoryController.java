@@ -90,7 +90,7 @@ public class OrderCategoryController implements Initializable {
         }
 
         // Populate table
-        TableHelper.setOrdersTable(ordersModelList, contentTable, createdDateCol, customerNameCol, totalQuantityCol, totalAmountCol, statusCol, typeCol);
+        TableHelper.setOrdersModelTable(ordersModelList, contentTable, createdDateCol, customerNameCol, totalQuantityCol, totalAmountCol, statusCol, typeCol);
     }
 
     @FXML

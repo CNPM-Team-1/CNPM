@@ -40,7 +40,7 @@
                         <Font size="15.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="nameHolder" promptText="Nhập tên" styleClass="top-font" stylesheets="@../css/style.css" GridPane.columnIndex="1">
+                  <TextField fx:id="nameHolder" focusTraversable="false" promptText="Nhập tên" styleClass="top-font" stylesheets="@../css/style.css" GridPane.columnIndex="1">
                      <font>
                         <Font size="14.0" />
                      </font>
@@ -50,7 +50,7 @@
                         <Font size="15.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="priceHolder" promptText="Nhập giá bán" styleClass="top-font" stylesheets="@../css/style.css" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                  <TextField fx:id="priceHolder" focusTraversable="false" promptText="Nhập giá bán" styleClass="top-font" stylesheets="@../css/style.css" GridPane.columnIndex="1" GridPane.rowIndex="2">
                      <font>
                         <Font size="14.0" />
                      </font>
@@ -60,7 +60,7 @@
                         <Font size="15.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="importPriceHolder" promptText="Nhập giá mua" styleClass="top-font" stylesheets="@../css/style.css" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                  <TextField fx:id="importPriceHolder" focusTraversable="false" promptText="Nhập giá mua" styleClass="top-font" stylesheets="@../css/style.css" GridPane.columnIndex="1" GridPane.rowIndex="1">
                      <font>
                         <Font size="14.0" />
                      </font>
@@ -83,7 +83,7 @@
                         <Font size="15.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="typeHolder" promptText="Nhập loại" styleClass="top-font" stylesheets="@../css/style.css" GridPane.columnIndex="1">
+                  <TextField fx:id="typeHolder" focusTraversable="false" promptText="Nhập loại" styleClass="top-font" stylesheets="@../css/style.css" GridPane.columnIndex="1">
                      <font>
                         <Font size="14.0" />
                      </font>
@@ -93,7 +93,7 @@
                         <Font size="15.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="branchHolder" promptText="Nhập thương hiệu" styleClass="top-font" stylesheets="@../css/style.css" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                  <TextField fx:id="branchHolder" focusTraversable="false" promptText="Nhập thương hiệu" styleClass="top-font" stylesheets="@../css/style.css" GridPane.columnIndex="1" GridPane.rowIndex="1">
                      <font>
                         <Font size="14.0" />
                      </font>

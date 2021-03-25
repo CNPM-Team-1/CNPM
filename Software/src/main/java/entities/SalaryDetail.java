@@ -18,8 +18,10 @@ public class SalaryDetail {
     private int amount;
     @Column(name = "payment_status")
     private StatusEnum paymentstatus;
+    @Temporal(TemporalType.DATE)
     @Column(name = "created_date")
     private Date createdDate;
+    @Temporal(TemporalType.DATE)
     @Column(name = "updated_date")
     private Date updatedDate;
 

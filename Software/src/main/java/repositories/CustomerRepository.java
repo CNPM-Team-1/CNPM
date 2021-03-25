@@ -1,6 +1,7 @@
 package repositories;
 
 import entities.Customer;
+import entities.Orders;
 import org.hibernate.Session;
 import org.hibernate.query.Query;
 
@@ -86,6 +87,39 @@ public class CustomerRepository{
             String sql = "Select c from " + Customer.class.getName() + " c where c.id = '" + id + "'";
             Query<Customer> query = session.createQuery(sql);
             Customer result = query.getSingleResult();
+            session.getTransaction().commit();
+            return result;
+        } catch (Exception ex) {
+            session.getTransaction().commit();
+            System.out.println(ex.getMessage());
+            System.out.println(Arrays.toString(ex.getStackTrace()));
+            return null;
+        }
+    }
+
+    public static List<Customer> getLikeName(Session session, String name) {
+        try {
+            session.beginTransaction();
+            String sql = "Select c from " + Customer.class.getName() + " c where c.fullName like '%" + name + "%'";
+            Query<Customer> query = session.createQuery(sql);
+            List<Customer> result = query.getResultList();
+            session.getTransaction().commit();
+            return result;
+        } catch (Exception ex) {
+            session.getTransaction().commit();
+            System.out.println(ex.getMessage());
+            System.out.println(Arrays.toString(ex.getStackTrace()));
+            return null;
+        }
+    }
+
+    public static List<Customer> getCustomerHasActiveOrders(Session session) {
+        try {
+            session.beginTransaction();
+            String sql = "Select c from " + Customer.class.getName() + " c where c.id in ( " +
+                    "select o.customerId from " + Orders.class.getName() + " o where o.status = 'UNCOMPLETED' )" ;
+            Query<Customer> query = session.createQuery(sql);
+            List<Customer> result = query.getResultList();
             session.getTransaction().commit();
             return result;
         } catch (Exception ex) {

@@ -13,8 +13,10 @@ public class Salary {
     private String employeeId;
     @Column(name = "amount")
     private int amount;
+    @Temporal(TemporalType.DATE)
     @Column(name = "created_date")
     private Date createdDate;
+    @Temporal(TemporalType.DATE)
     @Column(name = "update_date")
     private Date updatedDate;
 
