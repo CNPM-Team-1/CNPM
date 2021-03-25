@@ -9,16 +9,18 @@ public class OrdersModel {
     private Integer totalAmount;
     private String status;
     private String ordersType;
+    private String ordersDescription;
 
     public OrdersModel() {
     }
 
-    public OrdersModel(Date createdDate, String customerName, Integer totalQuantity, Integer totalAmount, String ordersType) {
+    public OrdersModel(Date createdDate, String customerName, Integer totalQuantity, Integer totalAmount, String ordersType, String ordersDescription) {
         this.createdDate = createdDate;
         this.customerName = customerName;
         this.totalQuantity = totalQuantity;
         this.totalAmount = totalAmount;
         this.ordersType = ordersType;
+        this.ordersDescription = ordersDescription;
     }
 
     public String getStatus() {
@@ -67,5 +69,13 @@ public class OrdersModel {
 
     public void setOrdersType(String ordersType) {
         this.ordersType = ordersType;
+    }
+
+    public String getOrdersDescription() {
+        return ordersDescription;
+    }
+
+    public void setOrdersDescription(String ordersDescription) {
+        this.ordersDescription = ordersDescription;
     }
 }

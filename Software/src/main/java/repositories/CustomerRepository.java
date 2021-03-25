@@ -80,10 +80,10 @@ public class CustomerRepository{
         }
     }
 
-    public static Customer getById(Session session, String id) {
+    public static Customer getPhoneCustomer(Session session, String fullName) {
         try {
             session.beginTransaction();
-            String sql = "Select c from " + Customer.class.getName() + " c where c.id = '" + id + "'";
+            String sql = "Select c.phone from " + Customer.class.getName() + " c where c.fullName = '" + fullName + "'";
             Query<Customer> query = session.createQuery(sql);
             Customer result = query.getSingleResult();
             session.getTransaction().commit();

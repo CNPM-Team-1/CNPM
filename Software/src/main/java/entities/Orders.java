@@ -11,10 +11,14 @@ public class Orders {
     private String id;
     @Column(name = "type")
     private String type;
+    @Column(name = "employee_id")
+    private String employeeId;
     @Column(name = "customer_id")
     private String customerId;
     @Column(name = "status")
     private String status;
+    @Column(name = "description")
+    private String description;
     @Column(name = "created_date")
     private Date createdDate;
     @Column(name = "updated_date")
@@ -23,11 +27,13 @@ public class Orders {
     public Orders() {
     }
 
-    public Orders(String id, String type, String customerId, String status, Date createdDate, Date updatedDate) {
+    public Orders(String id, String type,String employeeId, String customerId, String status,String description, Date createdDate, Date updatedDate) {
         this.id = id;
         this.type = type;
+        this.employeeId = employeeId;
         this.customerId = customerId;
         this.status = status;
+        this.description = description;
         this.createdDate = createdDate;
         this.updatedDate = updatedDate;
     }
@@ -48,6 +54,14 @@ public class Orders {
         this.type = type;
     }
 
+    public String getEmployeeId() {
+        return employeeId;
+    }
+
+    public void setEmployeeId(String employeeId) {
+        this.employeeId = employeeId;
+    }
+
     public String getCustomerId() {
         return customerId;
     }
@@ -62,6 +76,14 @@ public class Orders {
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public Date getCreatedDate() {

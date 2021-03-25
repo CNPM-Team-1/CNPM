@@ -92,14 +92,15 @@ public class TableHelper {
         table.setItems(data);
     }
 
-    public static void setOrdersTable(List<OrdersModel> ordersModelList,
+    public static void setOrdersModelTable(List<OrdersModel> ordersModelList,
                                      TableView<OrdersModel> table,
                                      TableColumn<OrdersModel, Date> createdDateCol,
                                      TableColumn<OrdersModel, String> customerNameCol,
                                      TableColumn<OrdersModel, Integer> totalQuantityCol,
                                      TableColumn<OrdersModel, Integer> totalAmountCol,
                                      TableColumn<OrdersModel, String> statusCol,
-                                     TableColumn<OrdersModel, String> typeCol) {
+                                     TableColumn<OrdersModel, String> typeCol,
+                                      TableColumn<OrdersModel, String> descriptionCol) {
         table.getItems().clear();
         ObservableList<OrdersModel> data = FXCollections.observableList(ordersModelList);
 
@@ -110,6 +111,7 @@ public class TableHelper {
         totalAmountCol.setCellValueFactory(new PropertyValueFactory<>("totalAmount"));
         statusCol.setCellValueFactory(new PropertyValueFactory<>("status"));
         typeCol.setCellValueFactory(new PropertyValueFactory<>("ordersType"));
+        descriptionCol.setCellValueFactory(new PropertyValueFactory<>("ordersDescription"));
 
         // Add item table
         table.getItems().clear();

@@ -5,31 +5,22 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b5ea20d7-1c8e-440f-81c2-ca4792b5ccf8" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/dataModel/OrdersModel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/repositories/OrdersDetailRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/image/payment_button.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/OrderAddController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/OrderAddController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/controllers/OrderCategoryController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/OrderCategoryController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/entities/OrderDetail.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/entities/OrdersDetail.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dataModel/OrdersModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dataModel/OrdersModel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/entities/Orders.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/entities/Orders.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/repositories/CustomerRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/repositories/CustomerRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/repositories/OrderRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/repositories/OrdersRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/utils/TableHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/utils/TableHelper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/fxml/MainNavigator.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/fxml/MainNavigator.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/fxml/OrderAdd.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/fxml/OrderAdd.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/fxml/OrderCategory.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/fxml/OrderCategory.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/hibernate.cfg.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/hibernate.cfg.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controllers/OrderAddController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controllers/OrderAddController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/controllers/OrderCategoryController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controllers/OrderCategoryController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/entities/OrderDetail.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/dataModel/OrdersModel.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/dataModel/OrdersModel.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/entities/Orders.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/entities/Orders.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/fxml/MainNavigator.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/fxml/MainNavigator.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/fxml/OrderAdd.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/fxml/OrderAdd.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/fxml/OrderCategory.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/fxml/OrderCategory.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/hibernate.cfg.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/hibernate.cfg.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/repositories/CustomerRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/repositories/CustomerRepository.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/repositories/OrderRepository.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/utils/TableHelper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/utils/TableHelper.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/utils/TableHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/utils/TableHelper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/utils/NumberHelper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/utils/NumberHelper.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -56,6 +47,13 @@
       <filtered-out-file-type name="TAG" />
       <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
     </file-type-list>
+  </component>
+  <component name="GithubPullRequestsUISettings">
+    <option name="hiddenUrls">
+      <set>
+        <option value="https://github.com/CNPM-Team-1/CNPM" />
+      </set>
+    </option>
   </component>
   <component name="ProjectId" id="1pPpNstBIfnaGnpuIHG1VUTMIle" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
@@ -188,6 +186,10 @@
       <workItem from="1616403631287" duration="8050000" />
       <workItem from="1616418902241" duration="2518000" />
       <workItem from="1616431335183" duration="635000" />
+      <workItem from="1616490171070" duration="5091000" />
+      <workItem from="1616583231770" duration="5823000" />
+      <workItem from="1616590673160" duration="103000" />
+      <workItem from="1616603384320" duration="4528000" />
     </task>
     <servers />
   </component>
@@ -212,43 +214,45 @@
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/controllers/OrderCategoryController.java</url>
-          <line>58</line>
-          <option name="timeStamp" value="34" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
+        <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/utils/TableHelper.java</url>
           <line>100</line>
           <option name="timeStamp" value="38" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/utils/TableHelper.java</url>
-          <line>113</line>
-          <option name="timeStamp" value="39" />
+        <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/controllers/MerchandiseUpdateController.java</url>
           <line>176</line>
           <option name="timeStamp" value="13" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
+        <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/controllers/MerchandiseUpdateController.java</url>
           <line>177</line>
           <option name="timeStamp" value="14" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
+        <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/utils/TableHelper.java</url>
           <line>97</line>
           <option name="timeStamp" value="55" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
+        <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/utils/TableHelper.java</url>
-          <line>112</line>
+          <line>114</line>
           <option name="timeStamp" value="56" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
+        <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/utils/NumberHelper.java</url>
           <line>9</line>
           <option name="timeStamp" value="63" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/controllers/OrderCategoryController.java</url>
+          <line>60</line>
+          <option name="timeStamp" value="64" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/controllers/OrderCategoryController.java</url>
+          <line>95</line>
+          <option name="timeStamp" value="65" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

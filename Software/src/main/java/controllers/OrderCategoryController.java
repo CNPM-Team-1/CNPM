@@ -41,6 +41,8 @@ public class OrderCategoryController implements Initializable {
     private TableColumn<OrdersModel, String> statusCol;
     @FXML
     private TableColumn<OrdersModel, String> typeCol;
+    @FXML
+    private TableColumn<OrdersModel, String> descriptionCol;
 
     // For other class cal function from this class
     public static OrderCategoryController instance;
@@ -86,11 +88,12 @@ public class OrderCategoryController implements Initializable {
             ordersModel.setTotalAmount(sumAmount);
             ordersModel.setStatus(item.getStatus());
             ordersModel.setOrdersType(item.getType());
+            ordersModel.setOrdersDescription(item.getDescription());
             ordersModelList.add(ordersModel);
         }
 
         // Populate table
-        TableHelper.setOrdersTable(ordersModelList, contentTable, createdDateCol, customerNameCol, totalQuantityCol, totalAmountCol, statusCol, typeCol);
+        TableHelper.setOrdersModelTable(ordersModelList, contentTable, createdDateCol, customerNameCol, totalQuantityCol, totalAmountCol, statusCol, typeCol, descriptionCol);
     }
 
     @FXML
