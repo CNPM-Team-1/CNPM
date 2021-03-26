@@ -100,9 +100,12 @@ public class CustomerAddController implements Initializable {
             // Refresh content table
             CustomerCategoryController.getInstance().refresh();
 
-            // Unhide host
+            // Unhide host only when orders add is not show
             AnchorPane host = MainNavigatorController.instance.getHost();
-            host.setDisable(false);
+            host.setDisable(OrderCategoryController.getInstance().ordersAddUpdateIsShow);
+
+            // Refresh Orders customer list
+            OrderAddController.getInstance().initialize(null, null);
         } else {
             errorMessage.setText(validateInsert.get(0));
             session.getTransaction().commit();
@@ -114,6 +117,6 @@ public class CustomerAddController implements Initializable {
         StageHelper.closeStage(event);
         // Unhide host
         AnchorPane host = MainNavigatorController.instance.getHost();
-        host.setDisable(false);
+        host.setDisable(OrderCategoryController.getInstance().ordersAddUpdateIsShow);
     }
 }

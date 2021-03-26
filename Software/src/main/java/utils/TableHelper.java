@@ -1,6 +1,8 @@
 package utils;
 
 import dataModel.OrdersDetailModel;
+import controllers.OrderAddController;
+import dataModel.OrdersAddTableModel;
 import dataModel.OrdersModel;
 import dataModel.ReceiptModel;
 import dataModel.ReceiptOrdersModel;
@@ -60,8 +62,8 @@ public class TableHelper {
     }
 
     public static void setPermissionNameTable(List<Permissions> permissionsList,
-                                        TableView<Permissions> table,
-                                        TableColumn<Permissions, String> nameCol) {
+                                              TableView<Permissions> table,
+                                              TableColumn<Permissions, String> nameCol) {
         table.getItems().clear();
         ObservableList<Permissions> data = FXCollections.observableList(permissionsList);
 
@@ -119,27 +121,36 @@ public class TableHelper {
                                      TableColumn<OrdersModel, Integer> totalAmountCol,
                                      TableColumn<OrdersModel, String> statusCol,
                                      TableColumn<OrdersModel, String> typeCol) {
+    public static void setOrdersModelTable(List<OrdersModel> ordersModelList,
+                                           TableView<OrdersModel> table,
+                                           TableColumn<OrdersModel, Date> createdDateCol,
+                                           TableColumn<OrdersModel, String> customerNameCol,
+                                           TableColumn<OrdersModel, String> descriptionCol,
+                                           TableColumn<OrdersModel, String> totalAmountCol,
+                                           TableColumn<OrdersModel, String> statusCol,
+                                           TableColumn<OrdersModel, String> typeCol) {
         table.getItems().clear();
         ObservableList<OrdersModel> data = FXCollections.observableList(ordersModelList);
 
         // Associate data with columns
         createdDateCol.setCellValueFactory(new PropertyValueFactory<>("createdDate"));
         customerNameCol.setCellValueFactory(new PropertyValueFactory<>("customerName"));
-        totalQuantityCol.setCellValueFactory(new PropertyValueFactory<>("totalQuantity"));
-        totalAmountCol.setCellValueFactory(new PropertyValueFactory<>("totalAmount"));
+        totalAmountCol.setCellValueFactory(new PropertyValueFactory<>("sumAmount"));
         statusCol.setCellValueFactory(new PropertyValueFactory<>("status"));
-        typeCol.setCellValueFactory(new PropertyValueFactory<>("ordersType"));
+        typeCol.setCellValueFactory(new PropertyValueFactory<>("type"));
+        descriptionCol.setCellValueFactory(new PropertyValueFactory<>("description"));
 
         // Add item table
         table.getItems().clear();
         table.setItems(data);
     }
-    
+
     public static void setMerchandiseTable(List<Merchandise> merchandiseList,
-                                        TableView<Merchandise> table,
-                                        TableColumn<Merchandise, String> nameCol,
-                                        TableColumn<Merchandise, String> branchCol,
-                                        TableColumn<Merchandise, Integer> priceCol) {
+                                           TableView<Merchandise> table,
+                                           TableColumn<Merchandise, String> nameCol,
+                                           TableColumn<Merchandise, String> typeCol,
+                                           TableColumn<Merchandise, Integer> quantityCol,
+                                           TableColumn<Merchandise, String> priceCol) {
         table.getItems().clear();
         // Add comma for price and import price
         for (Merchandise item : merchandiseList) {
@@ -150,7 +161,8 @@ public class TableHelper {
 
         // Associate data with columns
         nameCol.setCellValueFactory(new PropertyValueFactory<>("name"));
-        branchCol.setCellValueFactory(new PropertyValueFactory<>("branch"));
+        typeCol.setCellValueFactory(new PropertyValueFactory<>("type"));
+        quantityCol.setCellValueFactory(new PropertyValueFactory<>("quantity"));
         priceCol.setCellValueFactory(new PropertyValueFactory<>("price"));
 
         // Add item table
@@ -175,24 +187,21 @@ public class TableHelper {
         table.getItems().clear();
         table.setItems(data);
     }
-
-    public static void setOrdersDetailModelTable(List<OrdersDetailModel> ordersDetailModelList,
-                                                  TableView<OrdersDetailModel> table,
-                                                  TableColumn<OrdersDetailModel, String> merchandiseCol,
-                                                  TableColumn<OrdersDetailModel, Integer> quantityCol,
-                                                  TableColumn<OrdersDetailModel, Integer> amountCol,
-                                                  TableColumn<OrdersDetailModel, Integer> finalAmountCol) {
-        table.getItems().clear();
-        ObservableList<OrdersDetailModel> data = FXCollections.observableList(ordersDetailModelList);
+    public static void setOrdersAddTable(List<OrdersAddTableModel> ordersAddTableModelList,
+                                         TableView<OrdersAddTableModel> table,
+                                         TableColumn<OrdersAddTableModel, String> merchandiseCol,
+                                         TableColumn<OrdersAddTableModel, Integer> quantityCol,
+                                         TableColumn<OrdersAddTableModel, String> amountCol,
+                                         TableColumn<OrdersAddTableModel, String> sumAmountCol) {
+        ObservableList<OrdersAddTableModel> data = FXCollections.observableList(ordersAddTableModelList);
 
         // Associate data with columns
         merchandiseCol.setCellValueFactory(new PropertyValueFactory<>("merchandiseName"));
         quantityCol.setCellValueFactory(new PropertyValueFactory<>("quantity"));
         amountCol.setCellValueFactory(new PropertyValueFactory<>("amount"));
-        finalAmountCol.setCellValueFactory(new PropertyValueFactory<>("finalAmount"));
+        sumAmountCol.setCellValueFactory(new PropertyValueFactory<>("sumAmount"));
 
-        //Add item table
-        table.getItems().clear();
+        // Add item table
         table.setItems(data);
     }
 }

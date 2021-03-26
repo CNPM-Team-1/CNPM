@@ -48,6 +48,8 @@
       <change beforePath="$PROJECT_DIR$/target/classes/repositories/OrdersDetailRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/repositories/OrdersDetailRepository.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/repositories/OrdersRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/repositories/OrdersRepository.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/utils/TableHelper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/utils/TableHelper.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/repositories/OrdersRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/repositories/OrdersRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/fxml/OrderCategory.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/fxml/OrderCategory.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -74,6 +76,13 @@
       <filtered-out-file-type name="TAG" />
       <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
     </file-type-list>
+  </component>
+  <component name="GithubPullRequestsUISettings">
+    <option name="hiddenUrls">
+      <set>
+        <option value="https://github.com/CNPM-Team-1/CNPM" />
+      </set>
+    </option>
   </component>
   <component name="ProjectId" id="1pPpNstBIfnaGnpuIHG1VUTMIle" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
@@ -141,13 +150,15 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
           <option name="containerStateName" value="" />
         </value>
       </option>
-      <option name="TEST_OBJECT" value="class" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <properties />
+      <listeners />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -223,6 +234,12 @@
       <workItem from="1616418902241" duration="2518000" />
       <workItem from="1616431335183" duration="635000" />
       <workItem from="1616655736769" duration="8373000" />
+      <workItem from="1616490171070" duration="5091000" />
+      <workItem from="1616583231770" duration="5823000" />
+      <workItem from="1616590673160" duration="103000" />
+      <workItem from="1616603384320" duration="4528000" />
+      <workItem from="1616681534501" duration="29843000" />
+      <workItem from="1616715821862" duration="3017000" />
     </task>
     <servers />
   </component>
@@ -243,21 +260,5 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/controllers/MerchandiseUpdateController.java</url>
-          <line>176</line>
-          <option name="timeStamp" value="13" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/controllers/MerchandiseUpdateController.java</url>
-          <line>177</line>
-          <option name="timeStamp" value="14" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>

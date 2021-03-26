@@ -43,33 +43,12 @@ public class OrdersRepository {
         }
     }
 
-    public static List<Orders> getByCustomerIdIn(Session session, List<Customer> customerList) {
-        try {
-            if (customerList.size() > 0) {
-                List<String> customerIds = customerList.stream().map(Customer::getId).collect(Collectors.toList());
-                session.beginTransaction();
-                Query query = session.createQuery("FROM entities.Orders c WHERE c.customerId IN (:idList)");
-                query.setParameterList("idList", customerIds);
-                List<Orders> result = query.list();
-                session.getTransaction().commit();
-                return result;
-            } else {
-                return null;
-            }
-        } catch (Exception ex) {
-            session.getTransaction().commit();
-            System.out.println(ex.getMessage());
-            System.out.println(Arrays.toString(ex.getStackTrace()));
-            return null;
-        }
-    }
-
-    public static Orders getById(Session session, String id) {
+    public static List<Orders> getLikeCustomerName(Session session, String customerName) {
         try {
             session.beginTransaction();
-            String sql = "Select o from " + Orders.class.getName() + " o where o.id = '" + id + "'";
+            String sql = "Select o from " + Orders.class.getName() + " o where o.customer.fullName like '%" + customerName + "%'";
             Query<Orders> query = session.createQuery(sql);
-            Orders result = query.getSingleResult();
+            List<Orders> result = query.getResultList();
             session.getTransaction().commit();
             return result;
         } catch (Exception ex) {

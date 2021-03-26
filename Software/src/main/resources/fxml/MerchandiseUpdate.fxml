@@ -98,6 +98,16 @@
                         <Font size="14.0" />
                      </font>
                   </TextField>
+                  <Label layoutX="10.0" layoutY="110.0" styleClass="font" stylesheets="@../css/style.css" text="Số lượng:" GridPane.rowIndex="2">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="quantityHolder" focusTraversable="false" layoutX="111.0" layoutY="105.0" promptText="Nhập số lượng" styleClass="top-font" stylesheets="@../css/style.css" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </TextField>
                </children>
                <HBox.margin>
                   <Insets left="20.0" />

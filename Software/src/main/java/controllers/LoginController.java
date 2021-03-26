@@ -37,6 +37,16 @@ public class LoginController {
     @FXML
     private ImageView minimize;
 
+    public Employee curEmployee;
+
+    // For other class to access this class
+    public static LoginController instance;
+
+    public LoginController() { instance = this; }
+
+    public static LoginController getInstance() { return instance; }
+    ///
+
     @FXML
     void close(MouseEvent mouseEvent) {
         StageHelper.closeStage(mouseEvent);
@@ -61,18 +71,19 @@ public class LoginController {
             } else {
                 // Get employee by email
                 Employee employee = EmployeeRepository.getByEmail(userEmail.getText(), session);
-
                 // Check if password is valid
-//                if (employee != null && employee.getPassword().equals(userPassword.getText())) {
                 if (employee != null && BCryptHelper.check(userPassword.getText(), employee.getPassword())) {
+                    // set logged in employee
+                    curEmployee = employee;
+
                     Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("fxml/MainNavigator.fxml")));
                     StageHelper.closeStage(actionEvent);
                     StageHelper.startStage(root);
+
                 } else {
                     status.setText("Sai email hoặc mật khẩu");
                 }
             }
-
             if (session.getTransaction().getStatus() != TransactionStatus.COMMITTED) {
                 session.getTransaction().commit();
             }
@@ -85,34 +96,7 @@ public class LoginController {
 
     @FXML
     void enterLogin(ActionEvent actionEvent) {
-        try {
-            SessionFactory factory = HibernateUtils.getSessionFactory();
-            Session session = factory.getCurrentSession();
-            session.beginTransaction();
-
-            if (userEmail.getText().isEmpty()) {
-                status.setText("Chưa nhập email");
-            } else if (userPassword.getText().isEmpty()) {
-                status.setText("Chưa nhập mật khẩu");
-            } else {
-                Employee employee = EmployeeRepository.getByEmail(userEmail.getText(), session);
-//                if (employee != null && employee.getPassword().equals(userPassword.getText())) {
-                if (employee != null && BCryptHelper.check(userPassword.getText(), employee.getPassword())) {
-                    Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("fxml/MainNavigator.fxml"));
-                    StageHelper.closeStage(actionEvent);
-                    StageHelper.startStage(root);
-                } else {
-                    status.setText("Sai email hoặc mật khẩu");
-                }
-            }
-
-            if (session.getTransaction().getStatus() != TransactionStatus.COMMITTED) {
-                session.getTransaction().commit();
-            }
-        } catch (Exception ex) {
-            System.out.println(ex.getMessage());
-            System.out.println(Arrays.toString(ex.getStackTrace()));
-        }
+        this.login(actionEvent);
     }
 
 }

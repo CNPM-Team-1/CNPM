@@ -4,15 +4,17 @@ import javax.persistence.*;
 import java.util.Date;
 
 @Entity
-@Table(name = "order_detail")
+@Table(name = "orders_detail")
 public class OrdersDetail {
     @Id
     @Column(name = "id")
     private String id;
-    @Column(name = "order_id")
-    private String orderId;
-    @Column(name = "merchandise_id")
-    private String merchandiseId;
+    @ManyToOne
+    @JoinColumn(name = "orders_id")
+    private Orders orders;
+    @ManyToOne
+    @JoinColumn(name = "merchandise_id")
+    private Merchandise merchandise;
     @Column(name = "quantity")
     private int quantity;
     @Column(name = "amount")
@@ -21,10 +23,10 @@ public class OrdersDetail {
     public OrdersDetail() {
     }
 
-    public OrdersDetail(String id, String orderId, String merchandiseId, int quantity, int amount) {
+    public OrdersDetail(String id, Orders orders, Merchandise merchandise, int quantity, int amount) {
         this.id = id;
-        this.orderId = orderId;
-        this.merchandiseId = merchandiseId;
+        this.orders = orders;
+        this.merchandise = merchandise;
         this.quantity = quantity;
         this.amount = amount;
     }
@@ -37,20 +39,20 @@ public class OrdersDetail {
         this.id = id;
     }
 
-    public String getOrderId() {
-        return orderId;
+    public Orders getOrders() {
+        return orders;
     }
 
-    public void setOrderId(String orderId) {
-        this.orderId = orderId;
+    public void setOrders(Orders orders) {
+        this.orders = orders;
     }
 
-    public String getMerchandiseId() {
-        return merchandiseId;
+    public Merchandise getMerchandise() {
+        return merchandise;
     }
 
-    public void setMerchandiseId(String merchandiseId) {
-        this.merchandiseId = merchandiseId;
+    public void setMerchandise(Merchandise merchandise) {
+        this.merchandise = merchandise;
     }
 
     public int getQuantity() {
@@ -68,5 +70,4 @@ public class OrdersDetail {
     public void setAmount(int amount) {
         this.amount = amount;
     }
-
 }

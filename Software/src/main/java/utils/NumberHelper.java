@@ -13,4 +13,8 @@ public class NumberHelper {
     public static String removeComma(String number) {
         return number.replaceAll("[^\\d.]", "");
     }
+
+    public static Boolean isNumber(String input) {
+        return input.matches("\\d*");
+    }
 }

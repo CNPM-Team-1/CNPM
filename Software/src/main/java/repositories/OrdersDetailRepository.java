@@ -1,6 +1,5 @@
 package repositories;
 
-import entities.Orders;
 import entities.OrdersDetail;
 import org.hibernate.Session;
 import org.hibernate.query.Query;
@@ -26,10 +25,10 @@ public class OrdersDetailRepository {
         }
     }
 
-    public static List<OrdersDetail> getByOrdersId(Session session, String ordersId) {
+    public static List<OrdersDetail> getByOrdersId(Session session, String id) {
         try {
             session.beginTransaction();
-            String sql = "Select o from " + OrdersDetail.class.getName() + " o where o.orderId = '" + ordersId + "'";
+            String sql = "Select a from " + OrdersDetail.class.getName() + " a where a.orders.id = '" + id + "'";
             Query<OrdersDetail> query = session.createQuery(sql);
             List<OrdersDetail> result = query.getResultList();
             session.getTransaction().commit();
@@ -39,6 +38,20 @@ public class OrdersDetailRepository {
             System.out.println(ex.getMessage());
             System.out.println(Arrays.toString(ex.getStackTrace()));
             return null;
+        }
+    }
+
+    public static void deleteByOrdersId(Session session, String id) {
+        try {
+            session.beginTransaction();
+            String sql = "delete from " + OrdersDetail.class.getName() + " o where o.orders.id = '" + id + "'";
+            Query<OrdersDetail> query = session.createQuery(sql);
+            query.executeUpdate();
+            session.getTransaction().commit();
+        } catch (Exception ex) {
+            session.getTransaction().commit();
+            System.out.println(ex.getMessage());
+            System.out.println(Arrays.toString(ex.getStackTrace()));
         }
     }
 }
