@@ -127,7 +127,7 @@ public class OrderAddController implements Initializable {
             if (chosenCustomer.getType().equals("Khách hàng")) {
                 descriptionHolder.setText("Khách hàng " + chosenCustomer.getFullName() + " mua hàng");
             } else {
-                descriptionHolder.setText("Mua hàng từ " + chosenCustomer.getFullName());
+                descriptionHolder.setText("Mua hàng từ nhà cung cấp " + chosenCustomer.getFullName());
             }
         }
     }

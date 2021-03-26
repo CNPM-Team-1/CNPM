@@ -109,17 +109,34 @@ public class OrderCategoryController implements Initializable {
 
     @FXML
     void search(ActionEvent event) {
-//        try {
-//            SessionFactory factory = HibernateUtils.getSessionFactory();
-//            Session session = factory.getCurrentSession();
-//
-//            String keySearch = search_Bar.getText();
-//            List<Orders> ordersList = OrderRepository.getByCustomerId(session, keySearch);
-//            TableHelper.setOrderTable(ordersList, contentTable, statusCol, typeCol, cusCol, dateCol);
-//        } catch (Exception ex) {
-//            System.out.println(ex.getMessage());
-//            System.out.println(Arrays.toString(ex.getStackTrace()));
-//        }
+        try {
+            SessionFactory factory = HibernateUtils.getSessionFactory();
+            Session session = factory.getCurrentSession();
+
+            String keySearch = searchBar.getText();
+            List<Orders> ordersList = OrdersRepository.getLikeCustomerName(session, keySearch);
+            List<OrdersModel> ordersModelList = new ArrayList<>();
+            for (Orders item : ordersList) {
+                session = factory.openSession();
+                List<OrdersDetail> ordersDetailList = OrdersDetailRepository.getByOrdersId(session, item.getId());
+
+                OrdersModel ordersModel = new OrdersModel();
+                ordersModel.setCreatedDate(item.getCreatedDate());
+                ordersModel.setCustomerName(item.getCustomer().getFullName());
+                ordersModel.setDescription(item.getDescription());
+                ordersModel.setSumAmount(NumberHelper.addComma(String.valueOf(ordersDetailList.stream().mapToInt(OrdersDetail::getAmount).sum())));
+                ordersModel.setStatus(item.getStatus());
+                ordersModel.setType(item.getType());
+                ordersModel.setOrders(item);
+
+                ordersModelList.add(ordersModel);
+            }
+            // Populate table
+            TableHelper.setOrdersModelTable(ordersModelList, contentTable, createdDateCol, customerNameCol, descriptionCol, totalAmountCol, statusCol, typeCol);
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+            System.out.println(Arrays.toString(ex.getStackTrace()));
+        }
     }
 
     @FXML
