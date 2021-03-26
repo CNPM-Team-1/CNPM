@@ -7,6 +7,7 @@ import org.hibernate.query.Query;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class OrdersRepository {
 
@@ -29,7 +30,7 @@ public class OrdersRepository {
     public static List<Orders> getByCustomerId(Session session, String keySearch) {
         try {
             session.beginTransaction();
-            String sql = "Select o from " + Orders.class.getName() + " o where o.customerId like '%" + keySearch + "%'" ;
+            String sql = "Select o from " + Orders.class.getName() + " o where o.customerId like '%" + keySearch + "%'";
             Query<Orders> query = session.createQuery(sql);
             List<Orders> result = query.list();
             session.getTransaction().commit();
@@ -46,6 +47,22 @@ public class OrdersRepository {
         try {
             session.beginTransaction();
             String sql = "Select o from " + Orders.class.getName() + " o where o.customer.fullName like '%" + customerName + "%'";
+            Query<Orders> query = session.createQuery(sql);
+            List<Orders> result = query.getResultList();
+            session.getTransaction().commit();
+            return result;
+        } catch (Exception ex) {
+            session.getTransaction().commit();
+            System.out.println(ex.getMessage());
+            System.out.println(Arrays.toString(ex.getStackTrace()));
+            return null;
+        }
+    }
+
+    public static List<Orders> getByCustomerName(Session session, String customerName) {
+        try {
+            session.beginTransaction();
+            String sql = "Select o from " + Orders.class.getName() + " o where o.customer.fullName = '" + customerName + "'";
             Query<Orders> query = session.createQuery(sql);
             List<Orders> result = query.getResultList();
             session.getTransaction().commit();

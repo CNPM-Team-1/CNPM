@@ -1,0 +1,200 @@
+package controllers;
+
+import com.jfoenix.controls.JFXButton;
+import dataModel.OrdersDetailModel;
+import dataModel.ReceiptOrdersModel;
+import entities.Customer;
+import entities.Orders;
+import entities.OrdersDetail;
+import entities.Receipt;
+import enums.StatusEnum;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import repositories.CustomerRepository;
+import repositories.OrdersDetailRepository;
+import repositories.OrdersRepository;
+import repositories.ReceiptRepository;
+import utils.*;
+
+import java.net.URL;
+import java.util.*;
+
+public class ReceiptAddController implements Initializable {
+    @FXML
+    private ComboBox<String> customerHolder;
+    @FXML
+    private TextField phoneHolder;
+
+    // Orders table
+    @FXML
+    private TableView<ReceiptOrdersModel> ordersTable;
+    @FXML
+    private TableColumn<ReceiptOrdersModel, Date> dateCol;
+    @FXML
+    private TableColumn<ReceiptOrdersModel, String> descriptionCol;
+    @FXML
+    private TableColumn<ReceiptOrdersModel, String> employeeCol;
+
+    @FXML
+    private TextField addressHolder;
+
+    // Detail table
+    @FXML
+    private TableView<OrdersDetailModel> detailTable;
+    @FXML
+    private TableColumn<OrdersDetailModel, String> merchandiseCol;
+    @FXML
+    private TableColumn<OrdersDetailModel, Integer> quantityCol;
+    @FXML
+    private TableColumn<OrdersDetailModel, Integer> amountCol;
+    @FXML
+    private TableColumn<OrdersDetailModel, Integer> finalAmountCol;
+
+    @FXML
+    private JFXButton closeButton;
+    @FXML
+    private JFXButton saveButton;
+    @FXML
+    private TextField sumQuantityHolder;
+    @FXML
+    private TextField sumAmountHolder;
+
+    private Orders chosenOrders;
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        SessionFactory factory = HibernateUtils.getSessionFactory();
+        Session session = factory.getCurrentSession();
+
+        // Add customer to choose customer ComboBox
+        customerHolder.setValue("Chọn khách hàng");
+        List<Customer> customerList = CustomerRepository.getCustomerHasActiveOrders(session);
+        if (customerList != null && customerList.size() > 0) {
+            for (Customer item : customerList) {
+                customerHolder.getItems().add(item.getFullName());
+            }
+        }
+    }
+
+    @FXML
+    void showChosenCustomer(ActionEvent event) {
+        // Clear detail table, sumQuantityHolder, sumAmountHolder
+        detailTable.getItems().clear();
+        sumAmountHolder.clear();
+        sumQuantityHolder.clear();
+
+        SessionFactory factory = HibernateUtils.getSessionFactory();
+        Session session = factory.openSession();
+
+        // Show customer info
+        Customer customer = CustomerRepository.getByName(session, customerHolder.getValue());
+        phoneHolder.setText(customer.getPhone());
+        addressHolder.setText(customer.getAddress());
+        // Show customer orders info
+        session = factory.openSession();
+        List<Orders> ordersList = OrdersRepository.getLikeCustomerName(session, customerHolder.getValue());
+        if (ordersList != null && ordersList.size() > 0) {
+            List<ReceiptOrdersModel> receiptOrdersModelList = new ArrayList<>();
+            for (Orders item : ordersList) {
+                ReceiptOrdersModel receiptOrdersModel = new ReceiptOrdersModel();
+                receiptOrdersModel.setOrders(item);
+                receiptOrdersModel.setCreatedDate(item.getCreatedDate());
+                receiptOrdersModel.setDescription(item.getDescription());
+                receiptOrdersModel.setEmployeeName(item.getEmployee().getFullName());
+                receiptOrdersModelList.add(receiptOrdersModel);
+            }
+            TableHelper.setReceiptOrdersModelTable(receiptOrdersModelList, ordersTable, dateCol, descriptionCol, employeeCol);
+        }
+    }
+
+    @FXML
+    void select(MouseEvent event) {
+        if (event.getClickCount() == 2) {
+            try {
+                SessionFactory factory = HibernateUtils.getSessionFactory();
+                Session session;
+                // Show chosen orders detail in detailTable
+                Orders orders = new Orders(ordersTable.getSelectionModel().getSelectedItem().getOrders());
+                ordersTable.getSelectionModel().clearSelection();
+                session = factory.openSession();
+                List<OrdersDetail> ordersDetailList = OrdersDetailRepository.getByOrdersId(session, orders.getId());
+                if (ordersDetailList != null && !ordersDetailList.isEmpty()) {
+                    List<OrdersDetailModel> ordersDetailModelList = new ArrayList<>();
+                    for (OrdersDetail item : ordersDetailList) {
+                        OrdersDetailModel ordersDetailModel = new OrdersDetailModel();
+                        ordersDetailModel.setMerchandiseName(item.getMerchandise().getName());
+                        ordersDetailModel.setQuantity(item.getQuantity());
+                        ordersDetailModel.setAmount(NumberHelper.addComma(item.getMerchandise().getPrice()));
+                        ordersDetailModel.setFinalAmount(NumberHelper.addComma(String.valueOf(item.getAmount())));
+                        ordersDetailModelList.add(ordersDetailModel);
+                    }
+                    // set SumQuantityHolder and SumAmountHolder
+                    Integer sumQuantity = ordersDetailModelList.stream().mapToInt(OrdersDetailModel::getQuantity).sum();
+                    Integer sumAmount = ordersDetailModelList.stream().mapToInt(t -> Integer.parseInt(NumberHelper.removeComma(t.getFinalAmount()))).sum();
+                    sumQuantityHolder.setText(String.valueOf(sumQuantity));
+                    sumAmountHolder.setText(NumberHelper.addComma(String.valueOf(sumAmount)));
+                    // Set table
+                    TableHelper.setOrdersDetailModelTable(ordersDetailModelList, detailTable, merchandiseCol, quantityCol, amountCol, finalAmountCol);
+                    saveButton.setDisable(false);
+                    // Set chosen orders
+                    chosenOrders = orders;
+                }
+            } catch (Exception ex) {
+                System.out.println(ex.getMessage());
+                System.out.println(Arrays.toString(ex.getStackTrace()));
+            }
+        }
+    }
+
+    @FXML
+    void save(ActionEvent event) {
+        SessionFactory factory = HibernateUtils.getSessionFactory();
+        Session session;
+        // Save new receipt
+        Receipt receipt = new Receipt();
+        receipt.setId(UUIDHelper.generateType4UUID().toString());
+        receipt.setOrders(chosenOrders);
+        receipt.setEmployee(chosenOrders.getEmployee());
+        receipt.setDescription(chosenOrders.getDescription());
+
+        session = factory.openSession();
+        session.beginTransaction();
+        session.save(receipt);
+        session.getTransaction().commit();
+
+        // Close stage
+        StageHelper.closeStage(event);
+        // Show alert box
+        AlertBoxHelper.showMessageBox("Thêm thành công");
+        // Refresh content table
+        ReceiptCategoryController.getInstance().refresh();
+        // Unhide host
+        AnchorPane host = MainNavigatorController.instance.getHost();
+        host.setDisable(false);
+
+        // Update orders status
+        chosenOrders.setStatus("Hoàn tất");
+        session = factory.openSession();
+        session.beginTransaction();
+        session.saveOrUpdate(chosenOrders);
+        session.getTransaction().commit();
+        OrderCategoryController.getInstance().initialize(null, null);
+    }
+
+    @FXML
+    void close(MouseEvent event) {
+        StageHelper.closeStage(event);
+        // Unhide host
+        AnchorPane host = MainNavigatorController.instance.getHost();
+        host.setDisable(false);
+    }
+}

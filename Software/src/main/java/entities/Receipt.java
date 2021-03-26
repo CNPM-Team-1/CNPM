@@ -10,25 +10,22 @@ public class Receipt {
     @Id
     @Column(name = "id")
     private String id;
-    @Column(name = "order_id")
-    private String orderId;
-    @Column(name = "employee_id")
-    private String employeeId;
+    @OneToOne
+    @JoinColumn(name = "order_id")
+    private Orders orders;
+    @ManyToOne
+    @JoinColumn(name = "employee_id")
+    private Employee employee;
+    @Column(name = "description")
+    private String description;
+    @Temporal(TemporalType.DATE)
     @Column(name = "created_date")
     private Date createdDate;
-    @Column(name = "update_date")
+    @Temporal(TemporalType.DATE)
+    @Column(name = "updated_date")
     private Date updatedDate;
 
     public Receipt() {
-
-    }
-
-    public Receipt(String id, String orderId, String employeeId, Date createdDate, Date updatedDate) {
-        this.id = id;
-        this.orderId = orderId;
-        this.employeeId = employeeId;
-        this.createdDate = createdDate;
-        this.updatedDate = updatedDate;
     }
 
     public String getId() {
@@ -39,20 +36,28 @@ public class Receipt {
         this.id = id;
     }
 
-    public String getOrderId() {
-        return orderId;
+    public Orders getOrders() {
+        return orders;
     }
 
-    public void setOrderId(String order_id) {
-        this.orderId = orderId;
+    public void setOrders(Orders orders) {
+        this.orders = orders;
     }
 
-    public String getEmployeeId() {
-        return employeeId;
+    public Employee getEmployee() {
+        return employee;
     }
 
-    public void setEmployeeId(String employee_id) {
-        this.employeeId = employeeId;
+    public void setEmployee(Employee employee) {
+        this.employee = employee;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public Date getCreatedDate() {
@@ -63,12 +68,24 @@ public class Receipt {
         this.createdDate = createdDate;
     }
 
-    public Date getUpdateDate() {
+    public Date getUpdatedDate() {
         return updatedDate;
     }
 
-    public void setUpdateDate(Date updateDate) {
-        this.updatedDate = updateDate;
+    public void setUpdatedDate(Date updatedDate) {
+        this.updatedDate = updatedDate;
+    }
+
+    @Override
+    public String toString() {
+        return "Receipt{" +
+                "id='" + id + '\'' +
+                ", orders=" + orders +
+                ", employee=" + employee +
+                ", description='" + description + '\'' +
+                ", createdDate=" + createdDate +
+                ", updatedDate=" + updatedDate +
+                '}';
     }
 
     @PrePersist

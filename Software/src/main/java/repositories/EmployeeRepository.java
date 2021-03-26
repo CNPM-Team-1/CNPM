@@ -80,4 +80,20 @@ public class EmployeeRepository {
             return null;
         }
     }
+
+    public static Employee getById(Session session, String id) {
+        try {
+            session.beginTransaction();
+            String sql = "Select e from " + Employee.class.getName() + " e where e.id = '" + id + "'";
+            Query<Employee> query = session.createQuery(sql);
+            Employee result = query.getSingleResult();
+            session.getTransaction().commit();
+            return result;
+        } catch (Exception ex) {
+            session.getTransaction().commit();
+            System.out.println(ex.getMessage());
+            System.out.println(Arrays.toString(ex.getStackTrace()));
+            return null;
+        }
+    }
 }

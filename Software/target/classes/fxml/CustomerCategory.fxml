@@ -81,10 +81,10 @@
                   </HBox>
                   <TableView fx:id="contentTable" editable="true" focusTraversable="false" onMouseClicked="#select" prefHeight="498.0" prefWidth="1149.0" styleClass="table-font" stylesheets="@../css/style.css" GridPane.rowIndex="1">
                     <columns>
-                      <TableColumn fx:id="nameCol" prefWidth="163.0" text="Họ Tên" />
-                      <TableColumn fx:id="phoneCol" minWidth="0.0" prefWidth="163.0" text="SĐT" />
-                        <TableColumn fx:id="emailCol" minWidth="0.0" prefWidth="285.0" text="Email" />
-                        <TableColumn fx:id="addressCol" prefWidth="375.0" text="Địa Chỉ" />
+                      <TableColumn fx:id="nameCol" prefWidth="214.0" text="Họ Tên" />
+                      <TableColumn fx:id="phoneCol" minWidth="0.0" prefWidth="124.0" text="SĐT" />
+                        <TableColumn fx:id="emailCol" minWidth="0.0" prefWidth="258.0" text="Email" />
+                        <TableColumn fx:id="addressCol" prefWidth="390.0" text="Địa Chỉ" />
                         <TableColumn fx:id="typeCol" prefWidth="154.0" text="Loại" />
                     </columns>
                   </TableView>

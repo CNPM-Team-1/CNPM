@@ -6,9 +6,12 @@
   <component name="ChangeListManager">
     <list default="true" id="b5ea20d7-1c8e-440f-81c2-ca4792b5ccf8" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/OrderCategoryController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/OrderCategoryController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/repositories/OrdersRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/repositories/OrdersRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/fxml/OrderCategory.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/fxml/OrderCategory.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/ReceiptAddController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/ReceiptAddController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/ReceiptCategoryController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/ReceiptCategoryController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/ReceiptDetailController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/ReceiptDetailController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/fxml/CustomerCategory.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/fxml/CustomerCategory.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/fxml/ReceiptDetail.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/fxml/ReceiptDetail.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controllers/ReceiptCategoryController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controllers/ReceiptCategoryController.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -166,6 +169,11 @@
       <workItem from="1615706810221" duration="43000" />
       <workItem from="1615706869013" duration="84000" />
       <workItem from="1615706965707" duration="9826000" />
+      <workItem from="1615873538213" duration="681000" />
+      <workItem from="1615874432571" duration="569000" />
+      <workItem from="1615888587631" duration="1405000" />
+      <workItem from="1615902968402" duration="669000" />
+      <workItem from="1616208833146" duration="87000" />
       <workItem from="1615939498667" duration="2028000" />
       <workItem from="1615981323093" duration="12633000" />
       <workItem from="1615995054932" duration="354000" />
@@ -187,12 +195,15 @@
       <workItem from="1616403631287" duration="8050000" />
       <workItem from="1616418902241" duration="2518000" />
       <workItem from="1616431335183" duration="635000" />
+      <workItem from="1616655736769" duration="8373000" />
       <workItem from="1616490171070" duration="5091000" />
       <workItem from="1616583231770" duration="5823000" />
       <workItem from="1616590673160" duration="103000" />
       <workItem from="1616603384320" duration="4528000" />
       <workItem from="1616681534501" duration="29843000" />
       <workItem from="1616715821862" duration="3017000" />
+      <workItem from="1616738455796" duration="7905000" />
+      <workItem from="1616748482067" duration="3344000" />
     </task>
     <servers />
   </component>
