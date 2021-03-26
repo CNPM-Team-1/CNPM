@@ -1,6 +1,5 @@
 package repositories;
 
-import entities.Customer;
 import entities.Merchandise;
 import org.hibernate.Session;
 import org.hibernate.query.Query;
@@ -45,6 +44,22 @@ public class MerchandiseRepository {
         try {
             session.beginTransaction();
             String sql = "Select c from " + Merchandise.class.getName() + " c where c.name like '%" + nameOrBranch + "%' or c.branch like '%" + nameOrBranch + "%'";
+            Query<Merchandise> query = session.createQuery(sql);
+            List<Merchandise> result = query.getResultList();
+            session.getTransaction().commit();
+            return result;
+        } catch (Exception ex) {
+            session.getTransaction().commit();
+            System.out.println(ex.getMessage());
+            System.out.println(Arrays.toString(ex.getStackTrace()));
+            return null;
+        }
+    }
+
+    public static List<Merchandise> getHasQuantity(Session session) {
+        try {
+            session.beginTransaction();
+            String sql = "Select c from " + Merchandise.class.getName() + " c where c.quantity > 0";
             Query<Merchandise> query = session.createQuery(sql);
             List<Merchandise> result = query.getResultList();
             session.getTransaction().commit();

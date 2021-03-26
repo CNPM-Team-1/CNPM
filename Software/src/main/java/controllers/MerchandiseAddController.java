@@ -7,7 +7,6 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.InputMethodEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import org.hibernate.Session;
@@ -31,6 +30,8 @@ public class MerchandiseAddController {
     @FXML
     private TextField branchHolder;
     @FXML
+    private TextField quantityHolder;
+    @FXML
     private JFXButton addButton;
     @FXML
     private JFXButton cancelButton;
@@ -44,7 +45,7 @@ public class MerchandiseAddController {
         StageHelper.closeStage(event);
         // Unhide host
         AnchorPane host = MainNavigatorController.instance.getHost();
-        host.setDisable(false);
+        host.setDisable(OrderCategoryController.getInstance().ordersAddUpdateIsShow);
     }
 
     @FXML
@@ -59,6 +60,7 @@ public class MerchandiseAddController {
         merchandise.setType(typeHolder.getText());
         merchandise.setImportPrice(importPriceHolder.getText());
         merchandise.setPrice(priceHolder.getText());
+        merchandise.setQuantity(!quantityHolder.getText().isEmpty() ? Integer.parseInt(quantityHolder.getText()) : 0);
 
         List<String> validateInsert = MerchandiseValidation.validateInsert(session, merchandise);
         if (validateInsert.size() == 0) {
@@ -77,9 +79,14 @@ public class MerchandiseAddController {
             // Refresh content table
             MerchandiseCategoryController.getInstance().refresh();
 
-            // Unhide host
+            // Unhide host only when orders add is not show
             AnchorPane host = MainNavigatorController.instance.getHost();
-            host.setDisable(false);
+            host.setDisable(OrderCategoryController.getInstance().ordersAddUpdateIsShow);
+
+            // Refresh Orders merchandise list
+            if (OrderAddController.getInstance() != null) {
+                OrderAddController.getInstance().initialize(null, null);
+            }
         } else {
             errorMessage.setText(validateInsert.get(0));
             session.getTransaction().commit();

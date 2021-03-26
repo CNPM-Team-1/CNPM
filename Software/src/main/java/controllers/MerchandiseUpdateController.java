@@ -27,37 +27,28 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 public class MerchandiseUpdateController implements Initializable {
-
     @FXML
     private AnchorPane host;
-
     @FXML
     private TextField nameHolder;
-
     @FXML
     private TextField priceHolder;
-
     @FXML
     private TextField importPriceHolder;
-
     @FXML
     private TextField typeHolder;
-
     @FXML
     private TextField branchHolder;
-
+    @FXML
+    private TextField quantityHolder;
     @FXML
     private JFXButton cancelButton;
-
     @FXML
     private ImageView close;
-
     @FXML
     private Label errorMessage;
-
     @FXML
     private JFXButton deleteButton;
-
     @FXML
     private JFXButton updateButton;
 
@@ -74,6 +65,7 @@ public class MerchandiseUpdateController implements Initializable {
             importPriceHolder.setText(merchandise.getImportPrice());
             typeHolder.setText(merchandise.getType());
             branchHolder.setText(merchandise.getBranch());
+            quantityHolder.setText(merchandise.getQuantity().toString());
         }
     }
 
@@ -91,6 +83,7 @@ public class MerchandiseUpdateController implements Initializable {
             merchandise.setBranch(branchHolder.getText());
             merchandise.setPrice(NumberHelper.removeComma(priceHolder.getText()));
             merchandise.setImportPrice(NumberHelper.removeComma(importPriceHolder.getText()));
+            merchandise.setQuantity(!quantityHolder.getText().isEmpty() ? Integer.parseInt(quantityHolder.getText()) : 0);
 
             List<String> validateUpdate = MerchandiseValidation.validateUpdate(session, merchandise);
             if (validateUpdate.size() == 0) {
