@@ -5,7 +5,7 @@ import entities.Receipt;
 import java.util.Date;
 
 public class ReceiptModel {
-    private String ordersId;
+    private Receipt receipt;
     private Date createdDate;
     private String customerName;
     private String description;
@@ -15,8 +15,8 @@ public class ReceiptModel {
     public ReceiptModel() {
     }
 
-    public ReceiptModel(String ordersId, Date createdDate, String customerName, String description, Integer sumQuantity, String sumAmount) {
-        this.ordersId = ordersId;
+    public ReceiptModel(Receipt receipt, Date createdDate, String customerName, String description, Integer sumQuantity, String sumAmount) {
+        this.receipt = receipt;
         this.createdDate = createdDate;
         this.customerName = customerName;
         this.description = description;
@@ -24,12 +24,12 @@ public class ReceiptModel {
         this.sumAmount = sumAmount;
     }
 
-    public String getOrdersId() {
-        return ordersId;
+    public Receipt getReceipt() {
+        return receipt;
     }
 
-    public void setOrdersId(String ordersId) {
-        this.ordersId = ordersId;
+    public void setReceipt(Receipt receipt) {
+        this.receipt = receipt;
     }
 
     public Date getCreatedDate() {
@@ -70,17 +70,5 @@ public class ReceiptModel {
 
     public void setSumAmount(String sumAmount) {
         this.sumAmount = sumAmount;
-    }
-
-    @Override
-    public String toString() {
-        return "ReceiptModel{" +
-                "ordersId='" + ordersId + '\'' +
-                ", createdDate=" + createdDate +
-                ", customerName='" + customerName + '\'' +
-                ", description='" + description + '\'' +
-                ", sumQuantity=" + sumQuantity +
-                ", sumAmount='" + sumAmount + '\'' +
-                '}';
     }
 }

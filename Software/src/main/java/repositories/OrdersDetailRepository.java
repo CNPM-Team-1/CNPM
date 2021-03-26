@@ -54,4 +54,36 @@ public class OrdersDetailRepository {
             System.out.println(Arrays.toString(ex.getStackTrace()));
         }
     }
+
+    public static Long getSumAmountById(Session session, String ordersId) {
+        try {
+            session.beginTransaction();
+            String sql = "Select sum(od.amount) from " + OrdersDetail.class.getName() + " od where od.orders.id = '" + ordersId + "'";
+            Query<Long> query = session.createQuery(sql);
+            Long result = query.getSingleResult();
+            session.getTransaction().commit();
+            return result;
+        } catch (Exception ex) {
+            session.getTransaction().commit();
+            System.out.println(ex.getMessage());
+            System.out.println(Arrays.toString(ex.getStackTrace()));
+            return null;
+        }
+    }
+
+    public static Long getSumQuantityById(Session session, String ordersId) {
+        try {
+            session.beginTransaction();
+            String sql = "Select sum(od.quantity) from " + OrdersDetail.class.getName() + " od where od.orders.id = '" + ordersId + "'";
+            Query<Long> query = session.createQuery(sql);
+            Long result = query.getSingleResult();
+            session.getTransaction().commit();
+            return result;
+        } catch (Exception ex) {
+            session.getTransaction().commit();
+            System.out.println(ex.getMessage());
+            System.out.println(Arrays.toString(ex.getStackTrace()));
+            return null;
+        }
+    }
 }

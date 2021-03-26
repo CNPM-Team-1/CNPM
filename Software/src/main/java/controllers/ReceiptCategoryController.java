@@ -49,50 +49,47 @@ public class ReceiptCategoryController implements Initializable {
     // For other class call function from this class
     public static ReceiptCategoryController instance;
 
-    public ReceiptCategoryController() { instance = this; }
+    public ReceiptCategoryController() {
+        instance = this;
+    }
 
-    public static ReceiptCategoryController getInstance() { return instance; }
+    public static ReceiptCategoryController getInstance() {
+        return instance;
+    }
     ///
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        SessionFactory sessionFactory = HibernateUtils.getSessionFactory();
-        Session session;
+        try {
+            SessionFactory sessionFactory = HibernateUtils.getSessionFactory();
+            Session session;
 
-        // Get all receipt, customer, orders, orderDetail
-        session = sessionFactory.openSession();
-        List<Customer> customerList = CustomerRepository.getAll(session);
-        session = sessionFactory.openSession();
-        List<Orders> ordersList = OrdersRepository.getAll(session);
-        session = sessionFactory.openSession();
-        List<OrdersDetail> ordersDetailList = OrdersDetailRepository.getAll(session);
-        session = sessionFactory.openSession();
-        List<Receipt> receiptList = ReceiptRepository.getAll(session);
-
-        //Set receipt model
-
-        if (ordersList != null && customerList != null && ordersDetailList != null && receiptList != null) {
-            List<ReceiptModel> receiptModelList = new ArrayList<>();
-            for (Receipt item : receiptList) {
-                Orders orders = ordersList.stream().filter(t -> t.getId().equals(item.getOrderId())).findFirst().orElse(null);
-                if (orders != null) {
-                    Customer customer = customerList.stream().filter(t -> t.getId().equals(orders.getCustomerId())).findFirst().orElse(null);
-                    List<OrdersDetail> thisOrdersDetailList = ordersDetailList.stream().filter(t -> t.getOrderId().equals(orders.getId())).collect(Collectors.toList());
-                    Integer sumQuantity = thisOrdersDetailList.stream().mapToInt(OrdersDetail::getQuantity).sum();
-                    int sumAmount = thisOrdersDetailList.stream().mapToInt(OrdersDetail::getAmount).sum();
+            // Get all receipt
+            session = sessionFactory.openSession();
+            List<Receipt> receiptList = ReceiptRepository.getAll(session);
+            //Set receipt model
+            if (receiptList != null && !receiptList.isEmpty()) {
+                List<ReceiptModel> receiptModelList = new ArrayList<>();
+                for (Receipt item : receiptList) {
+                    session = sessionFactory.openSession();
+                    Integer sumAmount = Math.toIntExact(OrdersDetailRepository.getSumAmountById(session, item.getOrders().getId()));
+                    session = sessionFactory.openSession();
+                    Integer sumQuantity = Math.toIntExact(OrdersDetailRepository.getSumQuantityById(session, item.getOrders().getId()));
 
                     ReceiptModel receiptModel = new ReceiptModel();
-                    receiptModel.setOrdersId(orders.getId());
+                    receiptModel.setReceipt(item);
                     receiptModel.setCreatedDate(item.getCreatedDate());
-                    receiptModel.setCustomerName(customer.getFullName());
+                    receiptModel.setCustomerName(item.getOrders().getCustomer().getFullName());
                     receiptModel.setDescription(item.getDescription());
                     receiptModel.setSumQuantity(sumQuantity);
-                    receiptModel.setSumAmount(NumberHelper.addComma(Integer.toString(sumAmount)));
+                    receiptModel.setSumAmount(NumberHelper.addComma(String.valueOf(sumAmount)));
                     receiptModelList.add(receiptModel);
                 }
+                TableHelper.setReceiptTable(receiptModelList, contentTable, dateCol, nameCol, descriptionCol, quantityCol, amountCol);
             }
-
-            TableHelper.setReceiptTable(receiptModelList, contentTable, dateCol, nameCol, descriptionCol, quantityCol, amountCol);
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+            System.out.println(Arrays.toString(ex.getStackTrace()));
         }
     }
 
@@ -116,40 +113,29 @@ public class ReceiptCategoryController implements Initializable {
             SessionFactory sessionFactory = HibernateUtils.getSessionFactory();
             Session session;
 
-            // Get all receipt, customer, orders, orderDetail
+            // Get receipt like name
             session = sessionFactory.openSession();
-            List<Customer> customerList = CustomerRepository.getLikeName(session, searchBar.getText());
-            session = sessionFactory.openSession();
-            List<Orders> ordersList = OrdersRepository.getByCustomerIdIn(session, customerList);
-            session = sessionFactory.openSession();
-            List<OrdersDetail> ordersDetailList = OrdersDetailRepository.getAll(session);
-            session = sessionFactory.openSession();
-            List<Receipt> receiptList = ReceiptRepository.getAll(session);
-
+            List<Receipt> receiptList = ReceiptRepository.getLikeCustomerName(session, searchBar.getText());
             //Set receipt model
-            List<ReceiptModel> receiptModelList = new ArrayList<>();
-            if (ordersList != null && customerList != null && ordersDetailList != null && receiptList != null) {
+            if (receiptList != null && !receiptList.isEmpty()) {
+                List<ReceiptModel> receiptModelList = new ArrayList<>();
                 for (Receipt item : receiptList) {
-                    Orders orders = ordersList.stream().filter(t -> t.getId().equals(item.getOrderId())).findFirst().orElse(null);
-                    if (orders != null) {
-                        Customer customer = customerList.stream().filter(t -> t.getId().equals(orders.getCustomerId())).findFirst().orElse(null);
-                        List<OrdersDetail> thisOrdersDetailList = ordersDetailList.stream().filter(t -> t.getOrderId().equals(orders.getId())).collect(Collectors.toList());
-                        Integer sumQuantity = thisOrdersDetailList.stream().mapToInt(OrdersDetail::getQuantity).sum();
-                        int sumAmount = thisOrdersDetailList.stream().mapToInt(OrdersDetail::getAmount).sum();
+                    session = sessionFactory.openSession();
+                    Integer sumAmount = Math.toIntExact(OrdersDetailRepository.getSumAmountById(session, item.getOrders().getId()));
+                    session = sessionFactory.openSession();
+                    Integer sumQuantity = Math.toIntExact(OrdersDetailRepository.getSumQuantityById(session, item.getOrders().getId()));
 
-                        ReceiptModel receiptModel = new ReceiptModel();
-                        receiptModel.setCreatedDate(item.getCreatedDate());
-                        receiptModel.setCustomerName(customer.getFullName());
-                        receiptModel.setDescription(item.getDescription());
-                        receiptModel.setSumQuantity(sumQuantity);
-                        receiptModel.setSumAmount(NumberHelper.addComma(Integer.toString(sumAmount)));
-                        receiptModelList.add(receiptModel);
-                    }
+                    ReceiptModel receiptModel = new ReceiptModel();
+                    receiptModel.setReceipt(item);
+                    receiptModel.setCreatedDate(item.getCreatedDate());
+                    receiptModel.setCustomerName(item.getOrders().getCustomer().getFullName());
+                    receiptModel.setDescription(item.getDescription());
+                    receiptModel.setSumQuantity(sumQuantity);
+                    receiptModel.setSumAmount(NumberHelper.addComma(String.valueOf(sumAmount)));
+                    receiptModelList.add(receiptModel);
                 }
-            } else {
-                receiptModelList = null;
+                TableHelper.setReceiptTable(receiptModelList, contentTable, dateCol, nameCol, descriptionCol, quantityCol, amountCol);
             }
-            TableHelper.setReceiptTable(receiptModelList, contentTable, dateCol, nameCol, descriptionCol, quantityCol, amountCol);
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
             System.out.println(Arrays.toString(ex.getStackTrace()));
@@ -158,26 +144,26 @@ public class ReceiptCategoryController implements Initializable {
 
     @FXML
     void select(MouseEvent event) {
-        if (event.getClickCount() == 2) {
-            try {
-                ReceiptModel receiptModel = contentTable.getSelectionModel().getSelectedItem();
-                contentTable.getSelectionModel().clearSelection();
-                // Store receipt to use in another class
-                if (receiptModel != null) {
-                    ReceiptModelHolder receiptModelHolder = ReceiptModelHolder.getInstance();
-                    receiptModelHolder.setReceiptModel(receiptModel);
-
-                    Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("fxml/ReceiptDetail.fxml")));
-                    StageHelper.startStage(root);
-                    // Hide host
-                    AnchorPane host = MainNavigatorController.instance.getHost();
-                    host.setDisable(true);
-                }
-            } catch (Exception ex) {
-                System.out.println(ex.getMessage());
-                System.out.println(Arrays.toString(ex.getStackTrace()));
-            }
-        }
+//        if (event.getClickCount() == 2) {
+//            try {
+//                ReceiptModel receiptModel = contentTable.getSelectionModel().getSelectedItem();
+//                contentTable.getSelectionModel().clearSelection();
+//                // Store receipt to use in another class
+//                if (receiptModel != null) {
+//                    ReceiptModelHolder receiptModelHolder = ReceiptModelHolder.getInstance();
+//                    receiptModelHolder.setReceiptModel(receiptModel);
+//
+//                    Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("fxml/ReceiptDetail.fxml")));
+//                    StageHelper.startStage(root);
+//                    // Hide host
+//                    AnchorPane host = MainNavigatorController.instance.getHost();
+//                    host.setDisable(true);
+//                }
+//            } catch (Exception ex) {
+//                System.out.println(ex.getMessage());
+//                System.out.println(Arrays.toString(ex.getStackTrace()));
+//            }
+//        }
     }
 
     // Refresh table

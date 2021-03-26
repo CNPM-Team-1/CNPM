@@ -117,7 +117,7 @@ public class CustomerRepository{
         try {
             session.beginTransaction();
             String sql = "Select c from " + Customer.class.getName() + " c where c.id in ( " +
-                    "select o.customerId from " + Orders.class.getName() + " o where o.status = 'UNCOMPLETED' )" ;
+                    "select o.customer.id from " + Orders.class.getName() + " o where o.status = 'Chưa hoàn tất' )" ;
             Query<Customer> query = session.createQuery(sql);
             List<Customer> result = query.getResultList();
             session.getTransaction().commit();

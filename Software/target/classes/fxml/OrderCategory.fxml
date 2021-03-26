@@ -35,8 +35,8 @@
                     <columns>
                         <TableColumn fx:id="createdDateCol" prefWidth="103.0" text="Ngày tạo" />
                         <TableColumn fx:id="customerNameCol" prefWidth="190.0" text="Khách hàng" />
-                        <TableColumn fx:id="descriptionCol" prefWidth="495.0" text="Chi tiết" />
-                        <TableColumn fx:id="totalAmountCol" prefWidth="101.0" text="Tổng tiền" />
+                        <TableColumn fx:id="descriptionCol" prefWidth="481.0" text="Chi tiết" />
+                        <TableColumn fx:id="totalAmountCol" prefWidth="115.0" text="Tổng tiền" />
                         <TableColumn fx:id="statusCol" prefWidth="160.0" text="Trạng thái thanh toán" />
                         <TableColumn fx:id="typeCol" prefWidth="91.0" text="Loại" />
                     </columns>

@@ -24,10 +24,10 @@ public class ReceiptRepository {
         }
     }
 
-    public static List<Receipt> getLikeName(Session session, String name) {
+    public static List<Receipt> getLikeCustomerName(Session session, String customerName) {
         try {
             session.beginTransaction();
-            String sql = "Select c from " + Receipt.class.getName() + " c where c.name like '%" + name + "%'";
+            String sql = "Select c from " + Receipt.class.getName() + " c where c.orders.customer.fullName like '%" + customerName + "%'";
             Query<Receipt> query = session.createQuery(sql);
             List<Receipt> result = query.getResultList();
             session.getTransaction().commit();
