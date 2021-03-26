@@ -1,34 +1,37 @@
 package dataModel;
 
+import entities.Orders;
+
 import java.util.Date;
 
 public class OrdersModel {
     private Date createdDate;
     private String customerName;
-    private Integer totalQuantity;
-    private Integer totalAmount;
+    private String description;
+    private String sumAmount;
     private String status;
-    private String ordersType;
-    private String ordersDescription;
+    private String type;
+    private Orders orders;
 
     public OrdersModel() {
     }
 
-    public OrdersModel(Date createdDate, String customerName, Integer totalQuantity, Integer totalAmount, String ordersType, String ordersDescription) {
+    public OrdersModel(Date createdDate, String customerName, String description, String sumAmount, String status, String type, Orders orders) {
         this.createdDate = createdDate;
         this.customerName = customerName;
-        this.totalQuantity = totalQuantity;
-        this.totalAmount = totalAmount;
-        this.ordersType = ordersType;
-        this.ordersDescription = ordersDescription;
-    }
-
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(String status) {
+        this.description = description;
+        this.sumAmount = sumAmount;
         this.status = status;
+        this.type = type;
+        this.orders = orders;
+    }
+
+    public Orders getOrders() {
+        return orders;
+    }
+
+    public void setOrders(Orders orders) {
+        this.orders = orders;
     }
 
     public Date getCreatedDate() {
@@ -47,35 +50,35 @@ public class OrdersModel {
         this.customerName = customerName;
     }
 
-    public Integer getTotalQuantity() {
-        return totalQuantity;
+    public String getDescription() {
+        return description;
     }
 
-    public void setTotalQuantity(Integer totalQuantity) {
-        this.totalQuantity = totalQuantity;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
-    public Integer getTotalAmount() {
-        return totalAmount;
+    public String getSumAmount() {
+        return sumAmount;
     }
 
-    public void setTotalAmount(Integer totalAmount) {
-        this.totalAmount = totalAmount;
+    public void setSumAmount(String sumAmount) {
+        this.sumAmount = sumAmount;
     }
 
-    public String getOrdersType() {
-        return ordersType;
+    public String getStatus() {
+        return status;
     }
 
-    public void setOrdersType(String ordersType) {
-        this.ordersType = ordersType;
+    public void setStatus(String status) {
+        this.status = status;
     }
 
-    public String getOrdersDescription() {
-        return ordersDescription;
+    public String getType() {
+        return type;
     }
 
-    public void setOrdersDescription(String ordersDescription) {
-        this.ordersDescription = ordersDescription;
+    public void setType(String type) {
+        this.type = type;
     }
 }

@@ -5,21 +5,59 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b5ea20d7-1c8e-440f-81c2-ca4792b5ccf8" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/dataModel/OrdersAddTableModel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/holders/OrdersHolder.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/validation/OrdersValidation.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/CustomerAddController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/CustomerAddController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/LoginController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/MainNavigatorController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/MainNavigatorController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/MerchandiseAddController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/MerchandiseAddController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/MerchandiseCategoryController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/MerchandiseCategoryController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/MerchandiseUpdateController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/MerchandiseUpdateController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/controllers/OrderAddController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/OrderAddController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/controllers/OrderCategoryController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/OrderCategoryController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/OrderUpdateController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/OrderUpdateController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/dataModel/OrdersModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dataModel/OrdersModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/entities/Merchandise.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/entities/Merchandise.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/entities/Orders.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/entities/Orders.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/entities/OrdersDetail.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/entities/OrdersDetail.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/repositories/CustomerRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/repositories/CustomerRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/repositories/MerchandiseRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/repositories/MerchandiseRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/repositories/OrdersDetailRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/repositories/OrdersDetailRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/utils/NumberHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/utils/NumberHelper.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/utils/TableHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/utils/TableHelper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/css/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/fxml/MerchandiseAdd.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/fxml/MerchandiseAdd.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/fxml/MerchandiseCategory.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/fxml/MerchandiseCategory.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/fxml/MerchandiseUpdate.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/fxml/MerchandiseUpdate.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/fxml/OrderAdd.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/fxml/OrderAdd.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/fxml/OrderCategory.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/fxml/OrderCategory.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/fxml/OrderUpdate.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/fxml/OrderUpdate.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controllers/CustomerAddController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controllers/CustomerAddController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controllers/LoginController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controllers/LoginController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controllers/MainNavigatorController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controllers/MainNavigatorController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controllers/MerchandiseAddController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controllers/MerchandiseAddController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controllers/MerchandiseCategoryController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controllers/MerchandiseCategoryController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controllers/MerchandiseUpdateController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controllers/MerchandiseUpdateController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/controllers/OrderAddController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controllers/OrderAddController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/controllers/OrderCategoryController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controllers/OrderCategoryController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controllers/OrderUpdateController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controllers/OrderUpdateController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/css/style.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/dataModel/OrdersModel.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/dataModel/OrdersModel.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/entities/Merchandise.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/entities/Merchandise.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/entities/Orders.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/entities/Orders.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/entities/OrdersDetail.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/entities/OrdersDetail.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/fxml/MerchandiseAdd.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/fxml/MerchandiseAdd.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/fxml/MerchandiseCategory.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/fxml/MerchandiseCategory.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/fxml/MerchandiseUpdate.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/fxml/MerchandiseUpdate.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/fxml/OrderAdd.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/fxml/OrderAdd.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/fxml/OrderCategory.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/fxml/OrderCategory.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/fxml/OrderUpdate.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/fxml/OrderUpdate.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/repositories/CustomerRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/repositories/CustomerRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/repositories/MerchandiseRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/repositories/MerchandiseRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/repositories/OrdersDetailRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/repositories/OrdersDetailRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/utils/NumberHelper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/utils/NumberHelper.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/utils/TableHelper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/utils/TableHelper.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -121,6 +159,19 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="CLASS" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <list>
       <item itemvalue="Application.App" />
       <item itemvalue="Application.Test" />
@@ -190,6 +241,8 @@
       <workItem from="1616583231770" duration="5823000" />
       <workItem from="1616590673160" duration="103000" />
       <workItem from="1616603384320" duration="4528000" />
+      <workItem from="1616681534501" duration="29843000" />
+      <workItem from="1616715821862" duration="2327000" />
     </task>
     <servers />
   </component>
@@ -210,51 +263,5 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/utils/TableHelper.java</url>
-          <line>100</line>
-          <option name="timeStamp" value="38" />
-        </line-breakpoint>
-        <line-breakpoint type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/controllers/MerchandiseUpdateController.java</url>
-          <line>176</line>
-          <option name="timeStamp" value="13" />
-        </line-breakpoint>
-        <line-breakpoint type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/controllers/MerchandiseUpdateController.java</url>
-          <line>177</line>
-          <option name="timeStamp" value="14" />
-        </line-breakpoint>
-        <line-breakpoint type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/utils/TableHelper.java</url>
-          <line>97</line>
-          <option name="timeStamp" value="55" />
-        </line-breakpoint>
-        <line-breakpoint type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/utils/TableHelper.java</url>
-          <line>114</line>
-          <option name="timeStamp" value="56" />
-        </line-breakpoint>
-        <line-breakpoint type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/utils/NumberHelper.java</url>
-          <line>9</line>
-          <option name="timeStamp" value="63" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/controllers/OrderCategoryController.java</url>
-          <line>60</line>
-          <option name="timeStamp" value="64" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/controllers/OrderCategoryController.java</url>
-          <line>95</line>
-          <option name="timeStamp" value="65" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>

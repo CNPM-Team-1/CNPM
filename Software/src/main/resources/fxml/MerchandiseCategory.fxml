@@ -81,9 +81,10 @@
                   </HBox>
                   <TableView fx:id="contentTable" editable="true" focusTraversable="false" onMouseClicked="#select" prefHeight="498.0" prefWidth="1149.0" styleClass="table-font" stylesheets="@../css/style.css" GridPane.rowIndex="1">
                      <columns>
-                        <TableColumn fx:id="nameCol" prefWidth="282.0" text="Tên sản phẩm" />
-                        <TableColumn fx:id="branchCol" minWidth="0.0" prefWidth="383.0" text="Thương hiệu" />
-                        <TableColumn fx:id="priceCol" minWidth="0.0" prefWidth="475.0" text="Giá" />
+                        <TableColumn fx:id="nameCol" prefWidth="420.0" text="Tên sản phẩm" />
+                        <TableColumn fx:id="typeCol" minWidth="0.0" prefWidth="194.0" text="Loại" />
+                        <TableColumn fx:id="quantityCol" minWidth="0.0" prefWidth="204.0" text="Số lượng" />
+                        <TableColumn fx:id="priceCol" minWidth="0.0" prefWidth="322.0" text="Giá" />
                      </columns>
                   </TableView>
                </children>

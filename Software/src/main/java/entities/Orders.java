@@ -11,27 +11,31 @@ public class Orders {
     private String id;
     @Column(name = "type")
     private String type;
-    @Column(name = "employee_id")
-    private String employeeId;
-    @Column(name = "customer_id")
-    private String customerId;
+    @ManyToOne
+    @JoinColumn(name = "employee_id")
+    private Employee employee;
+    @ManyToOne
+    @JoinColumn(name = "customer_id")
+    private Customer customer;
     @Column(name = "status")
     private String status;
     @Column(name = "description")
     private String description;
+    @Temporal(TemporalType.DATE)
     @Column(name = "created_date")
     private Date createdDate;
+    @Temporal(TemporalType.DATE)
     @Column(name = "updated_date")
     private Date updatedDate;
 
     public Orders() {
     }
 
-    public Orders(String id, String type,String employeeId, String customerId, String status,String description, Date createdDate, Date updatedDate) {
+    public Orders(String id, String type, Employee employee, Customer customer, String status, String description, Date createdDate, Date updatedDate) {
         this.id = id;
         this.type = type;
-        this.employeeId = employeeId;
-        this.customerId = customerId;
+        this.employee = employee;
+        this.customer = customer;
         this.status = status;
         this.description = description;
         this.createdDate = createdDate;
@@ -54,20 +58,20 @@ public class Orders {
         this.type = type;
     }
 
-    public String getEmployeeId() {
-        return employeeId;
+    public Employee getEmployee() {
+        return employee;
     }
 
-    public void setEmployeeId(String employeeId) {
-        this.employeeId = employeeId;
+    public void setEmployee(Employee employee) {
+        this.employee = employee;
     }
 
-    public String getCustomerId() {
-        return customerId;
+    public Customer getCustomer() {
+        return customer;
     }
 
-    public void setCustomerId(String customerId) {
-        this.customerId = customerId;
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
     }
 
     public String getStatus() {
@@ -100,5 +104,15 @@ public class Orders {
 
     public void setUpdatedDate(Date updatedDate) {
         this.updatedDate = updatedDate;
+    }
+
+    @PrePersist
+    protected void onCreate() {
+        createdDate = new Date();
+    }
+
+    @PreUpdate
+    protected void onUpdate() {
+        updatedDate = new Date();
     }
 }

@@ -27,27 +27,22 @@ import java.util.Objects;
 import java.util.ResourceBundle;
 
 public class MerchandiseCategoryController implements Initializable {
-
     @FXML
     private TextField searchBar;
-
     @FXML
     private JFXButton searchButton;
-
     @FXML
     private JFXButton addButton;
-
     @FXML
     private TableView<Merchandise> contentTable;
-
     @FXML
     private TableColumn<Merchandise, String> nameCol;
-
     @FXML
-    private TableColumn<Merchandise, String> branchCol;
-
+    private TableColumn<Merchandise, String> typeCol;
     @FXML
-    private TableColumn<Merchandise, Integer> priceCol;
+    private TableColumn<Merchandise, Integer> quantityCol;
+    @FXML
+    private TableColumn<Merchandise, String> priceCol;
 
     // For other class call function from this class
     public static MerchandiseCategoryController instance;
@@ -60,11 +55,10 @@ public class MerchandiseCategoryController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         SessionFactory factory = HibernateUtils.getSessionFactory();
-        Session session = factory.getCurrentSession();
+        Session session = factory.openSession();
 
         List<Merchandise> merchandiseList = MerchandiseRepository.getAll(session);
-        assert merchandiseList != null;
-        TableHelper.setMerchandiseTable(merchandiseList, contentTable, nameCol, branchCol, priceCol);
+        TableHelper.setMerchandiseTable(merchandiseList, contentTable, nameCol, typeCol, quantityCol, priceCol);
     }
 
     @FXML
@@ -112,8 +106,7 @@ public class MerchandiseCategoryController implements Initializable {
 
             String keySearch = searchBar.getText();
             List<Merchandise> merchandiseList = MerchandiseRepository.getLikeNameAndBranch(session, keySearch);
-            assert merchandiseList != null;
-            TableHelper.setMerchandiseTable(merchandiseList, contentTable, nameCol, branchCol, priceCol);
+            TableHelper.setMerchandiseTable(merchandiseList, contentTable, nameCol, typeCol, quantityCol, priceCol);
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
             System.out.println(Arrays.toString(ex.getStackTrace()));
@@ -126,7 +119,6 @@ public class MerchandiseCategoryController implements Initializable {
         Session session = factory.getCurrentSession();
 
         List<Merchandise> merchandiseList = MerchandiseRepository.getAll(session);
-        assert merchandiseList != null;
-        TableHelper.setMerchandiseTable(merchandiseList, contentTable, nameCol, branchCol, priceCol);
+        TableHelper.setMerchandiseTable(merchandiseList, contentTable, nameCol, typeCol, quantityCol, priceCol);
     }
 }
