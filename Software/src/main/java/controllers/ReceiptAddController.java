@@ -7,6 +7,7 @@ import entities.Customer;
 import entities.Orders;
 import entities.OrdersDetail;
 import entities.Receipt;
+import enums.StatusEnum;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -22,10 +23,7 @@ import repositories.CustomerRepository;
 import repositories.OrdersDetailRepository;
 import repositories.OrdersRepository;
 import repositories.ReceiptRepository;
-import utils.HibernateUtils;
-import utils.NumberHelper;
-import utils.StageHelper;
-import utils.TableHelper;
+import utils.*;
 
 import java.net.URL;
 import java.util.*;
@@ -123,8 +121,7 @@ public class ReceiptAddController implements Initializable {
         if (event.getClickCount() == 2) {
             try {
                 SessionFactory factory = HibernateUtils.getSessionFactory();
-                Session session = factory.openSession();
-
+                Session session;
                 // Show chosen orders detail in detailTable
                 Orders orders = new Orders(ordersTable.getSelectionModel().getSelectedItem().getOrders());
                 ordersTable.getSelectionModel().clearSelection();
@@ -140,7 +137,6 @@ public class ReceiptAddController implements Initializable {
                         ordersDetailModel.setFinalAmount(NumberHelper.addComma(String.valueOf(item.getAmount())));
                         ordersDetailModelList.add(ordersDetailModel);
                     }
-
                     // set SumQuantityHolder and SumAmountHolder
                     Integer sumQuantity = ordersDetailModelList.stream().mapToInt(OrdersDetailModel::getQuantity).sum();
                     Integer sumAmount = ordersDetailModelList.stream().mapToInt(t -> Integer.parseInt(NumberHelper.removeComma(t.getFinalAmount()))).sum();
@@ -162,39 +158,36 @@ public class ReceiptAddController implements Initializable {
     @FXML
     void save(ActionEvent event) {
         SessionFactory factory = HibernateUtils.getSessionFactory();
-        Session session = factory.openSession();
-
+        Session session;
         // Save new receipt
-//        Receipt receipt = new Receipt();
-//        receipt.setId(UUIDHelper.generateType4UUID().toString());
-//        receipt.setOrderId(chosenOrders.getId());
-//        receipt.setEmployeeId(chosenOrders.getEmployeeId());
-//        receipt.setDescription(chosenOrders.getDescription());
-//
-//        session.beginTransaction();
-//        session.save(receipt);
-//        session.getTransaction().commit();
-//
-//        // Close stage
-//        StageHelper.closeStage(event);
-//
-//        // Show alert box
-//        AlertBoxHelper.showMessageBox("Thêm thành công");
-//
-//        // Refresh content table
-//        ReceiptCategoryController.getInstance().refresh();
-//
-//        // Unhide host
-//        AnchorPane host = MainNavigatorController.instance.getHost();
-//        host.setDisable(false);
-//
-//
-//        // Update orders status
-//        chosenOrders.setStatus(StatusEnum.COMPLETED.toString());
-//        session.beginTransaction();
-//        session.saveOrUpdate(chosenOrders);
-//        session.getTransaction().commit();
-//        OrderCategoryController.getInstance().initialize(null, null);
+        Receipt receipt = new Receipt();
+        receipt.setId(UUIDHelper.generateType4UUID().toString());
+        receipt.setOrders(chosenOrders);
+        receipt.setEmployee(chosenOrders.getEmployee());
+        receipt.setDescription(chosenOrders.getDescription());
+
+        session = factory.openSession();
+        session.beginTransaction();
+        session.save(receipt);
+        session.getTransaction().commit();
+
+        // Close stage
+        StageHelper.closeStage(event);
+        // Show alert box
+        AlertBoxHelper.showMessageBox("Thêm thành công");
+        // Refresh content table
+        ReceiptCategoryController.getInstance().refresh();
+        // Unhide host
+        AnchorPane host = MainNavigatorController.instance.getHost();
+        host.setDisable(false);
+
+        // Update orders status
+        chosenOrders.setStatus("Hoàn tất");
+        session = factory.openSession();
+        session.beginTransaction();
+        session.saveOrUpdate(chosenOrders);
+        session.getTransaction().commit();
+        OrderCategoryController.getInstance().initialize(null, null);
     }
 
     @FXML

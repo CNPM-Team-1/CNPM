@@ -48,11 +48,9 @@ public class ReceiptCategoryController implements Initializable {
 
     // For other class call function from this class
     public static ReceiptCategoryController instance;
-
     public ReceiptCategoryController() {
         instance = this;
     }
-
     public static ReceiptCategoryController getInstance() {
         return instance;
     }
@@ -112,7 +110,6 @@ public class ReceiptCategoryController implements Initializable {
         try {
             SessionFactory sessionFactory = HibernateUtils.getSessionFactory();
             Session session;
-
             // Get receipt like name
             session = sessionFactory.openSession();
             List<Receipt> receiptList = ReceiptRepository.getLikeCustomerName(session, searchBar.getText());
@@ -144,26 +141,26 @@ public class ReceiptCategoryController implements Initializable {
 
     @FXML
     void select(MouseEvent event) {
-//        if (event.getClickCount() == 2) {
-//            try {
-//                ReceiptModel receiptModel = contentTable.getSelectionModel().getSelectedItem();
-//                contentTable.getSelectionModel().clearSelection();
-//                // Store receipt to use in another class
-//                if (receiptModel != null) {
-//                    ReceiptModelHolder receiptModelHolder = ReceiptModelHolder.getInstance();
-//                    receiptModelHolder.setReceiptModel(receiptModel);
-//
-//                    Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("fxml/ReceiptDetail.fxml")));
-//                    StageHelper.startStage(root);
-//                    // Hide host
-//                    AnchorPane host = MainNavigatorController.instance.getHost();
-//                    host.setDisable(true);
-//                }
-//            } catch (Exception ex) {
-//                System.out.println(ex.getMessage());
-//                System.out.println(Arrays.toString(ex.getStackTrace()));
-//            }
-//        }
+        if (event.getClickCount() == 2) {
+            try {
+                ReceiptModel receiptModel = contentTable.getSelectionModel().getSelectedItem();
+                contentTable.getSelectionModel().clearSelection();
+                // Store receipt to use in another class
+                if (receiptModel != null) {
+                    ReceiptModelHolder receiptModelHolder = ReceiptModelHolder.getInstance();
+                    receiptModelHolder.setReceiptModel(receiptModel);
+
+                    Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("fxml/ReceiptDetail.fxml")));
+                    StageHelper.startStage(root);
+                    // Hide host
+                    AnchorPane host = MainNavigatorController.instance.getHost();
+                    host.setDisable(true);
+                }
+            } catch (Exception ex) {
+                System.out.println(ex.getMessage());
+                System.out.println(Arrays.toString(ex.getStackTrace()));
+            }
+        }
     }
 
     // Refresh table

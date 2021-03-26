@@ -4,7 +4,12 @@ import com.jfoenix.controls.JFXButton;
 import dataModel.OrdersDetailModel;
 import dataModel.ReceiptModel;
 import dataModel.ReceiptOrdersModel;
+import entities.Merchandise;
+import entities.Orders;
+import entities.OrdersDetail;
+import entities.Receipt;
 import holders.ReceiptModelHolder;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TableColumn;
@@ -12,10 +17,15 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
-import utils.StageHelper;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import repositories.OrdersDetailRepository;
+import utils.*;
 
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class ReceiptDetailController implements Initializable {
@@ -55,72 +65,87 @@ public class ReceiptDetailController implements Initializable {
     private TextField sumQuantityHolder;
     @FXML
     private TextField sumAmountHolder;
+    @FXML
+    private JFXButton deleteButton;
 
     // Get ReceiptModel from ReceiptCategoryController select(MouseEvent event)
     ReceiptModelHolder receiptModelHolder = ReceiptModelHolder.getInstance();
-    ReceiptModel receiptModel = receiptModelHolder.getReceiptModel();
+    Receipt receipt = receiptModelHolder.getReceiptModel().getReceipt();
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-//        if (receiptModel != null) {
-//            SessionFactory factory = HibernateUtils.getSessionFactory();
-//            Session session = factory.openSession();
-//
-//            // Set customer
-//            session.beginTransaction();
-//            Customer customer = CustomerRepository.getByName(session, receiptModel.getCustomerName());
-//            session.getTransaction().commit();
-//            customerHolder.setText(receiptModel.getCustomerName());
-//            phoneHolder.setText(customer.getPhone());
-//            addressHolder.setText(customer.getAddress());
-//
-//            // Set orders
-//            session = factory.openSession();
-//            Orders orders = OrdersRepository.getById(session, receiptModel.getOrdersId());
-//            session = factory.openSession();
-//            List<Employee> employeeList = EmployeeRepository.getAll(session);
-//
-//            List<ReceiptOrdersModel> receiptOrdersModelList = new ArrayList<>();
-//            ReceiptOrdersModel receiptOrdersModel = new ReceiptOrdersModel(orders);
-//            receiptOrdersModel.setEmployeeName(employeeList.stream().filter(t -> t.getId().equals(orders.getEmployeeId())).findFirst().get().getFullName());
-//            receiptOrdersModelList.add(receiptOrdersModel);
-//
-//            TableHelper.setReceiptOrdersModelTable(receiptOrdersModelList, ordersTable, dateCol, descriptionCol, employeeCol);
-//
-//            // Set orders detail
-//            session = factory.openSession();
-//            List<OrdersDetail> ordersDetailList = OrdersDetailRepository.getByOrdersId(session, orders.getId());
-//            session = factory.openSession();
-//            List<Merchandise> merchandiseList = MerchandiseRepository.getAll(session);
-//
-//            List<OrdersDetailModel> ordersDetailModelList = new ArrayList<>();
-//            for (OrdersDetail item : ordersDetailList) {
-//                Merchandise merchandise = merchandiseList.stream().filter(t -> t.getId().equals(item.getMerchandiseId())).findFirst().orElse(null);
-//
-//                OrdersDetailModel ordersDetailModel = new OrdersDetailModel();
-//                ordersDetailModel.setMerchandiseName(merchandise.getName());
-//                ordersDetailModel.setQuantity(item.getQuantity());
-//                ordersDetailModel.setAmount(NumberHelper.addComma(merchandise.getPrice()));
-//                ordersDetailModel.setFinalAmount(NumberHelper.addComma(String.valueOf(item.getAmount())));
-//                ordersDetailModelList.add(ordersDetailModel);
-//            }
-//
-//            // Set sumQuantity and sumAmount of orders detail
-//            Integer sumQuantity = ordersDetailList.stream().mapToInt(OrdersDetail::getQuantity).sum();
-//            int sumAmount = ordersDetailList.stream().mapToInt(OrdersDetail::getAmount).sum();
-//            sumQuantityHolder.setText(NumberHelper.addComma(String.valueOf(sumQuantity)));
-//            sumAmountHolder.setText(NumberHelper.addComma(String.valueOf(sumAmount)));
-//
-//            TableHelper.setOrdersDetailModelTable(ordersDetailModelList, detailTable, merchandiseCol, quantityCol, amountCol, finalAmountCol);
-//
-//            // Set receipt model holder
-//            receiptModelHolder.setReceiptModel(null);
-//        }
+        if (receipt != null) {
+            SessionFactory factory = HibernateUtils.getSessionFactory();
+            Session session = factory.openSession();
+
+            // Set customer
+            customerHolder.setText(receipt.getOrders().getCustomer().getFullName());
+            phoneHolder.setText(receipt.getOrders().getCustomer().getPhone());
+            addressHolder.setText(receipt.getOrders().getCustomer().getAddress());
+            // Set orders
+            List<ReceiptOrdersModel> receiptOrdersModelList = new ArrayList<>();
+            ReceiptOrdersModel receiptOrdersModel = new ReceiptOrdersModel();
+            receiptOrdersModel.setOrders(receipt.getOrders());
+            receiptOrdersModel.setCreatedDate(receipt.getOrders().getCreatedDate());
+            receiptOrdersModel.setDescription(receipt.getOrders().getDescription());
+            receiptOrdersModel.setEmployeeName(receipt.getEmployee().getFullName());
+            receiptOrdersModelList.add(receiptOrdersModel);
+            TableHelper.setReceiptOrdersModelTable(receiptOrdersModelList, ordersTable, dateCol, descriptionCol, employeeCol);
+            // Set orders detail
+            session = factory.openSession();
+            List<OrdersDetail> ordersDetailList = OrdersDetailRepository.getByOrdersId(session, receipt.getOrders().getId());
+            List<OrdersDetailModel> ordersDetailModelList = new ArrayList<>();
+            for (OrdersDetail item : ordersDetailList) {
+                OrdersDetailModel ordersDetailModel = new OrdersDetailModel();
+                ordersDetailModel.setMerchandiseName(item.getMerchandise().getName());
+                ordersDetailModel.setQuantity(item.getQuantity());
+                ordersDetailModel.setAmount(NumberHelper.addComma(item.getMerchandise().getPrice()));
+                ordersDetailModel.setFinalAmount(NumberHelper.addComma(String.valueOf(item.getAmount())));
+                ordersDetailModelList.add(ordersDetailModel);
+            }
+            TableHelper.setOrdersDetailModelTable(ordersDetailModelList, detailTable, merchandiseCol, quantityCol, amountCol, finalAmountCol);
+            // Set sumQuantity and sumAmount of orders detail
+            Integer sumQuantity = ordersDetailList.stream().mapToInt(OrdersDetail::getQuantity).sum();
+            int sumAmount = ordersDetailList.stream().mapToInt(OrdersDetail::getAmount).sum();
+            sumQuantityHolder.setText(NumberHelper.addComma(String.valueOf(sumQuantity)));
+            sumAmountHolder.setText(NumberHelper.addComma(String.valueOf(sumAmount)));
+        }
+    }
+
+    @FXML
+    void delete(ActionEvent event) {
+        // Delete receipt
+        SessionFactory sessionFactory = HibernateUtils.getSessionFactory();
+        Session session = sessionFactory.openSession();
+        session.beginTransaction();
+        session.delete(receipt);
+        session.getTransaction().commit();
+        // Update orders status
+        Orders orders = receipt.getOrders();
+        orders.setStatus("Chưa hoàn tất");
+        session = sessionFactory.openSession();
+        session.beginTransaction();
+        session.saveOrUpdate(orders);
+        session.getTransaction().commit();
+        // Refresh content table
+        ReceiptCategoryController.getInstance().refresh();
+        OrderCategoryController.getInstance().refresh();
+        // Set receipt model holder
+        receiptModelHolder.setReceiptModel(null);
+        // Close stage
+        StageHelper.closeStage(event);
+        // Show alert box
+        AlertBoxHelper.showMessageBox("Xoá thành công");
+        // Unhide host
+        AnchorPane host = MainNavigatorController.instance.getHost();
+        host.setDisable(false);
     }
 
     @FXML
     void close(MouseEvent event) {
         StageHelper.closeStage(event);
+        // Set receipt model holder
+        receiptModelHolder.setReceiptModel(null);
         // Unhide host
         AnchorPane host = MainNavigatorController.instance.getHost();
         host.setDisable(false);

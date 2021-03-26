@@ -161,5 +161,17 @@
             </Label>
          </children>
       </GridPane>
+      <JFXButton fx:id="deleteButton" focusTraversable="false" layoutX="738.0" layoutY="717.0" onAction="#delete" prefHeight="32.0" prefWidth="91.0" stylesheets="@../css/style.css" text="Xoá">
+         <font>
+            <Font size="18.0" />
+         </font>
+         <styleClass>
+            <String fx:value="delete-button" />
+            <String fx:value="button-font" />
+         </styleClass>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
    </children>
 </AnchorPane>
