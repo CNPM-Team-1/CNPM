@@ -8,7 +8,7 @@
 		<property name="connection.driver_class">com.mysql.jdbc.Driver</property>
 		<property name="connection.url">jdbc:mysql://localhost:3307/cnpm-cellphones?serverTimezone=UTC</property>
 		<property name="connection.username">root</property>
-		<property name="connection.password" />
+		<property name="connection.password"></property>
 
 		<!-- JDBC connection pool, use Hibernate internal connection pool -->
 		<property name="connection.pool_size">5</property>
@@ -36,11 +36,12 @@
 		<!-- Names of the annotated entity class -->
 		<mapping class="entities.Customer"/>
 		<mapping class="entities.Employee"/>
+		<mapping class="entities.EmployeeRoles"/>
 		<mapping class="entities.Merchandise"/>
-		<mapping class="entities.Order"/>
-		<mapping class="entities.OrderDetail"/>
+		<mapping class="entities.Orders"/>
+		<mapping class="entities.OrdersDetail"/>
+		<mapping class="entities.Permissions"/>
 		<mapping class="entities.Receipt"/>
-		<mapping class="entities.RolesDetail"/>
 		<mapping class="entities.Roles"/>
 		<mapping class="entities.RolesDetail"/>
 		<mapping class="entities.Salary"/>

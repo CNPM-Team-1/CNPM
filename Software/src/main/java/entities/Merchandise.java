@@ -15,23 +15,28 @@ public class Merchandise {
     private String type;
     @Column(name = "branch")
     private String branch;
+    @Column(name = "quantity")
+    private Integer quantity;
     @Column(name = "import_price")
-    private Integer importPrice;
+    private String importPrice;
     @Column(name = "price")
-    private Integer price;
+    private String price;
+    @Temporal(TemporalType.DATE)
     @Column(name = "created_date")
     private Date createdDate;
+    @Temporal(TemporalType.DATE)
     @Column(name = "updated_date")
     private Date updatedDate;
 
     public Merchandise() {
     }
 
-    public Merchandise(String id, String name, String type, String branch, Integer importPrice, Integer price, Date createdDate, Date updatedDate) {
+    public Merchandise(String id, String name, String type, String branch, Integer quantity, String importPrice, String price, Date createdDate, Date updatedDate) {
         this.id = id;
         this.name = name;
         this.type = type;
         this.branch = branch;
+        this.quantity = quantity;
         this.importPrice = importPrice;
         this.price = price;
         this.createdDate = createdDate;
@@ -70,19 +75,27 @@ public class Merchandise {
         this.branch = branch;
     }
 
-    public Integer getImportPrice() {
+    public Integer getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(Integer quantity) {
+        this.quantity = quantity;
+    }
+
+    public String getImportPrice() {
         return importPrice;
     }
 
-    public void setImportPrice(Integer importPrice) {
+    public void setImportPrice(String importPrice) {
         this.importPrice = importPrice;
     }
 
-    public Integer getPrice() {
+    public String getPrice() {
         return price;
     }
 
-    public void setPrice(Integer price) {
+    public void setPrice(String price) {
         this.price = price;
     }
 

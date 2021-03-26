@@ -6,22 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="b5ea20d7-1c8e-440f-81c2-ca4792b5ccf8" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/CustomerAddController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/CustomerAddController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/CustomerCategoryController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/CustomerCategoryController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/CustomerUpdateController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/CustomerUpdateController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/MainNavigatorController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/MainNavigatorController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/repositories/CustomerRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/repositories/CustomerRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/validation/CustomerValidation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/validation/CustomerValidation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/fxml/CustomerUpdate.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/fxml/CustomerUpdate.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/fxml/MainNavigator.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/fxml/MainNavigator.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controllers/CustomerAddController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controllers/CustomerAddController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controllers/CustomerCategoryController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controllers/CustomerCategoryController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controllers/CustomerUpdateController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controllers/CustomerUpdateController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controllers/MainNavigatorController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controllers/MainNavigatorController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/fxml/CustomerUpdate.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/fxml/CustomerUpdate.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/fxml/MainNavigator.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/fxml/MainNavigator.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/repositories/CustomerRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/repositories/CustomerRepository.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/validation/CustomerValidation.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/validation/CustomerValidation.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/OrderCategoryController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/OrderCategoryController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/repositories/OrdersRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/repositories/OrdersRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/fxml/OrderCategory.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/fxml/OrderCategory.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -32,6 +19,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Enum" />
+        <option value="CSS File" />
         <option value="FxmlFile" />
         <option value="Class" />
       </list>
@@ -48,8 +36,12 @@
       <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
     </file-type-list>
   </component>
-  <component name="ProblemsViewState">
-    <option name="selectedIndex" value="1" />
+  <component name="GithubPullRequestsUISettings">
+    <option name="hiddenUrls">
+      <set>
+        <option value="https://github.com/CNPM-Team-1/CNPM" />
+      </set>
+    </option>
   </component>
   <component name="ProjectId" id="1pPpNstBIfnaGnpuIHG1VUTMIle" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
@@ -66,16 +58,29 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
+    <property name="ignore.preview.features.used" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../../bm-agency" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="project.structure.last.edited" value="Libraries" />
+    <property name="project.structure.last.edited" value="SDKs" />
     <property name="project.structure.proportion" value="0.17" />
     <property name="project.structure.side.proportion" value="0.39312038" />
+    <property name="restartRequiresConfirmation" value="false" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+  </component>
+  <component name="ReaderModeSettings">
+    <option name="enabled" value="false" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\Github\CNPM\Software\src\main\resources\fxml" />
+    </key>
+    <key name="ExtractSuperBase.RECENT_KEYS">
+      <recent name="controllers" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="utils" />
@@ -83,20 +88,15 @@
   </component>
   <component name="RunManager" selected="Application.App">
     <configuration name="App" type="Application" factoryName="Application" nameIsGenerated="true">
+      <option name="ALTERNATIVE_JRE_PATH" value="14" />
       <option name="MAIN_CLASS_NAME" value="start.App" />
       <module name="Software" />
       <option name="VM_PARAMETERS" value="--module-path &quot;C:\Program Files\javafx-sdk-11.0.2\lib&quot; --add-modules javafx.controls,javafx.fxml" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="start.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Test" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+    <configuration name="Test" type="Application" factoryName="Application" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="controllers.Test" />
       <module name="Software" />
       <extension name="coverage">
@@ -109,13 +109,15 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
           <option name="containerStateName" value="" />
         </value>
       </option>
-      <option name="TEST_OBJECT" value="class" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <properties />
+      <listeners />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -124,11 +126,6 @@
       <item itemvalue="Application.App" />
       <item itemvalue="Application.Test" />
     </list>
-    <recent_temporary>
-      <list>
-        <item itemvalue="Application.Test" />
-      </list>
-    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -141,6 +138,10 @@
       <workItem from="1615094545529" duration="736000" />
       <workItem from="1615095504754" duration="5845000" />
       <workItem from="1615101398980" duration="5336000" />
+      <workItem from="1615352654740" duration="7958000" />
+      <workItem from="1615389325807" duration="612000" />
+      <workItem from="1615447019677" duration="10516000" />
+      <workItem from="1615470006845" duration="5849000" />
       <workItem from="1615351777053" duration="5898000" />
       <workItem from="1615361726107" duration="279000" />
       <workItem from="1615366933699" duration="444000" />
@@ -150,6 +151,9 @@
       <workItem from="1615447911023" duration="10209000" />
       <workItem from="1615464879961" duration="1712000" />
       <workItem from="1615530013290" duration="4467000" />
+      <workItem from="1615535702550" duration="1003000" />
+      <workItem from="1615565579448" duration="2117000" />
+      <workItem from="1615622572793" duration="6954000" />
       <workItem from="1615535702550" duration="1665000" />
       <workItem from="1615541430085" duration="4469000" />
       <workItem from="1615547816241" duration="2370000" />
@@ -162,6 +166,33 @@
       <workItem from="1615706810221" duration="43000" />
       <workItem from="1615706869013" duration="84000" />
       <workItem from="1615706965707" duration="9826000" />
+      <workItem from="1615939498667" duration="2028000" />
+      <workItem from="1615981323093" duration="12633000" />
+      <workItem from="1615995054932" duration="354000" />
+      <workItem from="1615793602546" duration="744000" />
+      <workItem from="1615794376723" duration="436000" />
+      <workItem from="1615794863337" duration="298000" />
+      <workItem from="1615824754385" duration="664000" />
+      <workItem from="1615827275319" duration="972000" />
+      <workItem from="1615828807811" duration="16972000" />
+      <workItem from="1615950616026" duration="805000" />
+      <workItem from="1616050771294" duration="4252000" />
+      <workItem from="1616211576698" duration="2881000" />
+      <workItem from="1616047484419" duration="33508000" />
+      <workItem from="1616316012377" duration="333000" />
+      <workItem from="1616317849400" duration="2649000" />
+      <workItem from="1616322917178" duration="9427000" />
+      <workItem from="1616352937139" duration="5543000" />
+      <workItem from="1616400435488" duration="1202000" />
+      <workItem from="1616403631287" duration="8050000" />
+      <workItem from="1616418902241" duration="2518000" />
+      <workItem from="1616431335183" duration="635000" />
+      <workItem from="1616490171070" duration="5091000" />
+      <workItem from="1616583231770" duration="5823000" />
+      <workItem from="1616590673160" duration="103000" />
+      <workItem from="1616603384320" duration="4528000" />
+      <workItem from="1616681534501" duration="29843000" />
+      <workItem from="1616715821862" duration="3017000" />
     </task>
     <servers />
   </component>
