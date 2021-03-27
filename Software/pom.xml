@@ -88,6 +88,11 @@
             <version>1.18.16</version>
             <scope>provided</scope>
         </dependency>
+        <dependency>
+            <groupId>org.controlsfx</groupId>
+            <artifactId>controlsfx</artifactId>
+            <version>9.0.0</version>
+        </dependency>
     </dependencies>
 
     <build>

@@ -5,7 +5,11 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
+<<<<<<< Updated upstream
 <AnchorPane prefHeight="662.0" prefWidth="1203.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1">
+=======
+<AnchorPane fx:id="host" onMouseClicked="#requestFocus" prefHeight="662.0" prefWidth="1203.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ReceiptCategoryController">
+>>>>>>> Stashed changes
    <children>
       <Label layoutX="14.0" layoutY="12.0" prefHeight="37.0" prefWidth="131.0" styleClass="font" stylesheets="@../css/style.css" text="Hoá đơn" textFill="#2b2733">
          <font>

@@ -11,6 +11,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.resource.transaction.spi.TransactionStatus;
 import utils.*;
 import validation.MerchandiseValidation;
 
@@ -89,7 +90,9 @@ public class MerchandiseAddController {
             }
         } else {
             errorMessage.setText(validateInsert.get(0));
-            session.getTransaction().commit();
+            if (session.getTransaction().getStatus() != TransactionStatus.COMMITTED) {
+                session.getTransaction().commit();
+            }
         }
     }
 }
