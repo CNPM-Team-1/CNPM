@@ -67,7 +67,7 @@
 /* Top Nav */
 
 .navigation-hbox {
-    -fx-background-color: #008bfe;
+    -fx-background-color: #17bf63;
     -fx-pref-height: 46px;
 }
 
@@ -111,7 +111,7 @@
 
 .login-button {
     /*-fx-background-color: #0066ff;*/
-    -fx-background-color: #008bfe;
+    -fx-background-color: #17bf63;
     -fx-background-radius: 5px;
     -fx-font-size: 18px;
     -fx-text-fill: white;
@@ -121,8 +121,8 @@
     -fx-background-color: white;
     /*-fx-text-fill: #0066ff;*/
     /*-fx-border-color: #0066ff;*/
-    -fx-text-fill: #008bfe;
-    -fx-border-color: #008bfe;
+    -fx-text-fill: #17bf63;
+    -fx-border-color: #17bf63;
     -fx-border-radius: 5px;
 }
 
@@ -166,7 +166,7 @@
 
 .update-button {
     /*-fx-background-color: #0066ff;*/
-    -fx-background-color: #008bfe;
+    -fx-background-color: #17bf63;
     -fx-background-radius: 5px;
     -fx-font-size: 16px;
     -fx-text-fill: white;
@@ -176,15 +176,15 @@
     -fx-background-color: white;
     /*-fx-border-color: #0066ff;*/
     /*-fx-text-fill: #0066ff;*/
-    -fx-border-color: #008bfe;
-    -fx-text-fill: #008bfe;
+    -fx-border-color: #17bf63;
+    -fx-text-fill: #17bf63;
     -fx-border-radius: 5px;
     -fx-background-radius: 5px;
 }
 
 .save-button {
     /*-fx-background-color: #0066ff;*/
-    -fx-background-color: #008bfe;
+    -fx-background-color: #17bf63;
     -fx-background-radius: 5px;
     -fx-font-size: 16px;
     -fx-text-fill: white;
@@ -194,8 +194,8 @@
     -fx-background-color: white;
     /*-fx-border-color: #0066ff;*/
     /*-fx-text-fill: #0066ff;*/
-    -fx-border-color: #008bfe;
-    -fx-text-fill: #008bfe;
+    -fx-border-color: #17bf63;
+    -fx-text-fill: #17bf63;
     -fx-background-radius: 5px;
     -fx-border-radius: 5px;
     -fx-border-width: 1px;
