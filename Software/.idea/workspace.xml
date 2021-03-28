@@ -6,7 +6,31 @@
   <component name="ChangeListManager">
     <list default="true" id="b5ea20d7-1c8e-440f-81c2-ca4792b5ccf8" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/css/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/EmployeeAddController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/EmployeeAddController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/EmployeeUpdateController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/EmployeeUpdateController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/RolesAddController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/RolesAddController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/RolesCategoryController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/RolesCategoryController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/RolesUpdateController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/RolesUpdateController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/entities/EmployeeRoles.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/entities/EmployeeRoles.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/entities/RolesDetail.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/entities/RolesDetail.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/repositories/EmployeeRolesRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/repositories/EmployeeRolesRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/repositories/PermissionRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/repositories/PermissionRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/repositories/RolesDetailRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/repositories/RolesDetailRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/repositories/RolesRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/repositories/RolesRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/validation/RolesValidation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/validation/RolesValidation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/fxml/RoleUpdate.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/fxml/RoleUpdate.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controllers/EmployeeAddController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controllers/EmployeeAddController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controllers/EmployeeUpdateController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controllers/EmployeeUpdateController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controllers/RolesAddController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controllers/RolesAddController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controllers/RolesCategoryController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controllers/RolesCategoryController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controllers/RolesUpdateController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controllers/RolesUpdateController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/entities/EmployeeRoles.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/entities/EmployeeRoles.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/entities/RolesDetail.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/entities/RolesDetail.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/repositories/EmployeeRolesRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/repositories/EmployeeRolesRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/repositories/PermissionRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/repositories/PermissionRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/repositories/RolesDetailRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/repositories/RolesDetailRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/repositories/RolesRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/repositories/RolesRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/validation/RolesValidation.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/validation/RolesValidation.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -89,7 +113,7 @@
       <option name="ALTERNATIVE_JRE_PATH" value="14" />
       <option name="MAIN_CLASS_NAME" value="start.App" />
       <module name="Software" />
-      <option name="VM_PARAMETERS" value="--module-path &quot;C:\Program Files\javafx-sdk-11.0.2\lib&quot; --add-modules javafx.controls,javafx.fxml" />
+      <option name="VM_PARAMETERS" value="--module-path &quot;C:\Program Files\javafx-sdk-11.0.2\lib&quot; --add-modules javafx.controls,javafx.fxml --add-exports javafx.base/com.sun.javafx.event=ALL-UNNAMED" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -103,6 +127,17 @@
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -207,5 +242,31 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/controllers/EmployeeAddController.java</url>
+          <line>92</line>
+          <option name="timeStamp" value="101" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/controllers/EmployeeAddController.java</url>
+          <line>102</line>
+          <option name="timeStamp" value="102" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/repositories/RolesRepository.java</url>
+          <line>29</line>
+          <option name="timeStamp" value="103" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/repositories/RolesRepository.java</url>
+          <line>34</line>
+          <option name="timeStamp" value="104" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

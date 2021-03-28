@@ -3,6 +3,7 @@ package validation;
 import entities.Customer;
 import org.hibernate.Session;
 import repositories.CustomerRepository;
+import utils.StringHelper;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,10 +32,11 @@ public class CustomerValidation {
         }
         if (customer.getEmail() == null || customer.getEmail().isEmpty()) {
             msg.add("Chưa điền email");
+        } else if (!StringHelper.isEmail(customer.getEmail())) {
+            msg.add("Email không hợp lệ");
         } else if (customerEmail != null) {
             msg.add("Email đã được sử dụng");
         }
-
         return msg;
     }
 
@@ -64,6 +66,8 @@ public class CustomerValidation {
         // check email
         if (customer.getEmail() == null || customer.getEmail().isEmpty()) {
             msg.add("Chưa điền email");
+        } else if (!StringHelper.isEmail(customer.getEmail())) {
+            msg.add("Email không hợp lệ");
         } else if (customerEmail != null && !customerEmail.getId().equals(customer.getId())) {
             msg.add("Email đã được sử dụng");
         }

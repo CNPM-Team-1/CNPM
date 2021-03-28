@@ -3,6 +3,7 @@ package validation;
 import entities.Employee;
 import org.hibernate.Session;
 import repositories.EmployeeRepository;
+import utils.StringHelper;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -29,6 +30,8 @@ public class EmployeeValidation {
         }
         if (employee.getEmail() == null || employee.getEmail().isEmpty()) {
             msg.add("Chưa điền email");
+        } else if (!StringHelper.isEmail(employee.getEmail())) {
+            msg.add("Email không hợp lệ");
         } else if (employeeEmail != null) {
             msg.add("Email đã được sử dụng");
         }
@@ -65,6 +68,8 @@ public class EmployeeValidation {
             // check email
             if (employee.getEmail() == null || employee.getEmail().isEmpty()) {
                 msg.add("Chưa điền email");
+            } else if (!StringHelper.isEmail(employee.getEmail())) {
+                msg.add("Email không hợp lệ");
             } else if (employeeEmail != null && !employeeEmail.getId().equals(employee.getId())) {
                 msg.add("Email đã được sử dụng");
             }

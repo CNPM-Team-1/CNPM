@@ -144,4 +144,19 @@ public class CustomerRepository{
             return null;
         }
     }
+
+    public static List<Customer> getByCustomerType(Session session, String type) {
+        try {
+            session.beginTransaction();
+            String sql = "Select c from " + Customer.class.getName() + " c where c.type = '" + type + "'";
+            Query<Customer> query = session.createQuery(sql);
+            List<Customer> result = query.getResultList();
+            session.getTransaction().commit();
+            return result;
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+            System.out.println(Arrays.toString(ex.getStackTrace()));
+            return null;
+        }
+    }
 }

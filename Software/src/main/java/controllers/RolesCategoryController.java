@@ -24,32 +24,24 @@ import java.net.URL;
 import java.util.*;
 
 public class RolesCategoryController implements Initializable {
-
     @FXML
     private TextField searchBar;
-
     @FXML
     private JFXButton searchButton;
-
     @FXML
     private JFXButton addButton;
-
     @FXML
     private TableView<Roles> contentTable;
-
     @FXML
     private TableColumn<Roles, String> nameCol;
-
     @FXML
     private TableColumn<Roles, Date> createdDateCol;
 
     // For other class call function from this class
     public static RolesCategoryController instance;
-
     public RolesCategoryController() {
         instance = this;
     }
-
     public static RolesCategoryController getInstance() {
         return instance;
     }
@@ -57,8 +49,8 @@ public class RolesCategoryController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        SessionFactory factory = HibernateUtils.getSessionFactory();
-        Session session = factory.getCurrentSession();
+        SessionFactory sessionFactory = HibernateUtils.getSessionFactory();
+        Session session = sessionFactory.openSession();
 
         List<Roles> rolesList = RolesRepository.getAll(session);
         TableHelper.setRolesTable(rolesList, contentTable, nameCol, createdDateCol);

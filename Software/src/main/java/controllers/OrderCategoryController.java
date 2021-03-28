@@ -82,7 +82,7 @@ public class OrderCategoryController implements Initializable {
             ordersModel.setCreatedDate(item.getCreatedDate());
             ordersModel.setCustomerName(item.getCustomer().getFullName());
             ordersModel.setDescription(item.getDescription());
-            ordersModel.setSumAmount(NumberHelper.addComma(String.valueOf(ordersDetailList.stream().mapToInt(OrdersDetail::getAmount).sum())));
+            ordersModel.setSumAmount(NumberHelper.addComma(String.valueOf(ordersDetailList.stream().mapToLong(OrdersDetail::getAmount).sum())));
             ordersModel.setStatus(item.getStatus());
             ordersModel.setType(item.getType());
             ordersModel.setOrders(item);
@@ -124,7 +124,7 @@ public class OrderCategoryController implements Initializable {
                 ordersModel.setCreatedDate(item.getCreatedDate());
                 ordersModel.setCustomerName(item.getCustomer().getFullName());
                 ordersModel.setDescription(item.getDescription());
-                ordersModel.setSumAmount(NumberHelper.addComma(String.valueOf(ordersDetailList.stream().mapToInt(OrdersDetail::getAmount).sum())));
+                ordersModel.setSumAmount(NumberHelper.addComma(String.valueOf(ordersDetailList.stream().mapToLong(OrdersDetail::getAmount).sum())));
                 ordersModel.setStatus(item.getStatus());
                 ordersModel.setType(item.getType());
                 ordersModel.setOrders(item);

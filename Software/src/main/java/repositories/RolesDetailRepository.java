@@ -17,7 +17,7 @@ public class RolesDetailRepository {
             Session session = factory.getCurrentSession();
             session.beginTransaction();
 
-            String sql = "Select c from " + RolesDetail.class.getName() + " c where c.roleId = '" + rolesId + "'";
+            String sql = "Select c from " + RolesDetail.class.getName() + " c where c.roles.id = '" + rolesId + "'";
             Query<RolesDetail> query = session.createQuery(sql);
             List<RolesDetail> result = query.getResultList();
             session.getTransaction().commit();
@@ -29,16 +29,12 @@ public class RolesDetailRepository {
         }
     }
 
-    public static void deleteByRoleId(String rolesId) {
+    public static void deleteByRoleId(Session session, String rolesId) {
         try {
-            SessionFactory factory = HibernateUtils.getSessionFactory();
-            Session session = factory.getCurrentSession();
             session.beginTransaction();
-
-            String sql = "Delete from " + RolesDetail.class.getName() + " where roleId = '" + rolesId + "'";
+            String sql = "Delete from " + RolesDetail.class.getName() + " r where r.roles.id = '" + rolesId + "'";
             Query query = session.createQuery(sql);
             query.executeUpdate();
-
             session.getTransaction().commit();
         } catch (Exception ex) {
             System.out.println(ex.getMessage());

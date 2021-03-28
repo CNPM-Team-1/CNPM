@@ -1,9 +1,6 @@
 package entities;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "employee_roles")
@@ -11,19 +8,21 @@ public class EmployeeRoles {
     @Id
     @Column(name = "id")
     private String id;
-    @Column(name = "roles_id")
-    private String rolesId;
-    @Column(name = "employee_id")
-    private String employeeId;
+    @ManyToOne
+    @JoinColumn(name = "roles_id")
+    private Roles roles;
+    @ManyToOne
+    @JoinColumn(name = "employee_id")
+    private Employee employee;
 
     public EmployeeRoles() {
 
     }
 
-    public EmployeeRoles(String id, String rolesId, String employeeId) {
+    public EmployeeRoles(String id, Roles roles, Employee employee) {
         this.id = id;
-        this.employeeId = employeeId;
-        this.rolesId = rolesId;
+        this.roles = roles;
+        this.employee = employee;
     }
 
     public String getId() {
@@ -34,19 +33,19 @@ public class EmployeeRoles {
         this.id = id;
     }
 
-    public String getRolesId() {
-        return rolesId;
+    public Roles getRoles() {
+        return roles;
     }
 
-    public void setRolesId(String rolesId) {
-        this.rolesId = rolesId;
+    public void setRoles(Roles roles) {
+        this.roles = roles;
     }
 
-    public String getEmployeeId() {
-        return employeeId;
+    public Employee getEmployee() {
+        return employee;
     }
 
-    public void setEmployeeId(String employeeId) {
-        this.employeeId = employeeId;
+    public void setEmployee(Employee employee) {
+        this.employee = employee;
     }
 }

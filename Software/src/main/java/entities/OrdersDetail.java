@@ -18,12 +18,12 @@ public class OrdersDetail {
     @Column(name = "quantity")
     private int quantity;
     @Column(name = "amount")
-    private int amount;
+    private Long amount;
 
     public OrdersDetail() {
     }
 
-    public OrdersDetail(String id, Orders orders, Merchandise merchandise, int quantity, int amount) {
+    public OrdersDetail(String id, Orders orders, Merchandise merchandise, int quantity, Long amount) {
         this.id = id;
         this.orders = orders;
         this.merchandise = merchandise;
@@ -63,11 +63,11 @@ public class OrdersDetail {
         this.quantity = quantity;
     }
 
-    public int getAmount() {
+    public Long getAmount() {
         return amount;
     }
 
-    public void setAmount(int amount) {
+    public void setAmount(Long amount) {
         this.amount = amount;
     }
 }
