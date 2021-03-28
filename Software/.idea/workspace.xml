@@ -5,41 +5,32 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b5ea20d7-1c8e-440f-81c2-ca4792b5ccf8" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_controlsfx_controlsfx_11_1_0.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/utils/StringHelper.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Software.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Software.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/OrderAddController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/OrderAddController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/OrderCategoryController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/OrderCategoryController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/OrderUpdateController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/OrderUpdateController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/ReceiptAddController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/ReceiptAddController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/ReceiptCategoryController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/ReceiptCategoryController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/ReceiptDetailController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/ReceiptDetailController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/entities/OrdersDetail.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/entities/OrdersDetail.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/repositories/CustomerRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/repositories/CustomerRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/repositories/MerchandiseRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/repositories/MerchandiseRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/validation/CustomerValidation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/validation/CustomerValidation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/validation/EmployeeValidation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/validation/EmployeeValidation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/fxml/OrderAdd.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/fxml/OrderAdd.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/fxml/OrderUpdate.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/fxml/OrderUpdate.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/fxml/ReceiptAdd.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/fxml/ReceiptAdd.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/hibernate.cfg.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/hibernate.cfg.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controllers/OrderAddController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controllers/OrderAddController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controllers/OrderCategoryController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controllers/OrderCategoryController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controllers/OrderUpdateController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controllers/OrderUpdateController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controllers/ReceiptAddController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controllers/ReceiptAddController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controllers/ReceiptCategoryController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controllers/ReceiptCategoryController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controllers/ReceiptDetailController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controllers/ReceiptDetailController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/entities/OrdersDetail.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/entities/OrdersDetail.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/fxml/OrderAdd.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/fxml/OrderAdd.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/fxml/OrderUpdate.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/fxml/OrderUpdate.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/fxml/ReceiptAdd.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/fxml/ReceiptAdd.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/hibernate.cfg.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/hibernate.cfg.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/repositories/CustomerRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/repositories/CustomerRepository.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/repositories/MerchandiseRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/repositories/MerchandiseRepository.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/validation/CustomerValidation.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/validation/CustomerValidation.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/validation/EmployeeValidation.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/validation/EmployeeValidation.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/EmployeeAddController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/EmployeeAddController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/EmployeeUpdateController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/EmployeeUpdateController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/RolesAddController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/RolesAddController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/RolesCategoryController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/RolesCategoryController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/RolesUpdateController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/RolesUpdateController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/entities/EmployeeRoles.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/entities/EmployeeRoles.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/entities/RolesDetail.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/entities/RolesDetail.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/repositories/EmployeeRolesRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/repositories/EmployeeRolesRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/repositories/PermissionRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/repositories/PermissionRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/repositories/RolesDetailRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/repositories/RolesDetailRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/repositories/RolesRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/repositories/RolesRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/validation/RolesValidation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/validation/RolesValidation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/fxml/RoleUpdate.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/fxml/RoleUpdate.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controllers/EmployeeAddController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controllers/EmployeeAddController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controllers/EmployeeUpdateController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controllers/EmployeeUpdateController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controllers/RolesAddController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controllers/RolesAddController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controllers/RolesCategoryController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controllers/RolesCategoryController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controllers/RolesUpdateController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controllers/RolesUpdateController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/entities/EmployeeRoles.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/entities/EmployeeRoles.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/entities/RolesDetail.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/entities/RolesDetail.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/repositories/EmployeeRolesRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/repositories/EmployeeRolesRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/repositories/PermissionRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/repositories/PermissionRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/repositories/RolesDetailRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/repositories/RolesDetailRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/repositories/RolesRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/repositories/RolesRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/validation/RolesValidation.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/validation/RolesValidation.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -251,5 +242,31 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/controllers/EmployeeAddController.java</url>
+          <line>92</line>
+          <option name="timeStamp" value="101" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/controllers/EmployeeAddController.java</url>
+          <line>102</line>
+          <option name="timeStamp" value="102" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/repositories/RolesRepository.java</url>
+          <line>29</line>
+          <option name="timeStamp" value="103" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/repositories/RolesRepository.java</url>
+          <line>34</line>
+          <option name="timeStamp" value="104" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

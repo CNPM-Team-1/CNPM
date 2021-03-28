@@ -29,9 +29,12 @@ public class PermissionRepository {
 
     public static Permissions getByName(Session session, String name) {
         try {
+            session.beginTransaction();
             String sql = "Select c from " + Permissions.class.getName() + " c where c.name = '" + name + "'";
             Query<Permissions> query = session.createQuery(sql);
-            return query.getSingleResult();
+            Permissions result = query.getSingleResult();
+            session.getTransaction().commit();
+            return result;
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
             System.out.println(Arrays.toString(ex.getStackTrace()));

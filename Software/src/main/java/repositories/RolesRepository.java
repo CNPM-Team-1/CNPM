@@ -27,9 +27,12 @@ public class RolesRepository {
 
     public static Roles getByName(Session session, String name) {
         try {
+            session.beginTransaction();
             String sql = "Select c from " + Roles.class.getName() + " c where c.name = '" + name + "'";
             Query<Roles> query = session.createQuery(sql);
-            return query.getSingleResult();
+            Roles result = query.getSingleResult();
+            session.getTransaction().commit();
+            return result;
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
             System.out.println(Arrays.toString(ex.getStackTrace()));

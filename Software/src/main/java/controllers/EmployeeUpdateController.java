@@ -81,9 +81,8 @@ public class EmployeeUpdateController implements Initializable {
             }
             // Set default value
             session = factory.openSession();
-
             EmployeeRoles employeeRoles = EmployeeRolesRepository.getByEmployeeId(session, employee.getId());
-            roleHolder.setValue(rolesList.stream().filter(t -> t.getId().equals(employeeRoles.getRolesId())).findFirst().get().getName());
+            roleHolder.setValue(rolesList.stream().filter(t -> t.getId().equals(employeeRoles.getRoles().getId())).findFirst().get().getName());
             // Set employee in update window
             Set zoneId = ZoneId.getAvailableZoneIds();
             if (employee != null) {
@@ -163,32 +162,29 @@ public class EmployeeUpdateController implements Initializable {
             session.beginTransaction();
             session.saveOrUpdate(employee);
             session.getTransaction().commit();
-
             // Delete then save new employee_roles
-            EmployeeRoles employeeRoles = EmployeeRolesRepository.getByEmployeeId(session, employee.getId());
-            session.beginTransaction();
-            session.delete(employeeRoles);
+            session = factory.openSession();
+            EmployeeRolesRepository.deleteByEmployeeId(session, employee.getId());
 
+            session = factory.openSession();
             Roles roles = RolesRepository.getByName(session, roleHolder.getValue());
-            employeeRoles = new EmployeeRoles();
+            EmployeeRoles employeeRoles = new EmployeeRoles();
             employeeRoles.setId(UUIDHelper.generateType4UUID().toString());
-            employeeRoles.setRolesId(roles.getId());
-            employeeRoles.setEmployeeId(employee.getId());
+            employeeRoles.setRoles(roles);
+            employeeRoles.setEmployee(employee);
+            session = factory.openSession();
+            session.beginTransaction();
             session.save(employeeRoles);
             session.getTransaction().commit();
 
             // Refresh content table
             EmployeeCategoryController.getInstance().refresh();
-
             // Set employee holder
             employeeHolder.setEmployee(employee);
-
             // Close Stage
             StageHelper.closeStage(event);
-
             // Show alert box
             AlertBoxHelper.showMessageBox("Cập nhật thành công");
-
             // Unhide host
             AnchorPane host = MainNavigatorController.instance.getHost();
             host.setDisable(false);

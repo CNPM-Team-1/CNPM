@@ -14,8 +14,8 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.resource.transaction.spi.TransactionStatus;
 import repositories.PermissionRepository;
-import repositories.RolesRepository;
 import utils.*;
 import validation.RolesValidation;
 
@@ -26,34 +26,24 @@ import java.util.ResourceBundle;
 import java.util.stream.Collectors;
 
 public class RolesAddController implements Initializable {
-
     @FXML
     private AnchorPane host;
-
     @FXML
     private Label full_name;
-
     @FXML
     private TextField nameHolder;
-
     @FXML
     private JFXButton addButton;
-
     @FXML
     private JFXButton cancelButton;
-
     @FXML
     private ImageView close;
-
     @FXML
     private Label errorMessage;
-
     @FXML
     private TableView<Permissions> permissionTable;
-
     @FXML
     private JFXListView<String> selectedPermissionList;
-
     @FXML
     private TableColumn<Permissions, String> nameCol;
 
@@ -61,8 +51,8 @@ public class RolesAddController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        SessionFactory factory = HibernateUtils.getSessionFactory();
-        Session session = factory.getCurrentSession();
+        SessionFactory sessionFactory = HibernateUtils.getSessionFactory();
+        Session session = sessionFactory.openSession();
 
         List<Permissions> permissionsList = PermissionRepository.getAll(session);
         TableHelper.setPermissionNameTable(permissionsList, permissionTable, nameCol);
@@ -78,47 +68,49 @@ public class RolesAddController implements Initializable {
 
     @FXML
     void save(ActionEvent event) {
-        SessionFactory factory = HibernateUtils.getSessionFactory();
-        Session session = factory.getCurrentSession();
-        session.beginTransaction();
+        SessionFactory sessionFactory = HibernateUtils.getSessionFactory();
+        Session session = sessionFactory.openSession();
 
-        String id = UUIDHelper.generateType4UUID().toString();
         Roles roles = new Roles();
-        roles.setId(id);
+        roles.setId(UUIDHelper.generateType4UUID().toString());
         roles.setName(nameHolder.getText());
 
-        List<String> validateInsert = RolesValidation.validateInsert(session, roles);
+        List<String> validateInsert = RolesValidation.validateInsert(sessionFactory, roles);
         if (validateInsert.size() == 0) {
+            // Close stage
             StageHelper.closeStage(event);
-
             // Show alert box
             AlertBoxHelper.showMessageBox("Thêm thành công");
-
             // Save new roles
+            session = sessionFactory.openSession();
+            session.beginTransaction();
             session.save(roles);
-
+            session.getTransaction().commit();
             // Save roles_detail
             for (String item : selectedPermission) {
+                session = sessionFactory.openSession();
                 Permissions permissions = PermissionRepository.getByName(session, item);
                 RolesDetail rolesDetail = new RolesDetail();
                 rolesDetail.setId(UUIDHelper.generateType4UUID().toString());
-                rolesDetail.setRoleId(id);
-                rolesDetail.setPermissionCode(permissions.getCode());
-                session.save(rolesDetail);
-            }
-            session.getTransaction().commit();
+                rolesDetail.setRoles(roles);
+                rolesDetail.setPermissions(permissions);
 
+                session = sessionFactory.openSession();
+                session.beginTransaction();
+                session.save(rolesDetail);
+                session.getTransaction().commit();
+            }
             // Refresh content table
             RolesCategoryController.getInstance().refresh();
-
             // Unhide host
             AnchorPane host = MainNavigatorController.instance.getHost();
             host.setDisable(false);
         } else {
             errorMessage.setText(validateInsert.get(0));
-            session.getTransaction().commit();
+            if (session.getTransaction().getStatus() != TransactionStatus.COMMITTED) {
+                session.getTransaction().commit();
+            }
         }
-
     }
 
     @FXML

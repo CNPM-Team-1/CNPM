@@ -93,31 +93,30 @@ public class EmployeeAddController implements Initializable {
             session = factory.openSession();
             session.beginTransaction();
             session.save(employee);
-
+            session.getTransaction().commit();
             // Save new employee_roles
             Roles roles = RolesRepository.getByName(session, roleHolder.getValue());
             EmployeeRoles employeeRoles = new EmployeeRoles();
             employeeRoles.setId(UUIDHelper.generateType4UUID().toString());
-            employeeRoles.setRolesId(roles.getId());
-            employeeRoles.setEmployeeId(employee.getId());
+            employeeRoles.setRoles(roles);
+            employeeRoles.setEmployee(employee);
+
+            session = factory.openSession();
+            session.beginTransaction();
             session.save(employeeRoles);
             session.getTransaction().commit();
 
             // Show alert box
             AlertBoxHelper.showMessageBox("Thêm thành công");
-
             // Close stage
             StageHelper.closeStage(event);
-
             // Refresh content table
             EmployeeCategoryController.getInstance().refresh();
-
             // Unhide host
             AnchorPane host = MainNavigatorController.instance.getHost();
             host.setDisable(false);
         } else {
             errorMessage.setText(validateInsert.get(0));
-//            session.getTransaction().commit();
             if (session.getTransaction().getStatus() != TransactionStatus.COMMITTED) {
                 session.getTransaction().commit();
             }
