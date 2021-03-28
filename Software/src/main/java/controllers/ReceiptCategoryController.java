@@ -70,9 +70,9 @@ public class ReceiptCategoryController implements Initializable {
                 List<ReceiptModel> receiptModelList = new ArrayList<>();
                 for (Receipt item : receiptList) {
                     session = sessionFactory.openSession();
-                    Integer sumAmount = Math.toIntExact(OrdersDetailRepository.getSumAmountById(session, item.getOrders().getId()));
+                    Long sumAmount = OrdersDetailRepository.getSumAmountById(session, item.getOrders().getId());
                     session = sessionFactory.openSession();
-                    Integer sumQuantity = Math.toIntExact(OrdersDetailRepository.getSumQuantityById(session, item.getOrders().getId()));
+                    int sumQuantity = Math.toIntExact(OrdersDetailRepository.getSumQuantityById(session, item.getOrders().getId()));
 
                     ReceiptModel receiptModel = new ReceiptModel();
                     receiptModel.setReceipt(item);

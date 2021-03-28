@@ -17,6 +17,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import org.controlsfx.control.textfield.TextFields;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import repositories.CustomerRepository;
@@ -27,10 +28,11 @@ import utils.*;
 
 import java.net.URL;
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class ReceiptAddController implements Initializable {
     @FXML
-    private ComboBox<String> customerHolder;
+    private TextField customerHolder;
     @FXML
     private TextField phoneHolder;
 
@@ -76,13 +78,8 @@ public class ReceiptAddController implements Initializable {
         Session session = factory.getCurrentSession();
 
         // Add customer to choose customer ComboBox
-        customerHolder.setValue("Chọn khách hàng");
         List<Customer> customerList = CustomerRepository.getCustomerHasActiveOrders(session);
-        if (customerList != null && customerList.size() > 0) {
-            for (Customer item : customerList) {
-                customerHolder.getItems().add(item.getFullName());
-            }
-        }
+        TextFields.bindAutoCompletion(customerHolder, customerList.stream().filter(t -> t.getType().equals("Khách hàng")).map(Customer::getFullName).collect(Collectors.toList()));
     }
 
     @FXML
@@ -96,12 +93,12 @@ public class ReceiptAddController implements Initializable {
         Session session = factory.openSession();
 
         // Show customer info
-        Customer customer = CustomerRepository.getByName(session, customerHolder.getValue());
+        Customer customer = CustomerRepository.getByName(session, customerHolder.getText());
         phoneHolder.setText(customer.getPhone());
         addressHolder.setText(customer.getAddress());
         // Show customer orders info
         session = factory.openSession();
-        List<Orders> ordersList = OrdersRepository.getLikeCustomerName(session, customerHolder.getValue());
+        List<Orders> ordersList = OrdersRepository.getLikeCustomerName(session, customerHolder.getText());
         if (ordersList != null && ordersList.size() > 0) {
             List<ReceiptOrdersModel> receiptOrdersModelList = new ArrayList<>();
             for (Orders item : ordersList) {

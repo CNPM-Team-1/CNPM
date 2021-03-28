@@ -4,7 +4,6 @@
 <?import java.lang.String?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
-<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
@@ -34,11 +33,6 @@
                   <Font size="15.0" />
                </font>
             </Label>
-            <ComboBox fx:id="customerHolder" focusTraversable="false" onAction="#showChosenCustomer" prefHeight="30.0" prefWidth="175.0" promptText="Chọn khách hàng" styleClass="top-font" stylesheets="@../css/style.css" visibleRowCount="2" GridPane.columnIndex="1">
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-            </ComboBox>
             <Label layoutX="10.0" layoutY="23.0" prefWidth="131.0" styleClass="font" stylesheets="@../css/style.css" text="Số điện thoại:" GridPane.columnIndex="2">
                <font>
                   <Font size="15.0" />
@@ -52,6 +46,18 @@
                   <String fx:value="top-font" />
                   <String fx:value="font-color" />
                </styleClass>
+            </TextField>
+            <TextField fx:id="customerHolder" focusTraversable="false" onAction="#showChosenCustomer" prefWidth="149.0" promptText="Nhập tên khách hàng" stylesheets="@../css/style.css" GridPane.columnIndex="1">
+               <font>
+                  <Font size="14.0" />
+               </font>
+               <styleClass>
+                  <String fx:value="top-font" />
+                  <String fx:value="font-color" />
+               </styleClass>
+               <GridPane.margin>
+                  <Insets right="71.0" />
+               </GridPane.margin>
             </TextField>
          </children>
       </GridPane>

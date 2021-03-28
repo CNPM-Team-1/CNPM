@@ -106,7 +106,7 @@ public class ReceiptDetailController implements Initializable {
             TableHelper.setOrdersDetailModelTable(ordersDetailModelList, detailTable, merchandiseCol, quantityCol, amountCol, finalAmountCol);
             // Set sumQuantity and sumAmount of orders detail
             Integer sumQuantity = ordersDetailList.stream().mapToInt(OrdersDetail::getQuantity).sum();
-            int sumAmount = ordersDetailList.stream().mapToInt(OrdersDetail::getAmount).sum();
+            Long sumAmount = ordersDetailList.stream().mapToLong(OrdersDetail::getAmount).sum();
             sumQuantityHolder.setText(NumberHelper.addComma(String.valueOf(sumQuantity)));
             sumAmountHolder.setText(NumberHelper.addComma(String.valueOf(sumAmount)));
         }
