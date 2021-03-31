@@ -17,6 +17,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import org.controlsfx.control.textfield.AutoCompletionBinding;
 import org.controlsfx.control.textfield.TextFields;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -79,7 +80,11 @@ public class ReceiptAddController implements Initializable {
 
         // Add customer to choose customer ComboBox
         List<Customer> customerList = CustomerRepository.getCustomerHasActiveOrders(session);
-        TextFields.bindAutoCompletion(customerHolder, customerList.stream().filter(t -> t.getType().equals("Khách hàng")).map(Customer::getFullName).collect(Collectors.toList()));
+        if (customerList != null && customerList.size() > 0) {
+            // Add item to Customer Combox
+            AutoCompletionBinding<String> cHolder = TextFields.bindAutoCompletion(customerHolder, customerList.stream().map(Customer::getFullName).collect(Collectors.toList()));
+            cHolder.setOnAutoCompleted(stringAutoCompletionEvent -> showChosenCustomer(null));
+        }
     }
 
     @FXML
@@ -98,7 +103,7 @@ public class ReceiptAddController implements Initializable {
         addressHolder.setText(customer.getAddress());
         // Show customer orders info
         session = factory.openSession();
-        List<Orders> ordersList = OrdersRepository.getLikeCustomerName(session, customerHolder.getText());
+        List<Orders> ordersList = OrdersRepository.getByCustomerName(session, customerHolder.getText());
         if (ordersList != null && ordersList.size() > 0) {
             List<ReceiptOrdersModel> receiptOrdersModelList = new ArrayList<>();
             for (Orders item : ordersList) {
