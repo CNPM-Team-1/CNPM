@@ -1,11 +1,7 @@
 package utils;
 
-import dataModel.OrdersDetailModel;
+import dataModel.*;
 import controllers.OrderAddController;
-import dataModel.OrdersAddTableModel;
-import dataModel.OrdersModel;
-import dataModel.ReceiptModel;
-import dataModel.ReceiptOrdersModel;
 import entities.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -210,6 +206,45 @@ public class TableHelper {
         finalAmountCol.setCellValueFactory(new PropertyValueFactory<>("finalAmount"));
 
         // Add item table
+        table.setItems(data);
+    }
+
+    public static void setImportsDetailModelTable(List<ImportsDetailModel> ordersDetailModelList,
+                                                 TableView<ImportsDetailModel> table,
+                                                 TableColumn<ImportsDetailModel, String> merchandiseCol,
+                                                 TableColumn<ImportsDetailModel, Integer> quantityCol,
+                                                 TableColumn<ImportsDetailModel, Integer> amountCol,
+                                                 TableColumn<ImportsDetailModel, Integer> finalAmountCol) {
+        ObservableList<ImportsDetailModel> data = FXCollections.observableList(ordersDetailModelList);
+
+        // Associate date with columns
+        merchandiseCol.setCellValueFactory(new PropertyValueFactory<>("merchandiseName"));
+        quantityCol.setCellValueFactory(new PropertyValueFactory<>("quantity"));
+        amountCol.setCellValueFactory(new PropertyValueFactory<>("amount"));
+        finalAmountCol.setCellValueFactory(new PropertyValueFactory<>("finalAmount"));
+
+        // Add item table
+        table.setItems(data);
+    }
+
+    public static void setImportsModelTable(List<ImportsModel> importsModelList,
+                                            TableView<ImportsModel> table,
+                                            TableColumn<ImportsModel, Date> dateCol,
+                                            TableColumn<ImportsModel, String> nameCol,
+                                            TableColumn<ImportsModel, String> descriptionCol,
+                                            TableColumn<ImportsModel, Integer> quantityCol,
+                                            TableColumn<ImportsModel, String> amountCol) {
+
+        ObservableList<ImportsModel> data = FXCollections.observableList(importsModelList);
+
+        // Associate data with columns
+        dateCol.setCellValueFactory(new PropertyValueFactory<>("createdDate"));
+        nameCol.setCellValueFactory(new PropertyValueFactory<>("customerName"));
+        descriptionCol.setCellValueFactory(new PropertyValueFactory<>("description"));
+        quantityCol.setCellValueFactory(new PropertyValueFactory<>("sumQuantity"));
+        amountCol.setCellValueFactory(new PropertyValueFactory<>("sumAmount"));
+
+        // Add item to table
         table.setItems(data);
     }
 }

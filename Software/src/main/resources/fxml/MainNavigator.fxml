@@ -123,6 +123,31 @@
                   <Insets top="8.0" />
                </padding>
             </JFXButton>
+            <JFXButton fx:id="importsButton" alignment="CENTER" contentDisplay="TOP" focusTraversable="false" layoutX="10.0" layoutY="561.0" onAction="#openImportsCategory" prefHeight="71.0" prefWidth="144.0" stylesheets="@../css/style.css" text="Nhập hàng">
+               <font>
+                  <Font size="16.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <styleClass>
+                  <String fx:value="navigation-button" />
+                  <String fx:value="left-nav-button-font" />
+               </styleClass>
+               <graphic>
+                  <ImageView fitHeight="48.0" fitWidth="43.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../image/imports_button.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <padding>
+                  <Insets top="10.0" />
+               </padding>
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+            </JFXButton>
             <JFXButton fx:id="employeeButton" alignment="CENTER" contentDisplay="TOP" focusTraversable="false" layoutX="10.0" layoutY="158.0" onAction="#openEmployeeCategory" prefHeight="71.0" prefWidth="144.0" stylesheets="@../css/style.css" text="Nhân viên">
                <font>
                   <Font size="16.0" />
@@ -229,31 +254,6 @@
                <padding>
                   <Insets top="3.0" />
                </padding>
-            </JFXButton>
-            <JFXButton fx:id="timeTableButton1" alignment="CENTER" contentDisplay="TOP" focusTraversable="false" layoutX="10.0" layoutY="561.0" prefHeight="71.0" prefWidth="144.0" stylesheets="@../css/style.css" text="Thanh toán">
-               <font>
-                  <Font size="16.0" />
-               </font>
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-               <styleClass>
-                  <String fx:value="navigation-button" />
-                  <String fx:value="left-nav-button-font" />
-               </styleClass>
-               <graphic>
-                  <ImageView fitHeight="48.0" fitWidth="43.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../image/payment_button.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-               <padding>
-                  <Insets top="10.0" />
-               </padding>
-               <VBox.margin>
-                  <Insets />
-               </VBox.margin>
             </JFXButton>
          </children>
       </VBox>

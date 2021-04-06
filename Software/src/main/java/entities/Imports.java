@@ -1,23 +1,22 @@
 package entities;
 
-import enums.StatusEnum;
-
 import javax.persistence.*;
 import java.util.Date;
 
 @Entity
-@Table(name = "salary_detail")
-
-public class SalaryDetail {
+@Table(name = "imports")
+public class Imports {
     @Id
     @Column(name = "id")
     private String id;
-    @Column(name = "employee_id")
-    private String employeeId;
-    @Column(name = "amount")
-    private int amount;
-    @Column(name = "payment_status")
-    private StatusEnum paymentstatus;
+    @OneToOne
+    @JoinColumn(name = "orders_id")
+    private Orders orders;
+    @ManyToOne
+    @JoinColumn(name = "employee_id")
+    private Employee employee;
+    @Column(name = "description")
+    private String description;
     @Temporal(TemporalType.DATE)
     @Column(name = "created_date")
     private Date createdDate;
@@ -25,14 +24,14 @@ public class SalaryDetail {
     @Column(name = "updated_date")
     private Date updatedDate;
 
-    public SalaryDetail() {
+    public Imports() {
     }
 
-    public SalaryDetail(String id, String employeeId, int amount, StatusEnum paymentstatus, Date createdDate, Date updatedDate) {
+    public Imports(String id, Orders orders, Employee employee, String description, Date createdDate, Date updatedDate) {
         this.id = id;
-        this.employeeId = employeeId;
-        this.amount = amount;
-        this.paymentstatus = paymentstatus;
+        this.orders = orders;
+        this.employee = employee;
+        this.description = description;
         this.createdDate = createdDate;
         this.updatedDate = updatedDate;
     }
@@ -45,28 +44,28 @@ public class SalaryDetail {
         this.id = id;
     }
 
-    public String getEmployeeId() {
-        return employeeId;
+    public Orders getOrders() {
+        return orders;
     }
 
-    public void setEmployeeId(String employeeId) {
-        this.employeeId = employeeId;
+    public void setOrders(Orders orders) {
+        this.orders = orders;
     }
 
-    public int getAmount() {
-        return amount;
+    public Employee getEmployee() {
+        return employee;
     }
 
-    public void setAmount(int amount) {
-        this.amount = amount;
+    public void setEmployee(Employee employee) {
+        this.employee = employee;
     }
 
-    public StatusEnum getPaymentstatus() {
-        return paymentstatus;
+    public String getDescription() {
+        return description;
     }
 
-    public void setPaymentstatus(StatusEnum paymentstatus) {
-        this.paymentstatus = paymentstatus;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public Date getCreatedDate() {

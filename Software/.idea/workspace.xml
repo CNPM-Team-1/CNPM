@@ -5,9 +5,43 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b5ea20d7-1c8e-440f-81c2-ca4792b5ccf8" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/controllers/ImportsAddController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/controllers/ImportsCategoryController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/controllers/ImportsUpdateController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/dataModel/ImportsDetailModel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/dataModel/ImportsModel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/entities/Imports.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/entities/ImportsDetail.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/holders/ImportsHolder.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/repositories/ImportsDetailRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/repositories/ImportsRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/fxml/ImportsAdd.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/fxml/ImportsCategory.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/fxml/ImportsUpdate.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/image/imports_button.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Software.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Software.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/MainNavigatorController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/MainNavigatorController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/ReceiptAddController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/ReceiptAddController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dataModel/OrdersDetailModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dataModel/OrdersDetailModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/entities/OrdersDetail.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/entities/OrdersDetail.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/entities/Salary.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/entities/SalaryDetail.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/repositories/CustomerRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/repositories/CustomerRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/repositories/OrdersRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/repositories/OrdersRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/utils/TableHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/utils/TableHelper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/fxml/MainNavigator.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/fxml/MainNavigator.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/hibernate.cfg.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/hibernate.cfg.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/controllers/MainNavigatorController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controllers/MainNavigatorController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controllers/ReceiptAddController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controllers/ReceiptAddController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/dataModel/OrdersDetailModel.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/dataModel/OrdersDetailModel.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/entities/OrdersDetail.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/entities/OrdersDetail.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/entities/Salary.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/entities/SalaryDetail.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/fxml/MainNavigator.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/fxml/MainNavigator.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/hibernate.cfg.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/hibernate.cfg.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/repositories/CustomerRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/repositories/CustomerRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/repositories/OrdersRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/repositories/OrdersRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/utils/TableHelper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/utils/TableHelper.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -108,6 +142,19 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="CLASS" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <list>
       <item itemvalue="Application.App" />
       <item itemvalue="Application.Test" />
@@ -190,6 +237,9 @@
       <workItem from="1616848216375" duration="154000" />
       <workItem from="1616929577309" duration="666000" />
       <workItem from="1617164214568" duration="449000" />
+      <workItem from="1617180932737" duration="155000" />
+      <workItem from="1617181716046" duration="31832000" />
+      <workItem from="1617298072109" duration="9212000" />
     </task>
     <servers />
   </component>

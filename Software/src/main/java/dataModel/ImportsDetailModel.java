@@ -1,39 +1,42 @@
 package dataModel;
 
-import entities.OrdersDetail;
+import entities.ImportsDetail;
 
-public class OrdersDetailModel {
-    private OrdersDetail ordersDetail;
+public class ImportsDetailModel {
+    private ImportsDetail importsDetail;
     private String merchandiseName;
     private Integer quantity;
     private String amount;
     private String finalAmount;
 
-    public OrdersDetailModel() {
+    public ImportsDetailModel() {
     }
 
-    public OrdersDetailModel(OrdersDetail ordersDetail, String merchandiseName, Integer quantity, String amount, String finalAmount) {
-        this.ordersDetail = ordersDetail;
+    public ImportsDetailModel(ImportsDetail importsDetail, String merchandiseName, Integer quantity, String amount, String finalAmount) {
+        this.importsDetail = importsDetail;
         this.merchandiseName = merchandiseName;
         this.quantity = quantity;
         this.amount = amount;
         this.finalAmount = finalAmount;
     }
 
-    public OrdersDetailModel(OrdersDetailModel ordersDetailModel) {
-        this.merchandiseName = ordersDetailModel.getMerchandiseName();
-        this.quantity = ordersDetailModel.getQuantity();
-        this.amount = ordersDetailModel.getAmount();
-        this.finalAmount = ordersDetailModel.getFinalAmount();
-        this.ordersDetail = ordersDetailModel.getOrdersDetail();
+    @Override
+    public String toString() {
+        return "ImportsDetailModel{" +
+                "importsDetail=" + importsDetail +
+                ", merchandiseName='" + merchandiseName + '\'' +
+                ", quantity=" + quantity +
+                ", amount='" + amount + '\'' +
+                ", finalAmount='" + finalAmount + '\'' +
+                '}';
     }
 
-    public OrdersDetail getOrdersDetail() {
-        return ordersDetail;
+    public ImportsDetail getImportsDetail() {
+        return importsDetail;
     }
 
-    public void setOrdersDetail(OrdersDetail ordersDetail) {
-        this.ordersDetail = ordersDetail;
+    public void setImportsDetail(ImportsDetail importsDetail) {
+        this.importsDetail = importsDetail;
     }
 
     public String getMerchandiseName() {
