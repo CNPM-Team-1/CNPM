@@ -6,18 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="b5ea20d7-1c8e-440f-81c2-ca4792b5ccf8" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/ImportsAddController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/ImportsAddController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/ImportsCategoryController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/ImportsCategoryController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/controllers/ImportsUpdateController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/ImportsUpdateController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/OrderUpdateController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/OrderUpdateController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/dataModel/ImportsDetailModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dataModel/ImportsDetailModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/entities/ImportsDetail.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/entities/ImportsDetail.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/repositories/ImportsDetailRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/repositories/ImportsDetailRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/repositories/OrdersDetailRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/repositories/OrdersDetailRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/repositories/OrdersRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/repositories/OrdersRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/fxml/ImportsUpdate.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/fxml/ImportsUpdate.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/repositories/OrdersRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/repositories/OrdersRepository.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/utils/TableHelper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/utils/TableHelper.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -118,17 +107,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
-      <option name="arquillianRunConfiguration">
-        <value>
-          <option name="containerStateName" value="" />
-        </value>
-      </option>
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <list>
       <item itemvalue="Application.App" />
       <item itemvalue="Application.Test" />
@@ -215,6 +193,7 @@
       <workItem from="1617181716046" duration="31832000" />
       <workItem from="1617298072109" duration="9212000" />
       <workItem from="1617755437975" duration="12779000" />
+      <workItem from="1617772081010" duration="511000" />
     </task>
     <servers />
   </component>
@@ -260,9 +239,14 @@
           <option name="timeStamp" value="104" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/controllers/ImportsUpdateController.java</url>
-          <line>157</line>
-          <option name="timeStamp" value="160" />
+          <url>file://$PROJECT_DIR$/src/main/java/repositories/ImportsDetailRepository.java</url>
+          <line>119</line>
+          <option name="timeStamp" value="162" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/repositories/ImportsDetailRepository.java</url>
+          <line>132</line>
+          <option name="timeStamp" value="163" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

@@ -158,11 +158,14 @@ public class ImportsUpdateController implements Initializable {
                 int ordersQuantity = Objects.requireNonNull(OrdersDetailRepository.getById(session, item.getOrdersDetail().getId())).getQuantity();
                 int changeQuantity = Integer.parseInt(quantityHolder.getText());
                 session = sessionFactory.openSession();
-                int boughtQuantity = Math.toIntExact(Objects.requireNonNull(
-                        ImportsDetailRepository.getBoughtQuantityOfMerchandise(session,
+                int boughtQuantity = ImportsDetailRepository.getBoughtQuantityOfMerchandise(session,
                         item.getOrdersDetail().getOrders().getId(),
-                        item.getImportsDetail().getMerchandise().getId(), item.getImportsDetail().getImports().getId())
-                ));
+                        item.getImportsDetail().getMerchandise().getId(), item.getImportsDetail().getImports().getId()) != null ?
+                        Math.toIntExact(Objects.requireNonNull(
+                                ImportsDetailRepository.getBoughtQuantityOfMerchandise(session,
+                                        item.getOrdersDetail().getOrders().getId(),
+                                        item.getImportsDetail().getMerchandise().getId(), item.getImportsDetail().getImports().getId())
+                        )) : 0;
                 if ((boughtQuantity + changeQuantity) <= ordersQuantity) {
                     if (!quantityHolder.getText().equals("0")) {
                         item.setQuantity(Integer.parseInt(quantityHolder.getText()));
@@ -173,7 +176,7 @@ public class ImportsUpdateController implements Initializable {
                     }
                     break;
                 } else {
-                     errorMessage.setText("Không được chọn số lượng hàng hoá lớn hơn số lượng của đơn hàng");
+                    errorMessage.setText("Không được chọn số lượng hàng hoá lớn hơn số lượng của đơn hàng");
                 }
             }
         }
