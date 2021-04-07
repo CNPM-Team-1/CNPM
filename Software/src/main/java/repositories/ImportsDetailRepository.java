@@ -114,4 +114,28 @@ public class ImportsDetailRepository {
             return null;
         }
     }
+
+    public static Long getBoughtQuantityOfMerchandise(Session session, String ordersId, String merchandiseId, String importsId) {
+        try {
+            session.beginTransaction();
+            Query<Long> query = session.createQuery("" +
+                    "SELECT sum(t.quantity) " +
+                    "FROM ImportsDetail t " +
+                    "WHERE t.imports.id IN (SELECT u.id FROM Imports u WHERE u.orders.id = :ordersId) " +
+                    "AND t.merchandise.id = :merchandiseId " +
+                    "AND t.imports.id <> :importsId");
+            query.setParameter("ordersId", ordersId);
+            query.setParameter("merchandiseId", merchandiseId);
+            query.setParameter("importsId", importsId);
+
+            Long result = query.getSingleResult();
+            session.getTransaction().commit();
+            return result;
+        } catch (Exception ex) {
+            session.getTransaction().commit();
+            System.out.println(ex.getMessage());
+            System.out.println(Arrays.toString(ex.getStackTrace()));
+            return null;
+        }
+    }
 }

@@ -95,7 +95,9 @@ public class OrderUpdateController implements Initializable {
         session = sessionFactory.openSession();
         List<Customer> customerList = CustomerRepository.getAll(session);
         session = sessionFactory.openSession();
-        List<Merchandise> merchandiseList = MerchandiseRepository.getHasQuantity(session);
+        List<Merchandise> merchandiseList = curOrders.getType().equals("Bán hàng") ?
+                MerchandiseRepository.getHasQuantity(session) :
+                MerchandiseRepository.getAll(session);
 
         if (customerList != null && !customerList.isEmpty() && merchandiseList != null && !merchandiseList.isEmpty()) {
             // Add item to Customer Combox
@@ -266,7 +268,9 @@ public class OrderUpdateController implements Initializable {
                     session.getTransaction().commit();
                 }
                 // Update merchandise quantity
-                updateMerchandiseQuantity(newOrdersDetails, oldOrdersDetails);
+                if (curOrders.getType().equals("Bán hàng")) {
+                    updateMerchandiseQuantity(newOrdersDetails, oldOrdersDetails);
+                }
                 // Show alert box
                 AlertBoxHelper.showMessageBox("Cập nhật thành công");
                 // Refresh content table

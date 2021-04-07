@@ -1,6 +1,7 @@
 package controllers;
 
 import com.jfoenix.controls.JFXButton;
+import dataModel.ImportsDetailModel;
 import dataModel.OrdersDetailModel;
 import dataModel.ReceiptOrdersModel;
 import entities.*;
@@ -17,14 +18,14 @@ import javafx.scene.layout.AnchorPane;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import repositories.ImportsDetailRepository;
+import repositories.ImportsRepository;
 import repositories.OrdersDetailRepository;
+import repositories.OrdersRepository;
 import utils.*;
 
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import java.util.ResourceBundle;
+import java.util.*;
+import java.util.stream.Collectors;
 
 public class ImportsUpdateController implements Initializable {
     @FXML
@@ -51,15 +52,15 @@ public class ImportsUpdateController implements Initializable {
     private TextField quantityHolder;
 
     @FXML
-    private TableView<OrdersDetailModel> detailTable;
+    private TableView<ImportsDetailModel> detailTable;
     @FXML
-    private TableColumn<OrdersDetailModel, String> merchandiseCol;
+    private TableColumn<ImportsDetailModel, String> merchandiseCol;
     @FXML
-    private TableColumn<OrdersDetailModel, Integer> quantityCol;
+    private TableColumn<ImportsDetailModel, Integer> quantityCol;
     @FXML
-    private TableColumn<OrdersDetailModel, Integer> amountCol;
+    private TableColumn<ImportsDetailModel, Integer> amountCol;
     @FXML
-    private TableColumn<OrdersDetailModel, Integer> finalAmountCol;
+    private TableColumn<ImportsDetailModel, Integer> finalAmountCol;
 
     @FXML
     private TextField sumQuantityHolder;
@@ -74,6 +75,7 @@ public class ImportsUpdateController implements Initializable {
 
     // Get Imports from ImportsCategoryController select(MouseEvent event)
     Imports imports = ImportsHolder.getInstance().getImports();
+    List<ImportsDetail> oldDetails = new ArrayList<>();
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -100,49 +102,68 @@ public class ImportsUpdateController implements Initializable {
         List<ImportsDetail> importsDetails = ImportsDetailRepository.getByImportsId(session, imports.getId());
         session = sessionFactory.openSession();
         List<OrdersDetail> ordersDetails = OrdersDetailRepository.getByOrdersId(session, imports.getOrders().getId());
-        List<OrdersDetailModel> ordersDetailModelList = new ArrayList<>();
+        List<ImportsDetailModel> importsDetailModels = new ArrayList<>();
         for (ImportsDetail item : importsDetails) {
-            OrdersDetail ordersDetail = ordersDetails.stream().filter(t -> t.getMerchandise().getId().equals(item.getMerchandise().getId()))
+            OrdersDetail ordersDetail = ordersDetails.stream().filter(t -> t.getMerchandise().getId()
+                    .equals(item.getMerchandise().getId()))
                     .findFirst().orElse(null);
-            OrdersDetailModel ordersDetailModel = new OrdersDetailModel();
-            ordersDetailModel.setOrdersDetail(ordersDetail);
-            ordersDetailModel.setMerchandiseName(item.getMerchandise().getName());
-            ordersDetailModel.setQuantity(item.getQuantity());
-            ordersDetailModel.setAmount(NumberHelper.addComma(item.getMerchandise().getPrice()));
-            ordersDetailModel.setFinalAmount(NumberHelper.addComma(String.valueOf(item.getAmount())));
-            ordersDetailModelList.add(ordersDetailModel);
+            // Remove delivered Merchandise
+            this.removeDeliveredMerchandise(sessionFactory, ordersDetails);
+            ///
+            ImportsDetailModel importsDetailModel = new ImportsDetailModel(item);
+            importsDetailModel.setOrdersDetail(ordersDetail);
+            importsDetailModel.setMerchandiseName(item.getMerchandise().getName());
+            importsDetailModel.setQuantity(item.getQuantity());
+            importsDetailModel.setAmount(NumberHelper.addComma(item.getMerchandise().getPrice()));
+            importsDetailModel.setFinalAmount(NumberHelper.addComma(String.valueOf(item.getAmount())));
+            importsDetailModels.add(importsDetailModel);
+            // For use in updateImports
+            oldDetails.add(new ImportsDetail(item));
         }
         // Set SumQuantityHolder and SumAmountHolder
-        Integer sumQuantity = ordersDetailModelList.stream().mapToInt(OrdersDetailModel::getQuantity).sum();
-        Integer sumAmount = ordersDetailModelList.stream().mapToInt(t -> Integer.parseInt(NumberHelper.removeComma(t.getFinalAmount()))).sum();
+        Integer sumQuantity = importsDetailModels.stream().mapToInt(ImportsDetailModel::getQuantity).sum();
+        Integer sumAmount = importsDetailModels.stream().mapToInt(t -> Integer.parseInt(NumberHelper.removeComma(t.getFinalAmount()))).sum();
         sumQuantityHolder.setText(String.valueOf(sumQuantity));
         sumAmountHolder.setText(NumberHelper.addComma(String.valueOf(sumAmount)));
         // Set DetailTable
-        TableHelper.setImportsDetailModelTable(ordersDetailModelList, detailTable, merchandiseCol, quantityCol, amountCol, finalAmountCol);
+        TableHelper.setImportsDetailModelTable(importsDetailModels, detailTable, merchandiseCol, quantityCol, amountCol, finalAmountCol);
     }
 
     @FXML
     void pickMerchandise(MouseEvent event) {
         if (event.getClickCount() == 2) {
             // Show chosen merchandise name and price
-            OrdersDetailModel ordersDetailModel = detailTable.getSelectionModel().getSelectedItem();
+            ImportsDetailModel importsDetailModel = detailTable.getSelectionModel().getSelectedItem();
             ordersTable.getSelectionModel().clearSelection();
-            merchandiseHolder.setText(ordersDetailModel.getMerchandiseName());
-            quantityHolder.setText(ordersDetailModel.getQuantity().toString());
+            merchandiseHolder.setText(importsDetailModel.getMerchandiseName());
+            quantityHolder.setText(importsDetailModel.getQuantity().toString());
         }
     }
 
     @FXML
-    void updateOrdersDetail(ActionEvent event) {
+    void updateImportsDetail(ActionEvent event) {
+        SessionFactory sessionFactory = HibernateUtils.getSessionFactory();
+        Session session;
+
         errorMessage.setText("");
-        List<OrdersDetailModel> ordersDetailModelList = new ArrayList<>();
-        for (OrdersDetailModel item : detailTable.getItems()) {
-            OrdersDetailModel ordersDetailModel = new OrdersDetailModel(item);
-            ordersDetailModelList.add(ordersDetailModel);
+        List<ImportsDetailModel> importsDetailModels = new ArrayList<>();
+        for (ImportsDetailModel item : detailTable.getItems()) {
+            ImportsDetailModel importsDetailModel = new ImportsDetailModel(item);
+            importsDetailModels.add(importsDetailModel);
         }
-        for (OrdersDetailModel item : ordersDetailModelList) {
+
+        for (ImportsDetailModel item : importsDetailModels) {
             if (item.getMerchandiseName().equals(merchandiseHolder.getText())) {
-                if (Integer.parseInt(quantityHolder.getText()) <= item.getOrdersDetail().getQuantity()) {
+                session = sessionFactory.openSession();
+                int ordersQuantity = Objects.requireNonNull(OrdersDetailRepository.getById(session, item.getOrdersDetail().getId())).getQuantity();
+                int changeQuantity = Integer.parseInt(quantityHolder.getText());
+                session = sessionFactory.openSession();
+                int boughtQuantity = Math.toIntExact(Objects.requireNonNull(
+                        ImportsDetailRepository.getBoughtQuantityOfMerchandise(session,
+                        item.getOrdersDetail().getOrders().getId(),
+                        item.getImportsDetail().getMerchandise().getId(), item.getImportsDetail().getImports().getId())
+                ));
+                if ((boughtQuantity + changeQuantity) <= ordersQuantity) {
                     if (!quantityHolder.getText().equals("0")) {
                         item.setQuantity(Integer.parseInt(quantityHolder.getText()));
                         Long amount = Long.parseLong(NumberHelper.removeComma(item.getAmount()));
@@ -152,45 +173,134 @@ public class ImportsUpdateController implements Initializable {
                     }
                     break;
                 } else {
-                    errorMessage.setText("Không được chọn số lượng hàng hoá lớn hơn số lượng của đơn hàng");
+                     errorMessage.setText("Không được chọn số lượng hàng hoá lớn hơn số lượng của đơn hàng");
                 }
             }
         }
 
         // set SumQuantityHolder and SumAmountHolder
-        Integer sumQuantity = ordersDetailModelList.stream().mapToInt(OrdersDetailModel::getQuantity).sum();
-        Integer sumAmount = ordersDetailModelList.stream().mapToInt(t -> Integer.parseInt(NumberHelper.removeComma(t.getFinalAmount()))).sum();
+        Integer sumQuantity = importsDetailModels.stream().mapToInt(ImportsDetailModel::getQuantity).sum();
+        Integer sumAmount = importsDetailModels.stream().mapToInt(t -> Integer.parseInt(NumberHelper.removeComma(t.getFinalAmount()))).sum();
         sumQuantityHolder.setText(String.valueOf(sumQuantity));
         sumAmountHolder.setText(NumberHelper.addComma(String.valueOf(sumAmount)));
-        TableHelper.setOrdersDetailModelTable(ordersDetailModelList, detailTable, merchandiseCol, quantityCol, amountCol, finalAmountCol);
+        TableHelper.setImportsDetailModelTable(importsDetailModels, detailTable, merchandiseCol, quantityCol, amountCol, finalAmountCol);
     }
 
     @FXML
     void removeMerchandise(ActionEvent event) {
-        List<OrdersDetailModel> ordersDetailModelList = new ArrayList<>();
-        for (OrdersDetailModel item : detailTable.getItems()) {
-            OrdersDetailModel ordersDetailModel = new OrdersDetailModel(item);
-            ordersDetailModelList.add(ordersDetailModel);
+        List<ImportsDetailModel> importsDetailModels = new ArrayList<>();
+        for (ImportsDetailModel item : detailTable.getItems()) {
+            ImportsDetailModel importsDetailModel = new ImportsDetailModel(item);
+            importsDetailModels.add(importsDetailModel);
         }
-        ordersDetailModelList.removeIf(item -> item.getMerchandiseName().equals(merchandiseHolder.getText()));
+        importsDetailModels.removeIf(item -> item.getMerchandiseName().equals(merchandiseHolder.getText()));
         // set SumQuantityHolder and SumAmountHolder
-        Integer sumQuantity = ordersDetailModelList.stream().mapToInt(OrdersDetailModel::getQuantity).sum();
-        Integer sumAmount = ordersDetailModelList.stream().mapToInt(t -> Integer.parseInt(NumberHelper.removeComma(t.getFinalAmount()))).sum();
+        Integer sumQuantity = importsDetailModels.stream().mapToInt(ImportsDetailModel::getQuantity).sum();
+        Integer sumAmount = importsDetailModels.stream().mapToInt(t -> Integer.parseInt(NumberHelper.removeComma(t.getFinalAmount()))).sum();
         sumQuantityHolder.setText(String.valueOf(sumQuantity));
         sumAmountHolder.setText(NumberHelper.addComma(String.valueOf(sumAmount)));
-        TableHelper.setOrdersDetailModelTable(ordersDetailModelList, detailTable, merchandiseCol, quantityCol, amountCol, finalAmountCol);
+        TableHelper.setImportsDetailModelTable(importsDetailModels, detailTable, merchandiseCol, quantityCol, amountCol, finalAmountCol);
 
-        updateImportsButton.setDisable(ordersDetailModelList.size() <= 0);
+        updateImportsButton.setDisable(importsDetailModels.size() <= 0);
     }
 
     @FXML
     void updateImports(ActionEvent event) {
+        SessionFactory sessionFactory = HibernateUtils.getSessionFactory();
+        Session session;
 
+        // Update import detail
+        List<ImportsDetail> changingDetails = new ArrayList<>();
+        for (ImportsDetailModel item : detailTable.getItems()) {
+            item.getImportsDetail().setQuantity(item.getQuantity());
+            item.getImportsDetail().setAmount(Long.parseLong(NumberHelper.removeComma(item.getFinalAmount())));
+            session = sessionFactory.openSession();
+            session.beginTransaction();
+            session.saveOrUpdate(item.getImportsDetail());
+            session.getTransaction().commit();
+            changingDetails.add(item.getImportsDetail());
+        }
+
+        // Update merchandise quantity
+        for (ImportsDetail item : oldDetails) {
+            ImportsDetail matchItem = changingDetails.stream().filter(t -> t.getId().equals(item.getId())).findAny().orElse(null);
+            if (matchItem != null) {
+                item.getMerchandise().setQuantity(item.getMerchandise().getQuantity() + matchItem.getQuantity() - item.getQuantity());
+            } else {
+                item.getMerchandise().setQuantity(item.getMerchandise().getQuantity() - item.getQuantity());
+            }
+            session = sessionFactory.openSession();
+            session.beginTransaction();
+            session.saveOrUpdate(item.getMerchandise());
+            session.getTransaction().commit();
+            // Update merchandise category
+            MerchandiseCategoryController.getInstance().refresh();
+        }
+
+        // Update orders status
+        this.updateOrdersStatus(sessionFactory);
+        // Show alert box
+        AlertBoxHelper.showMessageBox("Cập nhật thành công");
+        // Refresh content table
+        ImportsCategoryController.getInstance().refresh();
+        // Unhide host only when orders add is not show
+        AnchorPane host = MainNavigatorController.instance.getHost();
+        host.setDisable(false);
+        // Close stage
+        StageHelper.closeStage(event);
     }
 
     @FXML
     void deleteImports(ActionEvent event) {
+        SessionFactory sessionFactory = HibernateUtils.getSessionFactory();
+        Session session;
 
+        // Delete ImportsDetail
+        session = sessionFactory.openSession();
+        List<ImportsDetail> importsDetails = ImportsDetailRepository.getByImportsId(session, imports.getId());
+        for (ImportsDetail item : importsDetails) {
+            session = sessionFactory.openSession();
+            session.beginTransaction();
+            session.delete(item);
+            session.getTransaction().commit();
+
+            // Update Merchandise Quantity
+            item.getMerchandise().setQuantity(Math.max((item.getMerchandise().getQuantity() - item.getQuantity()), 0));
+            session = sessionFactory.openSession();
+            session.beginTransaction();
+            session.saveOrUpdate(item.getMerchandise());
+            session.getTransaction().commit();
+        }
+
+        // Delete Impors
+        session = sessionFactory.openSession();
+        session.beginTransaction();
+        session.delete(imports);
+        session.getTransaction().commit();
+
+        // Update Orders status
+        session = sessionFactory.openSession();
+        Orders orders = OrdersRepository.getById(session, imports.getOrders().getId());
+        orders.setStatus("Chưa hoàn tất");
+        session = sessionFactory.openSession();
+        session.beginTransaction();
+        session.saveOrUpdate(orders);
+        session.getTransaction().commit();
+        OrderCategoryController.getInstance().refresh();
+
+        // Clear Holder
+        ImportsHolder.getInstance().setImports(null);
+        // Show alert box
+        AlertBoxHelper.showMessageBox("Xoá thành công");
+        // Refresh content table
+        ImportsCategoryController.getInstance().refresh();
+        // Unhide host only when orders add is not show
+        AnchorPane host = MainNavigatorController.instance.getHost();
+        host.setDisable(false);
+        // Close stage
+        StageHelper.closeStage(event);
+        // Update merchandise category
+        MerchandiseCategoryController.getInstance().refresh();
     }
 
     @FXML
@@ -205,5 +315,64 @@ public class ImportsUpdateController implements Initializable {
     @FXML
     void requestFocus(MouseEvent event) {
         host.requestFocus();
+    }
+
+    void updateOrdersStatus(SessionFactory sessionFactory) {
+        Session session = sessionFactory.openSession();
+        List<OrdersDetail> ordersDetails = OrdersDetailRepository.getByOrdersId(session, imports.getOrders().getId());
+        session = sessionFactory.openSession();
+        List<Imports> importsList = ImportsRepository.getByOrdersId(session, imports.getOrders().getId());
+
+        int totalQuantityOrder = 0;
+        for (OrdersDetail item : ordersDetails) {
+            totalQuantityOrder += item.getQuantity();
+        }
+
+        int totalQuantityImport = 0;
+        for (Imports item : importsList) {
+            session = sessionFactory.openSession();
+            List<ImportsDetail> importsDetails = ImportsDetailRepository.getByImportsId(session, item.getId());
+            for (ImportsDetail detail : importsDetails) {
+                totalQuantityImport += detail.getQuantity();
+            }
+        }
+
+        String status = totalQuantityImport < totalQuantityOrder ? "Chưa hoàn tất" : "Hoàn tất";
+        if (!imports.getOrders().getStatus().equals(status)) {
+            imports.getOrders().setStatus(status);
+            session = sessionFactory.openSession();
+            session.beginTransaction();
+            session.saveOrUpdate(imports.getOrders());
+            session.getTransaction().commit();
+            // Update OrdersCategory
+            OrderCategoryController.getInstance().refresh();
+        }
+    }
+
+    void removeDeliveredMerchandise(SessionFactory sessionFactory, List<OrdersDetail> ordersDetails) {
+        // tìm import bằng orders id
+        Session session = sessionFactory.openSession();
+        List<Imports> imports = ImportsRepository.getByOrdersId(session, ordersDetails.get(0).getOrders().getId());
+
+        // tìm sum amount import detail bằng import
+        if (imports != null && imports.size() > 0) {
+            session = sessionFactory.openSession();
+            List<ImportsDetail> importsDetails = ImportsDetailRepository.getDistinctByImportsIdIn(session, imports.stream().map(Imports::getId).collect(Collectors.toList()));
+
+            // quet 2 cai nếu có merchandise id bằng nhau và amount bằng nhau thì bỏ đi
+            List<OrdersDetail> deliveredItem = new ArrayList<>();
+            for (OrdersDetail item : ordersDetails) {
+                for (ImportsDetail imDetail : importsDetails) {
+                    if (item.getMerchandise().getId().equals(imDetail.getMerchandise().getId())) {
+                        item.setQuantity(item.getQuantity() - imDetail.getQuantity());
+                        item.setAmount(item.getQuantity() * Long.parseLong(NumberHelper.removeComma(item.getMerchandise().getPrice())));
+                        if (item.getQuantity() == 0) {
+                            deliveredItem.add(item);
+                        }
+                    }
+                }
+            }
+            ordersDetails.removeAll(deliveredItem);
+        }
     }
 }

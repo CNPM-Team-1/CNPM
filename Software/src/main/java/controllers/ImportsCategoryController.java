@@ -65,7 +65,7 @@ public class ImportsCategoryController implements Initializable {
             session = sessionFactory.openSession();
             List<Imports> importsList = ImportsRepository.getAll(session);
             // Set imports model
-            if (importsList != null && importsList.size() > 0) {
+            if (importsList != null) {
                 List<ImportsModel> importsModelList = new ArrayList<>();
                 for (Imports item : importsList) {
                     ImportsModel importsModel = new ImportsModel();

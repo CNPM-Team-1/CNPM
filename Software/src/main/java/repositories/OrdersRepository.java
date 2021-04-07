@@ -91,4 +91,20 @@ public class OrdersRepository {
             return null;
         }
     }
+
+    public static Orders getById(Session session, String id) {
+        try {
+            session.beginTransaction();
+            String sql = "Select o from " + Orders.class.getName() + " o where o.id = '" + id + "'";
+            Query<Orders> query = session.createQuery(sql);
+            Orders result = query.getSingleResult();
+            session.getTransaction().commit();
+            return result;
+        } catch (Exception ex) {
+            session.getTransaction().commit();
+            System.out.println(ex.getMessage());
+            System.out.println(Arrays.toString(ex.getStackTrace()));
+            return null;
+        }
+    }
 }

@@ -291,8 +291,6 @@ public class ImportsAddController implements Initializable {
         StageHelper.closeStage(event);
         // Update merchandise category
         MerchandiseCategoryController.getInstance().refresh();
-        // Update import category
-        ImportsCategoryController.getInstance().refresh();
     }
 
     @FXML
@@ -336,6 +334,8 @@ public class ImportsAddController implements Initializable {
             session.beginTransaction();
             session.saveOrUpdate(choosenOrders);
             session.getTransaction().commit();
+            // Update OrdersCategory
+            OrderCategoryController.getInstance().refresh();
         }
     }
 

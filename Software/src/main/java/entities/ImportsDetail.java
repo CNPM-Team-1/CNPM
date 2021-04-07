@@ -36,6 +36,14 @@ public class ImportsDetail {
         this.amount = amount;
     }
 
+    public ImportsDetail(ImportsDetail i) {
+        this.id = i.id;
+        this.imports = i.imports;
+        this.merchandise = i.merchandise;
+        this.quantity = i.quantity;
+        this.amount = i.amount;
+    }
+
     public ImportsDetail(Object o) {
         SessionFactory sessionFactory = HibernateUtils.getSessionFactory();
         Session session;
