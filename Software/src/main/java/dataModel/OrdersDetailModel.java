@@ -1,6 +1,9 @@
 package dataModel;
 
+import entities.OrdersDetail;
+
 public class OrdersDetailModel {
+    private OrdersDetail ordersDetail;
     private String merchandiseName;
     private Integer quantity;
     private String amount;
@@ -9,11 +12,28 @@ public class OrdersDetailModel {
     public OrdersDetailModel() {
     }
 
-    public OrdersDetailModel(String merchandiseName, Integer quantity, String amount, String finalAmount) {
+    public OrdersDetailModel(OrdersDetail ordersDetail, String merchandiseName, Integer quantity, String amount, String finalAmount) {
+        this.ordersDetail = ordersDetail;
         this.merchandiseName = merchandiseName;
         this.quantity = quantity;
         this.amount = amount;
         this.finalAmount = finalAmount;
+    }
+
+    public OrdersDetailModel(OrdersDetailModel ordersDetailModel) {
+        this.merchandiseName = ordersDetailModel.getMerchandiseName();
+        this.quantity = ordersDetailModel.getQuantity();
+        this.amount = ordersDetailModel.getAmount();
+        this.finalAmount = ordersDetailModel.getFinalAmount();
+        this.ordersDetail = ordersDetailModel.getOrdersDetail();
+    }
+
+    public OrdersDetail getOrdersDetail() {
+        return ordersDetail;
+    }
+
+    public void setOrdersDetail(OrdersDetail ordersDetail) {
+        this.ordersDetail = ordersDetail;
     }
 
     public String getMerchandiseName() {

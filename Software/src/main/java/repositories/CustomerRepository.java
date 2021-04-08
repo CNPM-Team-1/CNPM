@@ -113,11 +113,11 @@ public class CustomerRepository{
         }
     }
 
-    public static List<Customer> getCustomerHasActiveOrders(Session session) {
+    public static List<Customer> getAllCustomerActiveOrders(Session session) {
         try {
             session.beginTransaction();
-            String sql = "Select c from " + Customer.class.getName() + " c where c.id in ( " +
-                    "select o.customer.id from " + Orders.class.getName() + " o where o.status = 'Chưa hoàn tất' )" ;
+            String sql = "Select c from " + Customer.class.getName() + " c where c.type = 'Khách hàng' and c.id in ( " +
+                        "select o.customer.id from " + Orders.class.getName() + " o where o.status = 'Chưa hoàn tất' )" ;
             Query<Customer> query = session.createQuery(sql);
             List<Customer> result = query.getResultList();
             session.getTransaction().commit();
@@ -154,6 +154,24 @@ public class CustomerRepository{
             session.getTransaction().commit();
             return result;
         } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+            System.out.println(Arrays.toString(ex.getStackTrace()));
+            return null;
+        }
+    }
+
+    public static List<Customer> getAllSupplierActiveOrders(Session session) {
+        try {
+            session.beginTransaction();
+            String sql = "Select c from " + Customer.class.getName() + " c where c.type = 'Nhà cung cấp'" +
+                        " and c.id in (Select o.customer.id from " + Orders.class.getName() +
+                        " o where o.status = 'Chưa hoàn tất')";
+            Query<Customer> query = session.createQuery(sql);
+            List<Customer> result = query.getResultList();
+            session.getTransaction().commit();
+            return result;
+        } catch (Exception ex) {
+            session.getTransaction().commit();
             System.out.println(ex.getMessage());
             System.out.println(Arrays.toString(ex.getStackTrace()));
             return null;

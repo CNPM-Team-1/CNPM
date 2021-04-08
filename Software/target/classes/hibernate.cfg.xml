@@ -44,8 +44,8 @@
 		<mapping class="entities.Receipt"/>
 		<mapping class="entities.Roles"/>
 		<mapping class="entities.RolesDetail"/>
-		<mapping class="entities.Salary"/>
-		<mapping class="entities.SalaryDetail"/>
+		<mapping class="entities.Imports"/>
+		<mapping class="entities.ImportsDetail"/>
 
 	</session-factory>
 </hibernate-configuration>

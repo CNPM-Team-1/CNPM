@@ -1,22 +1,30 @@
 package controllers;
 
 import com.jfoenix.controls.JFXButton;
+import entities.Customer;
 import entities.Merchandise;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import org.controlsfx.control.textfield.AutoCompletionBinding;
+import org.controlsfx.control.textfield.TextFields;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import repositories.MerchandiseRepository;
 import utils.*;
 import validation.MerchandiseValidation;
 
+import java.net.URL;
 import java.util.List;
+import java.util.ResourceBundle;
+import java.util.stream.Collectors;
 
-public class MerchandiseAddController {
+public class MerchandiseAddController implements Initializable {
     @FXML
     private AnchorPane host;
     @FXML
@@ -39,6 +47,19 @@ public class MerchandiseAddController {
     private ImageView close;
     @FXML
     private Label errorMessage;
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        SessionFactory sessionFactory = HibernateUtils.getSessionFactory();
+        Session session;
+
+        // Set autocomplete for merchandise type
+        session = sessionFactory.openSession();
+        List<String> allMerchandiseTypes = MerchandiseRepository.getAllMerchandiseTypes(session);
+        if (allMerchandiseTypes != null) {
+            AutoCompletionBinding<String> tHolder = TextFields.bindAutoCompletion(typeHolder, allMerchandiseTypes);
+        }
+    }
 
     @FXML
     void close(MouseEvent event) {

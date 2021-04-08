@@ -74,6 +74,7 @@ public class MainNavigatorController implements Initializable {
             grid.add(FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("fxml/MerchandiseCategory.fxml"))));
             grid.add(FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("fxml/Statistic.fxml"))));
             grid.add(FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("fxml/RolesCategory.fxml"))));
+            grid.add(FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("fxml/ImportsCategory.fxml"))));
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
             System.out.println(Arrays.toString(ex.getStackTrace()));
@@ -122,4 +123,9 @@ public class MainNavigatorController implements Initializable {
         contentPanel.getChildren().add(grid.get(6));
     }
 
+    @FXML
+    void openImportsCategory(ActionEvent event) {
+        contentPanel.getChildren().clear();
+        contentPanel.getChildren().add(grid.get(7));
+    }
 }

@@ -23,6 +23,17 @@ public class OrdersDetail {
     public OrdersDetail() {
     }
 
+    @Override
+    public String toString() {
+        return "OrdersDetail{" +
+                "id='" + id + '\'' +
+                ", orders=" + orders +
+                ", merchandise=" + merchandise +
+                ", quantity=" + quantity +
+                ", amount=" + amount +
+                '}';
+    }
+
     public OrdersDetail(String id, Orders orders, Merchandise merchandise, int quantity, Long amount) {
         this.id = id;
         this.orders = orders;

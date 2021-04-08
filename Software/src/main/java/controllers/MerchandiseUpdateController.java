@@ -14,8 +14,11 @@ import javafx.scene.input.InputMethodEvent;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import org.controlsfx.control.textfield.AutoCompletionBinding;
+import org.controlsfx.control.textfield.TextFields;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import repositories.MerchandiseRepository;
 import utils.AlertBoxHelper;
 import utils.HibernateUtils;
 import utils.NumberHelper;
@@ -58,6 +61,8 @@ public class MerchandiseUpdateController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        SessionFactory sessionFactory = HibernateUtils.getSessionFactory();
+        Session session;
         // Set Merchandise in update window
         if (merchandise != null) {
             nameHolder.setText(merchandise.getName());
@@ -66,6 +71,12 @@ public class MerchandiseUpdateController implements Initializable {
             typeHolder.setText(merchandise.getType());
             branchHolder.setText(merchandise.getBranch());
             quantityHolder.setText(merchandise.getQuantity().toString());
+        }
+        // Set autocomplete for merchandise type
+        session = sessionFactory.openSession();
+        List<String> allMerchandiseTypes = MerchandiseRepository.getAllMerchandiseTypes(session);
+        if (allMerchandiseTypes != null) {
+            AutoCompletionBinding<String> tHolder = TextFields.bindAutoCompletion(typeHolder, allMerchandiseTypes);
         }
     }
 

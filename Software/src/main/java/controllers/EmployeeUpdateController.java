@@ -188,6 +188,8 @@ public class EmployeeUpdateController implements Initializable {
             // Unhide host
             AnchorPane host = MainNavigatorController.instance.getHost();
             host.setDisable(false);
+        } else {
+            errorMessage.setText(validateUpdate.get(0));
         }
     }
 }

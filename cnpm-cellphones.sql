@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.3
+-- version 5.1.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3307
--- Generation Time: Mar 28, 2021 at 01:10 PM
--- Server version: 10.4.14-MariaDB
--- PHP Version: 7.2.34
+-- Generation Time: Apr 07, 2021 at 07:07 AM
+-- Server version: 10.4.18-MariaDB
+-- PHP Version: 8.0.3
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -100,6 +100,57 @@ INSERT INTO `employee_roles` (`id`, `roles_id`, `employee_id`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `imports`
+--
+
+CREATE TABLE `imports` (
+  `id` varchar(225) CHARACTER SET utf8mb4 COLLATE utf8mb4_vietnamese_ci NOT NULL,
+  `orders_id` varchar(225) CHARACTER SET utf8mb4 COLLATE utf8mb4_vietnamese_ci NOT NULL,
+  `employee_id` varchar(225) CHARACTER SET utf8mb4 COLLATE utf8mb4_vietnamese_ci NOT NULL,
+  `description` text CHARACTER SET utf8mb4 COLLATE utf8mb4_vietnamese_ci NOT NULL,
+  `created_date` date DEFAULT NULL,
+  `updated_date` date DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `imports`
+--
+
+INSERT INTO `imports` (`id`, `orders_id`, `employee_id`, `description`, `created_date`, `updated_date`) VALUES
+('0bff0823-3497-4639-a2ae-a27fbc9199fe', '000b7b2d-ef8a-404f-b95c-14c12e6e356d', '81915f39-dd3e-42e7-8db0-d7dc8bb3f783', 'Mua hàng từ nhà cung cấp Huy', '2021-04-01', NULL),
+('a9639d3f-617b-4e9c-893f-96f1ef159c9f', '34b6849c-2456-465e-950c-96c17b6843cf', '81915f39-dd3e-42e7-8db0-d7dc8bb3f783', 'Mua hàng từ nhà cung cấp Alfonso H Jeffcoat', '2021-04-01', NULL),
+('af43ac4c-8e3f-42c5-a6e9-d975a185e3b4', '000b7b2d-ef8a-404f-b95c-14c12e6e356d', '81915f39-dd3e-42e7-8db0-d7dc8bb3f783', 'Mua hàng từ nhà cung cấp Huy', '2021-04-01', NULL),
+('ea6e2cd7-596c-439d-8b51-99279d6f9c86', '65f17e68-d13b-46da-a4f5-439c4cafff7e', '81915f39-dd3e-42e7-8db0-d7dc8bb3f783', 'test import', NULL, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `imports_detail`
+--
+
+CREATE TABLE `imports_detail` (
+  `id` varchar(225) CHARACTER SET utf8mb4 COLLATE utf8mb4_vietnamese_ci NOT NULL,
+  `imports_id` varchar(225) CHARACTER SET utf8mb4 COLLATE utf8mb4_vietnamese_ci NOT NULL,
+  `merchandise_id` varchar(225) CHARACTER SET utf8mb4 COLLATE utf8mb4_vietnamese_ci NOT NULL,
+  `quantity` bigint(225) NOT NULL,
+  `amount` bigint(225) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `imports_detail`
+--
+
+INSERT INTO `imports_detail` (`id`, `imports_id`, `merchandise_id`, `quantity`, `amount`) VALUES
+('1ddf35f8-e4ee-4b2f-a0ac-fb945e8b65dd', '0bff0823-3497-4639-a2ae-a27fbc9199fe', 'ef41a828-c592-4c4f-a218-71ebfbd2a5ad', 2, 5780000),
+('781a4af3-f273-44c7-b64a-97f44ec0e4cf', '0bff0823-3497-4639-a2ae-a27fbc9199fe', 'd458b1b7-95d1-429a-845e-36a78b7de133', 1, 21700000),
+('7a93825d-21c5-457e-96cc-5ef3d8dc426d', 'ea6e2cd7-596c-439d-8b51-99279d6f9c86', 'ef41a828-c592-4c4f-a218-71ebfbd2a5ad', 2, 5780000),
+('7db5ef58-45d6-4e15-872f-7acbfdd0b16c', 'af43ac4c-8e3f-42c5-a6e9-d975a185e3b4', '281a8ad7-f247-479b-9129-bed4dc0b6493', 1, 2790000),
+('7f8348bf-2a0f-41fe-a4d7-32ddbc0e9c9d', 'a9639d3f-617b-4e9c-893f-96f1ef159c9f', '421b6d29-f3c1-4cf3-9917-37fe0aa86ec8', 30, 1500000),
+('8b20263c-0da4-427e-b41f-c12e30f99c10', '0bff0823-3497-4639-a2ae-a27fbc9199fe', '281a8ad7-f247-479b-9129-bed4dc0b6493', 2, 5580000);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `merchandise`
 --
 
@@ -123,16 +174,16 @@ INSERT INTO `merchandise` (`id`, `name`, `type`, `branch`, `quantity`, `import_p
 ('0b04793e-8184-43a9-8e2d-e21bd1573052', 'Ốp lưng iphone X', 'Điện thoại', 'DiB', 0, '15000', '90000', '2021-03-22', '2021-03-25'),
 ('120c1cfc-5459-4738-a88b-b9020fb4155a', 'Xiaomi Mi 10T Pro 5G', 'Điện thoại', 'Xiaomi', 20, '10000000', '11300000', '2021-03-26', NULL),
 ('123915d3-cef5-4168-98ab-2bd461ddb961', 'Oppo A73', 'Điện thoại', 'Oppo', 17, '4700000', '4890000', '2021-03-25', NULL),
-('281a8ad7-f247-479b-9129-bed4dc0b6493', 'Samsung Galaxy Buds Live Đen', 'Tai nghe', 'Samsung', 85, '2700000', '2790000', '2021-03-24', NULL),
+('281a8ad7-f247-479b-9129-bed4dc0b6493', 'Samsung Galaxy Buds Live Đen', 'Tai nghe', 'Samsung', 92, '2700000', '2790000', '2021-03-24', '2021-04-01'),
 ('329d09d1-0483-4459-865f-5d6dd5700ddb', 'Loa Bluetooth JBL Charge 4', 'Loa', 'JBL', 3, '2400000', '2490000', '2021-03-25', NULL),
 ('3bf786c5-6ac4-41e0-bfd9-5750e3c191f4', 'Xiaomi Redmi Note 10', 'Điện thoại', 'Xiaomi', 42, '5000000', '5490000', '2021-03-25', NULL),
 ('407730fb-f46a-437b-9641-22c6f076696f', 'Cáp Type-C Xiaomi ZMI AL701', 'Cáp', 'Xiaomi', 26, '45000', '50000', NULL, NULL),
-('421b6d29-f3c1-4cf3-9917-37fe0aa86ec8', 'Ốp lưng iphone 12', 'Ốp lưng', 'DiB', 55, '89000', '50000', NULL, '2021-03-25'),
+('421b6d29-f3c1-4cf3-9917-37fe0aa86ec8', 'Ốp lưng iphone 12', 'Ốp lưng', 'DiB', 85, '89000', '50000', NULL, '2021-04-01'),
 ('59077bfb-4303-48ed-a6a4-d05a23307922', 'Energizer 10000 mAh UE10022 ', 'Pin dự phòng', 'Energizer', 3, '350000', '390000', '2021-03-25', NULL),
 ('64d812e0-ca72-4ea9-bf0e-bbe30017c5e4', 'Sạc nhanh Apple iPhone 20W', 'Sạc', 'Apple', 7, '500000', '550000', '2021-03-25', '2021-03-26'),
 ('6cee9f21-345e-4348-b516-da65870f1bed', 'Samsung Galaxy A02s', 'Điện thoại', 'Samsung', 40, '2900000', '3000000', '2021-03-24', '2021-03-27'),
-('d458b1b7-95d1-429a-845e-36a78b7de133', 'iPad Pro 11 2020 WiFi 128GB', 'Máy tính bảng', 'Apple', 1, '20000000', '21700000', '2021-03-26', '2021-03-27'),
-('ef41a828-c592-4c4f-a218-71ebfbd2a5ad', 'Vsmart Joy 4', 'Điện thoại', 'Vsmart', 0, '2800000', '2890000', '2021-03-26', '2021-03-27');
+('d458b1b7-95d1-429a-845e-36a78b7de133', 'iPad Pro 11 2020 WiFi 128GB', 'Máy tính bảng', 'Apple', 6, '20000000', '21700000', '2021-03-26', '2021-04-01'),
+('ef41a828-c592-4c4f-a218-71ebfbd2a5ad', 'Vsmart Joy 4', 'Điện thoại', 'Vsmart', 6, '2800000', '2890000', '2021-03-26', '2021-04-01');
 
 -- --------------------------------------------------------
 
@@ -156,10 +207,12 @@ CREATE TABLE `orders` (
 --
 
 INSERT INTO `orders` (`id`, `type`, `customer_id`, `employee_id`, `description`, `status`, `created_date`, `updated_date`) VALUES
+('000b7b2d-ef8a-404f-b95c-14c12e6e356d', 'Nhập hàng', '17f95de3-3569-40dc-97a7-d6e8f4743f21', '81915f39-dd3e-42e7-8db0-d7dc8bb3f783', 'Mua hàng từ nhà cung cấp Huy', 'Hoàn tất', '2021-03-31', '2021-04-01'),
 ('20e0ec8f-64bf-4e9d-9e64-fba185771faa', 'Bán hàng', '245d626f-7bf0-4192-a857-7aab71e12697', '81915f39-dd3e-42e7-8db0-d7dc8bb3f783', 'Khách hàng John mua hàng', 'Hoàn tất', '2021-03-26', '2021-03-26'),
+('34b6849c-2456-465e-950c-96c17b6843cf', 'Nhập hàng', '1b9cdded-1e5e-4e94-8c5e-fa5c4e44f3ce', '81915f39-dd3e-42e7-8db0-d7dc8bb3f783', 'Mua hàng từ nhà cung cấp Alfonso H Jeffcoat', 'Chưa hoàn tất', '2021-04-01', NULL),
 ('3f94a669-7115-4b58-82a4-8ba0d9b7f39c', 'Nhập hàng', '17f95de3-3569-40dc-97a7-d6e8f4743f21', '81915f39-dd3e-42e7-8db0-d7dc8bb3f783', 'Mua hàng từ nhà cung cấp Huy', 'Hoàn tất', '2021-03-26', '2021-03-26'),
 ('58421cd1-ae5a-494d-aa3f-5d109a2e9cb1', 'Bán hàng', 'd52e95f1-b7c4-457d-9bda-a858c9911b63', '81915f39-dd3e-42e7-8db0-d7dc8bb3f783', 'Khách hàng Ronnie K Walters mua hàng', 'Hoàn tất', '2021-03-26', '2021-03-26'),
-('65f17e68-d13b-46da-a4f5-439c4cafff7e', 'Nhập hàng', '17f95de3-3569-40dc-97a7-d6e8f4743f21', '81915f39-dd3e-42e7-8db0-d7dc8bb3f783', 'Mua hàng từ nhà cung cấp Huy', 'Chưa hoàn tất', '2021-03-27', NULL),
+('65f17e68-d13b-46da-a4f5-439c4cafff7e', 'Nhập hàng', '17f95de3-3569-40dc-97a7-d6e8f4743f21', '81915f39-dd3e-42e7-8db0-d7dc8bb3f783', 'Mua hàng từ nhà cung cấp Huy', 'Hoàn tất', '2021-03-27', NULL),
 ('89fc1e3a-f927-499d-ab54-2430ff4a06f0', 'Nhập hàng', '17f95de3-3569-40dc-97a7-d6e8f4743f21', '81915f39-dd3e-42e7-8db0-d7dc8bb3f783', 'Mua hàng từ nhà cung cấp Huy', 'Hoàn tất', '2021-03-26', '2021-03-26'),
 ('96cc9fac-778a-4bf9-8e4c-f69f18756968', 'Bán hàng', '4ddb0779-2394-440a-b015-75d7a1290f2a', '81915f39-dd3e-42e7-8db0-d7dc8bb3f783', 'Khách hàng Hải mua hàng', 'Chưa hoàn tất', '2021-03-27', NULL);
 
@@ -182,17 +235,22 @@ CREATE TABLE `orders_detail` (
 --
 
 INSERT INTO `orders_detail` (`id`, `orders_id`, `merchandise_id`, `quantity`, `amount`) VALUES
+('2119e1c9-875d-4918-9c9f-adedcc38042b', '000b7b2d-ef8a-404f-b95c-14c12e6e356d', 'd458b1b7-95d1-429a-845e-36a78b7de133', 1, 21700000),
 ('218cc914-77d1-4b8e-8be0-3f02d34d3df2', '89fc1e3a-f927-499d-ab54-2430ff4a06f0', 'd458b1b7-95d1-429a-845e-36a78b7de133', 1000, 2170000),
 ('24214e8e-68c7-4bb5-9f32-5cc6687f8458', '3f94a669-7115-4b58-82a4-8ba0d9b7f39c', '3bf786c5-6ac4-41e0-bfd9-5750e3c191f4', 30, 164700000),
 ('3c161948-a2db-4bc6-85ec-13e4917a5296', '3f94a669-7115-4b58-82a4-8ba0d9b7f39c', '6cee9f21-345e-4348-b516-da65870f1bed', 40, 120000000),
 ('4269e428-9844-473a-9a59-8337ba510f9c', '3f94a669-7115-4b58-82a4-8ba0d9b7f39c', '123915d3-cef5-4168-98ab-2bd461ddb961', 30, 2147483647),
 ('76b4f0d6-e769-4152-a0dc-a03356aaaa0e', '65f17e68-d13b-46da-a4f5-439c4cafff7e', 'ef41a828-c592-4c4f-a218-71ebfbd2a5ad', 2, 5780000),
+('92e44503-4abe-43a4-8ab7-aa0235e4abd7', '34b6849c-2456-465e-950c-96c17b6843cf', '407730fb-f46a-437b-9641-22c6f076696f', 20, 1000000),
 ('98e094e8-884f-4a90-bae1-da55d921670a', '58421cd1-ae5a-494d-aa3f-5d109a2e9cb1', '123915d3-cef5-4168-98ab-2bd461ddb961', 1, 4890000),
 ('9b9731f5-2267-4dfb-9d32-e8a608a10bde', '96cc9fac-778a-4bf9-8e4c-f69f18756968', 'ef41a828-c592-4c4f-a218-71ebfbd2a5ad', 1, 2890000),
 ('a782cf4b-4c57-44d8-a8d1-289442b9f95b', '58421cd1-ae5a-494d-aa3f-5d109a2e9cb1', '64d812e0-ca72-4ea9-bf0e-bbe30017c5e4', 1, 550000),
 ('a9e534e7-f0b2-46bc-9b51-41bb6ed909bc', '58421cd1-ae5a-494d-aa3f-5d109a2e9cb1', 'ef41a828-c592-4c4f-a218-71ebfbd2a5ad', 1, 2890000),
 ('aaa38f25-00dd-4174-ae32-87d4cba4789c', '89fc1e3a-f927-499d-ab54-2430ff4a06f0', '329d09d1-0483-4459-865f-5d6dd5700ddb', 50, 124500000),
-('db3404aa-51ec-4458-b520-c74d5d9affce', '20e0ec8f-64bf-4e9d-9e64-fba185771faa', '281a8ad7-f247-479b-9129-bed4dc0b6493', 2, 5580000);
+('db3404aa-51ec-4458-b520-c74d5d9affce', '20e0ec8f-64bf-4e9d-9e64-fba185771faa', '281a8ad7-f247-479b-9129-bed4dc0b6493', 2, 5580000),
+('e571d2f0-ea26-4e04-b7cc-a077010e7b10', '000b7b2d-ef8a-404f-b95c-14c12e6e356d', '281a8ad7-f247-479b-9129-bed4dc0b6493', 3, 8370000),
+('e5813016-54a6-4d0d-9c3d-ded7ba364c7a', '34b6849c-2456-465e-950c-96c17b6843cf', '421b6d29-f3c1-4cf3-9917-37fe0aa86ec8', 30, 1500000),
+('ebab5777-fe21-4c1a-b80f-4e27a4002b30', '000b7b2d-ef8a-404f-b95c-14c12e6e356d', 'ef41a828-c592-4c4f-a218-71ebfbd2a5ad', 2, 5780000);
 
 -- --------------------------------------------------------
 
@@ -307,37 +365,6 @@ INSERT INTO `roles_detail` (`id`, `roles_id`, `permission_code`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `salary`
---
-
-CREATE TABLE `salary` (
-  `id` text COLLATE utf8mb4_vietnamese_ci DEFAULT NULL,
-  `employee_id` text COLLATE utf8mb4_vietnamese_ci DEFAULT NULL,
-  `amount` int(11) DEFAULT NULL,
-  `created_date` date DEFAULT NULL,
-  `updated_date` date DEFAULT NULL,
-  `update_date` datetime DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_vietnamese_ci;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `salary_detail`
---
-
-CREATE TABLE `salary_detail` (
-  `id` text COLLATE utf8mb4_vietnamese_ci DEFAULT NULL,
-  `employee_id` text COLLATE utf8mb4_vietnamese_ci DEFAULT NULL,
-  `amount` int(11) DEFAULT NULL,
-  `payment_status` text COLLATE utf8mb4_vietnamese_ci DEFAULT NULL,
-  `description` text COLLATE utf8mb4_vietnamese_ci DEFAULT NULL,
-  `created_date` date DEFAULT NULL,
-  `updated_date` date DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_vietnamese_ci;
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `work_shift`
 --
 
@@ -388,6 +415,22 @@ ALTER TABLE `employee_roles`
   ADD PRIMARY KEY (`id`),
   ADD KEY `roles_id` (`roles_id`),
   ADD KEY `employee_id` (`employee_id`);
+
+--
+-- Indexes for table `imports`
+--
+ALTER TABLE `imports`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `orders_id` (`orders_id`),
+  ADD KEY `employee_id` (`employee_id`);
+
+--
+-- Indexes for table `imports_detail`
+--
+ALTER TABLE `imports_detail`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `imports_id` (`imports_id`),
+  ADD KEY `merchandise_id` (`merchandise_id`);
 
 --
 -- Indexes for table `merchandise`
@@ -455,6 +498,20 @@ ALTER TABLE `work_shift`
 ALTER TABLE `employee_roles`
   ADD CONSTRAINT `FK4gexbjj0or2y67pho78k79d73` FOREIGN KEY (`employee_id`) REFERENCES `employee` (`id`),
   ADD CONSTRAINT `FK6dlmwykbhsc2u3lbqcimgyn7u` FOREIGN KEY (`roles_id`) REFERENCES `roles` (`id`);
+
+--
+-- Constraints for table `imports`
+--
+ALTER TABLE `imports`
+  ADD CONSTRAINT `FKi9526tte2kg2u3ap0xu99iot6` FOREIGN KEY (`orders_id`) REFERENCES `orders` (`id`),
+  ADD CONSTRAINT `FKt25dfdu7b9tsxrdybak9m0eij` FOREIGN KEY (`employee_id`) REFERENCES `employee` (`id`);
+
+--
+-- Constraints for table `imports_detail`
+--
+ALTER TABLE `imports_detail`
+  ADD CONSTRAINT `FK21a8mv3d10xfjin1jw1fa9l96` FOREIGN KEY (`merchandise_id`) REFERENCES `merchandise` (`id`),
+  ADD CONSTRAINT `FK8eck9rhbo4htn3qs928od7du6` FOREIGN KEY (`imports_id`) REFERENCES `imports` (`id`);
 
 --
 -- Constraints for table `orders`

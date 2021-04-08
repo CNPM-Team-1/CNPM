@@ -7,11 +7,9 @@ import entities.Customer;
 import entities.Orders;
 import entities.OrdersDetail;
 import entities.Receipt;
-import enums.StatusEnum;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -24,7 +22,6 @@ import org.hibernate.SessionFactory;
 import repositories.CustomerRepository;
 import repositories.OrdersDetailRepository;
 import repositories.OrdersRepository;
-import repositories.ReceiptRepository;
 import utils.*;
 
 import java.net.URL;
@@ -78,10 +75,10 @@ public class ReceiptAddController implements Initializable {
         SessionFactory factory = HibernateUtils.getSessionFactory();
         Session session = factory.getCurrentSession();
 
-        // Add customer to choose customer ComboBox
-        List<Customer> customerList = CustomerRepository.getCustomerHasActiveOrders(session);
+        // Add customer to choose customer textfield
+        List<Customer> customerList = CustomerRepository.getAllCustomerActiveOrders(session);
         if (customerList != null && customerList.size() > 0) {
-            // Add item to Customer Combox
+            // Add item to Customer textfield
             AutoCompletionBinding<String> cHolder = TextFields.bindAutoCompletion(customerHolder, customerList.stream().map(Customer::getFullName).collect(Collectors.toList()));
             cHolder.setOnAutoCompleted(stringAutoCompletionEvent -> showChosenCustomer(null));
         }
@@ -103,7 +100,7 @@ public class ReceiptAddController implements Initializable {
         addressHolder.setText(customer.getAddress());
         // Show customer orders info
         session = factory.openSession();
-        List<Orders> ordersList = OrdersRepository.getByCustomerName(session, customerHolder.getText());
+        List<Orders> ordersList = OrdersRepository.getActiveByCustomerName(session, customerHolder.getText());
         if (ordersList != null && ordersList.size() > 0) {
             List<ReceiptOrdersModel> receiptOrdersModelList = new ArrayList<>();
             for (Orders item : ordersList) {
