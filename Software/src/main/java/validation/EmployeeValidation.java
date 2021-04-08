@@ -3,6 +3,7 @@ package validation;
 import entities.Employee;
 import org.hibernate.Session;
 import repositories.EmployeeRepository;
+import utils.NumberHelper;
 import utils.StringHelper;
 
 import java.util.ArrayList;
@@ -25,6 +26,10 @@ public class EmployeeValidation {
         }
         if (employee.getPhone() == null || employee.getPhone().isEmpty()) {
             msg.add("Chưa điền số điện thoại");
+        } else if (!NumberHelper.isNumber(employee.getPhone())) {
+            msg.add("Số điện thoại phải là số");
+        } else if (employee.getPhone().length() != 10) {
+            msg.add("Số điện thoại phải có 10 chữ số");
         } else if (employeePhone != null) {
             msg.add("Số điện thoại đã được sử dụng");
         }
@@ -62,8 +67,12 @@ public class EmployeeValidation {
             // check phone
             if (employee.getPhone() == null || employee.getPhone().isEmpty()) {
                 msg.add("Chưa điền số điện thoại");
-            } else if (employee.getPhone().length() == 10 && employeePhone != null && !employeePhone.getId().equals(employee.getId())) {
-                msg.add("SĐT đã được sử dụng");
+            } else if (!NumberHelper.isNumber(employee.getPhone())) {
+                msg.add("Số điện thoại phải là số");
+            } else if (employee.getPhone().length() != 10) {
+                msg.add("Số điện thoại phải có 10 chữ số");
+            } else if (employeePhone != null && !employeePhone.getId().equals(employee.getId())) {
+                msg.add("Số điện thoại đã được sử dụng");
             }
             // check email
             if (employee.getEmail() == null || employee.getEmail().isEmpty()) {

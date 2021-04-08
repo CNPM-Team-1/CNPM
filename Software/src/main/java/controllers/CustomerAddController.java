@@ -105,7 +105,9 @@ public class CustomerAddController implements Initializable {
             host.setDisable(OrderCategoryController.getInstance().ordersAddUpdateIsShow);
 
             // Refresh Orders customer list
-            OrderAddController.getInstance().initialize(null, null);
+            if (OrderAddController.getInstance() != null) {
+                OrderAddController.getInstance().initialize(null, null);
+            }
         } else {
             errorMessage.setText(validateInsert.get(0));
             session.getTransaction().commit();

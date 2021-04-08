@@ -100,7 +100,7 @@ public class ReceiptAddController implements Initializable {
         addressHolder.setText(customer.getAddress());
         // Show customer orders info
         session = factory.openSession();
-        List<Orders> ordersList = OrdersRepository.getByCustomerName(session, customerHolder.getText());
+        List<Orders> ordersList = OrdersRepository.getActiveByCustomerName(session, customerHolder.getText());
         if (ordersList != null && ordersList.size() > 0) {
             List<ReceiptOrdersModel> receiptOrdersModelList = new ArrayList<>();
             for (Orders item : ordersList) {

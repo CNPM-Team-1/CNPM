@@ -73,14 +73,20 @@ public class OrderAddController implements Initializable {
     private TextField sumOrdersMerchandiseAmount;
     @FXML
     private Label errorMessage;
+    @FXML
+    private TextField inventoryHolder;
+    @FXML
+    private TextField emailHolder;
 
     public List<OrdersAddTableModel> ordersAddTableModelList = new ArrayList<>();
 
     // For other class cal function from this class
     public static OrderAddController instance;
+
     public OrderAddController() {
         instance = this;
     }
+
     public static OrderAddController getInstance() {
         return instance;
     }
@@ -105,7 +111,8 @@ public class OrderAddController implements Initializable {
             AutoCompletionBinding<String> cHolder = TextFields.bindAutoCompletion(customerHolder, customerList.stream().map(Customer::getFullName).collect(Collectors.toList()));
             cHolder.setOnAutoCompleted(stringAutoCompletionEvent -> setCustomer(null));
             // Add item to Merchandise Combox
-            TextFields.bindAutoCompletion(merchandiseHolder, merchandiseList.stream().map(Merchandise::getName).collect(Collectors.toList()));
+            AutoCompletionBinding<String> iHolder = TextFields.bindAutoCompletion(merchandiseHolder, merchandiseList.stream().map(Merchandise::getName).collect(Collectors.toList()));
+            iHolder.setOnAutoCompleted(t -> setMerchandiseInventoryQuantity());
         }
     }
 
@@ -122,11 +129,27 @@ public class OrderAddController implements Initializable {
                 // Set phoneHolder and addressHolder
                 phoneHolder.setText(chosenCustomer.getPhone());
                 addressHolder.setText(chosenCustomer.getAddress());
+                emailHolder.setText(chosenCustomer.getEmail());
                 if (chosenCustomer.getType().equals("Khách hàng")) {
                     descriptionHolder.setText("Khách hàng " + chosenCustomer.getFullName() + " mua hàng");
                 } else {
                     descriptionHolder.setText("Mua hàng từ nhà cung cấp " + chosenCustomer.getFullName());
                 }
+            }
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+        }
+    }
+
+    void setMerchandiseInventoryQuantity() {
+        try {
+            SessionFactory sessionFactory = HibernateUtils.getSessionFactory();
+            Session session;
+
+            session = sessionFactory.openSession();
+            Merchandise merchandise = MerchandiseRepository.getByName(session, merchandiseHolder.getText());
+            if (merchandise != null) {
+                inventoryHolder.setText(merchandise.getQuantity().toString());
             }
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
@@ -302,11 +325,15 @@ public class OrderAddController implements Initializable {
         } else {
             if (!NumberHelper.isNumber(quantityHolder.getText())) {
                 errors.add("Số lượng phải là chữ số");
+            } else if (quantityHolder.getText().equals("0")) {
+                errors.add("Số lượng phải khác 0");
             } else {
                 if (Integer.parseInt(quantityHolder.getText()) > 1000) {
                     errors.add("Không được nhập số lượng lớn hơn 1000");
                 }
-                if (customer.getType().equals("Khách hàng")) {
+                if (customer == null) {
+                    errors.add("Chưa chọn khách hàng");
+                } else if (customer.getType().equals("Khách hàng")) {
                     if (Integer.parseInt(quantityHolder.getText()) > merchandise.getQuantity()) {
                         errors.add("Không đủ số lượng hàng hoá trong kho");
                     }

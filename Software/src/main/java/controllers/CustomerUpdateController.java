@@ -118,13 +118,23 @@ public class CustomerUpdateController implements Initializable {
 
             // Refresh content table
             CustomerCategoryController.getInstance().refresh();
-
             // Set customer holder
             customerHolder.setCustomer(customer);
-
             // Unhide host
             AnchorPane host = MainNavigatorController.instance.getHost();
             host.setDisable(false);
+            // Refresh ReceiptCategory
+            if (ReceiptCategoryController.getInstance() != null) {
+                ReceiptCategoryController.getInstance().refresh();
+            }
+            // Refresh ImportsCategory
+            if (ImportsCategoryController.getInstance() != null) {
+                ImportsCategoryController.getInstance().refresh();
+            }
+            // Refresh OrdersCategory
+            if (OrderCategoryController.getInstance() != null) {
+                OrderCategoryController.getInstance().refresh();
+            }
         } else {
             errorMessage.setText(validateUpdate.get(0));
             if (session.getTransaction().isActive()) {
@@ -136,27 +146,28 @@ public class CustomerUpdateController implements Initializable {
     @FXML
     void delete(ActionEvent event) {
         SessionFactory factory = HibernateUtils.getSessionFactory();
-        Session session = factory.getCurrentSession();
-        session.beginTransaction();
+        Session session;
 
-        StageHelper.closeStage(event);
-
-        // Show alert box
-        AlertBoxHelper.showMessageBox("Xoá thành công");
-
-        // Delete customer
         Customer customer = customerHolder.getCustomer();
-        session.delete(customer);
-        session.getTransaction().commit();
-
-        // Refresh content table
-        CustomerCategoryController.getInstance().refresh();
-
-        // Clear customer holder
-        customerHolder.setCustomer(null);
-
-        // Unhide host
-        AnchorPane host = MainNavigatorController.instance.getHost();
-        host.setDisable(false);
+        List<String> validateDelete = CustomerValidation.validateDelete(factory, customer);
+        if (validateDelete.size() == 0) {
+            StageHelper.closeStage(event);
+            // Show alert box
+            AlertBoxHelper.showMessageBox("Xoá thành công");
+            // Delete customer
+            session = factory.openSession();
+            session.beginTransaction();
+            session.delete(customer);
+            session.getTransaction().commit();
+            // Refresh content table
+            CustomerCategoryController.getInstance().refresh();
+            // Clear customer holder
+            customerHolder.setCustomer(null);
+            // Unhide host
+            AnchorPane host = MainNavigatorController.instance.getHost();
+            host.setDisable(false);
+        } else {
+            errorMessage.setText(validateDelete.get(0));
+        }
     }
 }

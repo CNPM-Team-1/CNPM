@@ -78,7 +78,11 @@ public class OrderUpdateController implements Initializable {
     @FXML
     private Label errorMessage;
     @FXML
+    private TextField inventoryHolder;
+    @FXML
     private JFXButton deleteButton;
+    @FXML
+    private TextField emailHolder;
 
     public List<OrdersAddTableModel> ordersAddTableModelList = new ArrayList<>();
 
@@ -100,11 +104,12 @@ public class OrderUpdateController implements Initializable {
                 MerchandiseRepository.getAll(session);
 
         if (customerList != null && !customerList.isEmpty() && merchandiseList != null && !merchandiseList.isEmpty()) {
-            // Add item to Customer Combox
+            // Add item to Customer ComboBox
             AutoCompletionBinding<String> cHolder = TextFields.bindAutoCompletion(customerHolder, customerList.stream().map(Customer::getFullName).collect(Collectors.toList()));
             cHolder.setOnAutoCompleted(stringAutoCompletionEvent -> setCustomer(null));
-            // Add item to Merchandise Combox
-            TextFields.bindAutoCompletion(merchandiseHolder, merchandiseList.stream().map(Merchandise::getName).collect(Collectors.toList()));
+            // Add item to Merchandise ComboBox
+            AutoCompletionBinding<String> iHolder = TextFields.bindAutoCompletion(merchandiseHolder, merchandiseList.stream().map(Merchandise::getName).collect(Collectors.toList()));
+            iHolder.setOnAutoCompleted(t -> setMerchandiseInventoryQuantity());
         }
 
         customerHolder.textProperty().addListener(t -> setCustomer(null));
@@ -114,6 +119,7 @@ public class OrderUpdateController implements Initializable {
         phoneHolder.setText(curOrders.getCustomer().getPhone());
         addressHolder.setText(curOrders.getCustomer().getAddress());
         descriptionHolder.setText(curOrders.getDescription());
+        emailHolder.setText(curOrders.getCustomer().getEmail());
 
         // Set OrdersDetail
         session = sessionFactory.openSession();
@@ -151,11 +157,27 @@ public class OrderUpdateController implements Initializable {
             // Set phoneHolder and addressHolder
             phoneHolder.setText(chosenCustomer.getPhone());
             addressHolder.setText(chosenCustomer.getAddress());
+            emailHolder.setText(chosenCustomer.getEmail());
             if (chosenCustomer.getType().equals("Khách hàng")) {
                 descriptionHolder.setText("Khách hàng " + chosenCustomer.getFullName() + " mua hàng");
             } else {
                 descriptionHolder.setText("Mua hàng từ nhà cung cấp " + chosenCustomer.getFullName());
             }
+        }
+    }
+
+    void setMerchandiseInventoryQuantity() {
+        try {
+            SessionFactory sessionFactory = HibernateUtils.getSessionFactory();
+            Session session;
+
+            session = sessionFactory.openSession();
+            Merchandise merchandise = MerchandiseRepository.getByName(session, merchandiseHolder.getText());
+            if (merchandise != null) {
+                inventoryHolder.setText(merchandise.getQuantity().toString());
+            }
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
         }
     }
 
@@ -300,8 +322,10 @@ public class OrderUpdateController implements Initializable {
     @FXML
     void delete(ActionEvent event) {
         SessionFactory sessionFactory = HibernateUtils.getSessionFactory();
-        Session session = sessionFactory.openSession();
-        if (OrdersValidation.validateDelete(session, curOrders).size() == 0) {
+        Session session;
+
+        List<String> validateDelete = OrdersValidation.validateDelete(sessionFactory, curOrders);
+        if (validateDelete.size() == 0) {
             // Update merchandise quantity
             session = sessionFactory.openSession();
             List<OrdersDetail> oldOrdersDetails = OrdersDetailRepository.getByOrdersId(session, curOrders.getId());
@@ -329,7 +353,7 @@ public class OrderUpdateController implements Initializable {
             // Update merchandise category
             MerchandiseCategoryController.getInstance().refresh();
         } else {
-            errorMessage.setText(OrdersValidation.validateDelete(session, curOrders).get(0));
+            errorMessage.setText(validateDelete.get(0));
         }
     }
 
@@ -360,11 +384,15 @@ public class OrderUpdateController implements Initializable {
         } else {
             if (!NumberHelper.isNumber(quantityHolder.getText())) {
                 errors.add("Số lượng phải là chữ số");
+            } else if (quantityHolder.getText().equals("0")) {
+                errors.add("Số lượng phải khác 0");
             } else {
                 if (Integer.parseInt(quantityHolder.getText()) > 1000) {
                     errors.add("Không được nhập số lượng lớn hơn 1000");
                 }
-                if (customer.getType().equals("Khách hàng")) {
+                if (customer == null) {
+                    errors.add("Chưa chọn khách hàng");
+                } else if (customer.getType().equals("Khách hàng")) {
                     if (Integer.parseInt(quantityHolder.getText()) > merchandise.getQuantity()) {
                         errors.add("Không đủ số lượng hàng hoá trong kho");
                     }
