@@ -5,24 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b5ea20d7-1c8e-440f-81c2-ca4792b5ccf8" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/controllers/WorkTableCategoryController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/fxml/WorkTableCategory.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/controllers/WorkTableCategoryController.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/fxml/WorkTableCategory.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/CustomerAddController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/CustomerAddController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/CustomerUpdateController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/CustomerUpdateController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/EmployeeUpdateController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/EmployeeUpdateController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/MerchandiseAddController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/MerchandiseAddController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/MerchandiseUpdateController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/MerchandiseUpdateController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/OrderAddController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/OrderAddController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/OrderUpdateController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/OrderUpdateController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/ReceiptAddController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/ReceiptAddController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/enums/OrderTypeEnum.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/enums/StatusEnum.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/repositories/MerchandiseRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/repositories/MerchandiseRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/validation/CustomerValidation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/validation/CustomerValidation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/validation/EmployeeValidation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/validation/EmployeeValidation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/validation/OrdersValidation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/validation/OrdersValidation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/fxml/CustomerUpdate.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/fxml/CustomerUpdate.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/fxml/OrderAdd.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/fxml/OrderAdd.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/fxml/OrderUpdate.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/fxml/OrderUpdate.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Software.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Software.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/MainNavigatorController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/MainNavigatorController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/fxml/MainNavigator.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/fxml/MainNavigator.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controllers/MainNavigatorController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controllers/MainNavigatorController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/fxml/MainNavigator.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/fxml/MainNavigator.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -123,15 +116,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
           <option name="containerStateName" value="" />
         </value>
       </option>
-      <option name="TEST_OBJECT" value="CLASS" />
-      <properties />
-      <listeners />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -227,6 +218,8 @@
       <workItem from="1617804616853" duration="4793000" />
       <workItem from="1617812103981" duration="2427000" />
       <workItem from="1617846404872" duration="5007000" />
+      <workItem from="1617869272720" duration="1235000" />
+      <workItem from="1617946576994" duration="299000" />
     </task>
     <servers />
   </component>

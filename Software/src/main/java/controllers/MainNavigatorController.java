@@ -10,6 +10,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.VBox;
 import utils.StageHelper;
 
 import java.net.URL;
@@ -43,6 +44,8 @@ public class MainNavigatorController implements Initializable {
     private ImageView minimize;
     @FXML
     private AnchorPane contentPanel;
+    @FXML
+    private VBox leftNav;
 
     //  For other class call function from this class
     public static MainNavigatorController instance;

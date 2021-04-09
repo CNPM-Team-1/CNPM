@@ -52,7 +52,7 @@
             </children>
         </HBox>
       <AnchorPane fx:id="contentPanel" layoutX="77.0" layoutY="46.0" prefHeight="662.0" prefWidth="1203.0" />
-      <VBox alignment="TOP_CENTER" layoutY="46.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="665.0" prefWidth="77.0" style="-fx-border-width: 0px 1px 0px 0px;" styleClass="left-nav" stylesheets="@../css/style.css">
+      <VBox fx:id="leftNav" alignment="TOP_CENTER" layoutY="46.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="665.0" prefWidth="77.0" style="-fx-border-width: 0px 1px 0px 0px;" styleClass="left-nav" stylesheets="@../css/style.css">
          <children>
                 <JFXButton fx:id="orderButton" alignment="CENTER" cache="true" contentDisplay="TOP" focusTraversable="false" graphicTextGap="0.0" onAction="#openOrderCategory" prefHeight="71.0" prefWidth="77.0" stylesheets="@../css/style.css" text="Đơn hàng">
                     <font>
