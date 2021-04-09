@@ -5,6 +5,7 @@ import controllers.OrderAddController;
 import entities.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.fxml.FXML;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -243,6 +244,44 @@ public class TableHelper {
         descriptionCol.setCellValueFactory(new PropertyValueFactory<>("description"));
         quantityCol.setCellValueFactory(new PropertyValueFactory<>("sumQuantity"));
         amountCol.setCellValueFactory(new PropertyValueFactory<>("sumAmount"));
+
+        // Add item to table
+        table.setItems(data);
+    }
+
+    public static void setWorkShiftTable(List<WorkShift> workShiftList,
+                                         TableView<WorkShift> table,
+                                         TableColumn<WorkShift, String> dateCol,
+                                         TableColumn<WorkShift, String> nameCol,
+                                         TableColumn<WorkShift, String> timeInCol,
+                                         TableColumn<WorkShift, String> timeOutCol) {
+        ObservableList<WorkShift> data = FXCollections.observableList(workShiftList);
+
+        // Associate data with columns
+        dateCol.setCellValueFactory(new PropertyValueFactory<>("createdDate"));
+        nameCol.setCellValueFactory(new PropertyValueFactory<>("name"));
+        timeInCol.setCellValueFactory(new PropertyValueFactory<>("startTime"));
+        timeOutCol.setCellValueFactory(new PropertyValueFactory<>("endTime"));
+
+        // Add item to table
+        table.setItems(data);
+    }
+
+    public static void setWorkTableModelTable(List<WorkTableModel> dataList,
+                                              TableView<WorkTableModel> table,
+                                              TableColumn<WorkTableModel, String> nameCol,
+                                              TableColumn<WorkTableModel, String> shiftCol,
+                                              TableColumn<WorkTableModel, String> timeInCol,
+                                              TableColumn<WorkTableModel, String> timeOutCol,
+                                              TableColumn<WorkTableModel, String> workDaysCol) {
+        ObservableList<WorkTableModel> data = FXCollections.observableList(dataList);
+
+        // Associate data with columns
+        nameCol.setCellValueFactory(new PropertyValueFactory<>("employeeName"));
+        shiftCol.setCellValueFactory(new PropertyValueFactory<>("shiftName"));
+        timeInCol.setCellValueFactory(new PropertyValueFactory<>("startTime"));
+        timeOutCol.setCellValueFactory(new PropertyValueFactory<>("endTime"));
+        workDaysCol.setCellValueFactory(new PropertyValueFactory<>("workDays"));
 
         // Add item to table
         table.setItems(data);

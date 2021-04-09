@@ -46,6 +46,8 @@
 		<mapping class="entities.RolesDetail"/>
 		<mapping class="entities.Imports"/>
 		<mapping class="entities.ImportsDetail"/>
+		<mapping class="entities.WorkShift"/>
+		<mapping class="entities.WorkTable"/>
 
 	</session-factory>
 </hibernate-configuration>

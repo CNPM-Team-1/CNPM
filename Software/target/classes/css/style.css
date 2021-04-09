@@ -36,9 +36,20 @@
     -fx-font-family: Arial, sans-serif;
 }
 
+.login-label {
+    -fx-font-weight: 700;
+    -fx-font-family: Arial, sans-serif;
+}
+
 .font {
     -fx-font-weight: 700;
     -fx-font-family: Arial, sans-serif;
+}
+
+.font-29 {
+    -fx-font-weight: 700;
+    -fx-font-family: Arial, sans-serif;
+    -fx-font-size: 29px;
 }
 
 .table-font {
@@ -56,6 +67,18 @@
     -fx-font-family: "Lato Semibold";
     -fx-font-size: 17px;
     -fx-font-weight: 700;
+}
+
+.check-box-font {
+    -fx-font-weight: 700;
+    -fx-font-family: Arial, sans-serif;
+    -fx-font-size: 15px;
+}
+
+.check-box-font:selected {
+    -fx-font-weight: 700;
+    -fx-font-family: Arial, sans-serif;
+    -fx-font-size: 15px;
 }
 
 /* /Font*/

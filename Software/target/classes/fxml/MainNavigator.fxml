@@ -233,7 +233,7 @@
                   </ImageView>
                </graphic>
             </JFXButton>
-            <JFXButton fx:id="timeTableButton" alignment="CENTER" contentDisplay="TOP" focusTraversable="false" layoutX="10.0" layoutY="485.0" prefHeight="71.0" prefWidth="144.0" stylesheets="@../css/style.css" text="Lịch làm">
+            <JFXButton fx:id="timeTableButton" alignment="CENTER" contentDisplay="TOP" focusTraversable="false" layoutX="10.0" layoutY="485.0" onAction="#openTimeTable" prefHeight="71.0" prefWidth="144.0" stylesheets="@../css/style.css" text="Lịch làm">
                <font>
                   <Font size="16.0" />
                </font>
