@@ -1,6 +1,5 @@
 package controllers;
 
-import com.jfoenix.controls.JFXButton;
 import dataModel.WorkTableModel;
 import entities.WorkTable;
 import holders.WorkTableHolder;
@@ -20,6 +19,7 @@ import utils.HibernateUtils;
 import utils.StageHelper;
 import utils.TableHelper;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
@@ -31,12 +31,6 @@ public class WorkTableCategoryController implements Initializable {
     private AnchorPane host;
     @FXML
     private TextField searchBar;
-    @FXML
-    private JFXButton searchButton;
-    @FXML
-    private JFXButton shiftButton;
-    @FXML
-    private JFXButton addButton;
 
     @FXML
     private TableView<WorkTableModel> contentTable;
@@ -53,14 +47,19 @@ public class WorkTableCategoryController implements Initializable {
 
     // For other class to call function from this class
     public static WorkTableCategoryController instance;
-    public WorkTableCategoryController() { instance = this; }
-    public static WorkTableCategoryController getInstance() { return instance; }
+
+    public WorkTableCategoryController() {
+        instance = this;
+    }
+
+    public static WorkTableCategoryController getInstance() {
+        return instance;
+    }
     ///
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        SessionFactory sessionFactory = HibernateUtils.getSessionFactory();
-        List<WorkTable> allWorkTable = WorkTableRepository.getAll(sessionFactory);
+        List<WorkTable> allWorkTable = WorkTableRepository.getAll();
         List<WorkTableModel> allWorkTableModel = new ArrayList<>();
         for (WorkTable item : allWorkTable) {
             WorkTableModel model = new WorkTableModel(item);
@@ -75,21 +74,16 @@ public class WorkTableCategoryController implements Initializable {
     }
 
     @FXML
-    void save(ActionEvent event) {
-        try {
-            Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("fxml/WorkTableAdd.fxml")));
-            StageHelper.startStage(root);
-            // Hide host
-            MainNavigatorController.instance.getHost().setDisable(true);
-        } catch (Exception ex) {
-            System.out.println(ex.getMessage());
-        }
+    void save(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("fxml/WorkTableAdd.fxml")));
+        StageHelper.startStage(root);
+        // Hide host
+        MainNavigatorController.instance.getHost().setDisable(true);
     }
 
     @FXML
     void search(ActionEvent event) {
-        SessionFactory sessionFactory = HibernateUtils.getSessionFactory();
-        List<WorkTable> filteredWorkTable = WorkTableRepository.getByEmployeeOrShift(sessionFactory, searchBar.getText());
+        List<WorkTable> filteredWorkTable = WorkTableRepository.getByEmployeeOrShift(searchBar.getText());
         List<WorkTableModel> filteredWorkTableModel = new ArrayList<>();
         for (WorkTable item : filteredWorkTable) {
             WorkTableModel model = new WorkTableModel(item);
@@ -99,22 +93,17 @@ public class WorkTableCategoryController implements Initializable {
     }
 
     @FXML
-    void select(MouseEvent event) {
+    void select(MouseEvent event) throws IOException {
         if (event.getClickCount() == 2) {
-            try {
-                WorkTable chosenWorkTable = contentTable.getSelectionModel().getSelectedItem().getWorkTable();
-                contentTable.getSelectionModel().clearSelection();
-                // Store WorkTable to use in another class
-                if (chosenWorkTable != null) {
-                    WorkTableHolder.getInstance().setWorkTable(chosenWorkTable);
-                    Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("fxml/WorkTableUpdate.fxml")));
-                    StageHelper.startStage(root);
-                    // Hide host
-                    MainNavigatorController.instance.getHost().setDisable(true);
-                }
-
-            } catch (Exception ex) {
-                System.out.println(ex.getMessage());
+            WorkTable chosenWorkTable = contentTable.getSelectionModel().getSelectedItem().getWorkTable();
+            contentTable.getSelectionModel().clearSelection();
+            // Store WorkTable to use in another class
+            if (chosenWorkTable != null) {
+                WorkTableHolder.getInstance().setWorkTable(chosenWorkTable);
+                Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("fxml/WorkTableUpdate.fxml")));
+                StageHelper.startStage(root);
+                // Hide host
+                MainNavigatorController.instance.getHost().setDisable(true);
             }
         }
     }

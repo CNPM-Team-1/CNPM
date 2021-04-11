@@ -1,6 +1,5 @@
 package controllers;
 
-import com.jfoenix.controls.JFXButton;
 import entities.WorkShift;
 import holders.WorkShiftHolder;
 import javafx.event.ActionEvent;
@@ -9,7 +8,6 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import org.hibernate.Session;
@@ -34,15 +32,7 @@ public class WorkShiftUpdateController implements Initializable {
     @FXML
     private ComboBox<String> timeOutHolder;
     @FXML
-    private JFXButton cancelButton;
-    @FXML
-    private ImageView close;
-    @FXML
     private Label errorMessage;
-    @FXML
-    private JFXButton updateButton;
-    @FXML
-    private JFXButton deleteButton;
 
     // Get WorkShift from WorkShiftCategoryController select(MouseEvent event)
     WorkShift chosenWorkShift = WorkShiftHolder.getInstance().getWorkShift();
@@ -72,18 +62,16 @@ public class WorkShiftUpdateController implements Initializable {
 
     @FXML
     void delete(ActionEvent event) {
-        SessionFactory sessionFactory = HibernateUtils.getSessionFactory();
         Session session;
-
-        List<String> validateDelete = WorkShiftValidation.validateDelete(sessionFactory, chosenWorkShift);
+        List<String> validateDelete = WorkShiftValidation.validateDelete(chosenWorkShift);
         if (validateDelete.size() == 0) {
-            session = sessionFactory.openSession();
+            session = HibernateUtils.getSessionFactory().openSession();
             session.beginTransaction();
             session.delete(chosenWorkShift);
             session.getTransaction().commit();
 
             // Clear Holder
-            chosenWorkShift = null;
+            WorkShiftHolder.getInstance().setWorkShift(null);
             // Show alert box
             AlertBoxHelper.showMessageBox("Xoá thành công");
             // Refresh content table
@@ -99,21 +87,20 @@ public class WorkShiftUpdateController implements Initializable {
 
     @FXML
     void update(ActionEvent event) {
-        SessionFactory sessionFactory = HibernateUtils.getSessionFactory();
         Session session;
-
         chosenWorkShift.setName(nameHolder.getText());
         chosenWorkShift.setStartTime(timeInHolder.getValue());
         chosenWorkShift.setEndTime(timeOutHolder.getValue());
-        List<String> validateUpdate = WorkShiftValidation.validateUpdate(sessionFactory, chosenWorkShift);
+        List<String> validateUpdate = WorkShiftValidation.validateUpdate(chosenWorkShift);
         if (validateUpdate.size() == 0) {
-            session = sessionFactory.openSession();
+            session = HibernateUtils.getSessionFactory().openSession();
             session.beginTransaction();
             session.saveOrUpdate(chosenWorkShift);
             session.getTransaction().commit();
+            session.close();
 
             // Clear Holder
-            chosenWorkShift = null;
+            WorkShiftHolder.getInstance().setWorkShift(null);
             // Show alert box
             AlertBoxHelper.showMessageBox("Cập nhật thành công");
             // Refresh content table
@@ -127,6 +114,10 @@ public class WorkShiftUpdateController implements Initializable {
         } else {
             errorMessage.setText(validateUpdate.get(0));
         }
+    }
 
+    @FXML
+    void requestFocus(MouseEvent event) {
+        host.requestFocus();
     }
 }

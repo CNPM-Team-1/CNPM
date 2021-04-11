@@ -15,7 +15,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="host" onMouseClicked="#requestFocus" prefHeight="872.0" prefWidth="843.0" styleClass="borderoutline" stylesheets="@../css/style.css" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ImportsAddController">
+<AnchorPane fx:id="host" onMouseClicked="#requestFocus" prefHeight="872.0" prefWidth="843.0" styleClass="borderoutline" stylesheets="@../css/style.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ImportsAddController">
    <children>
       <GridPane layoutX="14.0" layoutY="54.0" prefHeight="42.0" prefWidth="710.0">
          <columnConstraints>
@@ -162,7 +162,7 @@
                         <Insets right="10.0" />
                      </GridPane.margin>
                   </TextField>
-                  <JFXButton fx:id="deleteButton" focusTraversable="false" onAction="#removeMerchandise" prefHeight="32.0" prefWidth="91.0" stylesheets="@../css/style.css" text="Xoá" GridPane.rowIndex="1">
+                  <JFXButton focusTraversable="false" onAction="#removeMerchandise" prefHeight="32.0" prefWidth="91.0" stylesheets="@../css/style.css" text="Xoá" GridPane.rowIndex="1">
                      <font>
                         <Font size="18.0" />
                      </font>
@@ -214,7 +214,7 @@
             </TableView>
          </children>
       </VBox>
-      <JFXButton fx:id="closeButton" layoutX="16.0" layoutY="826.0" onMouseClicked="#close" prefHeight="32.0" prefWidth="70.0" stylesheets="@../css/style.css" text="Hủy">
+      <JFXButton layoutX="16.0" layoutY="826.0" onMouseClicked="#close" prefHeight="32.0" prefWidth="70.0" stylesheets="@../css/style.css" text="Hủy">
          <styleClass>
             <String fx:value="button-font" />
             <String fx:value="close-button" />

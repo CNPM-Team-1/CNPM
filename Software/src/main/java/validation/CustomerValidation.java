@@ -14,12 +14,12 @@ import java.util.List;
 
 public class CustomerValidation {
 
-    public static List<String> validateInsert(Session session, Customer customer) {
+    public static List<String> validateInsert(Customer customer) {
         List<String> msg = new ArrayList<>();
 
-        Customer customerPhone = CustomerRepository.getByPhone(session, customer.getPhone());
-        Customer customerName = CustomerRepository.getByName(session, customer.getFullName());
-        Customer customerEmail = CustomerRepository.getByEmail(session, customer.getEmail());
+        Customer customerPhone = CustomerRepository.getByPhone(customer.getPhone());
+        Customer customerName = CustomerRepository.getByName(customer.getFullName());
+        Customer customerEmail = CustomerRepository.getByEmail(customer.getEmail());
 
         if (customer.getFullName() == null || customer.getFullName().isEmpty()) {
             msg.add("Chưa điền tên");
@@ -48,12 +48,12 @@ public class CustomerValidation {
         return msg;
     }
 
-    public static List<String> validateUpdate(Session session, Customer customer) {
+    public static List<String> validateUpdate(Customer customer) {
         List<String> msg = new ArrayList<>();
 
-        Customer customerPhone = CustomerRepository.getByPhone(session, customer.getPhone());
-        Customer customerName = CustomerRepository.getByName(session, customer.getFullName());
-        Customer customerEmail = CustomerRepository.getByEmail(session, customer.getEmail());
+        Customer customerPhone = CustomerRepository.getByPhone(customer.getPhone());
+        Customer customerName = CustomerRepository.getByName(customer.getFullName());
+        Customer customerEmail = CustomerRepository.getByEmail(customer.getEmail());
 
         // check name
         if (customer.getFullName() == null || customer.getFullName().isEmpty()) {
@@ -83,18 +83,14 @@ public class CustomerValidation {
         } else if (customerEmail != null && !customerEmail.getId().equals(customer.getId())) {
             msg.add("Email đã được sử dụng");
         }
-        session.getTransaction().commit();
 
         return msg;
     }
 
-    public static List<String> validateDelete(SessionFactory sessionFactory, Customer customer) {
+    public static List<String> validateDelete(Customer customer) {
         List<String> msg = new ArrayList<>();
-        Session session;
 
-        session = sessionFactory.openSession();
-        List<Orders> ordersList = OrdersRepository.getByCustomerName(session, customer.getFullName());
-
+        List<Orders> ordersList = OrdersRepository.getByCustomerName(customer.getFullName());
         if (ordersList != null && ordersList.size() != 0) {
             msg.add("Không được xoá khách hàng có trong đơn hàng");
         }

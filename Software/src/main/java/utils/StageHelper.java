@@ -1,7 +1,9 @@
 package utils;
 
+import controllers.EmployeeCategoryController;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -10,9 +12,28 @@ import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
+import java.io.IOException;
+import java.util.Objects;
+
 public class StageHelper {
 
     public static void startStage(Parent root) {
+        final Stage stage = new Stage();
+        Scene scene = new Scene(root);
+        // Hide Stage
+        stage.initStyle(StageStyle.TRANSPARENT);
+        scene.setFill(Color.TRANSPARENT);
+        setDraggable(root, stage);
+
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    public static void startStage2(String fileName) throws ClassNotFoundException, IOException {
+        StackTraceElement stackTraceElement = Thread.currentThread().getStackTrace()[2];
+        Class<?> act = Class.forName(stackTraceElement.getClassName());
+        Parent root = FXMLLoader.load(Objects.requireNonNull(act.getClassLoader().getResource(fileName)));
+
         final Stage stage = new Stage();
         Scene scene = new Scene(root);
         // Hide Stage

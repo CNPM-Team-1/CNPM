@@ -3,104 +3,88 @@ package repositories;
 import entities.Merchandise;
 import org.hibernate.Session;
 import org.hibernate.query.Query;
+import utils.HibernateUtils;
 
 import java.util.Arrays;
 import java.util.List;
 
 public class MerchandiseRepository {
-    public static List<Merchandise> getAll(Session session) {
-        try {
-            session.beginTransaction();
-            String sql = "Select c from " + Merchandise.class.getName() + " c";
-            Query<Merchandise> query = session.createQuery(sql);
-            List<Merchandise> result = query.getResultList();
-            session.getTransaction().commit();
-            return result;
-        } catch (Exception ex) {
-            session.getTransaction().commit();
-            System.out.println(ex.getMessage());
-            System.out.println(Arrays.toString(ex.getStackTrace()));
-            return null;
-        }
+    public static List<Merchandise> getAll() {
+        Session session = HibernateUtils.getSessionFactory().openSession();
+        session.beginTransaction();
+        Query<Merchandise> query = session.createQuery("" +
+                "SELECT m " +
+                "FROM Merchandise m");
+        List<Merchandise> result = query.getResultList();
+        session.getTransaction().commit();
+        session.close();
+        return result;
     }
 
-    public static Merchandise getByName(Session session, String name) {
-        try {
-            session.beginTransaction();
-            String sql = "Select c from " + Merchandise.class.getName() + " c where c.name = '" + name + "'";
-            Query<Merchandise> query = session.createQuery(sql);
-            Merchandise result = query.getSingleResult();
-            session.getTransaction().commit();
-            return result;
-        } catch (Exception ex) {
-            session.getTransaction().commit();
-            System.out.println(ex.getMessage());
-            System.out.println(Arrays.toString(ex.getStackTrace()));
-            return null;
-        }
+    public static Merchandise getByName(String name) {
+        Session session = HibernateUtils.getSessionFactory().openSession();
+        session.beginTransaction();
+        Query<Merchandise> query = session.createQuery("" +
+                "SELECT c " +
+                "FROM Merchandise c " +
+                "WHERE c.name = :name");
+        query.setParameter("name", name);
+        Merchandise result = query.uniqueResult();
+        session.getTransaction().commit();
+        session.close();
+        return result;
     }
 
-    public static List<Merchandise> getLikeNameAndBranch(Session session, String nameOrBranch) {
-        try {
-            session.beginTransaction();
-            String sql = "Select c from " + Merchandise.class.getName() + " c where c.name like '%" + nameOrBranch + "%' or c.branch like '%" + nameOrBranch + "%'";
-            Query<Merchandise> query = session.createQuery(sql);
-            List<Merchandise> result = query.getResultList();
-            session.getTransaction().commit();
-            return result;
-        } catch (Exception ex) {
-            session.getTransaction().commit();
-            System.out.println(ex.getMessage());
-            System.out.println(Arrays.toString(ex.getStackTrace()));
-            return null;
-        }
+    public static List<Merchandise> getLikeNameAndBranch(String keySearch) {
+        Session session = HibernateUtils.getSessionFactory().openSession();
+        session.beginTransaction();
+        Query<Merchandise> query = session.createQuery("" +
+                "SELECT m " +
+                "FROM Merchandise m " +
+                "WHERE m.name LIKE :keySearch OR m.branch LIKE :keySearch");
+        query.setParameter("keySearch", keySearch);
+        List<Merchandise> result = query.getResultList();
+        session.getTransaction().commit();
+        session.close();
+        return result;
     }
 
-    public static List<Merchandise> getHasQuantity(Session session) {
-        try {
-            session.beginTransaction();
-            String sql = "Select c from " + Merchandise.class.getName() + " c where c.quantity > 0";
-            Query<Merchandise> query = session.createQuery(sql);
-            List<Merchandise> result = query.getResultList();
-            session.getTransaction().commit();
-            return result;
-        } catch (Exception ex) {
-            session.getTransaction().commit();
-            System.out.println(ex.getMessage());
-            System.out.println(Arrays.toString(ex.getStackTrace()));
-            return null;
-        }
+    public static List<Merchandise> getHasQuantity() {
+        Session session = HibernateUtils.getSessionFactory().openSession();
+        session.beginTransaction();
+        Query<Merchandise> query = session.createQuery("" +
+                "SELECT m " +
+                "FROM Merchandise m " +
+                "WHERE m.quantity > 0");
+        List<Merchandise> result = query.getResultList();
+        session.getTransaction().commit();
+        session.close();
+        return result;
     }
 
-    public static Merchandise getById(Session session, String id) {
-        try {
-            session.beginTransaction();
-            String sql = "Select c from " + Merchandise.class.getName() + " c where c.id = '" + id + "'";
-            Query<Merchandise> query = session.createQuery(sql);
-            Merchandise result = query.getSingleResult();
-            session.getTransaction().commit();
-            return result;
-        } catch (Exception ex) {
-            session.getTransaction().commit();
-            System.out.println(ex.getMessage());
-            System.out.println(Arrays.toString(ex.getStackTrace()));
-            return null;
-        }
+    public static Merchandise getById(String id) {
+        Session session = HibernateUtils.getSessionFactory().openSession();
+        session.beginTransaction();
+        Query<Merchandise> query = session.createQuery("" +
+                "SELECT m " +
+                "FROM Merchandise m " +
+                "WHERE m.id = :id");
+        query.setParameter("id", id);
+        Merchandise result = query.uniqueResult();
+        session.getTransaction().commit();
+        session.close();
+        return result;
     }
 
-    public static List<String> getAllMerchandiseTypes(Session session) {
-        try {
-            session.beginTransaction();
-            String sql = "Select distinct c.type from " + Merchandise.class.getName() + " c";
-            Query<String> query = session.createQuery(sql);
-            List<String> result = query.getResultList();
-            session.getTransaction().commit();
-            return result;
-        } catch (Exception ex) {
-            session.getTransaction().commit();
-            System.out.println(ex.getMessage());
-            System.out.println(Arrays.toString(ex.getStackTrace()));
-            return null;
-        }
+    public static List<String> getAllMerchandiseTypes() {
+        Session session = HibernateUtils.getSessionFactory().openSession();
+        session.beginTransaction();
+        Query<String> query = session.createQuery("" +
+                "SELECT DISTINCT c.type " +
+                "FROM Merchandise c");
+        List<String> result = query.getResultList();
+        session.getTransaction().commit();
+        session.close();
+        return result;
     }
 }

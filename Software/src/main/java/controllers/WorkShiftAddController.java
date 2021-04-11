@@ -1,6 +1,5 @@
 package controllers;
 
-import com.jfoenix.controls.JFXButton;
 import entities.WorkShift;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -8,7 +7,6 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import org.hibernate.Session;
@@ -20,7 +18,9 @@ import utils.UUIDHelper;
 import validation.WorkShiftValidation;
 
 import java.net.URL;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.ResourceBundle;
 
 public class WorkShiftAddController implements Initializable {
     @FXML
@@ -31,12 +31,6 @@ public class WorkShiftAddController implements Initializable {
     private ComboBox<String> timeInHolder;
     @FXML
     private ComboBox<String> timeOutHolder;
-    @FXML
-    private JFXButton saveButton;
-    @FXML
-    private JFXButton cancelButton;
-    @FXML
-    private ImageView close;
     @FXML
     private Label errorMessage;
 
@@ -61,21 +55,20 @@ public class WorkShiftAddController implements Initializable {
 
     @FXML
     void save(ActionEvent event) {
-        SessionFactory sessionFactory = HibernateUtils.getSessionFactory();
         Session session;
-
         WorkShift workShift = new WorkShift();
         workShift.setId(UUIDHelper.generateType4UUID().toString());
         workShift.setName(nameHolder.getText());
         workShift.setStartTime(timeInHolder.getValue());
         workShift.setEndTime(timeOutHolder.getValue());
 
-        List<String> validateInsert = WorkShiftValidation.validateInsert(sessionFactory, workShift);
+        List<String> validateInsert = WorkShiftValidation.validateInsert(workShift);
         if (validateInsert.size() == 0) {
-            session = sessionFactory.openSession();
+            session = HibernateUtils.getSessionFactory().openSession();
             session.beginTransaction();
             session.save(workShift);
             session.getTransaction().commit();
+            session.close();
 
             // Show alert box
             AlertBoxHelper.showMessageBox("Thêm thành công");
@@ -88,5 +81,10 @@ public class WorkShiftAddController implements Initializable {
         } else {
             errorMessage.setText(validateInsert.get(0));
         }
+    }
+
+    @FXML
+    void requestFocus(MouseEvent event) {
+        host.requestFocus();
     }
 }

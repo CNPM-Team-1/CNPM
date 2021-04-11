@@ -1,6 +1,5 @@
 package controllers;
 
-import com.jfoenix.controls.JFXButton;
 import entities.Merchandise;
 import holders.MerchandiseHolder;
 import javafx.event.ActionEvent;
@@ -20,6 +19,7 @@ import utils.HibernateUtils;
 import utils.StageHelper;
 import utils.TableHelper;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.Arrays;
 import java.util.List;
@@ -28,11 +28,9 @@ import java.util.ResourceBundle;
 
 public class MerchandiseCategoryController implements Initializable {
     @FXML
+    private AnchorPane host;
+    @FXML
     private TextField searchBar;
-    @FXML
-    private JFXButton searchButton;
-    @FXML
-    private JFXButton addButton;
     @FXML
     private TableView<Merchandise> contentTable;
     @FXML
@@ -47,78 +45,58 @@ public class MerchandiseCategoryController implements Initializable {
     // For other class call function from this class
     public static MerchandiseCategoryController instance;
 
-    public MerchandiseCategoryController() { instance = this; }
+    public MerchandiseCategoryController() {
+        instance = this;
+    }
 
-    public static MerchandiseCategoryController getInstance() { return instance; }
+    public static MerchandiseCategoryController getInstance() {
+        return instance;
+    }
     ///
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        SessionFactory factory = HibernateUtils.getSessionFactory();
-        Session session = factory.openSession();
-
-        List<Merchandise> merchandiseList = MerchandiseRepository.getAll(session);
+        List<Merchandise> merchandiseList = MerchandiseRepository.getAll();
         TableHelper.setMerchandiseTable(merchandiseList, contentTable, nameCol, typeCol, quantityCol, priceCol);
     }
 
     @FXML
-    void insert(ActionEvent event) {
-        try {
-            Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("fxml/MerchandiseAdd.fxml")));
-            StageHelper.startStage(root);
-            // Hide host
-            AnchorPane host = MainNavigatorController.instance.getHost();
-            host.setDisable(true);
-        } catch (Exception ex) {
-            System.out.println(ex.getMessage());
-            System.out.println(Arrays.toString(ex.getStackTrace()));
-        }
+    void insert(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("fxml/MerchandiseAdd.fxml")));
+        StageHelper.startStage(root);
+        // Hide host
+        MainNavigatorController.instance.getHost().setDisable(true);
     }
 
     @FXML
-    void select(MouseEvent event) {
+    void select(MouseEvent event) throws IOException {
         if (event.getClickCount() == 2) {
-            try {
-                Merchandise merchandise = contentTable.getSelectionModel().getSelectedItem();
-                contentTable.getSelectionModel().clearSelection();
-                // Store Merchandise to use in another class
-                if (merchandise != null) {
-                    MerchandiseHolder merchandiseHolder = MerchandiseHolder.getInstance();
-                    merchandiseHolder.setMerchandise(merchandise);
-                    Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("fxml/MerchandiseUpdate.fxml")));
-                    StageHelper.startStage(root);
-                    // Hide host
-                    AnchorPane host = MainNavigatorController.instance.getHost();
-                    host.setDisable(true);
-                }
-            } catch (Exception ex) {
-                System.out.println(ex.getMessage());
-                System.out.println(Arrays.toString(ex.getStackTrace()));
+            Merchandise merchandise = contentTable.getSelectionModel().getSelectedItem();
+            contentTable.getSelectionModel().clearSelection();
+            // Store Merchandise to use in another class
+            if (merchandise != null) {
+                MerchandiseHolder.getInstance().setMerchandise(merchandise);
+                Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("fxml/MerchandiseUpdate.fxml")));
+                StageHelper.startStage(root);
+                // Hide host
+                MainNavigatorController.instance.getHost().setDisable(true);
             }
         }
     }
 
     @FXML
     void search(ActionEvent event) {
-        try {
-            SessionFactory factory = HibernateUtils.getSessionFactory();
-            Session session = factory.getCurrentSession();
-
-            String keySearch = searchBar.getText();
-            List<Merchandise> merchandiseList = MerchandiseRepository.getLikeNameAndBranch(session, keySearch);
-            TableHelper.setMerchandiseTable(merchandiseList, contentTable, nameCol, typeCol, quantityCol, priceCol);
-        } catch (Exception ex) {
-            System.out.println(ex.getMessage());
-            System.out.println(Arrays.toString(ex.getStackTrace()));
-        }
+        List<Merchandise> merchandiseList = MerchandiseRepository.getLikeNameAndBranch(searchBar.getText());
+        TableHelper.setMerchandiseTable(merchandiseList, contentTable, nameCol, typeCol, quantityCol, priceCol);
     }
 
     // Refresh table
     public void refresh() {
-        SessionFactory factory = HibernateUtils.getSessionFactory();
-        Session session = factory.getCurrentSession();
+        this.initialize(null, null);
+    }
 
-        List<Merchandise> merchandiseList = MerchandiseRepository.getAll(session);
-        TableHelper.setMerchandiseTable(merchandiseList, contentTable, nameCol, typeCol, quantityCol, priceCol);
+    @FXML
+    void requestFocus(MouseEvent event) {
+        host.requestFocus();
     }
 }
