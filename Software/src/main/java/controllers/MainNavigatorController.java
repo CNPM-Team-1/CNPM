@@ -10,6 +10,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.VBox;
 import utils.StageHelper;
 
 import java.net.URL;
@@ -43,15 +44,14 @@ public class MainNavigatorController implements Initializable {
     private ImageView minimize;
     @FXML
     private AnchorPane contentPanel;
+    @FXML
+    private VBox leftNav;
 
     //  For other class call function from this class
     public static MainNavigatorController instance;
-
     public MainNavigatorController() { instance = this; }
-
     public static MainNavigatorController getInstance() { return instance; }
     public AnchorPane getHost() { return this.Host; }
-
     //////////////////
 
     @FXML
@@ -75,6 +75,8 @@ public class MainNavigatorController implements Initializable {
             grid.add(FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("fxml/Statistic.fxml"))));
             grid.add(FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("fxml/RolesCategory.fxml"))));
             grid.add(FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("fxml/ImportsCategory.fxml"))));
+            grid.add(FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("fxml/WorkTableCategory.fxml"))));
+            grid.add(FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("fxml/WorkShiftCategory.fxml"))));
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
             System.out.println(Arrays.toString(ex.getStackTrace()));
@@ -127,5 +129,16 @@ public class MainNavigatorController implements Initializable {
     void openImportsCategory(ActionEvent event) {
         contentPanel.getChildren().clear();
         contentPanel.getChildren().add(grid.get(7));
+    }
+
+    @FXML
+    void openTimeTable(ActionEvent event) {
+        contentPanel.getChildren().clear();
+        contentPanel.getChildren().add(grid.get(8));
+    }
+
+    void openShiftTable(ActionEvent event) {
+        contentPanel.getChildren().clear();
+        contentPanel.getChildren().add(grid.get(9));
     }
 }

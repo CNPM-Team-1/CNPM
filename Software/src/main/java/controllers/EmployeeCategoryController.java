@@ -68,9 +68,8 @@ public class EmployeeCategoryController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         SessionFactory factory = HibernateUtils.getSessionFactory();
-        Session session = factory.getCurrentSession();
 
-        List<Employee> employeeList = EmployeeRepository.getAll(session);
+        List<Employee> employeeList = EmployeeRepository.getAll(factory);
         TableHelper.setEmployeeTable(employeeList, contentTable, nameCol, phoneCol, emailCol, dateOfBirthCol);
     }
 
@@ -130,10 +129,6 @@ public class EmployeeCategoryController implements Initializable {
 
     // Refresh table
     public void refresh() {
-        SessionFactory factory = HibernateUtils.getSessionFactory();
-        Session session = factory.getCurrentSession();
-
-        List<Employee> employeeList = EmployeeRepository.getAll(session);
-        TableHelper.setEmployeeTable(employeeList, contentTable, nameCol, phoneCol, emailCol, dateOfBirthCol);
+        this.initialize(null, null);
     }
 }

@@ -17,7 +17,7 @@
 
 <AnchorPane prefHeight="662.0" prefWidth="1203.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.CustomerCategoryController">
    <children>
-      <Label layoutX="14.0" layoutY="12.0" prefHeight="37.0" prefWidth="183.0" styleClass="font" stylesheets="@../css/style.css" text="Khách hàng" textFill="#2b2733">
+      <Label layoutX="14.0" layoutY="12.0" prefHeight="37.0" prefWidth="183.0" styleClass="font-29" stylesheets="@../css/style.css" text="Khách hàng" textFill="#2b2733">
          <font>
             <Font size="29.0" />
          </font>

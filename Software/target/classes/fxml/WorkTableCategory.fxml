@@ -15,9 +15,9 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="662.0" prefWidth="1203.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.RolesCategoryController">
+<AnchorPane fx:id="host" onMouseClicked="#requestFocus" prefHeight="662.0" prefWidth="1203.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.WorkTableCategoryController">
    <children>
-      <Label layoutX="14.0" layoutY="12.0" prefHeight="37.0" prefWidth="183.0" styleClass="font-29" stylesheets="@../css/style.css" text="Chức vụ" textFill="#2b2733">
+      <Label layoutX="14.0" layoutY="12.0" prefHeight="37.0" prefWidth="148.0" styleClass="font-29" stylesheets="@../css/style.css" text="Lịch làm" textFill="#2b2733">
          <font>
             <Font size="29.0" />
          </font>
@@ -25,7 +25,7 @@
             <Insets left="10.0" />
          </padding>
       </Label>
-      <AnchorPane layoutX="23.0" layoutY="59.0" prefHeight="591.0" prefWidth="1157.0" style="-fx-background-radius: 5px; -fx-background-color: #fff; -fx-border-color: #ebecee; -fx-border-radius: 5px;">
+      <AnchorPane layoutX="23.0" layoutY="59.0" prefHeight="591.0" prefWidth="1157.0" style="-fx-background-radius: 5px; -fx-background-color: FFFFFF; -fx-border-color: #ebecee #ebecee; -fx-border-radius: 5px;">
          <opaqueInsets>
             <Insets />
          </opaqueInsets>
@@ -39,9 +39,9 @@
                   <RowConstraints minHeight="10.0" prefHeight="475.0" vgrow="SOMETIMES" />
                </rowConstraints>
                <children>
-                  <HBox prefHeight="100.0" prefWidth="200.0">
+                  <HBox prefHeight="54.0" prefWidth="1123.0">
                      <children>
-                        <TextField fx:id="searchBar" focusTraversable="false" prefHeight="33.0" prefWidth="222.0" stylesheets="@../css/style.css">
+                        <TextField fx:id="searchBar" focusTraversable="false" prefHeight="33.0" prefWidth="222.0" promptText="Nhập tên nhân viên" stylesheets="@../css/style.css">
                            <font>
                               <Font size="17.0" />
                            </font>
@@ -65,24 +65,39 @@
                               <Cursor fx:constant="HAND" />
                            </cursor>
                         </JFXButton>
-                        <JFXButton fx:id="addButton" focusTraversable="false" onAction="#insert" stylesheets="@../css/style.css" text="+ Thêm mới">
+                        <JFXButton fx:id="shiftButton" focusTraversable="false" onAction="#openShift" stylesheets="@../css/style.css" text="Ca làm">
                            <styleClass>
                               <String fx:value="login-button" />
                               <String fx:value="font" />
                            </styleClass>
                            <HBox.margin>
-                              <Insets left="649.0" top="7.0" />
+                              <Insets left="554.0" top="7.0" />
                            </HBox.margin>
                            <cursor>
                               <Cursor fx:constant="HAND" />
                            </cursor>
                         </JFXButton>
+                        <JFXButton fx:id="addButton" focusTraversable="false" layoutX="1013.0" layoutY="17.0" onAction="#save" stylesheets="@../css/style.css" text="+ Thêm mới">
+                           <styleClass>
+                              <String fx:value="login-button" />
+                              <String fx:value="font" />
+                           </styleClass>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                           <HBox.margin>
+                              <Insets left="10.0" top="7.0" />
+                           </HBox.margin>
+                        </JFXButton>
                      </children>
                   </HBox>
-                  <TableView fx:id="contentTable" editable="true" focusTraversable="false" onMouseClicked="#select" prefHeight="340.0" prefWidth="1218.0" styleClass="table-font" stylesheets="@../css/style.css" GridPane.rowIndex="1">
+                  <TableView fx:id="contentTable" editable="true" focusTraversable="false" onMouseClicked="#select" prefHeight="498.0" prefWidth="1149.0" styleClass="table-font" stylesheets="@../css/style.css" GridPane.rowIndex="1">
                      <columns>
-                        <TableColumn fx:id="nameCol" prefWidth="404.0" text="Tên chức vụ" />
-                        <TableColumn fx:id="createdDateCol" minWidth="0.0" prefWidth="736.0" text="Ngày tạo" />
+                        <TableColumn fx:id="nameCol" prefWidth="311.0" text="Tên nhân viên" />
+                        <TableColumn fx:id="shiftCol" minWidth="0.0" prefWidth="165.0" text="Ca làm" />
+                        <TableColumn fx:id="timeInCol" minWidth="0.0" prefWidth="124.0" text="Giờ vào" />
+                        <TableColumn fx:id="timeOutCol" minWidth="0.0" prefWidth="124.0" text="Giờ ra" />
+                        <TableColumn fx:id="workDaysCol" minWidth="0.0" prefWidth="416.0" text="Ngày làm trong tuần" />
                      </columns>
                   </TableView>
                </children>

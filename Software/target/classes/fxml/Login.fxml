@@ -20,7 +20,7 @@
             <Font size="16.0" />
          </font>
       </Label>
-      <Label layoutX="99.0" layoutY="84.0" prefHeight="45.0" prefWidth="132.0" styleClass="font" stylesheets="@../css/style.css" text="Đăng Nhập" wrapText="true">
+      <Label layoutX="99.0" layoutY="84.0" prefHeight="45.0" prefWidth="132.0" styleClass="login-label" stylesheets="@../css/style.css" text="Đăng Nhập" wrapText="true">
          <font>
             <Font size="24.0" />
          </font>

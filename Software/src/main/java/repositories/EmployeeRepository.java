@@ -1,11 +1,11 @@
 package repositories;
 
-import entities.Customer;
-import javafx.scene.Parent;
-import org.hibernate.Session;
-import org.hibernate.query.Query;
 import entities.Employee;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.query.Query;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -25,8 +25,9 @@ public class EmployeeRepository {
         }
     }
 
-    public static List<Employee> getAll(Session session) {
+    public static List<Employee> getAll(SessionFactory sessionFactory) {
         try {
+            Session session = sessionFactory.openSession();
             session.beginTransaction();
             String sql = "Select c from " + Employee.class.getName() + " c";
             Query<Employee> query = session.createQuery(sql);
@@ -34,10 +35,8 @@ public class EmployeeRepository {
             session.getTransaction().commit();
             return result;
         } catch (Exception ex) {
-            session.getTransaction().commit();
             System.out.println(ex.getMessage());
-            System.out.println(Arrays.toString(ex.getStackTrace()));
-            return null;
+            return new ArrayList<>();
         }
     }
 
@@ -50,6 +49,24 @@ public class EmployeeRepository {
             System.out.println(ex.getMessage());
             System.out.println(Arrays.toString(ex.getStackTrace()));
             return null;
+        }
+    }
+
+    public static Employee getByEmployeeName(SessionFactory sessionFactory, String employeeName) {
+        try {
+            Session session = sessionFactory.openSession();
+            session.beginTransaction();
+            Query<Employee> query = session.createQuery("" +
+                    "SELECT e " +
+                    "FROM Employee e " +
+                    "WHERE e.fullName = :employeeName");
+            query.setParameter("employeeName", employeeName);
+            Employee result = query.getSingleResult();
+            session.getTransaction().commit();
+            return result;
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+            return new Employee();
         }
     }
 
