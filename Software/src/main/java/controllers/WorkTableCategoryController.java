@@ -2,7 +2,6 @@ package controllers;
 
 import com.jfoenix.controls.JFXButton;
 import dataModel.WorkTableModel;
-import entities.WorkShift;
 import entities.WorkTable;
 import holders.WorkTableHolder;
 import javafx.event.ActionEvent;
@@ -10,14 +9,12 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
-import javafx.scene.control.DatePicker;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import org.hibernate.SessionFactory;
-import org.jboss.jandex.Main;
 import repositories.WorkTableRepository;
 import utils.HibernateUtils;
 import utils.StageHelper;
@@ -74,7 +71,7 @@ public class WorkTableCategoryController implements Initializable {
 
     @FXML
     void openShift(ActionEvent event) {
-        MainNavigatorController.getInstance().openShiftTable(null);
+        MainNavigatorController.getInstance().openShiftTable();
     }
 
     @FXML

@@ -1,8 +1,6 @@
 package controllers;
 
 import com.jfoenix.controls.JFXButton;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -137,7 +135,7 @@ public class MainNavigatorController implements Initializable {
         contentPanel.getChildren().add(grid.get(8));
     }
 
-    void openShiftTable(ActionEvent event) {
+    void openShiftTable() {
         contentPanel.getChildren().clear();
         contentPanel.getChildren().add(grid.get(9));
     }
