@@ -3,52 +3,58 @@ package repositories;
 import entities.Roles;
 import org.hibernate.Session;
 import org.hibernate.query.Query;
+import utils.HibernateUtils;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 public class RolesRepository {
 
-    public static List<Roles> getAll(Session session) {
+    public static List<Roles> getAll() {
         try {
+            Session session = HibernateUtils.getSessionFactory().openSession();
             session.beginTransaction();
-            String sql = "Select c from " + Roles.class.getName() + " c";
-            Query<Roles> query = session.createQuery(sql);
+
+            Query<Roles> query = session.createQuery("" +
+                    "SELECT r " +
+                    "FROM Roles r");
             List<Roles> result = query.getResultList();
             session.getTransaction().commit();
-            return result;
-        } catch (Exception ex) {
-            session.getTransaction().commit();
-            System.out.println(ex.getMessage());
-            System.out.println(Arrays.toString(ex.getStackTrace()));
-            return null;
-        }
-    }
 
-    public static Roles getByName(Session session, String name) {
-        try {
-            session.beginTransaction();
-            String sql = "Select c from " + Roles.class.getName() + " c where c.name = '" + name + "'";
-            Query<Roles> query = session.createQuery(sql);
-            Roles result = query.getSingleResult();
-            session.getTransaction().commit();
+            session.close();
             return result;
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
-            System.out.println(Arrays.toString(ex.getStackTrace()));
-            return null;
+            return new ArrayList<>();
         }
     }
 
-    public static List<Roles> getLikeName(Session session, String name) {
-        try {
-            String sql = "Select c from " + Roles.class.getName() + " c where c.name like '%" + name + "%'";
-            Query<Roles> query = session.createQuery(sql);
-            return query.getResultList();
-        } catch (Exception ex) {
-            System.out.println(ex.getMessage());
-            System.out.println(Arrays.toString(ex.getStackTrace()));
-            return null;
-        }
+    public static Roles getByName(String name) {
+        Session session = HibernateUtils.getSessionFactory().openSession();
+        session.beginTransaction();
+        Query<Roles> query = session.createQuery("" +
+                "SELECT r " +
+                "FROM Roles r " +
+                "WHERE r.name = :name");
+        query.setParameter("name", name);
+        Roles result = query.uniqueResult();
+        session.getTransaction().commit();
+        session.close();
+        return result;
+    }
+
+    public static List<Roles> getLikeName(String name) {
+        Session session = HibernateUtils.getSessionFactory().openSession();
+        session.beginTransaction();
+        Query<Roles> query = session.createQuery("" +
+                "SELECT r " +
+                "FROM Roles r " +
+                "WHERE r.name LIKE :name");
+        query.setParameter("name", name);
+        List<Roles> result = query.getResultList();
+        session.getTransaction().commit();
+        session.close();
+        return result;
     }
 }

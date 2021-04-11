@@ -10,11 +10,11 @@ import java.util.List;
 
 public class WorkTableValidation {
 
-    public static List<String> validateInsert(SessionFactory sessionFactory, WorkTable workTable) {
+    public static List<String> validateInsert(WorkTable workTable) {
         List<String> msg = new ArrayList<>();
 
         // Check if employee has WorkTable
-        List<WorkTable> workTableEmployee = WorkTableRepository.getByEmployeeNameAndShift(sessionFactory, workTable.getEmployee().getFullName(), workTable.getWorkShift());
+        List<WorkTable> workTableEmployee = WorkTableRepository.getByEmployeeNameAndShift(workTable.getEmployee().getFullName(), workTable.getWorkShift());
         WorkTable workTEmployee = workTableEmployee.stream().filter(t -> !t.getId().equals(workTable.getId())).findAny().orElse(null);
         if (workTableEmployee.size() > 1) {
             msg.add("Đã đặt ca làm cho nhân viên này");
@@ -41,13 +41,13 @@ public class WorkTableValidation {
         return msg;
     }
 
-    public static List<String> validateUpdate(SessionFactory sessionFactory, WorkTable workTable) {
+    public static List<String> validateUpdate(WorkTable workTable) {
         List<String> msg = new ArrayList<>();
 
         if (workTable.getDayOfWeek().equals("") || workTable.getDayOfWeek().isEmpty()) {
             msg.add("Chưa chọn ngày làm trong tuần cho nhân viên");
         }
-        List<WorkTable> workTableEmployeeList = WorkTableRepository.getByEmployeeNameAndShift(sessionFactory, workTable.getEmployee().getFullName(), workTable.getWorkShift());
+        List<WorkTable> workTableEmployeeList = WorkTableRepository.getByEmployeeNameAndShift(workTable.getEmployee().getFullName(), workTable.getWorkShift());
         WorkTable workTableEmployee = workTableEmployeeList.stream().filter(t -> !t.getId().equals(workTable.getId())).findAny().orElse(null);
         if (workTableEmployee != null
                 && !workTableEmployee.getEmployee().getId().equals(workTable.getEmployee().getId())) {

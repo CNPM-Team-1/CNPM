@@ -12,12 +12,10 @@ import java.util.List;
 
 public class RolesValidation {
 
-    public static List<String> validateInsert(SessionFactory sessionFactory, Roles roles) {
+    public static List<String> validateInsert(Roles roles) {
         List<String> msg = new ArrayList<>();
-        Session session;
 
-        session = sessionFactory.openSession();
-        Roles rolesName = RolesRepository.getByName(session, roles.getName());
+        Roles rolesName = RolesRepository.getByName(roles.getName());
 
         if (roles.getName() == null || roles.getName().isEmpty()) {
             msg.add("Chưa điền tên chức vụ");
@@ -28,12 +26,10 @@ public class RolesValidation {
         return msg;
     }
 
-    public static List<String> validateUpdate(SessionFactory sessionFactory, Roles roles) {
+    public static List<String> validateUpdate(Roles roles) {
         List<String> msg = new ArrayList<>();
-        Session session;
 
-        session = sessionFactory.openSession();
-        Roles rolesName = RolesRepository.getByName(session, roles.getName());
+        Roles rolesName = RolesRepository.getByName(roles.getName());
 
         if (roles.getName() == null || roles.getName().isEmpty()) {
             msg.add("Chưa điền tên");
@@ -44,13 +40,11 @@ public class RolesValidation {
         return msg;
     }
 
-    public static List<String> validateDelete(SessionFactory sessionFactory, Roles roles) {
+    public static List<String> validateDelete(Roles roles) {
         List<String> msg = new ArrayList<>();
-        Session session;
 
         // Check if someone is using role
-        session = sessionFactory.openSession();
-        List<EmployeeRoles> employeeRolesList = EmployeeRolesRepository.getByRolesId(session, roles.getId());
+        List<EmployeeRoles> employeeRolesList = EmployeeRolesRepository.getByRolesId(roles.getId());
         if (employeeRolesList != null && employeeRolesList.size() > 0) {
             msg.add("Chức vụ đang được sử dụng");
         }

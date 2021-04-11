@@ -13,7 +13,7 @@ import java.util.List;
 
 public class OrdersValidation {
 
-    public static List<String> validateUpdate(Session session, Orders orders) {
+    public static List<String> validateUpdate(Orders orders) {
         List<String> msg = new ArrayList<>();
 
         if (orders.getStatus().equals("Hoàn tất")) {
@@ -23,14 +23,11 @@ public class OrdersValidation {
         return msg;
     }
 
-    public static List<String> validateDelete(SessionFactory sessionFactory, Orders orders) {
+    public static List<String> validateDelete(Orders orders) {
         List<String> msg = new ArrayList<>();
 
-        Session session;
-        session = sessionFactory.openSession();
-        List<Receipt> receiptList = ReceiptRepository.getAll(session);
-        session = sessionFactory.openSession();
-        List<Imports> importsList = ImportsRepository.getAll(session);
+        List<Receipt> receiptList = ReceiptRepository.getAll();
+        List<Imports> importsList = ImportsRepository.getAll();
 
         if (orders.getStatus().equals("Hoàn tất")) {
             msg.add("Không được xoá đơn hàng đã hoàn tất");

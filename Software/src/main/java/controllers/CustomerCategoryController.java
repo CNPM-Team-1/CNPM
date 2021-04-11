@@ -29,13 +29,10 @@ import java.util.ResourceBundle;
 
 @Service
 public class CustomerCategoryController implements Initializable {
-
+    @FXML
+    private AnchorPane host;
     @FXML
     private TextField searchBar;
-    @FXML
-    private JFXButton searchButton;
-    @FXML
-    private JFXButton addButton;
     @FXML
     private TableView<Customer> contentTable;
     @FXML
@@ -51,11 +48,9 @@ public class CustomerCategoryController implements Initializable {
 
     // For other class call function from this class
     public static CustomerCategoryController instance;
-
     public CustomerCategoryController() {
         instance = this;
     }
-
     public static CustomerCategoryController getInstance() {
         return instance;
     }
@@ -63,10 +58,7 @@ public class CustomerCategoryController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        SessionFactory factory = HibernateUtils.getSessionFactory();
-        Session session = factory.getCurrentSession();
-
-        List<Customer> customerList = CustomerRepository.getAll(session);
+        List<Customer> customerList = CustomerRepository.getAll();
         TableHelper.setCustomerTable(customerList, contentTable, nameCol, phoneCol, emailCol, addressCol, typeCol);
     }
 
@@ -76,8 +68,7 @@ public class CustomerCategoryController implements Initializable {
             Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("fxml/CustomerAdd.fxml")));
             StageHelper.startStage(root);
             // Hide host
-            AnchorPane host = MainNavigatorController.instance.getHost();
-            host.setDisable(true);
+            MainNavigatorController.instance.getHost().setDisable(true);
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
             System.out.println(Arrays.toString(ex.getStackTrace()));
@@ -86,17 +77,8 @@ public class CustomerCategoryController implements Initializable {
 
     @FXML
     void search(ActionEvent event) {
-        try {
-            SessionFactory factory = HibernateUtils.getSessionFactory();
-            Session session = factory.getCurrentSession();
-
-            String keySearch = searchBar.getText();
-            List<Customer> customerList = CustomerRepository.getByNameOrPhone(session, keySearch);
-            TableHelper.setCustomerTable(customerList, contentTable, nameCol, phoneCol, emailCol, addressCol, typeCol);
-        } catch (Exception ex) {
-            System.out.println(ex.getMessage());
-            System.out.println(Arrays.toString(ex.getStackTrace()));
-        }
+        List<Customer> customerList = CustomerRepository.getByNameOrPhone(searchBar.getText());
+        TableHelper.setCustomerTable(customerList, contentTable, nameCol, phoneCol, emailCol, addressCol, typeCol);
     }
 
     @FXML
@@ -107,27 +89,25 @@ public class CustomerCategoryController implements Initializable {
                 contentTable.getSelectionModel().clearSelection();
                 // Store Customer to use in another class
                 if (customer != null) {
-                    CustomerHolder customerHolder = CustomerHolder.getInstance();
-                    customerHolder.setCustomer(customer);
+                    CustomerHolder.getInstance().setCustomer(customer);
                     Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("fxml/CustomerUpdate.fxml")));
                     StageHelper.startStage(root);
                     // Hide host
-                    AnchorPane host = MainNavigatorController.instance.getHost();
-                    host.setDisable(true);
+                    MainNavigatorController.instance.getHost().setDisable(true);
                 }
             } catch (Exception ex) {
                 System.out.println(ex.getMessage());
-                System.out.println(Arrays.toString(ex.getStackTrace()));
             }
         }
     }
 
     // Refresh table
     public void refresh() {
-        SessionFactory factory = HibernateUtils.getSessionFactory();
-        Session session = factory.getCurrentSession();
+        this.initialize(null, null);
+    }
 
-        List<Customer> customerList = CustomerRepository.getAll(session);
-        TableHelper.setCustomerTable(customerList, contentTable, nameCol, phoneCol, emailCol, addressCol, typeCol);
+    @FXML
+    void requestFocus(MouseEvent event) {
+        host.requestFocus();
     }
 }

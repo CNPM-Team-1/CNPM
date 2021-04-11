@@ -19,7 +19,9 @@ import utils.BCryptHelper;
 import utils.HibernateUtils;
 import utils.StageHelper;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import java.util.Objects;
 
 public class LoginController {
@@ -30,21 +32,17 @@ public class LoginController {
     private TextField userEmail;
     @FXML
     private PasswordField userPassword;
-    @FXML
-    private Button loginButton;
-    @FXML
-    private ImageView close;
-    @FXML
-    private ImageView minimize;
 
     public Employee curEmployee;
 
     // For other class to access this class
     public static LoginController instance;
-
-    public LoginController() { instance = this; }
-
-    public static LoginController getInstance() { return instance; }
+    public LoginController() {
+        instance = this;
+    }
+    public static LoginController getInstance() {
+        return instance;
+    }
     ///
 
     @FXML
@@ -60,37 +58,19 @@ public class LoginController {
     @FXML
     void login(ActionEvent actionEvent) {
         try {
-            SessionFactory factory = HibernateUtils.getSessionFactory();
-            Session session = factory.getCurrentSession();
-            session.beginTransaction();
-
-            if (userEmail.getText().isEmpty()) {
-                status.setText("Chưa nhập email");
-            } else if (userPassword.getText().isEmpty()) {
-                status.setText("Chưa nhập mật khẩu");
+            Employee employee = EmployeeRepository.getByEmail(userEmail.getText());
+            List<String> validateLogin = validateLogin(employee);
+            if (validateLogin.size() == 0) {
+                // Set logged in employee
+                curEmployee = employee;
+                Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("fxml/MainNavigator.fxml")));
+                StageHelper.closeStage(actionEvent);
+                StageHelper.startStage(root);
             } else {
-                // Get employee by email
-                Employee employee = EmployeeRepository.getByEmail(userEmail.getText(), session);
-                // Check if password is valid
-                if (employee != null && BCryptHelper.check(userPassword.getText(), employee.getPassword())) {
-                    // set logged in employee
-                    curEmployee = employee;
-
-                    Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("fxml/MainNavigator.fxml")));
-                    StageHelper.closeStage(actionEvent);
-                    StageHelper.startStage(root);
-
-                } else {
-                    status.setText("Sai email hoặc mật khẩu");
-                }
-            }
-            if (session.getTransaction().getStatus() != TransactionStatus.COMMITTED) {
-                session.getTransaction().commit();
+                status.setText(validateLogin.get(0));
             }
         } catch (Exception ex) {
             status.setText("Lỗi đăng nhập");
-            System.out.println(ex.getMessage());
-            System.out.println(Arrays.toString(ex.getStackTrace()));
         }
     }
 
@@ -99,4 +79,15 @@ public class LoginController {
         this.login(actionEvent);
     }
 
+    List<String> validateLogin(Employee employee) {
+        List<String> msg = new ArrayList<>();
+
+        if (employee == null) {
+            msg.add("Sai email");
+        } else if (!BCryptHelper.check(userPassword.getText(), employee.getPassword())) {
+            msg.add("Sai mật khẩu");
+        }
+
+        return msg;
+    }
 }

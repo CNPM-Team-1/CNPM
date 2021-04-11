@@ -1,6 +1,5 @@
 package controllers;
 
-import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXListView;
 import entities.Permissions;
 import entities.Roles;
@@ -8,8 +7,10 @@ import entities.RolesDetail;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.*;
-import javafx.scene.image.ImageView;
+import javafx.scene.control.Label;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import org.hibernate.Session;
@@ -29,15 +30,7 @@ public class RolesAddController implements Initializable {
     @FXML
     private AnchorPane host;
     @FXML
-    private Label full_name;
-    @FXML
     private TextField nameHolder;
-    @FXML
-    private JFXButton addButton;
-    @FXML
-    private JFXButton cancelButton;
-    @FXML
-    private ImageView close;
     @FXML
     private Label errorMessage;
     @FXML
@@ -51,10 +44,7 @@ public class RolesAddController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        SessionFactory sessionFactory = HibernateUtils.getSessionFactory();
-        Session session = sessionFactory.openSession();
-
-        List<Permissions> permissionsList = PermissionRepository.getAll(session);
+        List<Permissions> permissionsList = PermissionRepository.getAll();
         TableHelper.setPermissionNameTable(permissionsList, permissionTable, nameCol);
     }
 
@@ -62,54 +52,49 @@ public class RolesAddController implements Initializable {
     void close(MouseEvent event) {
         StageHelper.closeStage(event);
         // Unhide host
-        AnchorPane host = MainNavigatorController.instance.getHost();
-        host.setDisable(false);
+        MainNavigatorController.instance.getHost().setDisable(false);
     }
 
     @FXML
     void save(ActionEvent event) {
-        SessionFactory sessionFactory = HibernateUtils.getSessionFactory();
-        Session session = sessionFactory.openSession();
-
+        Session session;
         Roles roles = new Roles();
         roles.setId(UUIDHelper.generateType4UUID().toString());
         roles.setName(nameHolder.getText());
 
-        List<String> validateInsert = RolesValidation.validateInsert(sessionFactory, roles);
+        List<String> validateInsert = RolesValidation.validateInsert(roles);
         if (validateInsert.size() == 0) {
-            // Close stage
-            StageHelper.closeStage(event);
-            // Show alert box
-            AlertBoxHelper.showMessageBox("Thêm thành công");
             // Save new roles
-            session = sessionFactory.openSession();
+            session = HibernateUtils.getSessionFactory().openSession();
             session.beginTransaction();
             session.save(roles);
             session.getTransaction().commit();
+            session.close();
             // Save roles_detail
             for (String item : selectedPermission) {
-                session = sessionFactory.openSession();
-                Permissions permissions = PermissionRepository.getByName(session, item);
+                Permissions permissions = PermissionRepository.getByName(item);
                 RolesDetail rolesDetail = new RolesDetail();
                 rolesDetail.setId(UUIDHelper.generateType4UUID().toString());
                 rolesDetail.setRoles(roles);
                 rolesDetail.setPermissions(permissions);
 
-                session = sessionFactory.openSession();
+                session = HibernateUtils.getSessionFactory().openSession();
                 session.beginTransaction();
                 session.save(rolesDetail);
                 session.getTransaction().commit();
+                session.close();
             }
+
+            // Close stage
+            StageHelper.closeStage(event);
+            // Show alert box
+            AlertBoxHelper.showMessageBox("Thêm thành công");
             // Refresh content table
             RolesCategoryController.getInstance().refresh();
             // Unhide host
-            AnchorPane host = MainNavigatorController.instance.getHost();
-            host.setDisable(false);
+            MainNavigatorController.instance.getHost().setDisable(false);
         } else {
             errorMessage.setText(validateInsert.get(0));
-            if (session.getTransaction().getStatus() != TransactionStatus.COMMITTED) {
-                session.getTransaction().commit();
-            }
         }
     }
 
@@ -139,5 +124,10 @@ public class RolesAddController implements Initializable {
         for (String item : selectedPermission) {
             selectedPermissionList.getItems().add(item);
         }
+    }
+
+    @FXML
+    void requestFocus(MouseEvent event) {
+        host.requestFocus();
     }
 }

@@ -1,6 +1,5 @@
 package controllers;
 
-import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXCheckBox;
 import entities.Employee;
 import entities.WorkShift;
@@ -15,13 +14,11 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import org.controlsfx.control.textfield.TextFields;
 import org.hibernate.Session;
-import org.hibernate.SessionFactory;
 import repositories.EmployeeRepository;
 import repositories.WorkShiftRepository;
 import utils.AlertBoxHelper;
 import utils.HibernateUtils;
 import utils.StageHelper;
-import utils.UUIDHelper;
 import validation.WorkTableValidation;
 
 import java.net.URL;
@@ -39,8 +36,6 @@ public class WorkTableUpdateController implements Initializable {
     @FXML
     private TextField shiftHolder;
     @FXML
-    private JFXButton cancelButton;
-    @FXML
     private Label errorMessage;
     @FXML
     private JFXCheckBox t2CheckBox;
@@ -56,19 +51,14 @@ public class WorkTableUpdateController implements Initializable {
     private JFXCheckBox t3CheckBox;
     @FXML
     private JFXCheckBox cnCheckBox;
-    @FXML
-    private JFXButton updateButton;
-    @FXML
-    private JFXButton deleteButton;
 
     // Get WorkTable from WorkTableCategory select(MouseEvent event)
     WorkTable chosenWorkTable = WorkTableHolder.getInstance().getWorkTable();
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        SessionFactory sessionFactory = HibernateUtils.getSessionFactory();
-        List<Employee> allEmployee = EmployeeRepository.getAll(sessionFactory);
-        List<WorkShift> allShifts = WorkShiftRepository.getAll(sessionFactory);
+        List<Employee> allEmployee = EmployeeRepository.getAll();
+        List<WorkShift> allShifts = WorkShiftRepository.getAll();
         // Fill textfield autocomplete
         TextFields.bindAutoCompletion(employeeHolder, allEmployee.stream().map(Employee::getFullName).collect(Collectors.toList()));
         TextFields.bindAutoCompletion(shiftHolder, allShifts.stream().map(WorkShift::getName).collect(Collectors.toList()));
@@ -99,13 +89,11 @@ public class WorkTableUpdateController implements Initializable {
 
     @FXML
     void delete(ActionEvent event) {
-        SessionFactory sessionFactory = HibernateUtils.getSessionFactory();
-        Session session;
-
-        session = sessionFactory.openSession();
+        Session session = HibernateUtils.getSessionFactory().openSession();
         session.beginTransaction();
         session.delete(chosenWorkTable);
         session.getTransaction().commit();
+        session.close();
 
         // Show alert box
         AlertBoxHelper.showMessageBox("Xoá thành công");
@@ -116,7 +104,7 @@ public class WorkTableUpdateController implements Initializable {
         // Close stage
         StageHelper.closeStage(event);
         // Clear holder
-        chosenWorkTable = null;
+        WorkTableHolder.getInstance().setWorkTable(null);
     }
 
     @FXML
@@ -126,9 +114,8 @@ public class WorkTableUpdateController implements Initializable {
 
     @FXML
     void update(ActionEvent event) {
-        SessionFactory sessionFactory = HibernateUtils.getSessionFactory();
-        Employee employee = EmployeeRepository.getByEmployeeName(sessionFactory, employeeHolder.getText());
-        WorkShift workShift = WorkShiftRepository.getByName(sessionFactory, shiftHolder.getText());
+        Employee employee = EmployeeRepository.getByEmployeeName(employeeHolder.getText());
+        WorkShift workShift = WorkShiftRepository.getByName(shiftHolder.getText());
 
         List<JFXCheckBox> checkBoxList = new ArrayList<>(Arrays.asList(t2CheckBox, t3CheckBox, t4CheckBox, t5CheckBox, t6CheckBox, t7CheckBox, cnCheckBox));
         String workDaysInWeek = "";
@@ -143,12 +130,13 @@ public class WorkTableUpdateController implements Initializable {
         chosenWorkTable.setWorkShift(workShift);
         chosenWorkTable.setDayOfWeek(workDaysInWeek);
 
-        List<String> validateInsert = WorkTableValidation.validateUpdate(sessionFactory, chosenWorkTable);
+        List<String> validateInsert = WorkTableValidation.validateUpdate(chosenWorkTable);
         if (validateInsert.size() == 0) {
-            Session session = sessionFactory.openSession();
+            Session session = HibernateUtils.getSessionFactory().openSession();
             session.beginTransaction();
             session.saveOrUpdate(chosenWorkTable);
             session.getTransaction().commit();
+            session.close();
 
             // Show alert box
             AlertBoxHelper.showMessageBox("Cập nhật thành công");
@@ -159,7 +147,7 @@ public class WorkTableUpdateController implements Initializable {
             // Close stage
             StageHelper.closeStage(event);
             // Clear holder
-            chosenWorkTable = null;
+            WorkTableHolder.getInstance().setWorkTable(chosenWorkTable);
         } else {
             errorMessage.setText(validateInsert.get(0));
         }

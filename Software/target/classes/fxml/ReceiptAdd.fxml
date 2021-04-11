@@ -15,7 +15,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="763.0" prefWidth="843.0" styleClass="borderoutline" stylesheets="@../css/style.css" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ReceiptAddController">
+<AnchorPane fx:id="host" onMouseClicked="#requestFocus" prefHeight="763.0" prefWidth="843.0" styleClass="borderoutline" stylesheets="@../css/style.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ReceiptAddController">
    <children>
       <GridPane layoutX="14.0" layoutY="54.0" prefHeight="42.0" prefWidth="710.0">
          <columnConstraints>
@@ -120,7 +120,7 @@
             </TableView>
          </children>
       </VBox>
-      <JFXButton fx:id="closeButton" layoutX="15.0" layoutY="717.0" onMouseClicked="#close" prefHeight="32.0" prefWidth="70.0" stylesheets="@../css/style.css" text="Hủy">
+      <JFXButton layoutX="15.0" layoutY="717.0" onMouseClicked="#close" prefHeight="32.0" prefWidth="70.0" stylesheets="@../css/style.css" text="Hủy">
          <styleClass>
             <String fx:value="button-font" />
             <String fx:value="close-button" />

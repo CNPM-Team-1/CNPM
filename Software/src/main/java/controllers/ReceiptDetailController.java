@@ -60,24 +60,16 @@ public class ReceiptDetailController implements Initializable {
     private TableColumn<OrdersDetailModel, Integer> finalAmountCol;
 
     @FXML
-    private JFXButton closeButton;
-    @FXML
     private TextField sumQuantityHolder;
     @FXML
     private TextField sumAmountHolder;
-    @FXML
-    private JFXButton deleteButton;
 
     // Get ReceiptModel from ReceiptCategoryController select(MouseEvent event)
-    ReceiptModelHolder receiptModelHolder = ReceiptModelHolder.getInstance();
-    Receipt receipt = receiptModelHolder.getReceiptModel().getReceipt();
+    Receipt receipt = ReceiptModelHolder.getInstance().getReceiptModel().getReceipt();
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         if (receipt != null) {
-            SessionFactory factory = HibernateUtils.getSessionFactory();
-            Session session = factory.openSession();
-
             // Set customer
             customerHolder.setText(receipt.getOrders().getCustomer().getFullName());
             phoneHolder.setText(receipt.getOrders().getCustomer().getPhone());
@@ -92,8 +84,7 @@ public class ReceiptDetailController implements Initializable {
             receiptOrdersModelList.add(receiptOrdersModel);
             TableHelper.setReceiptOrdersModelTable(receiptOrdersModelList, ordersTable, dateCol, descriptionCol, employeeCol);
             // Set orders detail
-            session = factory.openSession();
-            List<OrdersDetail> ordersDetailList = OrdersDetailRepository.getByOrdersId(session, receipt.getOrders().getId());
+            List<OrdersDetail> ordersDetailList = OrdersDetailRepository.getByOrdersId(receipt.getOrders().getId());
             List<OrdersDetailModel> ordersDetailModelList = new ArrayList<>();
             for (OrdersDetail item : ordersDetailList) {
                 OrdersDetailModel ordersDetailModel = new OrdersDetailModel();
@@ -115,39 +106,38 @@ public class ReceiptDetailController implements Initializable {
     @FXML
     void delete(ActionEvent event) {
         // Delete receipt
-        SessionFactory sessionFactory = HibernateUtils.getSessionFactory();
-        Session session = sessionFactory.openSession();
+        Session session = HibernateUtils.getSessionFactory().openSession();
         session.beginTransaction();
         session.delete(receipt);
         session.getTransaction().commit();
+        session.close();
         // Update orders status
         Orders orders = receipt.getOrders();
         orders.setStatus("Chưa hoàn tất");
-        session = sessionFactory.openSession();
+        session = HibernateUtils.getSessionFactory().openSession();
         session.beginTransaction();
         session.saveOrUpdate(orders);
         session.getTransaction().commit();
+        session.close();
         // Refresh content table
         ReceiptCategoryController.getInstance().refresh();
         OrderCategoryController.getInstance().refresh();
         // Set receipt model holder
-        receiptModelHolder.setReceiptModel(null);
+        ReceiptModelHolder.getInstance().setReceiptModel(null);
         // Close stage
         StageHelper.closeStage(event);
         // Show alert box
         AlertBoxHelper.showMessageBox("Xoá thành công");
         // Unhide host
-        AnchorPane host = MainNavigatorController.instance.getHost();
-        host.setDisable(false);
+        MainNavigatorController.instance.getHost().setDisable(false);
     }
 
     @FXML
     void close(MouseEvent event) {
         StageHelper.closeStage(event);
         // Set receipt model holder
-        receiptModelHolder.setReceiptModel(null);
+        ReceiptModelHolder.getInstance().setReceiptModel(null);
         // Unhide host
-        AnchorPane host = MainNavigatorController.instance.getHost();
-        host.setDisable(false);
+        MainNavigatorController.instance.getHost().setDisable(false);
     }
 }

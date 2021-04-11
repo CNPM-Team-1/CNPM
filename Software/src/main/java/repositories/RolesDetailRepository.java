@@ -12,33 +12,27 @@ import java.util.List;
 public class RolesDetailRepository {
 
     public static List<RolesDetail> getByRolesId(String rolesId) {
-        try {
-            SessionFactory factory = HibernateUtils.getSessionFactory();
-            Session session = factory.getCurrentSession();
-            session.beginTransaction();
+        SessionFactory factory = HibernateUtils.getSessionFactory();
+        Session session = factory.getCurrentSession();
+        session.beginTransaction();
 
-            String sql = "Select c from " + RolesDetail.class.getName() + " c where c.roles.id = '" + rolesId + "'";
-            Query<RolesDetail> query = session.createQuery(sql);
-            List<RolesDetail> result = query.getResultList();
-            session.getTransaction().commit();
-            return result;
-        } catch (Exception ex) {
-            System.out.println(ex.getMessage());
-            System.out.println(Arrays.toString(ex.getStackTrace()));
-            return null;
-        }
+        String sql = "Select c from " + RolesDetail.class.getName() + " c where c.roles.id = '" + rolesId + "'";
+        Query<RolesDetail> query = session.createQuery(sql);
+        List<RolesDetail> result = query.getResultList();
+        session.getTransaction().commit();
+        return result;
     }
 
-    public static void deleteByRoleId(Session session, String rolesId) {
-        try {
-            session.beginTransaction();
-            String sql = "Delete from " + RolesDetail.class.getName() + " r where r.roles.id = '" + rolesId + "'";
-            Query query = session.createQuery(sql);
-            query.executeUpdate();
-            session.getTransaction().commit();
-        } catch (Exception ex) {
-            System.out.println(ex.getMessage());
-            System.out.println(Arrays.toString(ex.getStackTrace()));
-        }
+    public static void deleteByRoleId(String rolesId) {
+        Session session = HibernateUtils.getSessionFactory().openSession();
+        session.beginTransaction();
+        Query query = session.createQuery("" +
+                "DELETE " +
+                "FROM RolesDetail r " +
+                "WHERE r.roles.id = :rolesId");
+        query.setParameter("rolesId", rolesId);
+        query.executeUpdate();
+        session.getTransaction().commit();
+        session.close();
     }
 }

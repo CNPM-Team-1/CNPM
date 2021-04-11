@@ -1,6 +1,5 @@
 package controllers;
 
-import com.jfoenix.controls.JFXButton;
 import entities.Customer;
 import holders.CustomerHolder;
 import javafx.event.ActionEvent;
@@ -9,7 +8,6 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import org.hibernate.Session;
@@ -27,40 +25,20 @@ public class CustomerUpdateController implements Initializable {
     @FXML
     private AnchorPane host;
     @FXML
-    private Label full_name;
-    @FXML
-    private Label email;
-    @FXML
     private TextField emailHolder;
     @FXML
     private TextField nameHolder;
-    @FXML
-    private Label phone;
-    @FXML
-    private Label type;
     @FXML
     private TextField phoneHolder;
     @FXML
     private ComboBox<String> typeHolder;
     @FXML
-    private JFXButton updateButton;
-    @FXML
-    private JFXButton cancelButton;
-    @FXML
-    private Label address;
-    @FXML
-    private ImageView close;
-    @FXML
     private TextField addressHolder;
-    @FXML
-    private JFXButton deleteButton;
     @FXML
     private Label errorMessage;
 
     // Get Customer from CustomerCategoryController select(MouseEvent event)
-    CustomerHolder customerHolder = CustomerHolder.getInstance();
-    Customer customer = customerHolder.getCustomer();
-
+    Customer customer = CustomerHolder.getInstance().getCustomer();
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         // Add value to type ComboBox
@@ -81,48 +59,43 @@ public class CustomerUpdateController implements Initializable {
     @FXML
     void close(MouseEvent event) {
         // Clear customer holder
-        customerHolder.setCustomer(null);
+        CustomerHolder.getInstance().setCustomer(null);
         StageHelper.closeStage(event);
-
         // Unhide host
-        AnchorPane host = MainNavigatorController.instance.getHost();
-        host.setDisable(false);
+        MainNavigatorController.instance.getHost().setDisable(false);
     }
 
     @FXML
     void update(ActionEvent event) {
         // Create session
         SessionFactory factory = HibernateUtils.getSessionFactory();
-        Session session = factory.getCurrentSession();
-        session.beginTransaction();
+        Session session;
 
-        Customer customer = customerHolder.getCustomer();
         customer.setFullName(nameHolder.getText());
         customer.setEmail(emailHolder.getText());
         customer.setPhone(phoneHolder.getText());
         customer.setAddress(addressHolder.getText());
         customer.setType(typeHolder.getValue());
 
-        List<String> validateUpdate = CustomerValidation.validateUpdate(session, customer);
+        List<String> validateUpdate = CustomerValidation.validateUpdate(customer);
         if (validateUpdate.size() == 0) {
-            StageHelper.closeStage(event);
-
-            // Show alert box
-            AlertBoxHelper.showMessageBox("Cập nhật thành công");
-
             // Update customer info
             session = factory.openSession();
             session.beginTransaction();
             session.saveOrUpdate(customer);
             session.getTransaction().commit();
+            session.close();
 
+            // Show alert box
+            AlertBoxHelper.showMessageBox("Cập nhật thành công");
+            // Close stage
+            StageHelper.closeStage(event);
             // Refresh content table
             CustomerCategoryController.getInstance().refresh();
             // Set customer holder
-            customerHolder.setCustomer(customer);
+            CustomerHolder.getInstance().setCustomer(customer);
             // Unhide host
-            AnchorPane host = MainNavigatorController.instance.getHost();
-            host.setDisable(false);
+            MainNavigatorController.instance.getHost().setDisable(false);
             // Refresh ReceiptCategory
             if (ReceiptCategoryController.getInstance() != null) {
                 ReceiptCategoryController.getInstance().refresh();
@@ -137,9 +110,6 @@ public class CustomerUpdateController implements Initializable {
             }
         } else {
             errorMessage.setText(validateUpdate.get(0));
-            if (session.getTransaction().isActive()) {
-                session.getTransaction().commit();
-            }
         }
     }
 
@@ -148,8 +118,7 @@ public class CustomerUpdateController implements Initializable {
         SessionFactory factory = HibernateUtils.getSessionFactory();
         Session session;
 
-        Customer customer = customerHolder.getCustomer();
-        List<String> validateDelete = CustomerValidation.validateDelete(factory, customer);
+        List<String> validateDelete = CustomerValidation.validateDelete(customer);
         if (validateDelete.size() == 0) {
             StageHelper.closeStage(event);
             // Show alert box
@@ -162,12 +131,17 @@ public class CustomerUpdateController implements Initializable {
             // Refresh content table
             CustomerCategoryController.getInstance().refresh();
             // Clear customer holder
-            customerHolder.setCustomer(null);
+            CustomerHolder.getInstance().setCustomer(null);
             // Unhide host
             AnchorPane host = MainNavigatorController.instance.getHost();
             host.setDisable(false);
         } else {
             errorMessage.setText(validateDelete.get(0));
         }
+    }
+
+    @FXML
+    void requestFocus(MouseEvent event) {
+        host.requestFocus();
     }
 }

@@ -9,10 +9,10 @@ import java.util.List;
 
 public class MerchandiseValidation {
 
-    public static List<String> validateInsert(Session session, Merchandise merchandise) {
+    public static List<String> validateInsert(Merchandise merchandise) {
         List<String> msg = new ArrayList<>();
 
-        Merchandise merchandiseName = MerchandiseRepository.getByName(session, merchandise.getName());
+        Merchandise merchandiseName = MerchandiseRepository.getByName(merchandise.getName());
 
         if (merchandise.getName() == null || merchandise.getName().isEmpty()) {
             msg.add("Chưa điền tên");
@@ -35,10 +35,10 @@ public class MerchandiseValidation {
         return msg;
     }
 
-    public static List<String> validateUpdate(Session session, Merchandise merchandise) {
+    public static List<String> validateUpdate(Merchandise merchandise) {
         List<String> msg = new ArrayList<>();
 
-        Merchandise merchandiseName = MerchandiseRepository.getByName(session, merchandise.getName());
+        Merchandise merchandiseName = MerchandiseRepository.getByName(merchandise.getName());
 
         // Check name
         if (merchandise.getName() == null || merchandise.getName().isEmpty()) {

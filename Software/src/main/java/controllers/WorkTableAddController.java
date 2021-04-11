@@ -1,6 +1,5 @@
 package controllers;
 
-import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXCheckBox;
 import entities.Employee;
 import entities.WorkShift;
@@ -38,10 +37,6 @@ public class WorkTableAddController implements Initializable {
     @FXML
     private TextField shiftHolder;
     @FXML
-    private JFXButton saveButton;
-    @FXML
-    private JFXButton cancelButton;
-    @FXML
     private Label errorMessage;
     @FXML
     private JFXCheckBox t2CheckBox;
@@ -60,9 +55,8 @@ public class WorkTableAddController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        SessionFactory sessionFactory = HibernateUtils.getSessionFactory();
-        List<Employee> allEmployee = EmployeeRepository.getAll(sessionFactory);
-        List<WorkShift> allShifts = WorkShiftRepository.getAll(sessionFactory);
+        List<Employee> allEmployee = EmployeeRepository.getAll();
+        List<WorkShift> allShifts = WorkShiftRepository.getAll();
         // Fill textfield autocomplete
         TextFields.bindAutoCompletion(employeeHolder, allEmployee.stream().map(Employee::getFullName).collect(Collectors.toList()));
         TextFields.bindAutoCompletion(shiftHolder, allShifts.stream().map(WorkShift::getName).collect(Collectors.toList()));
@@ -77,9 +71,9 @@ public class WorkTableAddController implements Initializable {
 
     @FXML
     void save(ActionEvent event) {
-        SessionFactory sessionFactory = HibernateUtils.getSessionFactory();
-        Employee employee = EmployeeRepository.getByEmployeeName(sessionFactory, employeeHolder.getText());
-        WorkShift workShift = WorkShiftRepository.getByName(sessionFactory, shiftHolder.getText());
+        Session session;
+        Employee employee = EmployeeRepository.getByEmployeeName(employeeHolder.getText());
+        WorkShift workShift = WorkShiftRepository.getByName(shiftHolder.getText());
 
         List<JFXCheckBox> checkBoxList = new ArrayList<>(Arrays.asList(t2CheckBox, t3CheckBox, t4CheckBox, t5CheckBox, t6CheckBox, t7CheckBox, cnCheckBox));
         String workDaysInWeek = "";
@@ -96,12 +90,13 @@ public class WorkTableAddController implements Initializable {
         workTable.setWorkShift(workShift);
         workTable.setDayOfWeek(workDaysInWeek);
 
-        List<String> validateInsert = WorkTableValidation.validateInsert(sessionFactory, workTable);
+        List<String> validateInsert = WorkTableValidation.validateInsert(workTable);
         if (validateInsert.size() == 0) {
-            Session session = sessionFactory.openSession();
+            session = HibernateUtils.getSessionFactory().openSession();
             session.beginTransaction();
             session.save(workTable);
             session.getTransaction().commit();
+            session.close();
 
             // Show alert box
             AlertBoxHelper.showMessageBox("Thêm thành công");

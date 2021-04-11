@@ -2,7 +2,6 @@ package controllers;
 
 import com.jfoenix.controls.JFXButton;
 import dataModel.ImportsDetailModel;
-import dataModel.OrdersDetailModel;
 import dataModel.ReceiptOrdersModel;
 import entities.*;
 import holders.ImportsHolder;
@@ -69,8 +68,6 @@ public class ImportsUpdateController implements Initializable {
     @FXML
     private Label errorMessage;
     @FXML
-    private JFXButton deleteImportsButton;
-    @FXML
     private JFXButton updateImportsButton;
 
     // Get Imports from ImportsCategoryController select(MouseEvent event)
@@ -79,8 +76,6 @@ public class ImportsUpdateController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        SessionFactory sessionFactory = HibernateUtils.getSessionFactory();
-        Session session;
         // Show Customer info
         Customer customer = imports.getOrders().getCustomer();
         customerHolder.setText(customer.getFullName());
@@ -98,17 +93,15 @@ public class ImportsUpdateController implements Initializable {
         TableHelper.setReceiptOrdersModelTable(receiptOrdersModelList, ordersTable, dateCol, descriptionCol, employeeCol);
 
         // Show ImportsDetail
-        session = sessionFactory.openSession();
-        List<ImportsDetail> importsDetails = ImportsDetailRepository.getByImportsId(session, imports.getId());
-        session = sessionFactory.openSession();
-        List<OrdersDetail> ordersDetails = OrdersDetailRepository.getByOrdersId(session, imports.getOrders().getId());
+        List<ImportsDetail> importsDetails = ImportsDetailRepository.getByImportsId(imports.getId());
+        List<OrdersDetail> ordersDetails = OrdersDetailRepository.getByOrdersId(imports.getOrders().getId());
         List<ImportsDetailModel> importsDetailModels = new ArrayList<>();
         for (ImportsDetail item : importsDetails) {
             OrdersDetail ordersDetail = ordersDetails.stream().filter(t -> t.getMerchandise().getId()
                     .equals(item.getMerchandise().getId()))
                     .findFirst().orElse(null);
             // Remove delivered Merchandise
-            this.removeDeliveredMerchandise(sessionFactory, ordersDetails);
+            this.removeDeliveredMerchandise(ordersDetails);
             ///
             ImportsDetailModel importsDetailModel = new ImportsDetailModel(item);
             importsDetailModel.setOrdersDetail(ordersDetail);
@@ -142,9 +135,6 @@ public class ImportsUpdateController implements Initializable {
 
     @FXML
     void updateImportsDetail(ActionEvent event) {
-        SessionFactory sessionFactory = HibernateUtils.getSessionFactory();
-        Session session;
-
         errorMessage.setText("");
         List<ImportsDetailModel> importsDetailModels = new ArrayList<>();
         for (ImportsDetailModel item : detailTable.getItems()) {
@@ -154,15 +144,13 @@ public class ImportsUpdateController implements Initializable {
 
         for (ImportsDetailModel item : importsDetailModels) {
             if (item.getMerchandiseName().equals(merchandiseHolder.getText())) {
-                session = sessionFactory.openSession();
-                int ordersQuantity = Objects.requireNonNull(OrdersDetailRepository.getById(session, item.getOrdersDetail().getId())).getQuantity();
+                int ordersQuantity = Objects.requireNonNull(OrdersDetailRepository.getById(item.getOrdersDetail().getId())).getQuantity();
                 int changeQuantity = Integer.parseInt(quantityHolder.getText());
-                session = sessionFactory.openSession();
-                int boughtQuantity = ImportsDetailRepository.getBoughtQuantityOfMerchandise(session,
+                int boughtQuantity = ImportsDetailRepository.getBoughtQuantityOfMerchandise(
                         item.getOrdersDetail().getOrders().getId(),
                         item.getImportsDetail().getMerchandise().getId(), item.getImportsDetail().getImports().getId()) != null ?
                         Math.toIntExact(Objects.requireNonNull(
-                                ImportsDetailRepository.getBoughtQuantityOfMerchandise(session,
+                                ImportsDetailRepository.getBoughtQuantityOfMerchandise(
                                         item.getOrdersDetail().getOrders().getId(),
                                         item.getImportsDetail().getMerchandise().getId(), item.getImportsDetail().getImports().getId())
                         )) : 0;
@@ -209,7 +197,6 @@ public class ImportsUpdateController implements Initializable {
 
     @FXML
     void updateImports(ActionEvent event) {
-        SessionFactory sessionFactory = HibernateUtils.getSessionFactory();
         Session session;
 
         // Update import detail
@@ -217,10 +204,11 @@ public class ImportsUpdateController implements Initializable {
         for (ImportsDetailModel item : detailTable.getItems()) {
             item.getImportsDetail().setQuantity(item.getQuantity());
             item.getImportsDetail().setAmount(Long.parseLong(NumberHelper.removeComma(item.getFinalAmount())));
-            session = sessionFactory.openSession();
+            session = HibernateUtils.getSessionFactory().openSession();
             session.beginTransaction();
             session.saveOrUpdate(item.getImportsDetail());
             session.getTransaction().commit();
+            session.close();
             changingDetails.add(item.getImportsDetail());
         }
 
@@ -232,63 +220,66 @@ public class ImportsUpdateController implements Initializable {
             } else {
                 item.getMerchandise().setQuantity(item.getMerchandise().getQuantity() - item.getQuantity());
             }
-            session = sessionFactory.openSession();
+            session = HibernateUtils.getSessionFactory().openSession();
             session.beginTransaction();
             session.saveOrUpdate(item.getMerchandise());
             session.getTransaction().commit();
+            session.close();
             // Update merchandise category
             MerchandiseCategoryController.getInstance().refresh();
         }
 
+        // Clear holder
+        ImportsHolder.getInstance().setImports(null);
         // Update orders status
-        this.updateOrdersStatus(sessionFactory);
+        this.updateOrdersStatus();
         // Show alert box
         AlertBoxHelper.showMessageBox("Cập nhật thành công");
         // Refresh content table
         ImportsCategoryController.getInstance().refresh();
         // Unhide host only when orders add is not show
-        AnchorPane host = MainNavigatorController.instance.getHost();
-        host.setDisable(false);
+        MainNavigatorController.instance.getHost().setDisable(false);
         // Close stage
         StageHelper.closeStage(event);
     }
 
     @FXML
     void deleteImports(ActionEvent event) {
-        SessionFactory sessionFactory = HibernateUtils.getSessionFactory();
         Session session;
 
         // Delete ImportsDetail
-        session = sessionFactory.openSession();
-        List<ImportsDetail> importsDetails = ImportsDetailRepository.getByImportsId(session, imports.getId());
+        List<ImportsDetail> importsDetails = ImportsDetailRepository.getByImportsId(imports.getId());
         for (ImportsDetail item : importsDetails) {
-            session = sessionFactory.openSession();
+            session = HibernateUtils.getSessionFactory().openSession();
             session.beginTransaction();
             session.delete(item);
             session.getTransaction().commit();
+            session.close();
 
             // Update Merchandise Quantity
             item.getMerchandise().setQuantity(Math.max((item.getMerchandise().getQuantity() - item.getQuantity()), 0));
-            session = sessionFactory.openSession();
+            session = HibernateUtils.getSessionFactory().openSession();
             session.beginTransaction();
             session.saveOrUpdate(item.getMerchandise());
             session.getTransaction().commit();
+            session.close();
         }
 
         // Delete Impors
-        session = sessionFactory.openSession();
+        session = HibernateUtils.getSessionFactory().openSession();
         session.beginTransaction();
         session.delete(imports);
         session.getTransaction().commit();
+        session.close();
 
         // Update Orders status
-        session = sessionFactory.openSession();
-        Orders orders = OrdersRepository.getById(session, imports.getOrders().getId());
+        Orders orders = OrdersRepository.getById(imports.getOrders().getId());
         orders.setStatus("Chưa hoàn tất");
-        session = sessionFactory.openSession();
+        session = HibernateUtils.getSessionFactory().openSession();
         session.beginTransaction();
         session.saveOrUpdate(orders);
         session.getTransaction().commit();
+        session.close();
         OrderCategoryController.getInstance().refresh();
 
         // Clear Holder
@@ -298,8 +289,7 @@ public class ImportsUpdateController implements Initializable {
         // Refresh content table
         ImportsCategoryController.getInstance().refresh();
         // Unhide host only when orders add is not show
-        AnchorPane host = MainNavigatorController.instance.getHost();
-        host.setDisable(false);
+        MainNavigatorController.instance.getHost().setDisable(false);
         // Close stage
         StageHelper.closeStage(event);
         // Update merchandise category
@@ -311,8 +301,7 @@ public class ImportsUpdateController implements Initializable {
         StageHelper.closeStage(event);
         OrderCategoryController.getInstance().ordersAddUpdateIsShow = false;
         // Unhide host
-        AnchorPane host = MainNavigatorController.instance.getHost();
-        host.setDisable(false);
+        MainNavigatorController.instance.getHost().setDisable(false);
     }
 
     @FXML
@@ -320,11 +309,9 @@ public class ImportsUpdateController implements Initializable {
         host.requestFocus();
     }
 
-    void updateOrdersStatus(SessionFactory sessionFactory) {
-        Session session = sessionFactory.openSession();
-        List<OrdersDetail> ordersDetails = OrdersDetailRepository.getByOrdersId(session, imports.getOrders().getId());
-        session = sessionFactory.openSession();
-        List<Imports> importsList = ImportsRepository.getByOrdersId(session, imports.getOrders().getId());
+    void updateOrdersStatus() {
+        List<OrdersDetail> ordersDetails = OrdersDetailRepository.getByOrdersId(imports.getOrders().getId());
+        List<Imports> importsList = ImportsRepository.getByOrdersId(imports.getOrders().getId());
 
         int totalQuantityOrder = 0;
         for (OrdersDetail item : ordersDetails) {
@@ -333,8 +320,7 @@ public class ImportsUpdateController implements Initializable {
 
         int totalQuantityImport = 0;
         for (Imports item : importsList) {
-            session = sessionFactory.openSession();
-            List<ImportsDetail> importsDetails = ImportsDetailRepository.getByImportsId(session, item.getId());
+            List<ImportsDetail> importsDetails = ImportsDetailRepository.getByImportsId(item.getId());
             for (ImportsDetail detail : importsDetails) {
                 totalQuantityImport += detail.getQuantity();
             }
@@ -343,24 +329,23 @@ public class ImportsUpdateController implements Initializable {
         String status = totalQuantityImport < totalQuantityOrder ? "Chưa hoàn tất" : "Hoàn tất";
         if (!imports.getOrders().getStatus().equals(status)) {
             imports.getOrders().setStatus(status);
-            session = sessionFactory.openSession();
+            Session session = HibernateUtils.getSessionFactory().openSession();
             session.beginTransaction();
             session.saveOrUpdate(imports.getOrders());
             session.getTransaction().commit();
+            session.close();
             // Update OrdersCategory
             OrderCategoryController.getInstance().refresh();
         }
     }
 
-    void removeDeliveredMerchandise(SessionFactory sessionFactory, List<OrdersDetail> ordersDetails) {
+    void removeDeliveredMerchandise(List<OrdersDetail> ordersDetails) {
         // tìm import bằng orders id
-        Session session = sessionFactory.openSession();
-        List<Imports> imports = ImportsRepository.getByOrdersId(session, ordersDetails.get(0).getOrders().getId());
+        List<Imports> imports = ImportsRepository.getByOrdersId(ordersDetails.get(0).getOrders().getId());
 
         // tìm sum amount import detail bằng import
         if (imports != null && imports.size() > 0) {
-            session = sessionFactory.openSession();
-            List<ImportsDetail> importsDetails = ImportsDetailRepository.getDistinctByImportsIdIn(session, imports.stream().map(Imports::getId).collect(Collectors.toList()));
+            List<ImportsDetail> importsDetails = ImportsDetailRepository.getDistinctByImportsIdIn(imports.stream().map(Imports::getId).collect(Collectors.toList()));
 
             // quet 2 cai nếu có merchandise id bằng nhau và amount bằng nhau thì bỏ đi
             List<OrdersDetail> deliveredItem = new ArrayList<>();

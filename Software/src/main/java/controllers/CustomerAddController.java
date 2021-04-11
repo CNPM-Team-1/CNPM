@@ -1,8 +1,5 @@
 package controllers;
 
-import com.jfoenix.controls.JFXButton;
-import com.jfoenix.controls.JFXComboBox;
-import com.jfoenix.controls.JFXTextField;
 import entities.Customer;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -10,7 +7,6 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import org.hibernate.Session;
@@ -28,32 +24,6 @@ import java.util.ResourceBundle;
 public class CustomerAddController implements Initializable {
     @FXML
     private AnchorPane host;
-    @FXML
-    private Label full_name;
-    @FXML
-    private JFXTextField full_nameTextField;
-    @FXML
-    private Label email;
-    @FXML
-    private JFXTextField emailTextField;
-    @FXML
-    private Label phone;
-    @FXML
-    private JFXTextField phoneTextField;
-    @FXML
-    private Label type;
-    @FXML
-    private JFXComboBox<?> typeComboBox;
-    @FXML
-    private JFXButton addButton;
-    @FXML
-    private JFXButton cancelButton;
-    @FXML
-    private Label address;
-    @FXML
-    private JFXTextField addressTextField;
-    @FXML
-    private ImageView close;
     @FXML
     private TextField nameHolder;
     @FXML
@@ -74,9 +44,8 @@ public class CustomerAddController implements Initializable {
 
     @FXML
     void save(ActionEvent event) {
-        SessionFactory factory = HibernateUtils.getSessionFactory();
-        Session session = factory.getCurrentSession();
-        session.beginTransaction();
+        SessionFactory sessionFactory = HibernateUtils.getSessionFactory();
+        Session session;
 
         Customer customer = new Customer();
         customer.setId(UUIDHelper.generateType4UUID().toString());
@@ -86,31 +55,29 @@ public class CustomerAddController implements Initializable {
         customer.setAddress(addressHolder.getText());
         customer.setType(typeHolder.getValue());
 
-        List<String> validateInsert = CustomerValidation.validateInsert(session, customer);
+        List<String> validateInsert = CustomerValidation.validateInsert(customer);
         if (validateInsert.size() == 0) {
-            StageHelper.closeStage(event);
+            // Save new customer
+            session = sessionFactory.openSession();
+            session.beginTransaction();
+            session.save(customer);
+            session.getTransaction().commit();
+            session.close();
 
             // Show alert box
             AlertBoxHelper.showMessageBox("Thêm thành công");
-
-            // Save new customer
-            session.save(customer);
-            session.getTransaction().commit();
-
+            // Close stage
+            StageHelper.closeStage(event);
             // Refresh content table
             CustomerCategoryController.getInstance().refresh();
-
             // Unhide host only when orders add is not show
-            AnchorPane host = MainNavigatorController.instance.getHost();
-            host.setDisable(OrderCategoryController.getInstance().ordersAddUpdateIsShow);
-
+            MainNavigatorController.instance.getHost().setDisable(OrderCategoryController.getInstance().ordersAddUpdateIsShow);
             // Refresh Orders customer list
             if (OrderAddController.getInstance() != null) {
                 OrderAddController.getInstance().initialize(null, null);
             }
         } else {
             errorMessage.setText(validateInsert.get(0));
-            session.getTransaction().commit();
         }
     }
 
@@ -118,7 +85,11 @@ public class CustomerAddController implements Initializable {
     void close(MouseEvent event) {
         StageHelper.closeStage(event);
         // Unhide host
-        AnchorPane host = MainNavigatorController.instance.getHost();
-        host.setDisable(OrderCategoryController.getInstance().ordersAddUpdateIsShow);
+        MainNavigatorController.instance.getHost().setDisable(OrderCategoryController.getInstance().ordersAddUpdateIsShow);
+    }
+
+    @FXML
+    void requestFocus(MouseEvent event) {
+        host.requestFocus();
     }
 }

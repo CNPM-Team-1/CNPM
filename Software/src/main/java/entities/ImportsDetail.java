@@ -45,15 +45,10 @@ public class ImportsDetail {
     }
 
     public ImportsDetail(Object o) {
-        SessionFactory sessionFactory = HibernateUtils.getSessionFactory();
-        Session session;
-
         Object[] field = (Object[]) o;
         this.id = (String) field[0];
-        session = sessionFactory.openSession();
-        this.imports = ImportsRepository.getById(session, (String) field[1]);
-        session = sessionFactory.openSession();
-        this.merchandise = MerchandiseRepository.getById(session, (String) field[2]);
+        this.imports = ImportsRepository.getById((String) field[1]);
+        this.merchandise = MerchandiseRepository.getById((String) field[2]);
         this.quantity = Math.toIntExact((Long) field[3]);
         this.amount = (Long) field[4];
     }

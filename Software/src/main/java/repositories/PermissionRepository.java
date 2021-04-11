@@ -11,35 +11,30 @@ import java.util.List;
 
 public class PermissionRepository {
 
-    public static List<Permissions> getAll(Session session) {
-        try {
-            session.beginTransaction();
-            String sql = "Select c from " + Permissions.class.getName() + " c";
-            Query<Permissions> query = session.createQuery(sql);
-            List<Permissions> result = query.getResultList();
-            session.getTransaction().commit();
-            return result;
-        } catch (Exception ex) {
-            session.getTransaction().commit();
-            System.out.println(ex.getMessage());
-            System.out.println(Arrays.toString(ex.getStackTrace()));
-            return null;
-        }
+    public static List<Permissions> getAll() {
+        Session session = HibernateUtils.getSessionFactory().openSession();
+        session.beginTransaction();
+        Query<Permissions> query = session.createQuery("" +
+                "SELECT p " +
+                "FROM Permissions p");
+        List<Permissions> result = query.getResultList();
+        session.getTransaction().commit();
+        session.close();
+        return result;
     }
 
-    public static Permissions getByName(Session session, String name) {
-        try {
-            session.beginTransaction();
-            String sql = "Select c from " + Permissions.class.getName() + " c where c.name = '" + name + "'";
-            Query<Permissions> query = session.createQuery(sql);
-            Permissions result = query.getSingleResult();
-            session.getTransaction().commit();
-            return result;
-        } catch (Exception ex) {
-            System.out.println(ex.getMessage());
-            System.out.println(Arrays.toString(ex.getStackTrace()));
-            return null;
-        }
+    public static Permissions getByName(String name) {
+        Session session = HibernateUtils.getSessionFactory().openSession();
+        session.beginTransaction();
+        Query<Permissions> query = session.createQuery("" +
+                "SELECT p " +
+                "FROM Permissions p " +
+                "WHERE p.name = :name");
+        query.setParameter("name", name);
+        Permissions result = query.uniqueResult();
+        session.getTransaction().commit();
+        session.close();
+        return result;
     }
 
     public static Permissions getByCode(String code) {
