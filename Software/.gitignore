@@ -3,7 +3,13 @@
 ### Example user template
 
 # IntelliJ project files
-.idea
+compiler.xml
+encodings.xml
+jarRepositories.xml
+misc.xml
+modules.xml
+vcs.xml
+
 *.iml
 out
 gen
