@@ -9,7 +9,6 @@ jarRepositories.xml
 misc.xml
 modules.xml
 vcs.xml
-
 *.iml
 out
 gen
