@@ -172,6 +172,16 @@ public class ReceiptAddController implements Initializable {
         session.getTransaction().commit();
         session.close();
         OrderCategoryController.getInstance().initialize(null, null);
+        // Update Statistic
+        if (StatisticRevenueController.getInstance() != null) {
+            StatisticRevenueController.getInstance().refresh(null);
+        }
+        if (StatisticCustomerController.getInstance() != null) {
+            StatisticCustomerController.getInstance().refresh(null);
+        }
+        if (StatisticMerchandiseController.getInstance() != null) {
+            StatisticMerchandiseController.instance.refresh(null);
+        }
     }
 
     @FXML
