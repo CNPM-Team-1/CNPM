@@ -96,7 +96,7 @@ public class ReceiptCategoryController implements Initializable {
         if (receiptList != null && !receiptList.isEmpty()) {
             List<ReceiptModel> receiptModelList = new ArrayList<>();
             for (Receipt item : receiptList) {
-                Integer sumAmount = Math.toIntExact(OrdersDetailRepository.getSumAmountById(item.getOrders().getId()));
+                Long sumAmount = OrdersDetailRepository.getSumAmountById(item.getOrders().getId());
                 Integer sumQuantity = Math.toIntExact(OrdersDetailRepository.getSumQuantityById(item.getOrders().getId()));
 
                 ReceiptModel receiptModel = new ReceiptModel();

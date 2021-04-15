@@ -4,11 +4,42 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4d7e044e-0843-438b-9f46-5efc2ec25554" name="Default Changelist" comment="" />
+    <list default="true" id="4d7e044e-0843-438b-9f46-5efc2ec25554" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/controllers/StatisticCustomerController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/controllers/StatisticMerchandiseController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/controllers/StatisticRevenueController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/fxml/StatisitcRevenue.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/fxml/StatisticCustomer.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/fxml/StatisticMerchandise.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/fxml/StatisticRevenue.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/fxml/StatisticCustomer.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/ReceiptAddController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/ReceiptAddController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/ReceiptCategoryController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/ReceiptCategoryController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/ReceiptDetailController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/ReceiptDetailController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/StatisticController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/StatisticController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/repositories/CustomerRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/repositories/CustomerRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/repositories/MerchandiseRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/repositories/MerchandiseRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/repositories/OrdersDetailRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/repositories/OrdersDetailRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/repositories/ReceiptRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/repositories/ReceiptRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/css/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/fxml/Statistic.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/fxml/Statistic.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/css/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/fxml/Statistic.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/fxml/Statistic.fxml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="FxmlFile" />
+        <option value="Class" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
@@ -35,13 +66,15 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
           <option name="containerStateName" value="" />
         </value>
       </option>
-      <option name="TEST_OBJECT" value="class" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <properties />
+      <listeners />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -55,7 +88,8 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1618113814425</updated>
-      <workItem from="1618113818362" duration="688000" />
+      <workItem from="1618113818362" duration="23709000" />
+      <workItem from="1618467276237" duration="2853000" />
     </task>
     <servers />
   </component>
@@ -72,5 +106,6 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
 </project>

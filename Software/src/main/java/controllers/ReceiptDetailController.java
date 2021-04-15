@@ -130,6 +130,16 @@ public class ReceiptDetailController implements Initializable {
         AlertBoxHelper.showMessageBox("Xoá thành công");
         // Unhide host
         MainNavigatorController.instance.getHost().setDisable(false);
+        // Update Statistic
+        if (StatisticRevenueController.getInstance() != null) {
+            StatisticRevenueController.getInstance().refresh(null);
+        }
+        if (StatisticCustomerController.getInstance() != null) {
+            StatisticCustomerController.getInstance().refresh(null);
+        }
+        if (StatisticMerchandiseController.getInstance() != null) {
+            StatisticMerchandiseController.instance.refresh(null);
+        }
     }
 
     @FXML

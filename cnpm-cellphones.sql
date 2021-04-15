@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.0
+-- version 5.0.3
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3307
--- Generation Time: Apr 07, 2021 at 07:07 AM
--- Server version: 10.4.18-MariaDB
--- PHP Version: 8.0.3
+-- Generation Time: Apr 15, 2021 at 09:03 AM
+-- Server version: 10.4.14-MariaDB
+-- PHP Version: 7.2.34
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -172,9 +172,9 @@ CREATE TABLE `merchandise` (
 
 INSERT INTO `merchandise` (`id`, `name`, `type`, `branch`, `quantity`, `import_price`, `price`, `created_date`, `updated_date`) VALUES
 ('0b04793e-8184-43a9-8e2d-e21bd1573052', 'Ốp lưng iphone X', 'Điện thoại', 'DiB', 0, '15000', '90000', '2021-03-22', '2021-03-25'),
-('120c1cfc-5459-4738-a88b-b9020fb4155a', 'Xiaomi Mi 10T Pro 5G', 'Điện thoại', 'Xiaomi', 20, '10000000', '11300000', '2021-03-26', NULL),
+('120c1cfc-5459-4738-a88b-b9020fb4155a', 'Xiaomi Mi 10T Pro 5G', 'Điện thoại', 'Xiaomi', 19, '10000000', '11300000', '2021-03-26', '2021-04-13'),
 ('123915d3-cef5-4168-98ab-2bd461ddb961', 'Oppo A73', 'Điện thoại', 'Oppo', 17, '4700000', '4890000', '2021-03-25', NULL),
-('281a8ad7-f247-479b-9129-bed4dc0b6493', 'Samsung Galaxy Buds Live Đen', 'Tai nghe', 'Samsung', 92, '2700000', '2790000', '2021-03-24', '2021-04-01'),
+('281a8ad7-f247-479b-9129-bed4dc0b6493', 'Samsung Galaxy Buds Live Đen', 'Tai nghe', 'Samsung', 90, '2700000', '2790000', '2021-03-24', '2021-04-13'),
 ('329d09d1-0483-4459-865f-5d6dd5700ddb', 'Loa Bluetooth JBL Charge 4', 'Loa', 'JBL', 3, '2400000', '2490000', '2021-03-25', NULL),
 ('3bf786c5-6ac4-41e0-bfd9-5750e3c191f4', 'Xiaomi Redmi Note 10', 'Điện thoại', 'Xiaomi', 42, '5000000', '5490000', '2021-03-25', NULL),
 ('407730fb-f46a-437b-9641-22c6f076696f', 'Cáp Type-C Xiaomi ZMI AL701', 'Cáp', 'Xiaomi', 26, '45000', '50000', NULL, NULL),
@@ -182,7 +182,7 @@ INSERT INTO `merchandise` (`id`, `name`, `type`, `branch`, `quantity`, `import_p
 ('59077bfb-4303-48ed-a6a4-d05a23307922', 'Energizer 10000 mAh UE10022 ', 'Pin dự phòng', 'Energizer', 3, '350000', '390000', '2021-03-25', NULL),
 ('64d812e0-ca72-4ea9-bf0e-bbe30017c5e4', 'Sạc nhanh Apple iPhone 20W', 'Sạc', 'Apple', 7, '500000', '550000', '2021-03-25', '2021-03-26'),
 ('6cee9f21-345e-4348-b516-da65870f1bed', 'Samsung Galaxy A02s', 'Điện thoại', 'Samsung', 40, '2900000', '3000000', '2021-03-24', '2021-03-27'),
-('d458b1b7-95d1-429a-845e-36a78b7de133', 'iPad Pro 11 2020 WiFi 128GB', 'Máy tính bảng', 'Apple', 6, '20000000', '21700000', '2021-03-26', '2021-04-01'),
+('d458b1b7-95d1-429a-845e-36a78b7de133', 'iPad Pro 11 2020 WiFi 128GB', 'Máy tính bảng', 'Apple', 5, '20000000', '21700000', '2021-03-26', '2021-04-13'),
 ('ef41a828-c592-4c4f-a218-71ebfbd2a5ad', 'Vsmart Joy 4', 'Điện thoại', 'Vsmart', 6, '2800000', '2890000', '2021-03-26', '2021-04-01');
 
 -- --------------------------------------------------------
@@ -208,13 +208,15 @@ CREATE TABLE `orders` (
 
 INSERT INTO `orders` (`id`, `type`, `customer_id`, `employee_id`, `description`, `status`, `created_date`, `updated_date`) VALUES
 ('000b7b2d-ef8a-404f-b95c-14c12e6e356d', 'Nhập hàng', '17f95de3-3569-40dc-97a7-d6e8f4743f21', '81915f39-dd3e-42e7-8db0-d7dc8bb3f783', 'Mua hàng từ nhà cung cấp Huy', 'Hoàn tất', '2021-03-31', '2021-04-01'),
-('20e0ec8f-64bf-4e9d-9e64-fba185771faa', 'Bán hàng', '245d626f-7bf0-4192-a857-7aab71e12697', '81915f39-dd3e-42e7-8db0-d7dc8bb3f783', 'Khách hàng John mua hàng', 'Hoàn tất', '2021-03-26', '2021-03-26'),
+('20e0ec8f-64bf-4e9d-9e64-fba185771faa', 'Bán hàng', '245d626f-7bf0-4192-a857-7aab71e12697', '81915f39-dd3e-42e7-8db0-d7dc8bb3f783', 'Khách hàng John mua hàng', 'Hoàn tất', '2021-04-26', '2021-03-26'),
 ('34b6849c-2456-465e-950c-96c17b6843cf', 'Nhập hàng', '1b9cdded-1e5e-4e94-8c5e-fa5c4e44f3ce', '81915f39-dd3e-42e7-8db0-d7dc8bb3f783', 'Mua hàng từ nhà cung cấp Alfonso H Jeffcoat', 'Chưa hoàn tất', '2021-04-01', NULL),
-('3f94a669-7115-4b58-82a4-8ba0d9b7f39c', 'Nhập hàng', '17f95de3-3569-40dc-97a7-d6e8f4743f21', '81915f39-dd3e-42e7-8db0-d7dc8bb3f783', 'Mua hàng từ nhà cung cấp Huy', 'Hoàn tất', '2021-03-26', '2021-03-26'),
+('3f94a669-7115-4b58-82a4-8ba0d9b7f39c', 'Nhập hàng', '17f95de3-3569-40dc-97a7-d6e8f4743f21', '81915f39-dd3e-42e7-8db0-d7dc8bb3f783', 'Mua hàng từ nhà cung cấp Huy', 'Hoàn tất', '2021-04-26', '2021-03-26'),
 ('58421cd1-ae5a-494d-aa3f-5d109a2e9cb1', 'Bán hàng', 'd52e95f1-b7c4-457d-9bda-a858c9911b63', '81915f39-dd3e-42e7-8db0-d7dc8bb3f783', 'Khách hàng Ronnie K Walters mua hàng', 'Hoàn tất', '2021-03-26', '2021-03-26'),
-('65f17e68-d13b-46da-a4f5-439c4cafff7e', 'Nhập hàng', '17f95de3-3569-40dc-97a7-d6e8f4743f21', '81915f39-dd3e-42e7-8db0-d7dc8bb3f783', 'Mua hàng từ nhà cung cấp Huy', 'Hoàn tất', '2021-03-27', NULL),
+('65f17e68-d13b-46da-a4f5-439c4cafff7e', 'Nhập hàng', '17f95de3-3569-40dc-97a7-d6e8f4743f21', '81915f39-dd3e-42e7-8db0-d7dc8bb3f783', 'Mua hàng từ nhà cung cấp Huy', 'Hoàn tất', '2021-04-27', NULL),
 ('89fc1e3a-f927-499d-ab54-2430ff4a06f0', 'Nhập hàng', '17f95de3-3569-40dc-97a7-d6e8f4743f21', '81915f39-dd3e-42e7-8db0-d7dc8bb3f783', 'Mua hàng từ nhà cung cấp Huy', 'Hoàn tất', '2021-03-26', '2021-03-26'),
-('96cc9fac-778a-4bf9-8e4c-f69f18756968', 'Bán hàng', '4ddb0779-2394-440a-b015-75d7a1290f2a', '81915f39-dd3e-42e7-8db0-d7dc8bb3f783', 'Khách hàng Hải mua hàng', 'Chưa hoàn tất', '2021-03-27', NULL);
+('96cc9fac-778a-4bf9-8e4c-f69f18756968', 'Bán hàng', '4ddb0779-2394-440a-b015-75d7a1290f2a', '81915f39-dd3e-42e7-8db0-d7dc8bb3f783', 'Khách hàng Hải mua hàng', 'Chưa hoàn tất', '2021-03-27', NULL),
+('b2889966-af80-4f89-a348-43c98f07585a', 'Bán hàng', '7f91758c-02ac-4538-a606-d9dbb47b5397', '81915f39-dd3e-42e7-8db0-d7dc8bb3f783', 'Khách hàng Winnie The Pooh mua hàng', 'Hoàn tất', '2021-04-13', '2021-04-13'),
+('f5afa833-6fb2-4281-8f7c-b86b71e229ea', 'Bán hàng', '510821e0-2347-4d45-b01f-25be3768a32e', '81915f39-dd3e-42e7-8db0-d7dc8bb3f783', 'Khách hàng John Bennet mua hàng', 'Hoàn tất', '2021-04-13', '2021-04-13');
 
 -- --------------------------------------------------------
 
@@ -246,11 +248,14 @@ INSERT INTO `orders_detail` (`id`, `orders_id`, `merchandise_id`, `quantity`, `a
 ('9b9731f5-2267-4dfb-9d32-e8a608a10bde', '96cc9fac-778a-4bf9-8e4c-f69f18756968', 'ef41a828-c592-4c4f-a218-71ebfbd2a5ad', 1, 2890000),
 ('a782cf4b-4c57-44d8-a8d1-289442b9f95b', '58421cd1-ae5a-494d-aa3f-5d109a2e9cb1', '64d812e0-ca72-4ea9-bf0e-bbe30017c5e4', 1, 550000),
 ('a9e534e7-f0b2-46bc-9b51-41bb6ed909bc', '58421cd1-ae5a-494d-aa3f-5d109a2e9cb1', 'ef41a828-c592-4c4f-a218-71ebfbd2a5ad', 1, 2890000),
+('aa50d610-489b-460e-ac97-62707202bdff', 'b2889966-af80-4f89-a348-43c98f07585a', 'd458b1b7-95d1-429a-845e-36a78b7de133', 1, 21700000),
 ('aaa38f25-00dd-4174-ae32-87d4cba4789c', '89fc1e3a-f927-499d-ab54-2430ff4a06f0', '329d09d1-0483-4459-865f-5d6dd5700ddb', 50, 124500000),
+('c18ae26b-103f-4017-9d0f-51a1ef30811d', 'f5afa833-6fb2-4281-8f7c-b86b71e229ea', '281a8ad7-f247-479b-9129-bed4dc0b6493', 2, 5580000),
 ('db3404aa-51ec-4458-b520-c74d5d9affce', '20e0ec8f-64bf-4e9d-9e64-fba185771faa', '281a8ad7-f247-479b-9129-bed4dc0b6493', 2, 5580000),
 ('e571d2f0-ea26-4e04-b7cc-a077010e7b10', '000b7b2d-ef8a-404f-b95c-14c12e6e356d', '281a8ad7-f247-479b-9129-bed4dc0b6493', 3, 8370000),
 ('e5813016-54a6-4d0d-9c3d-ded7ba364c7a', '34b6849c-2456-465e-950c-96c17b6843cf', '421b6d29-f3c1-4cf3-9917-37fe0aa86ec8', 30, 1500000),
-('ebab5777-fe21-4c1a-b80f-4e27a4002b30', '000b7b2d-ef8a-404f-b95c-14c12e6e356d', 'ef41a828-c592-4c4f-a218-71ebfbd2a5ad', 2, 5780000);
+('ebab5777-fe21-4c1a-b80f-4e27a4002b30', '000b7b2d-ef8a-404f-b95c-14c12e6e356d', 'ef41a828-c592-4c4f-a218-71ebfbd2a5ad', 2, 5780000),
+('f4e47c47-dbbc-4c9c-ad39-1207892799bd', 'b2889966-af80-4f89-a348-43c98f07585a', '120c1cfc-5459-4738-a88b-b9020fb4155a', 1, 11300000);
 
 -- --------------------------------------------------------
 
@@ -298,8 +303,10 @@ CREATE TABLE `receipt` (
 --
 
 INSERT INTO `receipt` (`id`, `order_id`, `employee_id`, `description`, `created_date`, `updated_date`) VALUES
+('0db1c36b-06d8-42be-89f9-0c9e384c7e82', 'f5afa833-6fb2-4281-8f7c-b86b71e229ea', '81915f39-dd3e-42e7-8db0-d7dc8bb3f783', 'Khách hàng John Bennet mua hàng', '2021-04-13', NULL),
+('1ed0e52d-9c4b-464d-b3cd-9bcac0140195', 'b2889966-af80-4f89-a348-43c98f07585a', '81915f39-dd3e-42e7-8db0-d7dc8bb3f783', 'Khách hàng Winnie The Pooh mua hàng', '2021-04-13', NULL),
 ('2675d78c-f2ba-4ea0-8195-ea41c30989c6', '89fc1e3a-f927-499d-ab54-2430ff4a06f0', '81915f39-dd3e-42e7-8db0-d7dc8bb3f783', 'Mua hàng từ nhà cung cấp Huy', '2021-03-26', NULL),
-('581f640c-6f0c-40ba-a21b-74174b209804', '20e0ec8f-64bf-4e9d-9e64-fba185771faa', '81915f39-dd3e-42e7-8db0-d7dc8bb3f783', 'Khách hàng John mua hàng', '2021-03-26', NULL),
+('581f640c-6f0c-40ba-a21b-74174b209804', '20e0ec8f-64bf-4e9d-9e64-fba185771faa', '81915f39-dd3e-42e7-8db0-d7dc8bb3f783', 'Khách hàng John mua hàng', '2021-04-26', NULL),
 ('8dfbce98-f1f1-41d4-b529-2f18c96af898', '3f94a669-7115-4b58-82a4-8ba0d9b7f39c', '81915f39-dd3e-42e7-8db0-d7dc8bb3f783', 'Mua hàng từ nhà cung cấp Huy', '2021-03-26', NULL),
 ('9c8c8503-dcc6-4f3b-a37f-091334a8e769', '58421cd1-ae5a-494d-aa3f-5d109a2e9cb1', '81915f39-dd3e-42e7-8db0-d7dc8bb3f783', 'Khách hàng Ronnie K Walters mua hàng', '2021-03-26', NULL);
 
@@ -374,7 +381,8 @@ CREATE TABLE `work_shift` (
   `start_time` text COLLATE utf8mb4_vietnamese_ci NOT NULL,
   `end_time` text COLLATE utf8mb4_vietnamese_ci NOT NULL,
   `created_date` date DEFAULT NULL,
-  `updated_date` date DEFAULT NULL
+  `updated_date` date DEFAULT NULL,
+  `name` varchar(255) COLLATE utf8mb4_vietnamese_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_vietnamese_ci;
 
 -- --------------------------------------------------------
@@ -389,7 +397,8 @@ CREATE TABLE `work_table` (
   `shift_id` varchar(225) COLLATE utf8mb4_vietnamese_ci NOT NULL,
   `date` date NOT NULL,
   `created_date` date DEFAULT NULL,
-  `updated_date` date DEFAULT NULL
+  `updated_date` date DEFAULT NULL,
+  `day_of_week` varchar(255) COLLATE utf8mb4_vietnamese_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_vietnamese_ci;
 
 --
@@ -489,6 +498,13 @@ ALTER TABLE `work_shift`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `work_table`
+--
+ALTER TABLE `work_table`
+  ADD KEY `FK3kf10ivtrjrffnb1hw2bc7ehi` (`employee_id`),
+  ADD KEY `FKb6l71g0wk8uxnk7vqwrdchmgx` (`shift_id`);
+
+--
 -- Constraints for dumped tables
 --
 
@@ -540,6 +556,13 @@ ALTER TABLE `receipt`
 ALTER TABLE `roles_detail`
   ADD CONSTRAINT `FK6ohmx9gj2w2vy0q6mj5ff2ses` FOREIGN KEY (`permission_code`) REFERENCES `permissions` (`code`),
   ADD CONSTRAINT `FKjqtx4flv7bq6mpcw17sr3vbw4` FOREIGN KEY (`roles_id`) REFERENCES `roles` (`id`);
+
+--
+-- Constraints for table `work_table`
+--
+ALTER TABLE `work_table`
+  ADD CONSTRAINT `FK3kf10ivtrjrffnb1hw2bc7ehi` FOREIGN KEY (`employee_id`) REFERENCES `employee` (`id`),
+  ADD CONSTRAINT `FKb6l71g0wk8uxnk7vqwrdchmgx` FOREIGN KEY (`shift_id`) REFERENCES `work_shift` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -5,7 +5,7 @@ import org.hibernate.Session;
 import org.hibernate.query.Query;
 import utils.HibernateUtils;
 
-import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
 
 public class MerchandiseRepository {
@@ -83,6 +83,62 @@ public class MerchandiseRepository {
                 "SELECT DISTINCT c.type " +
                 "FROM Merchandise c");
         List<String> result = query.getResultList();
+        session.getTransaction().commit();
+        session.close();
+        return result;
+    }
+
+    public static List<Object> getAmountBuying(Date fromDate, Date toDate) {
+        Session session = HibernateUtils.getSessionFactory().openSession();
+        session.beginTransaction();
+        Query<Object> query;
+        if (fromDate == null && toDate == null) {
+            query = session.createQuery("" +
+                    "SELECT od.merchandise.name, SUM(od.quantity) , SUM(od.amount) AS sumAmount " +
+                    "FROM OrdersDetail od " +
+                    "WHERE od.orders.id IN (" +
+                    "SELECT o.id " +
+                    "FROM Orders o " +
+                    "WHERE o.type = 'Bán hàng' AND o.status = 'Hoàn tất')" +
+                    "GROUP BY od.merchandise.id " +
+                    "ORDER BY sumAmount DESC ");
+        } else if (fromDate != null && toDate == null) {
+            query = session.createQuery("" +
+                    "SELECT od.merchandise.name, SUM(od.quantity) , SUM(od.amount) AS sumAmount " +
+                    "FROM OrdersDetail od " +
+                    "WHERE od.orders.id IN (" +
+                    "SELECT o.id " +
+                    "FROM Orders o " +
+                    "WHERE o.type = 'Bán hàng' AND o.status = 'Hoàn tất' AND o.createdDate >= :fromDate)" +
+                    "GROUP BY od.merchandise.id " +
+                    "ORDER BY sumAmount DESC ");
+            query.setParameter("fromDate", fromDate);
+        } else if (fromDate == null && toDate != null) {
+            query = session.createQuery("" +
+                    "SELECT od.merchandise.name, SUM(od.quantity) , SUM(od.amount) AS sumAmount " +
+                    "FROM OrdersDetail od " +
+                    "WHERE od.orders.id IN (" +
+                    "SELECT o.id " +
+                    "FROM Orders o " +
+                    "WHERE o.type = 'Bán hàng' AND o.status = 'Hoàn tất' AND o.createdDate <= :toDate)" +
+                    "GROUP BY od.merchandise.id " +
+                    "ORDER BY sumAmount DESC ");
+            query.setParameter("toDate", toDate);
+        } else {
+            query = session.createQuery("" +
+                    "SELECT od.merchandise.name, SUM(od.quantity) , SUM(od.amount) AS sumAmount " +
+                    "FROM OrdersDetail od " +
+                    "WHERE od.orders.id IN (" +
+                    "SELECT o.id " +
+                    "FROM Orders o " +
+                    "WHERE o.type = 'Bán hàng' AND o.status = 'Hoàn tất' AND o.createdDate >= :fromDate AND o.createdDate <= :toDate )" +
+                    "GROUP BY od.merchandise.id " +
+                    "ORDER BY sumAmount DESC ");
+            query.setParameter("fromDate", fromDate);
+            query.setParameter("toDate", toDate);
+        }
+        query.setMaxResults(8);
+        List<Object> result = query.getResultList();
         session.getTransaction().commit();
         session.close();
         return result;

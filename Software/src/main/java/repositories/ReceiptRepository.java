@@ -28,7 +28,7 @@ public class ReceiptRepository {
                 "SELECT r " +
                 "FROM Receipt r " +
                 "WHERE r.orders.customer.fullName LIKE :customerName");
-        query.setParameter("customerName", customerName);
+        query.setParameter("customerName", "%" + customerName + "%");
         List<Receipt> result = query.getResultList();
         session.getTransaction().commit();
         session.close();

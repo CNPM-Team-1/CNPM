@@ -12,43 +12,48 @@ import java.util.List;
 public class CustomerRepository {
 
     public static List<Customer> getAll() {
-        try {
-            Session session = HibernateUtils.getSessionFactory().openSession();
-            session.beginTransaction();
+        Session session = HibernateUtils.getSessionFactory().openSession();
+        session.beginTransaction();
 
-            Query<Customer> query = session.createQuery("" +
-                    "SELECT c " +
-                    "FROM Customer c");
-            List<Customer> result = query.getResultList();
-            session.getTransaction().commit();
+        Query<Customer> query = session.createQuery("" +
+                "SELECT c " +
+                "FROM Customer c");
+        List<Customer> result = query.getResultList();
+        session.getTransaction().commit();
 
-            session.close();
-            return result;
-        } catch (Exception ex) {
-            System.out.println(ex.getMessage());
-            return null;
-        }
+        session.close();
+        return result;
+    }
+
+    public static List<Customer> getBuyingCustomer() {
+        Session session = HibernateUtils.getSessionFactory().openSession();
+        session.beginTransaction();
+
+        Query<Customer> query = session.createQuery("" +
+                "SELECT c " +
+                "FROM Customer c " +
+                "WHERE c.type = 'Khách hàng'");
+        List<Customer> result = query.getResultList();
+        session.getTransaction().commit();
+
+        session.close();
+        return result;
     }
 
     public static List<Customer> getByNameOrPhone(String keySearch) {
-        try {
-            Session session = HibernateUtils.getSessionFactory().openSession();
-            session.beginTransaction();
+        Session session = HibernateUtils.getSessionFactory().openSession();
+        session.beginTransaction();
 
-            Query<Customer> query = session.createQuery("" +
-                    "SELECT c " +
-                    "FROM Customer c " +
-                    "WHERE c.fullName LIKE :keySearch OR c.phone LIKE :keySearch");
-            query.setParameter("keySearch", keySearch);
-            List<Customer> result = query.getResultList();
-            session.getTransaction().commit();
+        Query<Customer> query = session.createQuery("" +
+                "SELECT c " +
+                "FROM Customer c " +
+                "WHERE c.fullName LIKE :keySearch OR c.phone LIKE :keySearch");
+        query.setParameter("keySearch", keySearch);
+        List<Customer> result = query.getResultList();
+        session.getTransaction().commit();
 
-            session.close();
-            return result;
-        } catch (Exception ex) {
-            System.out.println(ex.getMessage());
-            return null;
-        }
+        session.close();
+        return result;
     }
 
     public static Customer getByName(String name) {
