@@ -18,7 +18,7 @@ public class WorkShiftValidation {
 
         if (workShift.getName() == null || workShift.getName().isEmpty()) {
             msg.add("Chưa điền tên ca làm");
-        } else if (workShiftName.getId() != null) {
+        } else if (workShiftName != null) {
             msg.add("Tên ca làm đã được sử dụng");
         }
 
@@ -32,7 +32,7 @@ public class WorkShiftValidation {
 
         if (workShift.getName() == null || workShift.getName().isEmpty()) {
             msg.add("Chưa điền tên ca làm");
-        } else if (workShiftName.getId() != null && !workShiftName.getId().equals(workShift.getId())) {
+        } else if (workShiftName != null && !workShiftName.getId().equals(workShift.getId())) {
             msg.add("Tên đã được sử dụng");
         }
 

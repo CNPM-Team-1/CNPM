@@ -377,12 +377,11 @@ INSERT INTO `roles_detail` (`id`, `roles_id`, `permission_code`) VALUES
 
 CREATE TABLE `work_shift` (
   `id` varchar(225) COLLATE utf8mb4_vietnamese_ci NOT NULL,
-  `shift` text COLLATE utf8mb4_vietnamese_ci NOT NULL,
+  `name` varchar(255) COLLATE utf8mb4_vietnamese_ci DEFAULT NULL,
   `start_time` text COLLATE utf8mb4_vietnamese_ci NOT NULL,
   `end_time` text COLLATE utf8mb4_vietnamese_ci NOT NULL,
   `created_date` date DEFAULT NULL,
-  `updated_date` date DEFAULT NULL,
-  `name` varchar(255) COLLATE utf8mb4_vietnamese_ci DEFAULT NULL
+  `updated_date` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_vietnamese_ci;
 
 -- --------------------------------------------------------
