@@ -30,6 +30,17 @@ public class Employee {
     public Employee() {
     }
 
+    public Employee(Employee input) {
+        this.id = input.id;
+        this.fullName = input.fullName;
+        this.birthDay = input.birthDay;
+        this.phone = input.phone;
+        this.email = input.email;
+        this.password = input.password;
+        this.createdDate = input.createdDate;
+        this.updatedDate = input.updatedDate;
+    }
+
     public Employee(String id, String fullName, Date birthDay, String phone, String email, String password, Date createdDate, Date updatedDate) {
         this.id = id;
         this.fullName = fullName;

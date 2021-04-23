@@ -1,6 +1,8 @@
 package controllers;
 
 import com.jfoenix.controls.JFXButton;
+import entities.Employee;
+import entities.Permissions;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -9,10 +11,12 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
+import repositories.PermissionRepository;
 import utils.StageHelper;
 
 import java.net.URL;
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class MainNavigatorController implements Initializable {
 
@@ -30,6 +34,8 @@ public class MainNavigatorController implements Initializable {
     private JFXButton employeeButton;
     @FXML
     private JFXButton merchandiseButton;
+    @FXML
+    private JFXButton importsButton;
     @FXML
     private JFXButton statisticButton;
     @FXML
@@ -75,9 +81,37 @@ public class MainNavigatorController implements Initializable {
             grid.add(FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("fxml/ImportsCategory.fxml"))));
             grid.add(FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("fxml/WorkTableCategory.fxml"))));
             grid.add(FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("fxml/WorkShiftCategory.fxml"))));
+            this.hideInaccessibleFeatures();
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
             System.out.println(Arrays.toString(ex.getStackTrace()));
+        }
+    }
+
+    private void hideInaccessibleFeatures() {
+        Employee currentEmployee = new Employee(LoginController.getInstance().curEmployee);
+        List<String> curEmployeePermissions = PermissionRepository.getEmployeePermissions(currentEmployee.getId());
+        List<Permissions> allPermissions = PermissionRepository.getAll();
+        if (curEmployeePermissions != null && allPermissions != null) {
+            for (String permissionCode : curEmployeePermissions) {
+                allPermissions.removeIf(t -> t.getCode().equals(permissionCode));
+            }
+
+            if (allPermissions.size() > 0) {
+                for (Permissions item : allPermissions) {
+                    switch (item.getCode()) {
+                        case "CUSTOMER_MANAGEMENT" -> leftNav.getChildren().remove(customerButton);
+                        case "EMPLOYEE_MANAGEMENT" -> leftNav.getChildren().remove(employeeButton);
+                        case "IMPORT_MANAGEMENT" -> leftNav.getChildren().remove(importsButton);
+                        case "MERCHANDISE_MANAGEMENT" -> leftNav.getChildren().remove(merchandiseButton);
+                        case "ORDER_MANAGEMENT" -> leftNav.getChildren().remove(orderButton);
+                        case "RECEIPT_MANAGEMENT" -> leftNav.getChildren().remove(receiptButton);
+                        case "ROLES_MANAGEMENT" -> leftNav.getChildren().remove(rolesButton);
+                        case "STATISTIC" -> leftNav.getChildren().remove(statisticButton);
+                        case "WORK_SHIFT_MANAGEMENT" -> leftNav.getChildren().remove(timeTableButton);
+                    }
+                }
+            }
         }
     }
 

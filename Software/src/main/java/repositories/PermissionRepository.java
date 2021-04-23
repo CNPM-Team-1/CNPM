@@ -1,6 +1,7 @@
 package repositories;
 
 import entities.Permissions;
+import entities.RolesDetail;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
@@ -11,16 +12,25 @@ import java.util.List;
 
 public class PermissionRepository {
 
+    private static Session session;
+
     public static List<Permissions> getAll() {
-        Session session = HibernateUtils.getSessionFactory().openSession();
-        session.beginTransaction();
-        Query<Permissions> query = session.createQuery("" +
-                "SELECT p " +
-                "FROM Permissions p");
-        List<Permissions> result = query.getResultList();
-        session.getTransaction().commit();
-        session.close();
-        return result;
+        try {
+            session = HibernateUtils.getSessionFactory().openSession();
+            session.beginTransaction();
+            Query<Permissions> query = session.createQuery("" +
+                    "SELECT p " +
+                    "FROM Permissions p");
+            List<Permissions> result = query.getResultList();
+            session.getTransaction().commit();
+            session.close();
+            return result;
+        } catch (Exception ex) {
+            session.close();
+            System.out.println(ex.getMessage());
+            System.out.println(Arrays.toString(ex.getStackTrace()));
+            return null;
+        }
     }
 
     public static Permissions getByName(String name) {
@@ -49,6 +59,31 @@ public class PermissionRepository {
             session.getTransaction().commit();
             return result;
         } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+            System.out.println(Arrays.toString(ex.getStackTrace()));
+            return null;
+        }
+    }
+
+    public static List<String> getEmployeePermissions(String employeeId) {
+        try {
+            session = HibernateUtils.getSessionFactory().openSession();
+            session.beginTransaction();
+            Query<String> query = session.createQuery("" +
+                    "SELECT p.code " +
+                    "FROM Permissions p " +
+                    "WHERE p.code IN (SELECT rd.permissions.code " +
+                    "FROM RolesDetail rd " +
+                    "WHERE rd.roles.id = (SELECT er.roles.id " +
+                    "FROM EmployeeRoles er " +
+                    "WHERE er.employee.id = :employeeId))");
+            query.setParameter("employeeId", employeeId);
+            List<String> result = query.getResultList();
+            session.close();
+            return result;
+        } catch (Exception ex) {
+            session.getTransaction().commit();
+            session.close();
             System.out.println(ex.getMessage());
             System.out.println(Arrays.toString(ex.getStackTrace()));
             return null;
