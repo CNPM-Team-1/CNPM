@@ -306,6 +306,14 @@
     -fx-image: url("../image/minimize_button_hover.png");
 }
 
+.logout {
+    -fx-image: url("../image/logout_button.png");
+}
+
+.logout:hover {
+    -fx-image: url("../image/logout_button_hover.png");
+}
+
 /* /Exit and minimize windows */
 
 /* Size the combo-box drop down list */

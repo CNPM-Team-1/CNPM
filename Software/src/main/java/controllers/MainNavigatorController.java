@@ -7,13 +7,16 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 import repositories.PermissionRepository;
 import utils.StageHelper;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.*;
 import java.util.stream.Collectors;
@@ -114,6 +117,15 @@ public class MainNavigatorController implements Initializable {
             }
         }
     }
+
+    @FXML
+    void logout(MouseEvent event) throws IOException {
+        LoginController.getInstance().curEmployee = null;
+        StageHelper.closeStage(event);
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("fxml/Login.fxml")));
+        StageHelper.startStage(root);
+    }
+
 
     @FXML
     void openOrderCategory(ActionEvent actionEvent) {

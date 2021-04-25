@@ -13,7 +13,7 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="Host" prefHeight="708.0" prefWidth="1280.0" stylesheets="@../css/style.css" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.MainNavigatorController">
+<AnchorPane fx:id="Host" prefHeight="708.0" prefWidth="1280.0" stylesheets="@../css/style.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.MainNavigatorController">
     <children>
         <HBox alignment="CENTER_LEFT" prefHeight="58.0" prefWidth="1280.0" styleClass="navigation-hbox" stylesheets="@../css/style.css">
             <children>
@@ -27,23 +27,34 @@
                   <Insets left="28.0" />
                </HBox.margin>
             </Line>
-            <ImageView fx:id="minimize" fitHeight="24.0" fitWidth="22.0" onMouseClicked="#minimizeWindow" pickOnBounds="true" preserveRatio="true" styleClass="minimize">
+            <ImageView fitHeight="24.0" fitWidth="22.0" onMouseClicked="#logout" pickOnBounds="true" preserveRatio="true" styleClass="logout">
                <image>
-                  <Image url="@../image/minimize_button.png" />
+                  <Image url="@../image/logout_button.png" />
                </image>
                <HBox.margin>
-                  <Insets left="1061.0" />
+                  <Insets left="1029.0" />
                </HBox.margin>
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
+            </ImageView>
+            <ImageView fx:id="minimize" fitHeight="24.0" fitWidth="22.0" layoutX="1220.0" layoutY="22.0" onMouseClicked="#minimizeWindow" pickOnBounds="true" preserveRatio="true" styleClass="minimize">
+               <image>
+                  <Image url="@../image/minimize_button.png" />
+               </image>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <HBox.margin>
+                  <Insets left="14.0" />
+               </HBox.margin>
             </ImageView>
             <ImageView fx:id="close" fitHeight="26.0" fitWidth="26.0" layoutX="1256.0" layoutY="20.0" onMouseClicked="#close" pickOnBounds="true" preserveRatio="true" styleClass="exit">
                <image>
                   <Image url="@../image/close_button.png" />
                </image>
                <HBox.margin>
-                  <Insets left="14.0" />
+                  <Insets left="12.0" />
                </HBox.margin>
                <cursor>
                   <Cursor fx:constant="HAND" />
