@@ -127,7 +127,7 @@ public class OrderUpdateController implements Initializable {
 
     @FXML
     void setCustomer(ActionEvent event) {
-        Customer chosenCustomer = CustomerRepository.getByCustomerName(customerHolder.getText());
+        Customer chosenCustomer = CustomerRepository.getByName(customerHolder.getText());
         // Get chosen customer from customerList
         if (chosenCustomer != null) {
             // Set phoneHolder and addressHolder
@@ -156,7 +156,7 @@ public class OrderUpdateController implements Initializable {
 
     @FXML
     void chooseMerchandise(ActionEvent event) {
-        Customer customer = CustomerRepository.getByCustomerName(customerHolder.getText());
+        Customer customer = CustomerRepository.getByName(customerHolder.getText());
         Merchandise merchandise = MerchandiseRepository.getByName(merchandiseHolder.getText());
 
         List<String> validateAddMerchandise = this.validateAddMerchandise(customer, merchandise);
@@ -211,7 +211,7 @@ public class OrderUpdateController implements Initializable {
     void update(ActionEvent event) {
         Session session;
         if (OrdersValidation.validateUpdate(curOrders).size() == 0) {
-            Customer ordersCustomer = CustomerRepository.getByCustomerName(customerHolder.getText());
+            Customer ordersCustomer = CustomerRepository.getByName(customerHolder.getText());
             // Update orders
             curOrders.setType(ordersCustomer.getType().equals("Khách hàng") ? "Bán hàng" : "Nhập hàng");
             curOrders.setCustomer(ordersCustomer);

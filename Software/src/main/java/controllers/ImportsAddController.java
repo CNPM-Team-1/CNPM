@@ -98,7 +98,7 @@ public class ImportsAddController implements Initializable {
     @FXML
     void showChosenCustomer(MouseEvent event) {
         // Show customer info
-        Customer supplier = CustomerRepository.getByCustomerName(customerHolder.getText());
+        Customer supplier = CustomerRepository.getByName(customerHolder.getText());
         phoneHolder.setText(supplier.getPhone());
         addressHolder.setText(supplier.getAddress());
         // Show orders

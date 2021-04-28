@@ -103,7 +103,7 @@ public class OrderAddController implements Initializable {
 
     @FXML
     void setCustomer(ActionEvent event) {
-        Customer chosenCustomer = CustomerRepository.getByCustomerName(customerHolder.getText());
+        Customer chosenCustomer = CustomerRepository.getByName(customerHolder.getText());
         // Get chosen customer from customerList
         if (chosenCustomer != null) {
             // Set phoneHolder and addressHolder
@@ -137,7 +137,7 @@ public class OrderAddController implements Initializable {
 
     @FXML
     void chooseMerchandise(ActionEvent event) {
-        Customer customer = CustomerRepository.getByCustomerName(customerHolder.getText());
+        Customer customer = CustomerRepository.getByName(customerHolder.getText());
         Merchandise merchandise = MerchandiseRepository.getByName(merchandiseHolder.getText());
 
         List<String> validateAddMerchandise = this.validateAddMerchandise(customer, merchandise);
@@ -191,7 +191,7 @@ public class OrderAddController implements Initializable {
     @FXML
     void save(ActionEvent event) {
         Session session;
-        Customer ordersCustomer = CustomerRepository.getByCustomerName(customerHolder.getText());
+        Customer ordersCustomer = CustomerRepository.getByName(customerHolder.getText());
         // Save new Orders
         Orders orders = new Orders();
         orders.setId(UUIDHelper.generateType4UUID().toString());
