@@ -50,14 +50,12 @@ public class MerchandiseUpdateController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         // Set Merchandise in update window
-        if (merchandise != null) {
-            nameHolder.setText(merchandise.getName());
-            priceHolder.setText(merchandise.getPrice());
-            importPriceHolder.setText(merchandise.getImportPrice());
-            typeHolder.setText(merchandise.getType());
-            branchHolder.setText(merchandise.getBranch());
-            quantityHolder.setText(merchandise.getQuantity().toString());
-        }
+        nameHolder.setText(merchandise.getName());
+        priceHolder.setText(merchandise.getPrice());
+        importPriceHolder.setText(merchandise.getImportPrice());
+        typeHolder.setText(merchandise.getType());
+        branchHolder.setText(merchandise.getBranch());
+        quantityHolder.setText(merchandise.getQuantity().toString());
         // Set autocomplete for merchandise type
         List<String> allMerchandiseTypes = MerchandiseRepository.getAllMerchandiseTypes();
         if (allMerchandiseTypes != null) {
