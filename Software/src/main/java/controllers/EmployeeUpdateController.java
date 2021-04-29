@@ -51,33 +51,21 @@ public class EmployeeUpdateController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        SessionFactory factory = HibernateUtils.getSessionFactory();
-        Session session = factory.getCurrentSession();
-
-        try {
-            // Add item to Roles ComboBox
-            List<Roles> rolesList = RolesRepository.getAll();
-            for (Roles item : rolesList) {
-                roleHolder.getItems().add(item.getName());
-            }
-            // Set default value
-            session = factory.openSession();
-            EmployeeRoles employeeRoles = EmployeeRolesRepository.getByEmployeeId(employee.getId());
-            roleHolder.setValue(rolesList.stream().filter(t -> t.getId().equals(employeeRoles.getRoles().getId())).findFirst().get().getName());
-            // Set employee in update window
-            Set zoneId = ZoneId.getAvailableZoneIds();
-            if (employee != null) {
-                nameHolder.setText(employee.getFullName());
-                phoneHolder.setText(employee.getPhone());
-                emailHolder.setText(employee.getEmail());
-                // Change Date to LocalDate
-                Date safeDate = new Date(employee.getBirthDay().getTime());
-                dateOfBirthHolder.setValue(safeDate.toInstant().atZone(ZoneId.of("Etc/GMT-8")).toLocalDate());
-            }
-        } catch (Exception ex) {
-            System.out.println(ex.getMessage());
-            System.out.println(Arrays.toString(ex.getStackTrace()));
+        // Add item to Roles ComboBox
+        List<Roles> rolesList = RolesRepository.getAll();
+        for (Roles item : rolesList) {
+            roleHolder.getItems().add(item.getName());
         }
+        // Set default value
+        EmployeeRoles employeeRoles = EmployeeRolesRepository.getByEmployeeId(employee.getId());
+        roleHolder.setValue(rolesList.stream().filter(t -> t.getId().equals(employeeRoles.getRoles().getId())).findFirst().get().getName());
+        // Set employee in update window
+        nameHolder.setText(employee.getFullName());
+        phoneHolder.setText(employee.getPhone());
+        emailHolder.setText(employee.getEmail());
+        // Change Date to LocalDate
+        Date safeDate = new Date(employee.getBirthDay().getTime());
+        dateOfBirthHolder.setValue(safeDate.toInstant().atZone(ZoneId.of("Etc/GMT-8")).toLocalDate());
     }
 
     @FXML
@@ -100,7 +88,8 @@ public class EmployeeUpdateController implements Initializable {
         // Delete employee
         session.delete(employee);
         session.getTransaction().commit();
-        session.close();;
+        session.close();
+        ;
 
         // Close stage
         StageHelper.closeStage(event);
@@ -164,7 +153,7 @@ public class EmployeeUpdateController implements Initializable {
     }
 
     @FXML
-    void requsetFocus(KeyEvent event) {
+    void requestFocus(KeyEvent event) {
         host.requestFocus();
     }
 }
