@@ -93,26 +93,19 @@ public class MainNavigatorController implements Initializable {
 
     private void hideInaccessibleFeatures() {
         Employee currentEmployee = new Employee(LoginController.getInstance().curEmployee);
-        List<String> curEmployeePermissions = PermissionRepository.getEmployeePermissions(currentEmployee.getId());
-        List<Permissions> allPermissions = PermissionRepository.getAll();
-        if (curEmployeePermissions != null && allPermissions != null) {
-            for (String permissionCode : curEmployeePermissions) {
-                allPermissions.removeIf(t -> t.getCode().equals(permissionCode));
-            }
-
-            if (allPermissions.size() > 0) {
-                for (Permissions item : allPermissions) {
-                    switch (item.getCode()) {
-                        case "CUSTOMER_MANAGEMENT" -> leftNav.getChildren().remove(customerButton);
-                        case "EMPLOYEE_MANAGEMENT" -> leftNav.getChildren().remove(employeeButton);
-                        case "IMPORT_MANAGEMENT" -> leftNav.getChildren().remove(importsButton);
-                        case "MERCHANDISE_MANAGEMENT" -> leftNav.getChildren().remove(merchandiseButton);
-                        case "ORDER_MANAGEMENT" -> leftNav.getChildren().remove(orderButton);
-                        case "RECEIPT_MANAGEMENT" -> leftNav.getChildren().remove(receiptButton);
-                        case "ROLES_MANAGEMENT" -> leftNav.getChildren().remove(rolesButton);
-                        case "STATISTIC" -> leftNav.getChildren().remove(statisticButton);
-                        case "WORK_SHIFT_MANAGEMENT" -> leftNav.getChildren().remove(timeTableButton);
-                    }
+        List<String> inAccessiblePermission = PermissionRepository.getEmployeeInaccessiblePermission(currentEmployee.getId());
+        if (inAccessiblePermission.size() > 0) {
+            for (String item : inAccessiblePermission) {
+                switch (item) {
+                    case "Quản lí khách hàng" -> leftNav.getChildren().remove(customerButton);
+                    case "Quản lí nhân viên" -> leftNav.getChildren().remove(employeeButton);
+                    case "Quản lí nhập hàng" -> leftNav.getChildren().remove(importsButton);
+                    case "Quản lí hàng hoá" -> leftNav.getChildren().remove(merchandiseButton);
+                    case "Quản lí đơn hàng" -> leftNav.getChildren().remove(orderButton);
+                    case "Quản lí hoá đơn" -> leftNav.getChildren().remove(receiptButton);
+                    case "Quản lí chức vụ" -> leftNav.getChildren().remove(rolesButton);
+                    case "Thống kê" -> leftNav.getChildren().remove(statisticButton);
+                    case "Quản lí lịch làm" -> leftNav.getChildren().remove(timeTableButton);
                 }
             }
         }

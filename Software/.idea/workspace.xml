@@ -6,24 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="4d7e044e-0843-438b-9f46-5efc2ec25554" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/ImportsAddController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/ImportsAddController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/OrderAddController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/OrderAddController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/OrderUpdateController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/OrderUpdateController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/repositories/CustomerRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/repositories/CustomerRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/repositories/EmployeeRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/repositories/EmployeeRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/repositories/EmployeeRolesRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/repositories/EmployeeRolesRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/repositories/ImportsDetailRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/repositories/ImportsDetailRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/repositories/ImportsRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/repositories/ImportsRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/repositories/MerchandiseRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/repositories/MerchandiseRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/repositories/OrdersDetailRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/repositories/OrdersDetailRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/repositories/OrdersRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/repositories/OrdersRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/MainNavigatorController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/MainNavigatorController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/repositories/PermissionRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/repositories/PermissionRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/repositories/ReceiptRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/repositories/ReceiptRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/repositories/RolesDetailRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/repositories/RolesDetailRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/repositories/RolesRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/repositories/RolesRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/repositories/WorkShiftRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/repositories/WorkShiftRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/repositories/WorkTableRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/repositories/WorkTableRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/fxml/MainNavigator.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/fxml/MainNavigator.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -62,17 +46,6 @@
       <option name="MAIN_CLASS_NAME" value="start.App" />
       <module name="Software" />
       <option name="VM_PARAMETERS" value="--module-path &quot;C:\Program Files\javafx-sdk-11.0.2\lib&quot; --add-modules javafx.controls,javafx.fxml --add-exports javafx.base/com.sun.javafx.event=ALL-UNNAMED" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
-      <option name="arquillianRunConfiguration">
-        <value>
-          <option name="containerStateName" value="" />
-        </value>
-      </option>
-      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>

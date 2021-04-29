@@ -8,6 +8,7 @@ import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
 import utils.HibernateUtils;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -72,6 +73,29 @@ public class PermissionRepository {
             session.close();
             System.out.println(ex.getMessage());
             return null;
+        }
+    }
+
+    public static List<String> getEmployeeInaccessiblePermission(String employeeId) {
+        try {
+            session = HibernateUtils.getSessionFactory().openSession();
+            session.beginTransaction();
+            Query<String> query = session.createQuery("" +
+                    "SELECT p.name " +
+                    "FROM Permissions p " +
+                    "WHERE p.code NOT IN (SELECT rd.permissions.code " +
+                                         "FROM RolesDetail rd " +
+                                         "WHERE rd.roles.id = (SELECT er.roles.id " +
+                                                              "FROM EmployeeRoles er " +
+                                                              "WHERE er.employee.id = :employeeId))");
+            query.setParameter("employeeId", employeeId);
+            List<String> result = query.getResultList();
+            session.close();
+            return result;
+        } catch (Exception ex) {
+            session.close();
+            System.out.println(ex.getMessage());
+            return new ArrayList<>();
         }
     }
 }
