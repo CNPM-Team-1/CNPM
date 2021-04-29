@@ -39,20 +39,19 @@ public class CustomerUpdateController implements Initializable {
 
     // Get Customer from CustomerCategoryController select(MouseEvent event)
     Customer customer = CustomerHolder.getInstance().getCustomer();
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         // Add value to type ComboBox
         typeHolder.getItems().addAll("Khách hàng", "Nhà cung cấp");
 
         // Set Customer in update window
-        if (customer != null) {
-            nameHolder.setText(customer.getFullName());
-            emailHolder.setText(customer.getEmail());
-            phoneHolder.setText(customer.getPhone());
-            addressHolder.setText(customer.getAddress());
-            if (customer.getType() != null) {
-                typeHolder.setValue((customer.getType().equals("Khách hàng")) ? "Khách hàng" : "Nhà cung cấp");
-            }
+        nameHolder.setText(customer.getFullName());
+        emailHolder.setText(customer.getEmail());
+        phoneHolder.setText(customer.getPhone());
+        addressHolder.setText(customer.getAddress());
+        if (customer.getType() != null) {
+            typeHolder.setValue((customer.getType().equals("Khách hàng")) ? "Khách hàng" : "Nhà cung cấp");
         }
     }
 
