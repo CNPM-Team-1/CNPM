@@ -48,7 +48,7 @@ public class MerchandiseValidation {
         // Check name
         if (merchandise.getName() == null || merchandise.getName().isEmpty()) {
             msg.add("Chưa điền tên");
-        } else if (merchandiseName != null && merchandiseName.getId().equals(merchandise.getId())) {
+        } else if (merchandiseName != null && !merchandiseName.getId().equals(merchandise.getId())) {
             msg.add("Tên đã được sử dụng");
         }
         if (merchandise.getBranch() == null || merchandise.getBranch().isEmpty()) {
