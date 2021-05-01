@@ -42,6 +42,17 @@ public class Orders {
         this.updatedDate = updatedDate;
     }
 
+    public Orders(Orders orders) {
+        this.id = orders.id;
+        this.type = orders.type;
+        this.employee = orders.employee;
+        this.customer = orders.customer;
+        this.status = orders.status;
+        this.description = orders.description;
+        this.createdDate = orders.createdDate;
+        this.updatedDate = orders.updatedDate;
+    }
+
     public String getId() {
         return id;
     }

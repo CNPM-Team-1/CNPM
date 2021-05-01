@@ -1,9 +1,6 @@
 package entities;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "roles_detail")
@@ -11,18 +8,20 @@ public class RolesDetail {
     @Id
     @Column(name = "id")
     private String id;
-    @Column(name = "role_id")
-    private String roleId;
-    @Column(name = "permission_code")
-    private String permissionCode;
+    @ManyToOne
+    @JoinColumn(name = "roles_id")
+    private Roles roles;
+    @ManyToOne
+    @JoinColumn(name = "permission_code")
+    private Permissions permissions;
 
     public RolesDetail() {
     }
 
-    public RolesDetail(String id, String roleId, String permissionCode) {
+    public RolesDetail(String id, Roles roles, Permissions permissions) {
         this.id = id;
-        this.roleId = roleId;
-        this.permissionCode = permissionCode;
+        this.roles = roles;
+        this.permissions = permissions;
     }
 
     public String getId() {
@@ -33,19 +32,19 @@ public class RolesDetail {
         this.id = id;
     }
 
-    public String getRoleId() {
-        return roleId;
+    public Roles getRoles() {
+        return roles;
     }
 
-    public void setRoleId(String roleId) {
-        this.roleId = roleId;
+    public void setRoles(Roles roles) {
+        this.roles = roles;
     }
 
-    public String getPermissionCode() {
-        return permissionCode;
+    public Permissions getPermissions() {
+        return permissions;
     }
 
-    public void setPermissionCode(String permissionCode) {
-        this.permissionCode = permissionCode;
+    public void setPermissions(Permissions permissions) {
+        this.permissions = permissions;
     }
 }

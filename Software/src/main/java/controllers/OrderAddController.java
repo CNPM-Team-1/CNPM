@@ -6,18 +6,27 @@ import entities.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.*;
+import javafx.scene.control.Label;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import org.controlsfx.control.textfield.AutoCompletionBinding;
+import org.controlsfx.control.textfield.TextFields;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import repositories.CustomerRepository;
 import repositories.MerchandiseRepository;
 import utils.*;
 
+import java.io.IOException;
 import java.net.URL;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.ResourceBundle;
 import java.util.stream.Collectors;
 
 public class OrderAddController implements Initializable {
@@ -36,27 +45,15 @@ public class OrderAddController implements Initializable {
     private TableColumn<OrdersAddTableModel, String> sumAmountCol;
 
     @FXML
-    private JFXButton saveOrdersButton;
-    @FXML
-    private JFXButton addMerchandiseButton;
-    @FXML
-    private JFXButton close_button;
-    @FXML
-    private ImageView close;
-    @FXML
-    private ComboBox<String> customerHolder;
+    private TextField customerHolder;
     @FXML
     private TextField phoneHolder;
     @FXML
-    private JFXButton addNewCustomerButton;
-    @FXML
     private TextField addressHolder;
     @FXML
-    private ComboBox<String> merchandiseHolder;
+    private TextField merchandiseHolder;
     @FXML
     private TextField quantityHolder;
-    @FXML
-    private JFXButton addNewMerchandiseButton;
     @FXML
     private TextField descriptionHolder;
     @FXML
@@ -65,6 +62,10 @@ public class OrderAddController implements Initializable {
     private TextField sumOrdersMerchandiseAmount;
     @FXML
     private Label errorMessage;
+    @FXML
+    private TextField inventoryHolder;
+    @FXML
+    private TextField emailHolder;
 
     public List<OrdersAddTableModel> ordersAddTableModelList = new ArrayList<>();
 
@@ -86,49 +87,41 @@ public class OrderAddController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         OrderCategoryController.getInstance().ordersAddUpdateIsShow = true;
-        SessionFactory sessionFactory = HibernateUtils.getSessionFactory();
-        Session session;
 
-        session = sessionFactory.openSession();
-        List<Customer> customerList = CustomerRepository.getAll(session);
-        session = sessionFactory.openSession();
-        List<Merchandise> merchandiseList = MerchandiseRepository.getHasQuantity(session);
+        List<Customer> customerList = CustomerRepository.getAll();
+        List<Merchandise> merchandiseList = MerchandiseRepository.getAll();
 
         if (customerList != null && !customerList.isEmpty() && merchandiseList != null && !merchandiseList.isEmpty()) {
             // Add item to Customer Combox
-            customerHolder.getItems().clear();
-            for (Customer item : customerList) {
-                customerHolder.getItems().add(item.getFullName());
-            }
+            AutoCompletionBinding<String> cHolder = TextFields.bindAutoCompletion(customerHolder, customerList.stream().map(Customer::getFullName).collect(Collectors.toList()));
+            cHolder.setOnAutoCompleted(stringAutoCompletionEvent -> setCustomer(null));
             // Add item to Merchandise Combox
-            merchandiseHolder.getItems().clear();
-            for (Merchandise item : merchandiseList) {
-                merchandiseHolder.getItems().add(item.getName());
-            }
-
-            customerHolder.setValue("Chọn khách hàng");
-            merchandiseHolder.setValue("Chọn hàng hóa");
+            AutoCompletionBinding<String> iHolder = TextFields.bindAutoCompletion(merchandiseHolder, merchandiseList.stream().map(Merchandise::getName).collect(Collectors.toList()));
+            iHolder.setOnAutoCompleted(t -> setMerchandiseInventoryQuantity());
         }
     }
 
     @FXML
     void setCustomer(ActionEvent event) {
-        SessionFactory sessionFactory = HibernateUtils.getSessionFactory();
-        Session session;
-
-        session = sessionFactory.openSession();
-        List<Customer> customerList = CustomerRepository.getAll(session);
+        Customer chosenCustomer = CustomerRepository.getByName(customerHolder.getText());
         // Get chosen customer from customerList
-        if (customerList != null && !customerList.isEmpty()) {
-            Customer chosenCustomer = customerList.stream().filter(t -> t.getFullName().equals(customerHolder.getValue())).findFirst().get();
+        if (chosenCustomer != null) {
             // Set phoneHolder and addressHolder
             phoneHolder.setText(chosenCustomer.getPhone());
             addressHolder.setText(chosenCustomer.getAddress());
+            emailHolder.setText(chosenCustomer.getEmail());
             if (chosenCustomer.getType().equals("Khách hàng")) {
                 descriptionHolder.setText("Khách hàng " + chosenCustomer.getFullName() + " mua hàng");
             } else {
                 descriptionHolder.setText("Mua hàng từ nhà cung cấp " + chosenCustomer.getFullName());
             }
+        }
+    }
+
+    void setMerchandiseInventoryQuantity() {
+        Merchandise merchandise = MerchandiseRepository.getByName(merchandiseHolder.getText());
+        if (merchandise != null) {
+            inventoryHolder.setText(merchandise.getQuantity().toString());
         }
     }
 
@@ -138,29 +131,50 @@ public class OrderAddController implements Initializable {
     }
 
     @FXML
-    void addNewMerchandise(ActionEvent event) {
+    void addNewMerchandise(ActionEvent event) throws IOException {
         MerchandiseCategoryController.getInstance().insert(null);
     }
 
     @FXML
     void chooseMerchandise(ActionEvent event) {
-        SessionFactory sessionFactory = HibernateUtils.getSessionFactory();
-        Session session;
+        Customer customer = CustomerRepository.getByName(customerHolder.getText());
+        Merchandise merchandise = MerchandiseRepository.getByName(merchandiseHolder.getText());
 
-        session = sessionFactory.openSession();
-        Merchandise merchandise = MerchandiseRepository.getByName(session, merchandiseHolder.getValue());
-        if (merchandise != null && !quantityHolder.getText().isEmpty() && quantityHolder.getText() != null
-                && !quantityHolder.getText().equals("0") && NumberHelper.isNumber(quantityHolder.getText())) {
+        List<String> validateAddMerchandise = this.validateAddMerchandise(customer, merchandise);
+        if (validateAddMerchandise.size() == 0) {
             OrdersAddTableModel ordersAddTableModel = new OrdersAddTableModel();
             ordersAddTableModel.setMerchandiseName(merchandise.getName());
             ordersAddTableModel.setQuantity(Integer.parseInt(quantityHolder.getText()));
             ordersAddTableModel.setAmount(NumberHelper.addComma(merchandise.getPrice()));
-            int sumAmount = Integer.parseInt(quantityHolder.getText()) * Integer.parseInt(merchandise.getPrice());
-            ordersAddTableModel.setSumAmount(NumberHelper.addComma(Integer.toString(sumAmount)));
-
+            Long sumAmount = Long.parseLong(quantityHolder.getText()) * Integer.parseInt(merchandise.getPrice());
+            ordersAddTableModel.setSumAmount(NumberHelper.addComma(Long.toString(sumAmount)));
             // Remove duplicate merchandise
             ordersAddTableModelList.removeIf(t -> t.getMerchandiseName().equals(merchandise.getName()));
             ordersAddTableModelList.add(ordersAddTableModel);
+
+            TableHelper.setOrdersAddTable(ordersAddTableModelList, merchandiseTable, merchandiseCol, quantityCol, amountCol, sumAmountCol);
+            // Update sumQuantity and sumAmount
+            int sumQuantity = ordersAddTableModelList.stream().mapToInt(OrdersAddTableModel::getQuantity).sum();
+            List<Long> allAmount = ordersAddTableModelList.stream().map(t -> Long.parseLong(NumberHelper.removeComma(t.getSumAmount()))).collect(Collectors.toList());
+            Long sumAllAmount = allAmount.stream().mapToLong(Long::longValue).sum();
+
+            sumOrdersMerchandiseQuantity.setText(NumberHelper.addComma(String.valueOf(sumQuantity)));
+            sumOrdersMerchandiseAmount.setText(NumberHelper.addComma(String.valueOf(sumAllAmount)));
+            errorMessage.setText("");
+            // Clear merchandiseHolder and quantityHolder
+            merchandiseHolder.clear();
+            quantityHolder.setText("");
+        } else {
+            errorMessage.setText(validateAddMerchandise.get(0));
+        }
+    }
+
+    @FXML
+    void removeChosenMerchandise(MouseEvent event) {
+        if (event.getClickCount() == 2) {
+            OrdersAddTableModel choosenMerchandise = merchandiseTable.getSelectionModel().getSelectedItem();
+            merchandiseTable.getSelectionModel().clearSelection();
+            ordersAddTableModelList.removeIf(t -> t.getMerchandiseName().equals(choosenMerchandise.getMerchandiseName()));
 
             TableHelper.setOrdersAddTable(ordersAddTableModelList, merchandiseTable, merchandiseCol, quantityCol, amountCol, sumAmountCol);
 
@@ -171,95 +185,70 @@ public class OrderAddController implements Initializable {
 
             sumOrdersMerchandiseQuantity.setText(NumberHelper.addComma(String.valueOf(sumQuantity)));
             sumOrdersMerchandiseAmount.setText(NumberHelper.addComma(String.valueOf(sumAllAmount)));
-            errorMessage.setText("");
-
-            // Clear merchandiseHolder and quantityHolder
-            merchandiseHolder.setValue("Chọn hàng hoá");
-            quantityHolder.setText("");
-        } else {
-            errorMessage.setText(merchandise == null ? "Chưa chọn hàng hoá" : "Chưa chọn số lượng hàng hoá");
-        }
-    }
-
-    @FXML
-    void removeChosenMerchandise(MouseEvent event) {
-        if (event.getClickCount() == 2) {
-            try {
-                OrdersAddTableModel choosenMerchandise = merchandiseTable.getSelectionModel().getSelectedItem();
-                merchandiseTable.getSelectionModel().clearSelection();
-                ordersAddTableModelList.removeIf(t -> t.getMerchandiseName().equals(choosenMerchandise.getMerchandiseName()));
-
-                TableHelper.setOrdersAddTable(ordersAddTableModelList, merchandiseTable, merchandiseCol, quantityCol, amountCol, sumAmountCol);
-
-                // Update sumQuantity and sumAmount
-                int sumQuantity = ordersAddTableModelList.stream().mapToInt(OrdersAddTableModel::getQuantity).sum();
-                List<Integer> allAmount = ordersAddTableModelList.stream().map(t -> Integer.parseInt(NumberHelper.removeComma(t.getSumAmount()))).collect(Collectors.toList());
-                int sumAllAmount = allAmount.stream().mapToInt(Integer::intValue).sum();
-
-                sumOrdersMerchandiseQuantity.setText(NumberHelper.addComma(String.valueOf(sumQuantity)));
-                sumOrdersMerchandiseAmount.setText(NumberHelper.addComma(String.valueOf(sumAllAmount)));
-            } catch (Exception ex) {
-                System.out.println(ex.getMessage());
-                System.out.println(Arrays.toString(ex.getStackTrace()));
-            }
         }
     }
 
     @FXML
     void save(ActionEvent event) {
-        try {
-            SessionFactory sessionFactory = HibernateUtils.getSessionFactory();
-            Session session;
-
-            session = sessionFactory.openSession();
-            Customer ordersCustomer = CustomerRepository.getByCustomerName(session, customerHolder.getValue());
-
-            // Save new Orders
-            Orders orders = new Orders();
-            orders.setId(UUIDHelper.generateType4UUID().toString());
-            orders.setType(ordersCustomer.getType().equals("Khách hàng") ? "Bán hàng" : "Nhập hàng");
-            orders.setEmployee(loggedInEmployee);
-            orders.setCustomer(ordersCustomer);
-            orders.setStatus("Chưa hoàn tất");
+        Session session;
+        Customer ordersCustomer = CustomerRepository.getByName(customerHolder.getText());
+        // Save new Orders
+        Orders orders = new Orders();
+        orders.setId(UUIDHelper.generateType4UUID().toString());
+        orders.setType(ordersCustomer.getType().equals("Khách hàng") ? "Bán hàng" : "Nhập hàng");
+        orders.setEmployee(loggedInEmployee);
+        orders.setCustomer(ordersCustomer);
+        orders.setStatus("Chưa hoàn tất");
+        if (descriptionHolder.getText().isEmpty()) {
+            if (ordersCustomer.getType().equals("Khách hàng")) {
+                descriptionHolder.setText("Khách hàng " + ordersCustomer.getFullName() + " mua hàng");
+            } else {
+                descriptionHolder.setText("Mua hàng từ nhà cung cấp " + ordersCustomer.getFullName());
+            }
+        } else {
             orders.setDescription(descriptionHolder.getText());
-
-            session = sessionFactory.openSession();
-            session.beginTransaction();
-            session.save(orders);
-            session.getTransaction().commit();
-
-            // Save new OrdersDetail
-            for (OrdersAddTableModel item : ordersAddTableModelList) {
-                OrdersDetail ordersDetail = new OrdersDetail();
-                ordersDetail.setId(UUIDHelper.generateType4UUID().toString());
-                ordersDetail.setOrders(orders);
-                session = sessionFactory.openSession();
-                ordersDetail.setMerchandise(MerchandiseRepository.getByName(session, item.getMerchandiseName()));
-                ordersDetail.setQuantity(item.getQuantity());
-                ordersDetail.setAmount(Integer.parseInt(NumberHelper.removeComma(item.getSumAmount())));
-
-                session = sessionFactory.openSession();
-                session.beginTransaction();
-                session.save(ordersDetail);
-                session.getTransaction().commit();
-            }
-
-            // Show alert box
-            AlertBoxHelper.showMessageBox("Thêm thành công");
-            // Refresh content table
-            if (OrderCategoryController.getInstance() != null) {
-                OrderCategoryController.getInstance().refresh();
-            }
-            // Unhide host only when orders add is not show
-            AnchorPane host = MainNavigatorController.instance.getHost();
-            host.setDisable(false);
-            // Close stage
-            StageHelper.closeStage(event);
-        } catch (Exception ex) {
-            errorMessage.setText("Lỗi thêm đơn hàng");
-            System.out.println(ex.getMessage());
-            System.out.println(Arrays.toString(ex.getStackTrace()));
         }
+        session = HibernateUtils.getSessionFactory().openSession();
+        session.beginTransaction();
+        session.save(orders);
+        session.getTransaction().commit();
+        session.close();
+        // Save new OrdersDetail
+        for (OrdersAddTableModel item : ordersAddTableModelList) {
+            OrdersDetail ordersDetail = new OrdersDetail();
+            ordersDetail.setId(UUIDHelper.generateType4UUID().toString());
+            ordersDetail.setOrders(orders);
+            ordersDetail.setMerchandise(MerchandiseRepository.getByName(item.getMerchandiseName()));
+            ordersDetail.setQuantity(item.getQuantity());
+            ordersDetail.setAmount(Long.parseLong(NumberHelper.removeComma(item.getSumAmount())));
+
+            session = HibernateUtils.getSessionFactory().openSession();
+            session.beginTransaction();
+            session.save(ordersDetail);
+            session.getTransaction().commit();
+            session.close();
+            // Update quantity in merchandise entity when sell merchandise
+            if (ordersDetail.getOrders().getType().equals("Bán hàng")) {
+                ordersDetail.getMerchandise().setQuantity(ordersDetail.getMerchandise().getQuantity() - item.getQuantity());
+                session = HibernateUtils.getSessionFactory().openSession();
+                session.beginTransaction();
+                session.saveOrUpdate(ordersDetail.getMerchandise());
+                session.getTransaction().commit();
+                session.close();
+                // Update merchandise category
+                MerchandiseCategoryController.getInstance().refresh();
+            }
+        }
+        // Show alert box
+        AlertBoxHelper.showMessageBox("Thêm thành công");
+        // Refresh content table
+        if (OrderCategoryController.getInstance() != null) {
+            OrderCategoryController.getInstance().refresh();
+        }
+        // Unhide host only when orders add is not show
+        MainNavigatorController.instance.getHost().setDisable(false);
+        // Close stage
+        StageHelper.closeStage(event);
     }
 
     @FXML
@@ -267,13 +256,40 @@ public class OrderAddController implements Initializable {
         StageHelper.closeStage(event);
         OrderCategoryController.getInstance().ordersAddUpdateIsShow = false;
         // Unhide host
-        AnchorPane host = MainNavigatorController.instance.getHost();
-        host.setDisable(false);
+        MainNavigatorController.instance.getHost().setDisable(false);
     }
 
     @FXML
     void requestFocus(MouseEvent event) {
         host.requestFocus();
     }
-}
 
+    List<String> validateAddMerchandise(Customer customer, Merchandise merchandise) {
+        List<String> errors = new ArrayList<>();
+
+        if (merchandiseHolder.getText().isEmpty()) {
+            errors.add("Chưa nhập hàng hoá");
+        }
+        if (quantityHolder.getText().isEmpty()) {
+            errors.add("Chưa nhập số lượng");
+        } else {
+            if (!NumberHelper.isNumber(quantityHolder.getText())) {
+                errors.add("Số lượng phải là chữ số");
+            } else if (quantityHolder.getText().equals("0")) {
+                errors.add("Số lượng phải khác 0");
+            } else {
+                if (Integer.parseInt(quantityHolder.getText()) > 1000) {
+                    errors.add("Không được nhập số lượng lớn hơn 1000");
+                }
+                if (customer == null) {
+                    errors.add("Chưa chọn khách hàng");
+                } else if (customer.getType().equals("Khách hàng")) {
+                    if (Integer.parseInt(quantityHolder.getText()) > merchandise.getQuantity()) {
+                        errors.add("Không đủ số lượng hàng hoá trong kho");
+                    }
+                }
+            }
+        }
+        return errors;
+    }
+}

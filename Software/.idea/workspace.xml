@@ -4,11 +4,170 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b5ea20d7-1c8e-440f-81c2-ca4792b5ccf8" name="Default Changelist" comment="">
+    <list default="true" id="4d7e044e-0843-438b-9f46-5efc2ec25554" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__junit_junit_4_13.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apiguardian_apiguardian_api_1_1_1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_assertj_assertj_core_3_13_2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_jetbrains_annotations_13_0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_jetbrains_kotlin_kotlin_stdlib_1_4_20.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_jetbrains_kotlin_kotlin_stdlib_common_1_4_20.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_jetbrains_kotlin_kotlin_stdlib_jdk7_1_4_20.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_jetbrains_kotlin_kotlin_stdlib_jdk8_1_4_20.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_junit_jupiter_junit_jupiter_5_8_0_M1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_junit_jupiter_junit_jupiter_api_5_8_0_M1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_junit_jupiter_junit_jupiter_engine_5_8_0_M1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_junit_jupiter_junit_jupiter_params_5_8_0_M1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_junit_platform_junit_platform_commons_1_8_0_M1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_junit_platform_junit_platform_engine_1_8_0_M1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_opentest4j_opentest4j_1_2_0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_testfx_testfx_core_4_0_16_alpha.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_testfx_testfx_junit5_4_0_16_alpha.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/controllers/CustomerAddControllerTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/controllers/CustomerCategoryControllerTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/controllers/CustomerUpdateControllerTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/controllers/EmployeeAddControllerTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/controllers/EmployeeCategoryControllerTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/controllers/EmployeeUpdateControllerTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/controllers/ImportsCategoryControllerTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/controllers/MerchandiseAddControllerTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/controllers/RolesAddControllerTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/controllers/RolesCategoryControllerTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/controllers/RolesUpdateControllerTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/controllers/WorkShiftAddControllerTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/controllers/WorkShiftCategoryControllerTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/controllers/WorkShiftUpdateControllerTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/controllers/WorkTableAddControllerTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/controllers/WorkTableCategoryControllerTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/controllers/WorkTableUpdateControllerTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/repositories/CustomerRepositoryTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/repositories/EmployeeRepositoryTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/repositories/EmployeeRolesRepositoryTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/repositories/ImportsDetailRepositoryTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/repositories/ImportsRepositoryTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/repositories/MerchandiseRepositoryTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/repositories/OrdersDetailRepositoryTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/repositories/OrdersRepositoryTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/repositories/PermissionRepositoryTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/repositories/ReceiptRepositoryTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/repositories/RolesDetailRepositoryTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/repositories/RolesRepositoryTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/repositories/WorkShiftRepositoryTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/repositories/WorkTableRepositoryTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/test_inputs/CustomerRepository/getAll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/test_inputs/CustomerRepository/getAllCustomerActiveOrders" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/test_inputs/CustomerRepository/getAllSupplierActiveOrders" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/test_inputs/CustomerRepository/getByEmail" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/test_inputs/CustomerRepository/getByName" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/test_inputs/CustomerRepository/getByNameOrPhone" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/test_inputs/CustomerRepository/getByPhone" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/test_inputs/EmployeeRepository/getAll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/test_inputs/EmployeeRepository/getByEmail" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/test_inputs/EmployeeRepository/getByEmployeeName" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/test_inputs/EmployeeRepository/getByName" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/test_inputs/EmployeeRepository/getByNamePhoneEmail" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/test_inputs/EmployeeRepository/getByPhone" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/test_inputs/EmployeeRolesRepository/deleteByEmployeeId" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/test_inputs/EmployeeRolesRepository/getByEmployeeId" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/test_inputs/EmployeeRolesRepository/getByRolesId" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/test_inputs/ImportsDetailRepository/getBoughtQuantityOfMerchandise" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/test_inputs/ImportsDetailRepository/getByImportsId" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/test_inputs/ImportsDetailRepository/getDistinctByImportsIdIn" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/test_inputs/ImportsDetailRepository/getSumAmountByImportsId" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/test_inputs/ImportsDetailRepository/getSumQuantityByImportsId" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/test_inputs/ImportsRepository/getAll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/test_inputs/ImportsRepository/getById" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/test_inputs/ImportsRepository/getByOrdersId" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/test_inputs/ImportsRepository/getLikeCustomerName" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/test_inputs/MerchandiseRepository/getAll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/test_inputs/MerchandiseRepository/getAllMerchandiseTypes" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/test_inputs/MerchandiseRepository/getAmountBuying.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/test_inputs/MerchandiseRepository/getById" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/test_inputs/MerchandiseRepository/getByName" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/test_inputs/MerchandiseRepository/getHasQuantity" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/test_inputs/MerchandiseRepository/getLikeNameAndBranch" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/test_inputs/OrdersDetailRepository/deleteByOrdersId" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/test_inputs/OrdersDetailRepository/getAmountBuying" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/test_inputs/OrdersDetailRepository/getAmountBuying.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/test_inputs/OrdersDetailRepository/getById" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/test_inputs/OrdersDetailRepository/getByOrdersId" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/test_inputs/OrdersDetailRepository/getSumAmountById" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/test_inputs/OrdersDetailRepository/getSumQuantityById" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/test_inputs/OrdersRepository/getActiveByCustomerName" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/test_inputs/OrdersRepository/getAll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/test_inputs/OrdersRepository/getByCustomerName" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/test_inputs/OrdersRepository/getById" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/test_inputs/OrdersRepository/getLikeCustomerName" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/test_inputs/PermissionRepository/getAll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/test_inputs/PermissionRepository/getByName" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/test_inputs/PermissionRepository/getEmployeeInaccessiblePermission" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/test_inputs/RolesDetailRepository/getByRolesId" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/test_inputs/RolesRepository/getAll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/test_inputs/RolesRepository/getByName" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/test_inputs/RolesRepository/getLikeName" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/test_inputs/WorkShiftRepository/getAll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/test_inputs/WorkShiftRepository/getByName" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/test_inputs/WorkShiftRepository/getLikeName" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/test_inputs/WorkTableRepository/getAll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/test_inputs/WorkTableRepository/getByEmployeeNameAndShift" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/test_inputs/WorkTableRepository/getByEmployeeOrShift" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/test_inputs/WorkTableRepository/getByShiftId" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__junit_junit_4_11.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/OrderCategoryController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/OrderCategoryController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/repositories/OrdersRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/repositories/OrdersRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/fxml/OrderCategory.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/fxml/OrderCategory.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/CustomerAddController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/CustomerAddController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/CustomerCategoryController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/CustomerCategoryController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/CustomerUpdateController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/CustomerUpdateController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/EmployeeAddController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/EmployeeAddController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/EmployeeCategoryController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/EmployeeCategoryController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/EmployeeUpdateController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/EmployeeUpdateController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/ImportsAddController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/ImportsAddController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/MerchandiseAddController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/MerchandiseAddController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/OrderAddController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/OrderAddController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/RolesAddController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/RolesAddController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/RolesCategoryController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/RolesCategoryController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/RolesUpdateController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/RolesUpdateController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/WorkShiftAddController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/WorkShiftAddController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/WorkShiftCategoryController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/WorkShiftCategoryController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/WorkShiftUpdateController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/WorkShiftUpdateController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/WorkTableAddController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/WorkTableAddController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/WorkTableCategoryController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/WorkTableCategoryController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/WorkTableUpdateController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/WorkTableUpdateController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/entities/Receipt.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/entities/Receipt.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/repositories/EmployeeRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/repositories/EmployeeRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/repositories/OrdersDetailRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/repositories/OrdersDetailRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/fxml/CustomerCategory.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/fxml/CustomerCategory.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/fxml/CustomerUpdate.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/fxml/CustomerUpdate.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/fxml/EmployeeAdd.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/fxml/EmployeeAdd.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/fxml/EmployeeCategory.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/fxml/EmployeeCategory.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/fxml/EmployeeUpdate.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/fxml/EmployeeUpdate.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/fxml/ImportsCategory.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/fxml/ImportsCategory.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/fxml/MerchandiseAdd.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/fxml/MerchandiseAdd.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/fxml/RolesAdd.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/fxml/RolesAdd.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/fxml/RolesCategory.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/fxml/RolesCategory.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/fxml/RolesUpdate.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/fxml/RolesUpdate.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/fxml/WorkShiftAdd.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/fxml/WorkShiftAdd.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/fxml/WorkShiftCategory.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/fxml/WorkShiftCategory.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/fxml/WorkShiftUpdate.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/fxml/WorkShiftUpdate.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/fxml/WorkTableAdd.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/fxml/WorkTableAdd.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/fxml/WorkTableCategory.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/fxml/WorkTableCategory.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/fxml/WorkTableUpdate.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/fxml/WorkTableUpdate.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/example/AppTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/fxml/CustomerCategory.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/fxml/CustomerCategory.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/fxml/CustomerUpdate.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/fxml/CustomerUpdate.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/fxml/EmployeeAdd.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/fxml/EmployeeAdd.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/fxml/EmployeeCategory.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/fxml/EmployeeCategory.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/fxml/EmployeeUpdate.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/fxml/EmployeeUpdate.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/fxml/ImportsCategory.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/fxml/ImportsCategory.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/fxml/MerchandiseAdd.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/fxml/MerchandiseAdd.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/fxml/RolesAdd.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/fxml/RolesAdd.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/fxml/RolesCategory.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/fxml/RolesCategory.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/fxml/RolesUpdate.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/fxml/RolesUpdate.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/fxml/WorkShiftAdd.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/fxml/WorkShiftAdd.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/fxml/WorkShiftCategory.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/fxml/WorkShiftCategory.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/fxml/WorkShiftUpdate.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/fxml/WorkShiftUpdate.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/fxml/WorkTableAdd.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/fxml/WorkTableAdd.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/fxml/WorkTableCategory.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/fxml/WorkTableCategory.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/fxml/WorkTableUpdate.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/fxml/WorkTableUpdate.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -18,10 +177,9 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Enum" />
-        <option value="CSS File" />
         <option value="FxmlFile" />
         <option value="Class" />
+        <option value="JUnit5 Test Class" />
       </list>
     </option>
   </component>
@@ -36,14 +194,7 @@
       <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
     </file-type-list>
   </component>
-  <component name="GithubPullRequestsUISettings">
-    <option name="hiddenUrls">
-      <set>
-        <option value="https://github.com/CNPM-Team-1/CNPM" />
-      </set>
-    </option>
-  </component>
-  <component name="ProjectId" id="1pPpNstBIfnaGnpuIHG1VUTMIle" />
+  <component name="ProjectId" id="1r0X6qXfaO6sktKSzxhUwdaYBwr" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
   </component>
@@ -53,51 +204,99 @@
   </component>
   <component name="PropertiesComponent">
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="Downloaded.Files.Path.Enabled" value="false" />
+    <property name="Repository.Attach.Annotations" value="false" />
+    <property name="Repository.Attach.JavaDocs" value="false" />
+    <property name="Repository.Attach.Sources" value="false" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="ignore.preview.features.used" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../bm-agency" />
-    <property name="node.js.detected.package.eslint" value="true" />
-    <property name="node.js.path.for.package.eslint" value="project" />
-    <property name="node.js.path.for.package.tslint" value="project" />
-    <property name="node.js.selected.package.eslint" value="(autodetect)" />
-    <property name="node.js.selected.package.tslint" value="(autodetect)" />
-    <property name="nodejs_package_manager_path" value="npm" />
-    <property name="project.structure.last.edited" value="SDKs" />
-    <property name="project.structure.proportion" value="0.17" />
-    <property name="project.structure.side.proportion" value="0.39312038" />
-    <property name="restartRequiresConfirmation" value="false" />
+    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit5" />
+    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5" value="" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/test" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.3133098" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
-  <component name="ReaderModeSettings">
-    <option name="enabled" value="false" />
-  </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\Github\CNPM\Software\src\main\resources\fxml" />
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
     </key>
-    <key name="ExtractSuperBase.RECENT_KEYS">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\Github\CNPM\Software\src\test\java\test_inputs\RolesRepository" />
+    </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="" />
+    </key>
+    <key name="CreateTestDialog.RecentsKey">
+      <recent name="repositories" />
       <recent name="controllers" />
     </key>
-    <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="utils" />
-    </key>
   </component>
-  <component name="RunManager" selected="Application.App">
+  <component name="RunManager" selected="JUnit.All in Software">
     <configuration name="App" type="Application" factoryName="Application" nameIsGenerated="true">
-      <option name="ALTERNATIVE_JRE_PATH" value="14" />
       <option name="MAIN_CLASS_NAME" value="start.App" />
       <module name="Software" />
-      <option name="VM_PARAMETERS" value="--module-path &quot;C:\Program Files\javafx-sdk-11.0.2\lib&quot; --add-modules javafx.controls,javafx.fxml" />
+      <option name="VM_PARAMETERS" value="--module-path &quot;C:\Program Files\javafx-sdk-11.0.2\lib&quot; --add-modules javafx.controls,javafx.fxml --add-exports javafx.base/com.sun.javafx.event=ALL-UNNAMED" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Test" type="Application" factoryName="Application" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="controllers.Test" />
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="All in Software" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Software" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="TEST_OBJECT" value="package" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="RolesDetailRepositoryTest.getByRolesId" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Software" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="repositories.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="repositories" />
+      <option name="MAIN_CLASS_NAME" value="repositories.RolesDetailRepositoryTest" />
+      <option name="METHOD_NAME" value="getByRolesId" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="RolesRepositoryTest.getAll" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Software" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="repositories.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="repositories" />
+      <option name="MAIN_CLASS_NAME" value="repositories.RolesRepositoryTest" />
+      <option name="METHOD_NAME" value="getAll" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="RolesUpdateControllerTest.update" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Software" />
       <extension name="coverage">
         <pattern>
@@ -105,94 +304,80 @@
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
+      <option name="PACKAGE_NAME" value="controllers" />
+      <option name="MAIN_CLASS_NAME" value="controllers.RolesUpdateControllerTest" />
+      <option name="METHOD_NAME" value="update" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
-      <option name="arquillianRunConfiguration">
-        <value>
-          <option name="containerStateName" value="" />
-        </value>
-      </option>
-      <option name="TEST_OBJECT" value="CLASS" />
-      <properties />
-      <listeners />
+    <configuration name="repositories in Software" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Software" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="repositories.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="repositories" />
+      <option name="TEST_OBJECT" value="package" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <list>
       <item itemvalue="Application.App" />
-      <item itemvalue="Application.Test" />
+      <item itemvalue="JUnit.repositories in Software" />
+      <item itemvalue="JUnit.RolesUpdateControllerTest.update" />
+      <item itemvalue="JUnit.RolesRepositoryTest.getAll" />
+      <item itemvalue="JUnit.RolesDetailRepositoryTest.getByRolesId" />
+      <item itemvalue="JUnit.All in Software" />
     </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.All in Software" />
+        <item itemvalue="JUnit.repositories in Software" />
+        <item itemvalue="JUnit.RolesDetailRepositoryTest.getByRolesId" />
+        <item itemvalue="JUnit.RolesRepositoryTest.getAll" />
+        <item itemvalue="JUnit.RolesUpdateControllerTest.update" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="StructuralSearchPlugin">
+    <searchConfiguration name="Unnamed" created="1619684111390" text="// $TC4$" recursive="false" caseInsensitive="true" type="JAVA" pattern_context="default" scope_type="DIRECTORY" scope_descriptor="*D:\Github\CNPM\Software\src\test" history="1">
+      <constraint name="__context__" within="" contains="" />
+      <constraint name="TC4" within="" contains="" />
+    </searchConfiguration>
+    <searchConfiguration name="Unnamed" created="1619684048711" text="// $CommentContent$ " recursive="false" caseInsensitive="true" type="JAVA" pattern_context="default" scope_type="DIRECTORY" scope_descriptor="*D:\Github\CNPM\Software\src\test" history="1">
+      <constraint name="__context__" within="" contains="" />
+      <constraint name="CommentContent" within="" contains="" />
+    </searchConfiguration>
+  </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="b5ea20d7-1c8e-440f-81c2-ca4792b5ccf8" name="Default Changelist" comment="" />
-      <created>1615094543247</created>
+      <changelist id="4d7e044e-0843-438b-9f46-5efc2ec25554" name="Default Changelist" comment="" />
+      <created>1618113814425</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1615094543247</updated>
-      <workItem from="1615094545529" duration="736000" />
-      <workItem from="1615095504754" duration="5845000" />
-      <workItem from="1615101398980" duration="5336000" />
-      <workItem from="1615352654740" duration="7958000" />
-      <workItem from="1615389325807" duration="612000" />
-      <workItem from="1615447019677" duration="10516000" />
-      <workItem from="1615470006845" duration="5849000" />
-      <workItem from="1615351777053" duration="5898000" />
-      <workItem from="1615361726107" duration="279000" />
-      <workItem from="1615366933699" duration="444000" />
-      <workItem from="1615372286669" duration="4358000" />
-      <workItem from="1615447443210" duration="62000" />
-      <workItem from="1615447550905" duration="249000" />
-      <workItem from="1615447911023" duration="10209000" />
-      <workItem from="1615464879961" duration="1712000" />
-      <workItem from="1615530013290" duration="4467000" />
-      <workItem from="1615535702550" duration="1003000" />
-      <workItem from="1615565579448" duration="2117000" />
-      <workItem from="1615622572793" duration="6954000" />
-      <workItem from="1615535702550" duration="1665000" />
-      <workItem from="1615541430085" duration="4469000" />
-      <workItem from="1615547816241" duration="2370000" />
-      <workItem from="1615608097340" duration="2161000" />
-      <workItem from="1615620790812" duration="5000" />
-      <workItem from="1615620852688" duration="402000" />
-      <workItem from="1615623036289" duration="45000" />
-      <workItem from="1615623170075" duration="3805000" />
-      <workItem from="1615705832251" duration="965000" />
-      <workItem from="1615706810221" duration="43000" />
-      <workItem from="1615706869013" duration="84000" />
-      <workItem from="1615706965707" duration="9826000" />
-      <workItem from="1615939498667" duration="2028000" />
-      <workItem from="1615981323093" duration="12633000" />
-      <workItem from="1615995054932" duration="354000" />
-      <workItem from="1615793602546" duration="744000" />
-      <workItem from="1615794376723" duration="436000" />
-      <workItem from="1615794863337" duration="298000" />
-      <workItem from="1615824754385" duration="664000" />
-      <workItem from="1615827275319" duration="972000" />
-      <workItem from="1615828807811" duration="16972000" />
-      <workItem from="1615950616026" duration="805000" />
-      <workItem from="1616050771294" duration="4252000" />
-      <workItem from="1616211576698" duration="2881000" />
-      <workItem from="1616047484419" duration="33508000" />
-      <workItem from="1616316012377" duration="333000" />
-      <workItem from="1616317849400" duration="2649000" />
-      <workItem from="1616322917178" duration="9427000" />
-      <workItem from="1616352937139" duration="5543000" />
-      <workItem from="1616400435488" duration="1202000" />
-      <workItem from="1616403631287" duration="8050000" />
-      <workItem from="1616418902241" duration="2518000" />
-      <workItem from="1616431335183" duration="635000" />
-      <workItem from="1616490171070" duration="5091000" />
-      <workItem from="1616583231770" duration="5823000" />
-      <workItem from="1616590673160" duration="103000" />
-      <workItem from="1616603384320" duration="4528000" />
-      <workItem from="1616681534501" duration="29843000" />
-      <workItem from="1616715821862" duration="3017000" />
+      <updated>1618113814425</updated>
+      <workItem from="1618113818362" duration="23709000" />
+      <workItem from="1618467276237" duration="2853000" />
+      <workItem from="1618909746749" duration="634000" />
+      <workItem from="1619354080679" duration="1441000" />
+      <workItem from="1619358649097" duration="4000" />
+      <workItem from="1619566283770" duration="353000" />
+      <workItem from="1619587363775" duration="25000" />
+      <workItem from="1619595620475" duration="3071000" />
+      <workItem from="1619670853440" duration="10549000" />
+      <workItem from="1619681958897" duration="2267000" />
+      <workItem from="1619687299222" duration="11000" />
+      <workItem from="1619687345765" duration="44000" />
+      <workItem from="1619687561506" duration="28000" />
+      <workItem from="1619703051606" duration="695000" />
+      <workItem from="1619705544857" duration="749000" />
+      <workItem from="1619707449056" duration="621000" />
     </task>
     <servers />
   </component>
@@ -213,5 +398,22 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/test/java/repositories/RolesRepositoryTest.java</url>
+          <line>20</line>
+          <option name="timeStamp" value="82" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/Software$All_in_Software.ic" NAME="All in Software Coverage Results" MODIFIED="1619804270929" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/Software$WorkShiftAddControllerTest.ic" NAME="WorkShiftAddControllerTest Coverage Results" MODIFIED="1619759937315" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>controllers.*</FILTER>
+    </SUITE>
   </component>
 </project>

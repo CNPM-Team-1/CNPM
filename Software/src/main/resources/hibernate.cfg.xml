@@ -11,7 +11,7 @@
 		<property name="connection.password"></property>
 
 		<!-- JDBC connection pool, use Hibernate internal connection pool -->
-		<property name="connection.pool_size">5</property>
+		<property name="connection.pool_size">100</property>
 
 		<!-- Defines the SQL dialect used in Hibernate's application -->
 		<property name="dialect">org.hibernate.dialect.MariaDBDialect</property>
@@ -44,8 +44,10 @@
 		<mapping class="entities.Receipt"/>
 		<mapping class="entities.Roles"/>
 		<mapping class="entities.RolesDetail"/>
-		<mapping class="entities.Salary"/>
-		<mapping class="entities.SalaryDetail"/>
+		<mapping class="entities.Imports"/>
+		<mapping class="entities.ImportsDetail"/>
+		<mapping class="entities.WorkShift"/>
+		<mapping class="entities.WorkTable"/>
 
 	</session-factory>
 </hibernate-configuration>

@@ -1,7 +1,5 @@
 package controllers;
 
-import com.jfoenix.controls.JFXButton;
-import entities.Customer;
 import entities.Employee;
 import holders.EmployeeHolder;
 import javafx.event.ActionEvent;
@@ -13,42 +11,26 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.AnchorPane;
 import lombok.SneakyThrows;
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import repositories.CustomerRepository;
 import repositories.EmployeeRepository;
-import utils.HibernateUtils;
 import utils.StageHelper;
 import utils.TableHelper;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.*;
 
 public class EmployeeCategoryController implements Initializable {
-
     @FXML
     private TextField searchBar;
-
-    @FXML
-    private JFXButton searchButton;
-
-    @FXML
-    private JFXButton addButton;
-
     @FXML
     private TableView<Employee> contentTable;
-
     @FXML
     private TableColumn<Employee, String> nameCol;
-
     @FXML
     private TableColumn<Employee, String> phoneCol;
-
     @FXML
     private TableColumn<Employee, String> emailCol;
-
     @FXML
     private TableColumn<Employee, Date> dateOfBirthCol;
 
@@ -67,35 +49,22 @@ public class EmployeeCategoryController implements Initializable {
     @SneakyThrows
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        SessionFactory factory = HibernateUtils.getSessionFactory();
-        Session session = factory.getCurrentSession();
-
-        List<Employee> employeeList = EmployeeRepository.getAll(session);
+        List<Employee> employeeList = EmployeeRepository.getAll();
         TableHelper.setEmployeeTable(employeeList, contentTable, nameCol, phoneCol, emailCol, dateOfBirthCol);
     }
 
     @FXML
-    void insert(ActionEvent event) {
-        try {
-            Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("fxml/EmployeeAdd.fxml")));
-            StageHelper.startStage(root);
-            // Hide host
-            AnchorPane host = MainNavigatorController.instance.getHost();
-            host.setDisable(true);
-        } catch (Exception ex) {
-            System.out.println(ex.getMessage());
-            System.out.println(Arrays.toString(ex.getStackTrace()));
-        }
+    void insert(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("fxml/EmployeeAdd.fxml")));
+        StageHelper.startStage(root);
+        // Hide host
+        MainNavigatorController.instance.getHost().setDisable(true);
     }
 
     @FXML
     void search(ActionEvent event) {
         try {
-            SessionFactory factory = HibernateUtils.getSessionFactory();
-            Session session = factory.getCurrentSession();
-
-            String keySearch = searchBar.getText();
-            List<Employee> employeeList = EmployeeRepository.getByNamePhoneEmail(session, keySearch);
+            List<Employee> employeeList = EmployeeRepository.getByNamePhoneEmail(searchBar.getText());
             TableHelper.setEmployeeTable(employeeList, contentTable, nameCol, phoneCol, emailCol, dateOfBirthCol);
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
@@ -104,36 +73,23 @@ public class EmployeeCategoryController implements Initializable {
     }
 
     @FXML
-    void select(MouseEvent event) {
+    void select(MouseEvent event) throws IOException {
         if (event.getClickCount() == 2) {
-            try {
-                Employee employee = contentTable.getSelectionModel().getSelectedItem();
-                contentTable.getSelectionModel().clearSelection();
-                // Store Employee to use in another class
-                if (employee != null) {
-                    EmployeeHolder employeeHolder = EmployeeHolder.getInstance();
-                    employeeHolder.setEmployee(employee);
-                    Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("fxml/EmployeeUpdate.fxml")));
-                    StageHelper.startStage(root);
-                    // Hide host
-                    AnchorPane host = MainNavigatorController.instance.getHost();
-                    host.setDisable(true);
-                }
-
-
-            } catch (Exception ex) {
-                System.out.println(ex.getMessage());
-                System.out.println(Arrays.toString(ex.getStackTrace()));
+            Employee employee = contentTable.getSelectionModel().getSelectedItem();
+            contentTable.getSelectionModel().clearSelection();
+            // Store Employee to use in another class
+            if (employee != null) {
+                EmployeeHolder.getInstance().setEmployee(employee);
+                Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("fxml/EmployeeUpdate.fxml")));
+                StageHelper.startStage(root);
+                // Hide host
+                MainNavigatorController.instance.getHost().setDisable(true);
             }
         }
     }
 
     // Refresh table
     public void refresh() {
-        SessionFactory factory = HibernateUtils.getSessionFactory();
-        Session session = factory.getCurrentSession();
-
-        List<Employee> employeeList = EmployeeRepository.getAll(session);
-        TableHelper.setEmployeeTable(employeeList, contentTable, nameCol, phoneCol, emailCol, dateOfBirthCol);
+        this.initialize(null, null);
     }
 }

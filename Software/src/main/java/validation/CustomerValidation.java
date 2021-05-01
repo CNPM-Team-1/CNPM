@@ -1,20 +1,25 @@
 package validation;
 
 import entities.Customer;
+import entities.Orders;
 import org.hibernate.Session;
+import org.hibernate.SessionFactory;
 import repositories.CustomerRepository;
+import repositories.OrdersRepository;
+import utils.NumberHelper;
+import utils.StringHelper;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class CustomerValidation {
 
-    public static List<String> validateInsert(Session session, Customer customer) {
+    public static List<String> validateInsert(Customer customer) {
         List<String> msg = new ArrayList<>();
 
-        Customer customerPhone = CustomerRepository.getByPhone(session, customer.getPhone());
-        Customer customerName = CustomerRepository.getByName(session, customer.getFullName());
-        Customer customerEmail = CustomerRepository.getByEmail(session, customer.getEmail());
+        Customer customerPhone = CustomerRepository.getByPhone(customer.getPhone());
+        Customer customerName = CustomerRepository.getByName(customer.getFullName());
+        Customer customerEmail = CustomerRepository.getByEmail(customer.getEmail());
 
         if (customer.getFullName() == null || customer.getFullName().isEmpty()) {
             msg.add("Chưa điền tên");
@@ -23,6 +28,10 @@ public class CustomerValidation {
         }
         if (customer.getPhone() == null || customer.getPhone().isEmpty()) {
             msg.add("Chưa điền số điện thoại");
+        } else if (!NumberHelper.isNumber(customer.getPhone())) {
+            msg.add("Số điện thoại phải là số");
+        } else if (customer.getPhone().length() != 10) {
+            msg.add("Số điện thoại phải có 10 chữ số");
         } else if (customerPhone != null) {
             msg.add("Số điện thoại đã được sử dụng");
         }
@@ -31,19 +40,20 @@ public class CustomerValidation {
         }
         if (customer.getEmail() == null || customer.getEmail().isEmpty()) {
             msg.add("Chưa điền email");
+        } else if (!StringHelper.isEmail(customer.getEmail())) {
+            msg.add("Email không hợp lệ");
         } else if (customerEmail != null) {
             msg.add("Email đã được sử dụng");
         }
-
         return msg;
     }
 
-    public static List<String> validateUpdate(Session session, Customer customer) {
+    public static List<String> validateUpdate(Customer customer) {
         List<String> msg = new ArrayList<>();
 
-        Customer customerPhone = CustomerRepository.getByPhone(session, customer.getPhone());
-        Customer customerName = CustomerRepository.getByName(session, customer.getFullName());
-        Customer customerEmail = CustomerRepository.getByEmail(session, customer.getEmail());
+        Customer customerPhone = CustomerRepository.getByPhone(customer.getPhone());
+        Customer customerName = CustomerRepository.getByName(customer.getFullName());
+        Customer customerEmail = CustomerRepository.getByEmail(customer.getEmail());
 
         // check name
         if (customer.getFullName() == null || customer.getFullName().isEmpty()) {
@@ -54,8 +64,12 @@ public class CustomerValidation {
         // check phone
         if (customer.getPhone() == null || customer.getPhone().isEmpty()) {
             msg.add("Chưa điền số điện thoại");
-        } else if (customer.getPhone().length() == 10 && customerPhone != null && !customerPhone.getId().equals(customer.getId())) {
-            msg.add("SĐT đã được sử dụng");
+        } else if (!NumberHelper.isNumber(customer.getPhone())) {
+            msg.add("Số điện thoại phải là số");
+        } else if (customer.getPhone().length() != 10) {
+            msg.add("Số điện thoại phải có 10 chữ số");
+        } else if (customerPhone != null && !customerPhone.getId().equals(customer.getId())) {
+            msg.add("Số điện thoại đã được sử dụng");
         }
         // check type
         if (customer.getType() == null) {
@@ -64,18 +78,22 @@ public class CustomerValidation {
         // check email
         if (customer.getEmail() == null || customer.getEmail().isEmpty()) {
             msg.add("Chưa điền email");
+        } else if (!StringHelper.isEmail(customer.getEmail())) {
+            msg.add("Email không hợp lệ");
         } else if (customerEmail != null && !customerEmail.getId().equals(customer.getId())) {
             msg.add("Email đã được sử dụng");
         }
-        session.getTransaction().commit();
 
         return msg;
     }
 
-    public static List<String> validateDelete(Session session, String id) {
+    public static List<String> validateDelete(Customer customer) {
         List<String> msg = new ArrayList<>();
 
-        // TODO: add validate delete
+        List<Orders> ordersList = OrdersRepository.getByCustomerName(customer.getFullName());
+        if (ordersList != null && ordersList.size() != 0) {
+            msg.add("Không được xoá khách hàng có trong đơn hàng");
+        }
 
         return msg;
     }

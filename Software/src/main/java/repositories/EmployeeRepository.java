@@ -1,83 +1,135 @@
 package repositories;
 
-import entities.Customer;
-import javafx.scene.Parent;
-import org.hibernate.Session;
-import org.hibernate.query.Query;
 import entities.Employee;
+import org.hibernate.HibernateException;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.query.Query;
+import utils.HibernateUtils;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 public class EmployeeRepository {
-    public static Employee getByEmail(String email, Session session) {
+    private static Session session;
+
+    public static Employee getByEmail(String email) {
         try {
-            String sql = "Select e from " + Employee.class.getName() + " e where e.email = '" + email + "'";
-            Query<Employee> query = session.createQuery(sql);
+            session = HibernateUtils.getSessionFactory().openSession();
+            session.beginTransaction();
+            Query<Employee> query = session.createQuery("" +
+                    "SELECT e " +
+                    "FROM Employee e " +
+                    "WHERE e.email = :email");
+            query.setParameter("email", email);
+            Employee result = query.uniqueResult();
+            session.getTransaction().commit();
+            session.close();
+            return result;
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+            session.close();
+            return null;
+        }
+    }
+
+    public static List<Employee> getAll() {
+        try {
+            session = HibernateUtils.getSessionFactory().openSession();
+            session.beginTransaction();
+            Query<Employee> query = session.createQuery("" +
+                    "SELECT e " +
+                    "FROM Employee e");
+            List<Employee> result = query.getResultList();
+            session.getTransaction().commit();
+            session.close();
+            return result;
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+            session.close();
+            return null;
+        }
+    }
+
+    public static Employee getByName(String name) {
+        try {
+            session = HibernateUtils.getSessionFactory().openSession();
+            session.beginTransaction();
+            Query<Employee> query = session.createQuery("" +
+                    "SELECT e " +
+                    "FROM Employee e " +
+                    "WHERE e.fullName = :name");
+            query.setParameter("name", name);
+            Employee result = query.uniqueResult();
+            session.getTransaction().commit();
+            session.close();
+            return result;
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+            session.close();
+            return null;
+        }
+    }
+
+    public static Employee getByEmployeeName(String employeeName) {
+        try {
+            session = HibernateUtils.getSessionFactory().openSession();
+            session.beginTransaction();
+            Query<Employee> query = session.createQuery("" +
+                    "SELECT e " +
+                    "FROM Employee e " +
+                    "WHERE e.fullName = :employeeName");
+            query.setParameter("employeeName", employeeName);
             Employee result = query.getSingleResult();
             session.getTransaction().commit();
+            session.close();
             return result;
         } catch (Exception ex) {
-            session.getTransaction().commit();
             System.out.println(ex.getMessage());
-            System.out.println(Arrays.toString(ex.getStackTrace()));
+            session.close();
             return null;
         }
     }
 
-    public static List<Employee> getAll(Session session) {
+    public static Employee getByPhone(String phone) {
         try {
+            session = HibernateUtils.getSessionFactory().openSession();
             session.beginTransaction();
-            String sql = "Select c from " + Employee.class.getName() + " c";
-            Query<Employee> query = session.createQuery(sql);
+            Query<Employee> query = session.createQuery("" +
+                    "SELECT e " +
+                    "FROM Employee e " +
+                    "WHERE e.phone = :phone");
+            query.setParameter("phone", phone);
+            Employee result = query.uniqueResult();
+            session.getTransaction().commit();
+            session.close();
+            return result;
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+            session.close();
+            return null;
+        }
+    }
+
+    public static List<Employee> getByNamePhoneEmail(String keySearch) {
+        try {
+            session = HibernateUtils.getSessionFactory().openSession();
+            session.beginTransaction();
+            Query<Employee> query = session.createQuery("" +
+                    "SELECT e " +
+                    "FROM Employee e " +
+                    "WHERE e.fullName LIKE :keySearch OR e.phone LIKE :keySearch");
+            query.setParameter("keySearch", "%" + keySearch + "%");
             List<Employee> result = query.getResultList();
             session.getTransaction().commit();
+            session.close();
             return result;
         } catch (Exception ex) {
-            session.getTransaction().commit();
             System.out.println(ex.getMessage());
-            System.out.println(Arrays.toString(ex.getStackTrace()));
+            session.close();
             return null;
         }
     }
 
-    public static Employee getByName(Session session, String name) {
-        try {
-            String sql = "Select c from " + Employee.class.getName() + " c where c.fullName = '" + name + "'";
-            Query<Employee> query = session.createQuery(sql);
-            return query.getSingleResult();
-        } catch (Exception ex) {
-            System.out.println(ex.getMessage());
-            System.out.println(Arrays.toString(ex.getStackTrace()));
-            return null;
-        }
-    }
-
-    public static Employee getByPhone(Session session, String phone) {
-        try {
-            String sql = "Select c from " + Employee.class.getName() + " c where c.phone = '" + phone + "'";
-            Query<Employee> query = session.createQuery(sql);
-            return query.getSingleResult();
-        } catch (Exception ex) {
-            System.out.println(ex.getMessage());
-            System.out.println(Arrays.toString(ex.getStackTrace()));
-            return null;
-        }
-    }
-
-    public static List<Employee> getByNamePhoneEmail(Session session, String keySearch) {
-        try {
-            session.beginTransaction();
-            String sql = "Select c from " + Employee.class.getName() + " c where c.fullName like '%" + keySearch + "%' or c.phone like '%" + keySearch + "%' or c.email like '%" + keySearch + "%'";
-            Query<Employee> query = session.createQuery(sql);
-            List<Employee> result = query.getResultList();
-            session.getTransaction().commit();
-            return result;
-        } catch (Exception ex) {
-            session.getTransaction().commit();
-            System.out.println(ex.getMessage());
-            System.out.println(Arrays.toString(ex.getStackTrace()));
-            return null;
-        }
-    }
 }
