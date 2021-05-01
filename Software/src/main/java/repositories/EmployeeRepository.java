@@ -64,7 +64,7 @@ public class EmployeeRepository {
             Employee result = query.uniqueResult();
             session.getTransaction().commit();
             session.close();
-            return query.getSingleResult();
+            return result;
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
             session.close();

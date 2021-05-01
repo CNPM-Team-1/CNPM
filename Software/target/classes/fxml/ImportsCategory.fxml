@@ -74,7 +74,7 @@
                               <Cursor fx:constant="HAND" />
                            </cursor>
                         </JFXButton>
-                        <JFXButton focusTraversable="false" onAction="#save" stylesheets="@../css/style.css" text="+ Thêm mới">
+                        <JFXButton fx:id="openSave" focusTraversable="false" onAction="#save" stylesheets="@../css/style.css" text="+ Thêm mới">
                            <styleClass>
                               <String fx:value="login-button" />
                               <String fx:value="font" />

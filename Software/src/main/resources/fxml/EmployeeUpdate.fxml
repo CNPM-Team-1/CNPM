@@ -133,7 +133,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </JFXButton>
-      <JFXButton focusTraversable="false" layoutX="404.0" layoutY="276.0" onAction="#update" prefHeight="32.0" prefWidth="91.0" stylesheets="@../css/style.css" text="Cập nhật">
+      <JFXButton fx:id="updateButton" focusTraversable="false" layoutX="404.0" layoutY="276.0" onAction="#update" prefHeight="32.0" prefWidth="91.0" stylesheets="@../css/style.css" text="Cập nhật">
          <font>
             <Font size="18.0" />
          </font>

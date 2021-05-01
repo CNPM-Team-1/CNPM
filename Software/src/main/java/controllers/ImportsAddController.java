@@ -25,7 +25,7 @@ import java.util.stream.Collectors;
 
 public class ImportsAddController implements Initializable {
     @FXML
-    private AnchorPane host;
+    AnchorPane host;
     @FXML
     private TextField phoneHolder;
     @FXML

@@ -30,7 +30,7 @@ import java.util.stream.Collectors;
 
 public class WorkTableUpdateController implements Initializable {
     @FXML
-    private AnchorPane host;
+    AnchorPane host;
     @FXML
     private TextField employeeHolder;
     @FXML
@@ -51,6 +51,9 @@ public class WorkTableUpdateController implements Initializable {
     private JFXCheckBox t3CheckBox;
     @FXML
     private JFXCheckBox cnCheckBox;
+
+    public static WorkTableUpdateController instance;
+    public WorkTableUpdateController() { instance = this; }
 
     // Get WorkTable from WorkTableCategory select(MouseEvent event)
     WorkTable chosenWorkTable = WorkTableHolder.getInstance().getWorkTable();

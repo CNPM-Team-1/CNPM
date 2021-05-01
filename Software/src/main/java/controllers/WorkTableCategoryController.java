@@ -28,7 +28,7 @@ import java.util.ResourceBundle;
 
 public class WorkTableCategoryController implements Initializable {
     @FXML
-    private AnchorPane host;
+    AnchorPane host;
     @FXML
     private TextField searchBar;
 

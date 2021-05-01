@@ -1,6 +1,5 @@
 package controllers;
 
-import com.jfoenix.controls.JFXButton;
 import entities.Roles;
 import holders.RolesHolder;
 import javafx.event.ActionEvent;
@@ -13,20 +12,20 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
 import repositories.RolesRepository;
-import utils.HibernateUtils;
 import utils.StageHelper;
 import utils.TableHelper;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.*;
+import java.util.Date;
+import java.util.List;
+import java.util.Objects;
+import java.util.ResourceBundle;
 
 public class RolesCategoryController implements Initializable {
     @FXML
-    private AnchorPane host;
+    AnchorPane host;
     @FXML
     private TextField searchBar;
     @FXML

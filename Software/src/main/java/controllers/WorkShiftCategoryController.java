@@ -12,9 +12,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
-import org.hibernate.SessionFactory;
 import repositories.WorkShiftRepository;
-import utils.HibernateUtils;
 import utils.StageHelper;
 import utils.TableHelper;
 
@@ -26,7 +24,7 @@ import java.util.ResourceBundle;
 
 public class WorkShiftCategoryController implements Initializable {
     @FXML
-    private AnchorPane host;
+    AnchorPane host;
     @FXML
     private TextField searchBar;
 

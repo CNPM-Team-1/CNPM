@@ -1,7 +1,5 @@
 package controllers;
 
-import com.jfoenix.controls.JFXButton;
-import entities.Customer;
 import entities.Employee;
 import holders.EmployeeHolder;
 import javafx.event.ActionEvent;
@@ -13,13 +11,8 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.AnchorPane;
 import lombok.SneakyThrows;
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import repositories.CustomerRepository;
 import repositories.EmployeeRepository;
-import utils.HibernateUtils;
 import utils.StageHelper;
 import utils.TableHelper;
 

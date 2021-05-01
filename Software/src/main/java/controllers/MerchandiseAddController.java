@@ -11,7 +11,6 @@ import javafx.scene.layout.AnchorPane;
 import org.controlsfx.control.textfield.AutoCompletionBinding;
 import org.controlsfx.control.textfield.TextFields;
 import org.hibernate.Session;
-import org.hibernate.SessionFactory;
 import repositories.MerchandiseRepository;
 import utils.AlertBoxHelper;
 import utils.HibernateUtils;
@@ -25,7 +24,7 @@ import java.util.ResourceBundle;
 
 public class MerchandiseAddController implements Initializable {
     @FXML
-    private AnchorPane host;
+    AnchorPane host;
     @FXML
     private TextField nameHolder;
     @FXML
@@ -40,6 +39,15 @@ public class MerchandiseAddController implements Initializable {
     private TextField quantityHolder;
     @FXML
     private Label errorMessage;
+
+    // For other class call function from this class
+    public static MerchandiseAddController instance;
+    public MerchandiseAddController() {
+        instance = this;
+    }
+    public static MerchandiseAddController getInstance() {
+        return instance;
+    }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {

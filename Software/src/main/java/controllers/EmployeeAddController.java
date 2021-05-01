@@ -27,7 +27,7 @@ import java.util.ResourceBundle;
 
 public class EmployeeAddController implements Initializable {
     @FXML
-    private AnchorPane host;
+    AnchorPane host;
     @FXML
     private TextField emailHolder;
     @FXML
@@ -42,6 +42,9 @@ public class EmployeeAddController implements Initializable {
     private ComboBox<String> roleHolder;
     @FXML
     private Label errorMessage;
+
+    public static EmployeeAddController instance;
+    public EmployeeAddController() { instance = this; }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
