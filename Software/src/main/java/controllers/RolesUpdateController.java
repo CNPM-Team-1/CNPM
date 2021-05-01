@@ -28,7 +28,7 @@ import java.util.stream.Collectors;
 
 public class RolesUpdateController implements Initializable {
     @FXML
-    private AnchorPane host;
+    AnchorPane host;
     @FXML
     private TextField nameHolder;
     @FXML
@@ -41,6 +41,9 @@ public class RolesUpdateController implements Initializable {
     private TableColumn<Permissions, String> nameCol;
 
     private List<String> selectedPermission = new ArrayList<>();
+
+    public static RolesUpdateController instance;
+    public RolesUpdateController() { instance = this; }
 
     // Get Roles from RolesCategoryController select(MouseEvent event)
     Roles roles = RolesHolder.getInstance().getRoles();

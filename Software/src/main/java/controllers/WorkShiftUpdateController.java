@@ -24,7 +24,7 @@ import java.util.ResourceBundle;
 
 public class WorkShiftUpdateController implements Initializable {
     @FXML
-    private AnchorPane host;
+    AnchorPane host;
     @FXML
     private TextField nameHolder;
     @FXML
@@ -33,6 +33,11 @@ public class WorkShiftUpdateController implements Initializable {
     private ComboBox<String> timeOutHolder;
     @FXML
     private Label errorMessage;
+
+    public static WorkShiftUpdateController instance;
+    public WorkShiftUpdateController() {
+        instance = this;
+    }
 
     // Get WorkShift from WorkShiftCategoryController select(MouseEvent event)
     WorkShift chosenWorkShift = WorkShiftHolder.getInstance().getWorkShift();

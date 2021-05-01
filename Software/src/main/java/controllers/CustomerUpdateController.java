@@ -23,7 +23,7 @@ import java.util.ResourceBundle;
 
 public class CustomerUpdateController implements Initializable {
     @FXML
-    private AnchorPane host;
+    AnchorPane host;
     @FXML
     private TextField emailHolder;
     @FXML
@@ -36,6 +36,9 @@ public class CustomerUpdateController implements Initializable {
     private TextField addressHolder;
     @FXML
     private Label errorMessage;
+
+    public static CustomerUpdateController instance;
+    public CustomerUpdateController() { instance = this; }
 
     // Get Customer from CustomerCategoryController select(MouseEvent event)
     Customer customer = CustomerHolder.getInstance().getCustomer();

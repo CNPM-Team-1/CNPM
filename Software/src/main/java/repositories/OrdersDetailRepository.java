@@ -123,8 +123,8 @@ public class OrdersDetailRepository {
                         "WHERE od.orders.id IN (" +
                         "SELECT o.id " +
                         "FROM Orders o " +
-                        "WHERE o.type = 'Bán hàng') " +
-                        "GROUP BY od.orders.id " +
+                        "WHERE o.type = 'Bán hàng' AND o.status = 'Hoàn tất') " +
+                        "GROUP BY od.orders.customer.id " +
                         "ORDER BY sumAmount DESC ");
             } else if (fromDate != null && toDate == null) {
                 query = session.createQuery("" +
@@ -133,8 +133,8 @@ public class OrdersDetailRepository {
                         "WHERE od.orders.id IN (" +
                         "SELECT o.id " +
                         "FROM Orders o " +
-                        "WHERE o.type = 'Bán hàng' AND o.createdDate >= :fromDate) " +
-                        "GROUP BY od.orders.id " +
+                        "WHERE o.type = 'Bán hàng' AND o.status = 'Hoàn tất' AND o.createdDate >= :fromDate) " +
+                        "GROUP BY od.orders.customer.id " +
                         "ORDER BY sumAmount DESC ");
                 query.setParameter("fromDate", fromDate);
             } else if (fromDate == null && toDate != null) {
@@ -144,8 +144,8 @@ public class OrdersDetailRepository {
                         "WHERE od.orders.id IN (" +
                         "SELECT o.id " +
                         "FROM Orders o " +
-                        "WHERE o.type = 'Bán hàng' AND o.createdDate <= :toDate) " +
-                        "GROUP BY od.orders.id " +
+                        "WHERE o.type = 'Bán hàng' AND o.status = 'Hoàn tất' AND o.createdDate <= :toDate) " +
+                        "GROUP BY od.orders.customer.id " +
                         "ORDER BY sumAmount DESC ");
                 query.setParameter("toDate", toDate);
             } else {
@@ -155,8 +155,8 @@ public class OrdersDetailRepository {
                         "WHERE od.orders.id IN (" +
                         "SELECT o.id " +
                         "FROM Orders o " +
-                        "WHERE o.type = 'Bán hàng' AND o.createdDate >= :fromDate AND o.createdDate <= :toDate) " +
-                        "GROUP BY od.orders.id " +
+                        "WHERE o.type = 'Bán hàng' AND o.status = 'Hoàn tất' AND o.createdDate >= :fromDate AND o.createdDate <= :toDate) " +
+                        "GROUP BY od.orders.customer.id " +
                         "ORDER BY sumAmount DESC ");
                 query.setParameter("fromDate", fromDate);
                 query.setParameter("toDate", toDate);

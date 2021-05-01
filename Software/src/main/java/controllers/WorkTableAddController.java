@@ -31,7 +31,7 @@ import java.util.stream.Collectors;
 
 public class WorkTableAddController implements Initializable {
     @FXML
-    private AnchorPane host;
+    AnchorPane host;
     @FXML
     private TextField employeeHolder;
     @FXML
@@ -52,6 +52,9 @@ public class WorkTableAddController implements Initializable {
     private JFXCheckBox t3CheckBox;
     @FXML
     private JFXCheckBox cnCheckBox;
+
+    public static WorkTableAddController instance;
+    public WorkTableAddController() { instance = this; }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {

@@ -24,7 +24,7 @@ import java.util.ResourceBundle;
 
 public class WorkShiftAddController implements Initializable {
     @FXML
-    private AnchorPane host;
+    AnchorPane host;
     @FXML
     private TextField nameHolder;
     @FXML
@@ -33,6 +33,9 @@ public class WorkShiftAddController implements Initializable {
     private ComboBox<String> timeOutHolder;
     @FXML
     private Label errorMessage;
+
+    public static WorkShiftAddController instance;
+    public WorkShiftAddController() { instance = this; }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {

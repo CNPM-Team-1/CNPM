@@ -35,7 +35,7 @@
                   <RowConstraints minHeight="0.0" prefHeight="0.0" vgrow="SOMETIMES" />
                </rowConstraints>
                <children>
-                  <Label styleClass="font" stylesheets="@../css/style.css" text="Tên:">
+                  <Label fx:id="name" styleClass="font" stylesheets="@../css/style.css" text="Tên:">
                      <font>
                         <Font size="15.0" />
                      </font>
@@ -84,7 +84,7 @@
             </GridPane>
          </children>
       </HBox>
-      <JFXButton focusTraversable="false" layoutX="14.0" layoutY="205.0" onMouseClicked="#close" prefHeight="32.0" prefWidth="70.0" stylesheets="@../css/style.css" text="Đóng">
+      <JFXButton fx:id="closeButton" focusTraversable="false" layoutX="14.0" layoutY="205.0" onMouseClicked="#close" prefHeight="32.0" prefWidth="70.0" stylesheets="@../css/style.css" text="Đóng">
          <styleClass>
             <String fx:value="close-button" />
             <String fx:value="button-font" />
@@ -106,7 +106,7 @@
             <Font size="16.0" />
          </font>
       </Label>
-      <JFXButton focusTraversable="false" layoutX="404.0" layoutY="205.0" onAction="#update" prefHeight="32.0" prefWidth="91.0" stylesheets="@../css/style.css" text="Cập nhật">
+      <JFXButton fx:id="update" focusTraversable="false" layoutX="404.0" layoutY="205.0" onAction="#update" prefHeight="32.0" prefWidth="91.0" stylesheets="@../css/style.css" text="Cập nhật">
          <font>
             <Font size="18.0" />
          </font>
@@ -118,7 +118,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </JFXButton>
-      <JFXButton focusTraversable="false" layoutX="304.0" layoutY="205.0" onAction="#delete" prefHeight="32.0" prefWidth="91.0" stylesheets="@../css/style.css" text="Xoá">
+      <JFXButton fx:id="delete" focusTraversable="false" layoutX="304.0" layoutY="205.0" onAction="#delete" prefHeight="32.0" prefWidth="91.0" stylesheets="@../css/style.css" text="Xoá">
          <font>
             <Font size="18.0" />
          </font>

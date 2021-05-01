@@ -1,6 +1,5 @@
 package controllers;
 
-import com.jfoenix.controls.JFXButton;
 import entities.Employee;
 import entities.EmployeeRoles;
 import entities.Roles;
@@ -12,12 +11,10 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import org.hibernate.Session;
-import org.hibernate.SessionFactory;
 import repositories.EmployeeRolesRepository;
 import repositories.RolesRepository;
 import utils.AlertBoxHelper;
@@ -28,11 +25,13 @@ import validation.EmployeeValidation;
 
 import java.net.URL;
 import java.time.ZoneId;
-import java.util.*;
+import java.util.Date;
+import java.util.List;
+import java.util.ResourceBundle;
 
 public class EmployeeUpdateController implements Initializable {
     @FXML
-    private AnchorPane host;
+    AnchorPane host;
     @FXML
     private TextField emailHolder;
     @FXML
@@ -45,6 +44,9 @@ public class EmployeeUpdateController implements Initializable {
     private DatePicker dateOfBirthHolder;
     @FXML
     private Label errorMessage;
+
+    public static EmployeeUpdateController instance;
+    public EmployeeUpdateController() { instance = this; }
 
     // Get Employee from EmployeeCategoryController select(MouseEvent event)
     Employee employee = EmployeeHolder.getInstance().getEmployee();

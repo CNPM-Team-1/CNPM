@@ -20,7 +20,7 @@
 
 <AnchorPane fx:id="host" onMouseClicked="#requestFocus" prefHeight="471.0" prefWidth="444.0" styleClass="borderoutline" stylesheets="@../css/style.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.RolesUpdateController">
    <children>
-      <Label layoutX="21.0" layoutY="17.0" styleClass="top-font" stylesheets="@../css/style.css" text="Cập Nhật Chức Vụ">
+      <Label fx:id="rolesUpdateLabel" layoutX="21.0" layoutY="17.0" styleClass="top-font" stylesheets="@../css/style.css" text="Cập Nhật Chức Vụ">
          <font>
             <Font size="24.0" />
          </font>
@@ -50,7 +50,7 @@
             </GridPane>
          </children>
       </HBox>
-      <JFXButton focusTraversable="false" layoutX="331.0" layoutY="425.0" onAction="#update" prefHeight="32.0" prefWidth="91.0" stylesheets="@../css/style.css" text="Cập nhật">
+      <JFXButton fx:id="updateButton" focusTraversable="false" layoutX="331.0" layoutY="425.0" onAction="#update" prefHeight="32.0" prefWidth="91.0" stylesheets="@../css/style.css" text="Cập nhật">
          <font>
             <Font size="18.0" />
          </font>
@@ -62,7 +62,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </JFXButton>
-      <JFXButton focusTraversable="false" layoutX="21.0" layoutY="425.0" onMouseClicked="#close" prefHeight="32.0" prefWidth="70.0" stylesheets="@../css/style.css" text="Đóng">
+      <JFXButton fx:id="closeButton" focusTraversable="false" layoutX="21.0" layoutY="425.0" onMouseClicked="#close" prefHeight="32.0" prefWidth="70.0" stylesheets="@../css/style.css" text="Đóng">
          <styleClass>
             <String fx:value="close-button" />
             <String fx:value="button-font" />

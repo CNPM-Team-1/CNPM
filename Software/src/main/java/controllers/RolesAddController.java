@@ -28,7 +28,7 @@ import java.util.stream.Collectors;
 
 public class RolesAddController implements Initializable {
     @FXML
-    private AnchorPane host;
+    AnchorPane host;
     @FXML
     private TextField nameHolder;
     @FXML
@@ -39,6 +39,9 @@ public class RolesAddController implements Initializable {
     private JFXListView<String> selectedPermissionList;
     @FXML
     private TableColumn<Permissions, String> nameCol;
+
+    public static RolesAddController instance;
+    public RolesAddController() { instance = this; }
 
     private List<String> selectedPermission = new ArrayList<>();
 

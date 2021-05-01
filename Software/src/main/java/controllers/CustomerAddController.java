@@ -23,7 +23,7 @@ import java.util.ResourceBundle;
 
 public class CustomerAddController implements Initializable {
     @FXML
-    private AnchorPane host;
+    AnchorPane host;
     @FXML
     private TextField nameHolder;
     @FXML
@@ -36,6 +36,9 @@ public class CustomerAddController implements Initializable {
     private ComboBox<String> typeHolder;
     @FXML
     private Label errorMessage;
+
+    public static CustomerAddController instance;
+    public CustomerAddController() { instance = this; }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {

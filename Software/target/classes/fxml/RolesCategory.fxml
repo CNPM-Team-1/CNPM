@@ -17,7 +17,7 @@
 
 <AnchorPane fx:id="host" onMouseClicked="#requestFocus" prefHeight="662.0" prefWidth="1203.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.RolesCategoryController">
    <children>
-      <Label layoutX="14.0" layoutY="12.0" prefHeight="37.0" prefWidth="183.0" styleClass="font-29" stylesheets="@../css/style.css" text="Chức vụ" textFill="#2b2733">
+      <Label fx:id="rolesCategoryLabel" layoutX="14.0" layoutY="12.0" prefHeight="37.0" prefWidth="183.0" styleClass="font-29" stylesheets="@../css/style.css" text="Chức vụ" textFill="#2b2733">
          <font>
             <Font size="29.0" />
          </font>
@@ -65,7 +65,7 @@
                               <Cursor fx:constant="HAND" />
                            </cursor>
                         </JFXButton>
-                        <JFXButton focusTraversable="false" onAction="#insert" stylesheets="@../css/style.css" text="+ Thêm mới">
+                        <JFXButton fx:id="openInsert" focusTraversable="false" onAction="#insert" stylesheets="@../css/style.css" text="+ Thêm mới">
                            <styleClass>
                               <String fx:value="login-button" />
                               <String fx:value="font" />

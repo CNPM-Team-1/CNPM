@@ -1,6 +1,5 @@
 package controllers;
 
-import com.jfoenix.controls.JFXButton;
 import entities.Customer;
 import holders.CustomerHolder;
 import javafx.event.ActionEvent;
@@ -13,11 +12,8 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
 import org.springframework.stereotype.Service;
 import repositories.CustomerRepository;
-import utils.HibernateUtils;
 import utils.StageHelper;
 import utils.TableHelper;
 
@@ -30,7 +26,7 @@ import java.util.ResourceBundle;
 @Service
 public class CustomerCategoryController implements Initializable {
     @FXML
-    private AnchorPane host;
+    AnchorPane host;
     @FXML
     private TextField searchBar;
     @FXML

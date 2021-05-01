@@ -28,6 +28,15 @@ public class Receipt {
     public Receipt() {
     }
 
+    public Receipt(String id, Orders orders, Employee employee, String description, Date createdDate, Date updatedDate) {
+        this.id = id;
+        this.orders = orders;
+        this.employee = employee;
+        this.description = description;
+        this.createdDate = createdDate;
+        this.updatedDate = updatedDate;
+    }
+
     public String getId() {
         return id;
     }
