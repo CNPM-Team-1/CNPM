@@ -9,6 +9,7 @@ import utils.HibernateUtils;
 import utils.StageHelper;
 
 import java.util.Arrays;
+import java.util.Objects;
 
 public class App extends Application {
 
@@ -20,7 +21,7 @@ public class App extends Application {
     public void start(final Stage primaryStage) {
         try {
             SessionFactory factory = HibernateUtils.getSessionFactory();
-            Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("fxml/Login.fxml"));
+            Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("fxml/Login.fxml")));
             StageHelper.startStage(root);
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
