@@ -138,7 +138,7 @@ public class ImportsAddController implements Initializable {
                     ordersDetailModel.setOrdersDetail(item);
                     ordersDetailModel.setMerchandiseName(item.getMerchandise().getName());
                     ordersDetailModel.setQuantity(item.getQuantity());
-                    ordersDetailModel.setAmount(NumberHelper.addComma(item.getMerchandise().getPrice()));
+                    ordersDetailModel.setAmount(NumberHelper.addComma(item.getMerchandise().getPrice().toString()));
                     ordersDetailModel.setFinalAmount(NumberHelper.addComma(String.valueOf(item.getAmount())));
                     ordersDetailModelList.add(ordersDetailModel);
                 }
@@ -329,7 +329,7 @@ public class ImportsAddController implements Initializable {
                 for (ImportsDetail imDetail : importsDetails) {
                     if (item.getMerchandise().getId().equals(imDetail.getMerchandise().getId())) {
                         item.setQuantity(item.getQuantity() - imDetail.getQuantity());
-                        item.setAmount(item.getQuantity() * Long.parseLong(NumberHelper.removeComma(item.getMerchandise().getPrice())));
+                        item.setAmount(item.getQuantity() * Long.parseLong(NumberHelper.removeComma(item.getMerchandise().getPrice().toString())));
                         if (item.getQuantity() == 0) {
                             deliveredItem.add(item);
                         }

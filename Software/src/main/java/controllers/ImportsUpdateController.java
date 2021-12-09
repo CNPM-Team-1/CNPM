@@ -107,7 +107,7 @@ public class ImportsUpdateController implements Initializable {
             importsDetailModel.setOrdersDetail(ordersDetail);
             importsDetailModel.setMerchandiseName(item.getMerchandise().getName());
             importsDetailModel.setQuantity(item.getQuantity());
-            importsDetailModel.setAmount(NumberHelper.addComma(item.getMerchandise().getPrice()));
+            importsDetailModel.setAmount(NumberHelper.addComma(item.getMerchandise().getPrice().toString()));
             importsDetailModel.setFinalAmount(NumberHelper.addComma(String.valueOf(item.getAmount())));
             importsDetailModels.add(importsDetailModel);
             // For use in updateImports
@@ -353,7 +353,7 @@ public class ImportsUpdateController implements Initializable {
                 for (ImportsDetail imDetail : importsDetails) {
                     if (item.getMerchandise().getId().equals(imDetail.getMerchandise().getId())) {
                         item.setQuantity(item.getQuantity() - imDetail.getQuantity());
-                        item.setAmount(item.getQuantity() * Long.parseLong(NumberHelper.removeComma(item.getMerchandise().getPrice())));
+                        item.setAmount(item.getQuantity() * Long.parseLong(NumberHelper.removeComma(item.getMerchandise().getPrice().toString())));
                         if (item.getQuantity() == 0) {
                             deliveredItem.add(item);
                         }

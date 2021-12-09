@@ -1,7 +1,11 @@
 package entities;
 
+import dataModel.MerchandiseModel;
+
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "merchandise")
@@ -20,7 +24,7 @@ public class Merchandise {
     @Column(name = "import_price")
     private String importPrice;
     @Column(name = "price")
-    private String price;
+    private Double price;
     @Temporal(TemporalType.DATE)
     @Column(name = "created_date")
     private Date createdDate;
@@ -31,7 +35,22 @@ public class Merchandise {
     public Merchandise() {
     }
 
-    public Merchandise(String id, String name, String type, String branch, Integer quantity, String importPrice, String price, Date createdDate, Date updatedDate) {
+    public MerchandiseModel toMerchandiseModel() {
+        MerchandiseModel result = new MerchandiseModel();
+        result.setId(this.getId());
+        result.setName(this.getName());
+        result.setType(this.getType());
+        result.setBranch(this.getBranch());
+        result.setQuantity(this.getQuantity());
+        result.setImportPrice(this.getImportPrice());
+        result.setPrice(this.getPrice().toString());
+        result.setCreatedDate(this.getCreatedDate());
+        result.setUpdatedDate(this.getUpdatedDate());
+
+        return result;
+    }
+
+    public Merchandise(String id, String name, String type, String branch, Integer quantity, String importPrice, Double price, Date createdDate, Date updatedDate) {
         this.id = id;
         this.name = name;
         this.type = type;
@@ -91,11 +110,11 @@ public class Merchandise {
         this.importPrice = importPrice;
     }
 
-    public String getPrice() {
+    public Double getPrice() {
         return price;
     }
 
-    public void setPrice(String price) {
+    public void setPrice(Double price) {
         this.price = price;
     }
 

@@ -11,6 +11,8 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
@@ -135,28 +137,40 @@ public class TableHelper {
     }
 
     public static void setMerchandiseTable(List<Merchandise> merchandiseList,
-                                           TableView<Merchandise> table,
+                                           TableView<MerchandiseModel> table,
                                            TableColumn<Merchandise, String> nameCol,
                                            TableColumn<Merchandise, String> typeCol,
                                            TableColumn<Merchandise, Integer> quantityCol,
                                            TableColumn<Merchandise, String> priceCol) {
-        table.getItems().clear();
-        // Add comma for price and import price
-        for (Merchandise item : merchandiseList) {
-            item.setImportPrice(item.getImportPrice() != null ? NumberHelper.addComma(item.getImportPrice()) : null);
-            item.setPrice(item.getPrice() != null ? NumberHelper.addComma(item.getPrice()) : null);
+        try {
+            table.getItems().clear();
+
+            List<MerchandiseModel> merchandiseModels = new ArrayList<>();
+
+            // Add comma for price and import price
+            for (Merchandise item : merchandiseList) {
+                MerchandiseModel merchandiseModel = item.toMerchandiseModel();
+
+                merchandiseModel.setImportPrice(item.getImportPrice() != null ? NumberHelper.addComma(item.getImportPrice()) : null);
+                merchandiseModel.setPrice(item.getPrice() != null ? NumberHelper.addComma(merchandiseModel.getPrice()) : null);
+
+                merchandiseModels.add(merchandiseModel);
+            }
+            ObservableList<MerchandiseModel> data = FXCollections.observableList(merchandiseModels);
+
+            // Associate data with columns
+            nameCol.setCellValueFactory(new PropertyValueFactory<>("name"));
+            typeCol.setCellValueFactory(new PropertyValueFactory<>("type"));
+            quantityCol.setCellValueFactory(new PropertyValueFactory<>("quantity"));
+            priceCol.setCellValueFactory(new PropertyValueFactory<>("price"));
+
+            // Add item table
+            table.getItems().clear();
+            table.setItems(data);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            System.out.println(Arrays.toString(e.getStackTrace()));
         }
-        ObservableList<Merchandise> data = FXCollections.observableList(merchandiseList);
-
-        // Associate data with columns
-        nameCol.setCellValueFactory(new PropertyValueFactory<>("name"));
-        typeCol.setCellValueFactory(new PropertyValueFactory<>("type"));
-        quantityCol.setCellValueFactory(new PropertyValueFactory<>("quantity"));
-        priceCol.setCellValueFactory(new PropertyValueFactory<>("price"));
-
-        // Add item table
-        table.getItems().clear();
-        table.setItems(data);
     }
 
     public static void setReceiptOrdersModelTable(List<ReceiptOrdersModel> receiptOrdersModelList,

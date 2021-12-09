@@ -15,7 +15,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="host" onMouseClicked="#requestFocus" prefHeight="324.0" prefWidth="559.0" styleClass="borderoutline" stylesheets="@../css/style.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.MerchandiseAddController">
+<AnchorPane fx:id="host" onMouseClicked="#requestFocus" prefHeight="324.0" prefWidth="559.0" styleClass="borderoutline" stylesheets="@../css/style.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.MerchandiseAddController">
    <children>
       <Label layoutX="14.0" layoutY="17.0" styleClass="top-font" stylesheets="@../css/style.css" text="Thêm Hàng Hoá">
          <font>
@@ -94,16 +94,6 @@
                      </font>
                   </Label>
                   <TextField fx:id="branchHolder" promptText="Nhập thương hiệu" styleClass="top-font" stylesheets="@../css/style.css" GridPane.columnIndex="1" GridPane.rowIndex="1">
-                     <font>
-                        <Font size="14.0" />
-                     </font>
-                  </TextField>
-                  <Label layoutX="10.0" layoutY="110.0" styleClass="font" stylesheets="@../css/style.css" text="Số lượng:" GridPane.rowIndex="2">
-                     <font>
-                        <Font size="15.0" />
-                     </font>
-                  </Label>
-                  <TextField fx:id="quantityHolder" layoutX="111.0" layoutY="105.0" promptText="Nhập số lượng" styleClass="top-font" stylesheets="@../css/style.css" GridPane.columnIndex="1" GridPane.rowIndex="2">
                      <font>
                         <Font size="14.0" />
                      </font>

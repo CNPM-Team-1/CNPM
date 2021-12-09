@@ -121,7 +121,7 @@ public class ReceiptAddController implements Initializable {
                     OrdersDetailModel ordersDetailModel = new OrdersDetailModel();
                     ordersDetailModel.setMerchandiseName(item.getMerchandise().getName());
                     ordersDetailModel.setQuantity(item.getQuantity());
-                    ordersDetailModel.setAmount(NumberHelper.addComma(item.getMerchandise().getPrice()));
+                    ordersDetailModel.setAmount(NumberHelper.addComma(item.getMerchandise().getPrice().toString()));
                     ordersDetailModel.setFinalAmount(NumberHelper.addComma(String.valueOf(item.getAmount())));
                     ordersDetailModelList.add(ordersDetailModel);
                 }

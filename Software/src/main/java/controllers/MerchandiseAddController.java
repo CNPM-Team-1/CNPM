@@ -36,8 +36,6 @@ public class MerchandiseAddController implements Initializable {
     @FXML
     private TextField branchHolder;
     @FXML
-    private TextField quantityHolder;
-    @FXML
     private Label errorMessage;
 
     // For other class call function from this class
@@ -55,6 +53,12 @@ public class MerchandiseAddController implements Initializable {
         List<String> allMerchandiseTypes = MerchandiseRepository.getAllMerchandiseTypes();
         if (allMerchandiseTypes != null) {
             AutoCompletionBinding<String> tHolder = TextFields.bindAutoCompletion(typeHolder, allMerchandiseTypes);
+        }
+
+        // SET AUTOCOMPLETE FOR MERCHANDISE BRAND
+        List<String> allMerchBrands = MerchandiseRepository.getAllMerchandiseBrands();
+        if (allMerchBrands != null) {
+            TextFields.bindAutoCompletion(branchHolder, allMerchBrands);
         }
     }
 
@@ -75,8 +79,8 @@ public class MerchandiseAddController implements Initializable {
         merchandise.setBranch(branchHolder.getText());
         merchandise.setType(typeHolder.getText());
         merchandise.setImportPrice(importPriceHolder.getText());
-        merchandise.setPrice(priceHolder.getText());
-        merchandise.setQuantity(!quantityHolder.getText().isEmpty() ? Integer.parseInt(quantityHolder.getText()) : 0);
+        merchandise.setPrice(Double.valueOf(priceHolder.getText()));
+        merchandise.setQuantity(0);
 
         List<String> validateInsert = MerchandiseValidation.validateInsert(merchandise);
         if (validateInsert.size() == 0) {

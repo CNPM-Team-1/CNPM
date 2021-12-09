@@ -327,3 +327,11 @@
 
 /* Barchart color */
 .default-color0.chart-bar { -fx-bar-fill: #249df9 }
+
+.advance-search {
+    -fx-image: url("../image/search_icon.png");
+}
+
+.advance-search:hover {
+    -fx-image: url("../image/search_icon_hover.png");
+}

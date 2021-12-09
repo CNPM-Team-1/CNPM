@@ -51,15 +51,22 @@ public class MerchandiseUpdateController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         // Set Merchandise in update window
         nameHolder.setText(merchandise.getName());
-        priceHolder.setText(merchandise.getPrice());
+        priceHolder.setText(NumberHelper.addComma(merchandise.getPrice().toString()));
         importPriceHolder.setText(merchandise.getImportPrice());
         typeHolder.setText(merchandise.getType());
         branchHolder.setText(merchandise.getBranch());
         quantityHolder.setText(merchandise.getQuantity().toString());
+
         // Set autocomplete for merchandise type
         List<String> allMerchandiseTypes = MerchandiseRepository.getAllMerchandiseTypes();
         if (allMerchandiseTypes != null) {
             AutoCompletionBinding<String> tHolder = TextFields.bindAutoCompletion(typeHolder, allMerchandiseTypes);
+        }
+
+        // SET AUTOCOMPLETE FOR MERCHANDISE BRAND
+        List<String> allMerchBrands = MerchandiseRepository.getAllMerchandiseBrands();
+        if (allMerchBrands != null) {
+            TextFields.bindAutoCompletion(branchHolder, allMerchBrands);
         }
     }
 
@@ -70,7 +77,7 @@ public class MerchandiseUpdateController implements Initializable {
         merchandise.setName(nameHolder.getText());
         merchandise.setType(typeHolder.getText());
         merchandise.setBranch(branchHolder.getText());
-        merchandise.setPrice(NumberHelper.removeComma(priceHolder.getText()));
+        merchandise.setPrice(Double.valueOf(NumberHelper.removeComma(priceHolder.getText())));
         merchandise.setImportPrice(NumberHelper.removeComma(importPriceHolder.getText()));
         merchandise.setQuantity(!quantityHolder.getText().isEmpty() ? Integer.parseInt(quantityHolder.getText()) : 0);
 

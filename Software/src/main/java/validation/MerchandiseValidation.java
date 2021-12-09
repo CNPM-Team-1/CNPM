@@ -31,9 +31,9 @@ public class MerchandiseValidation {
         } else if (!NumberHelper.isNumber(merchandise.getImportPrice())) {
             msg.add("Giá mua phải là số");
         }
-        if (merchandise.getPrice() == null || merchandise.getPrice().isEmpty()) {
+        if (merchandise.getPrice() == null) {
             msg.add("Chưa điền giá bán");
-        } else if (!NumberHelper.isNumber(merchandise.getPrice())) {
+        } else if (!NumberHelper.isNumber(String.format("%.0f", merchandise.getPrice()))) {
             msg.add("Giá bán phải là số");
         }
 
@@ -62,9 +62,9 @@ public class MerchandiseValidation {
         } else if (!NumberHelper.isNumber(merchandise.getImportPrice())) {
             msg.add("Giá mua phải là số");
         }
-        if (merchandise.getPrice() == null || merchandise.getPrice().isEmpty()) {
+        if (merchandise.getPrice() == null || merchandise.getPrice().isNaN()) {
             msg.add("Chưa điền giá bán");
-        } else if (!NumberHelper.isNumber(merchandise.getPrice())) {
+        } else if (!NumberHelper.isNumber(String.format("%.0f", merchandise.getPrice()))) {
             msg.add("Giá bán phải là số");
         }
 

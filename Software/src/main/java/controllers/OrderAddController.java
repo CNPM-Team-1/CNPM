@@ -145,8 +145,8 @@ public class OrderAddController implements Initializable {
             OrdersAddTableModel ordersAddTableModel = new OrdersAddTableModel();
             ordersAddTableModel.setMerchandiseName(merchandise.getName());
             ordersAddTableModel.setQuantity(Integer.parseInt(quantityHolder.getText()));
-            ordersAddTableModel.setAmount(NumberHelper.addComma(merchandise.getPrice()));
-            Long sumAmount = Long.parseLong(quantityHolder.getText()) * Integer.parseInt(merchandise.getPrice());
+            ordersAddTableModel.setAmount(NumberHelper.addComma(merchandise.getPrice().toString()));
+            Long sumAmount = Long.parseLong(quantityHolder.getText()) * Integer.parseInt(String.format("%.0f", merchandise.getPrice()));
             ordersAddTableModel.setSumAmount(NumberHelper.addComma(Long.toString(sumAmount)));
             // Remove duplicate merchandise
             ordersAddTableModelList.removeIf(t -> t.getMerchandiseName().equals(merchandise.getName()));
