@@ -93,6 +93,7 @@ public class ImportsUpdateController implements Initializable {
         TableHelper.setReceiptOrdersModelTable(receiptOrdersModelList, ordersTable, dateCol, descriptionCol, employeeCol);
 
         // Show ImportsDetail
+        boolean isExporting = customer.getType().equals("Khách hàng");
         List<ImportsDetail> importsDetails = ImportsDetailRepository.getByImportsId(imports.getId());
         List<OrdersDetail> ordersDetails = OrdersDetailRepository.getByOrdersId(imports.getOrders().getId());
         List<ImportsDetailModel> importsDetailModels = new ArrayList<>();
@@ -107,7 +108,9 @@ public class ImportsUpdateController implements Initializable {
             importsDetailModel.setOrdersDetail(ordersDetail);
             importsDetailModel.setMerchandiseName(item.getMerchandise().getName());
             importsDetailModel.setQuantity(item.getQuantity());
-            importsDetailModel.setAmount(NumberHelper.addComma(item.getMerchandise().getPrice().toString()));
+            importsDetailModel.setAmount(NumberHelper.addComma(isExporting
+                    ? item.getMerchandise().getPrice().toString()
+                    : item.getMerchandise().getImportPrice()));
             importsDetailModel.setFinalAmount(NumberHelper.addComma(String.valueOf(item.getAmount())));
             importsDetailModels.add(importsDetailModel);
             // For use in updateImports

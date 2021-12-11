@@ -102,13 +102,14 @@ public class OrderUpdateController implements Initializable {
         descriptionHolder.setText(curOrders.getDescription());
         emailHolder.setText(curOrders.getCustomer().getEmail());
 
+        boolean isExporting = curOrders.getCustomer().getType().equals("Khách hàng");
         // Set OrdersDetail
         List<OrdersDetail> ordersDetailList = OrdersDetailRepository.getByOrdersId(curOrders.getId());
         for (OrdersDetail item : ordersDetailList) {
             OrdersAddTableModel ordersAddTableModel = new OrdersAddTableModel();
             ordersAddTableModel.setMerchandiseName(item.getMerchandise().getName());
             ordersAddTableModel.setQuantity(item.getQuantity());
-            ordersAddTableModel.setAmount(NumberHelper.addComma(item.getMerchandise().getPrice().toString()));
+            ordersAddTableModel.setAmount(NumberHelper.addComma(isExporting ? item.getMerchandise().getPrice().toString() : item.getMerchandise().getImportPrice()));
             ordersAddTableModel.setSumAmount(NumberHelper.addComma(String.valueOf(item.getAmount())));
             ordersAddTableModelList.add(ordersAddTableModel);
         }
@@ -157,6 +158,8 @@ public class OrderUpdateController implements Initializable {
     @FXML
     void chooseMerchandise(ActionEvent event) {
         Customer customer = CustomerRepository.getByName(customerHolder.getText());
+        if (customer == null) return;
+        boolean isExporting = customer.getType().equals("Khách hàng");
         Merchandise merchandise = MerchandiseRepository.getByName(merchandiseHolder.getText());
 
         List<String> validateAddMerchandise = this.validateAddMerchandise(customer, merchandise);
@@ -164,8 +167,10 @@ public class OrderUpdateController implements Initializable {
             OrdersAddTableModel ordersAddTableModel = new OrdersAddTableModel();
             ordersAddTableModel.setMerchandiseName(merchandise.getName());
             ordersAddTableModel.setQuantity(Integer.parseInt(quantityHolder.getText()));
-            ordersAddTableModel.setAmount(NumberHelper.addComma(merchandise.getPrice().toString()));
-            Long sumAmount = Long.parseLong(quantityHolder.getText()) * Integer.parseInt(merchandise.getPrice().toString());
+            ordersAddTableModel.setAmount(NumberHelper.addComma(isExporting ? merchandise.getPrice().toString() : merchandise.getImportPrice()));
+            Long sumAmount = Long.parseLong(quantityHolder.getText()) * (isExporting
+                    ? Integer.parseInt(String.format("%.0f", merchandise.getPrice()))
+                    : Long.parseLong(merchandise.getImportPrice()));
             ordersAddTableModel.setSumAmount(NumberHelper.addComma(Long.toString(sumAmount)));
             // Remove duplicate merchandise
             ordersAddTableModelList.removeIf(t -> t.getMerchandiseName().equals(merchandise.getName()));

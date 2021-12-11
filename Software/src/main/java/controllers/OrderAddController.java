@@ -138,6 +138,8 @@ public class OrderAddController implements Initializable {
     @FXML
     void chooseMerchandise(ActionEvent event) {
         Customer customer = CustomerRepository.getByName(customerHolder.getText());
+        if (customer == null) return;
+        boolean isExporting = customer.getType().equals("Khách hàng");
         Merchandise merchandise = MerchandiseRepository.getByName(merchandiseHolder.getText());
 
         List<String> validateAddMerchandise = this.validateAddMerchandise(customer, merchandise);
@@ -145,8 +147,12 @@ public class OrderAddController implements Initializable {
             OrdersAddTableModel ordersAddTableModel = new OrdersAddTableModel();
             ordersAddTableModel.setMerchandiseName(merchandise.getName());
             ordersAddTableModel.setQuantity(Integer.parseInt(quantityHolder.getText()));
-            ordersAddTableModel.setAmount(NumberHelper.addComma(merchandise.getPrice().toString()));
-            Long sumAmount = Long.parseLong(quantityHolder.getText()) * Integer.parseInt(String.format("%.0f", merchandise.getPrice()));
+            ordersAddTableModel.setAmount(NumberHelper.addComma(isExporting
+                    ? merchandise.getPrice().toString()
+                    : merchandise.getImportPrice()));
+            Long sumAmount = Long.parseLong(quantityHolder.getText()) * (isExporting
+                    ? Integer.parseInt(String.format("%.0f", merchandise.getPrice()))
+                    : Long.parseLong(merchandise.getImportPrice()));
             ordersAddTableModel.setSumAmount(NumberHelper.addComma(Long.toString(sumAmount)));
             // Remove duplicate merchandise
             ordersAddTableModelList.removeIf(t -> t.getMerchandiseName().equals(merchandise.getName()));

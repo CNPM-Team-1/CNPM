@@ -127,6 +127,8 @@ public class ImportsAddController implements Initializable {
             Orders orders = new Orders(ordersTable.getSelectionModel().getSelectedItem().getOrders());
             ordersTable.getSelectionModel().clearSelection();
 
+            boolean isExporting = orders.getCustomer().getType().equals("Khách hàng");
+
             List<OrdersDetail> ordersDetails = OrdersDetailRepository.getByOrdersId(orders.getId());
             if (ordersDetails != null && !ordersDetails.isEmpty()) {
                 // Remove delivered detail
@@ -138,7 +140,9 @@ public class ImportsAddController implements Initializable {
                     ordersDetailModel.setOrdersDetail(item);
                     ordersDetailModel.setMerchandiseName(item.getMerchandise().getName());
                     ordersDetailModel.setQuantity(item.getQuantity());
-                    ordersDetailModel.setAmount(NumberHelper.addComma(item.getMerchandise().getPrice().toString()));
+                    ordersDetailModel.setAmount(NumberHelper.addComma(isExporting
+                            ? item.getMerchandise().getPrice().toString()
+                            : item.getMerchandise().getImportPrice()));
                     ordersDetailModel.setFinalAmount(NumberHelper.addComma(String.valueOf(item.getAmount())));
                     ordersDetailModelList.add(ordersDetailModel);
                 }
