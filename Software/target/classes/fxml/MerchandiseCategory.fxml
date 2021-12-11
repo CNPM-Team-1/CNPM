@@ -40,7 +40,7 @@
                   <RowConstraints minHeight="10.0" prefHeight="475.0" vgrow="SOMETIMES" />
                </rowConstraints>
                <children>
-                  <HBox alignment="TOP_RIGHT" prefHeight="54.0" prefWidth="1123.0">
+                  <HBox alignment="CENTER_RIGHT" prefHeight="54.0" prefWidth="1123.0">
                      <children>
                         <JFXButton focusTraversable="false" layoutX="1013.0" layoutY="17.0" onAction="#refresh" prefHeight="33.0" prefWidth="133.0" stylesheets="@../css/style.css" text="Hiện tất cả">
                            <styleClass>
@@ -51,7 +51,7 @@
                               <Cursor fx:constant="HAND" />
                            </cursor>
                            <HBox.margin>
-                              <Insets top="7.0" />
+                              <Insets />
                            </HBox.margin>
                         </JFXButton>
                         <ImageView fitHeight="33.0" fitWidth="33.0" onMouseClicked="#openAdvanceSearch" pickOnBounds="true" preserveRatio="true" styleClass="advance-search">
@@ -62,7 +62,7 @@
                               <Cursor fx:constant="HAND" />
                            </cursor>
                            <HBox.margin>
-                              <Insets left="13.0" top="7.0" />
+                              <Insets left="13.0" />
                            </HBox.margin>
                         </ImageView>
                         <JFXButton focusTraversable="false" onAction="#insert" stylesheets="@../css/style.css" text="+ Thêm mới">
@@ -71,7 +71,7 @@
                               <String fx:value="font" />
                            </styleClass>
                            <HBox.margin>
-                              <Insets left="13.0" right="12.0" top="7.0" />
+                              <Insets left="13.0" right="12.0" />
                            </HBox.margin>
                            <cursor>
                               <Cursor fx:constant="HAND" />

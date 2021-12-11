@@ -1,6 +1,7 @@
 package controllers;
 
 import dataModel.OrdersModel;
+import dataModel.search.OrderSearchModel;
 import entities.Orders;
 import entities.OrdersDetail;
 import holders.OrdersHolder;
@@ -50,6 +51,12 @@ public class OrderCategoryController implements Initializable {
 
     public Boolean ordersAddUpdateIsShow = false;
 
+    public static String searchCustomerName;
+    public static Date searchFromDate;
+    public static Date searchToDate;
+    public static String searchType;
+    public static String searchStatus;
+
     // For other class cal function from this class
     public static OrderCategoryController instance;
 
@@ -84,32 +91,24 @@ public class OrderCategoryController implements Initializable {
     }
 
     @FXML
+    void openAdvanceSearch(MouseEvent event) {
+        try {
+            Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("fxml/OrderAdvanceSearch.fxml")));
+            StageHelper.startStage(root);
+            // HIDE HOST
+            MainNavigatorController.instance.getHost().setDisable(true);
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
+            System.out.println(Arrays.toString(e.getStackTrace()));
+        }
+    }
+
+    @FXML
     void addOrder(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("fxml/OrderAdd.fxml")));
         StageHelper.startStage(root);
         //Hide host
         MainNavigatorController.instance.getHost().setDisable(true);
-    }
-
-    @FXML
-    void search(ActionEvent event) {
-        List<Orders> ordersList = OrdersRepository.getLikeCustomerName(searchBar.getText());
-        List<OrdersModel> ordersModelList = new ArrayList<>();
-        for (Orders item : ordersList) {
-            List<OrdersDetail> ordersDetailList = OrdersDetailRepository.getByOrdersId(item.getId());
-
-            OrdersModel ordersModel = new OrdersModel();
-            ordersModel.setCreatedDate(item.getCreatedDate());
-            ordersModel.setCustomerName(item.getCustomer().getFullName());
-            ordersModel.setDescription(item.getDescription());
-            ordersModel.setSumAmount(NumberHelper.addComma(String.valueOf(ordersDetailList.stream().mapToLong(OrdersDetail::getAmount).sum())));
-            ordersModel.setStatus(item.getStatus());
-            ordersModel.setType(item.getType());
-            ordersModel.setOrders(item);
-            ordersModelList.add(ordersModel);
-        }
-        // Populate table
-        TableHelper.setOrdersModelTable(ordersModelList, contentTable, createdDateCol, customerNameCol, descriptionCol, totalAmountCol, statusCol, typeCol);
     }
 
     @FXML
@@ -125,6 +124,44 @@ public class OrderCategoryController implements Initializable {
                 // Hide host
                 MainNavigatorController.instance.getHost().setDisable(true);
             }
+        }
+    }
+
+    @FXML
+    void refresh(ActionEvent event) {
+        searchCustomerName = null;
+        searchFromDate = null;
+        searchToDate = null;
+        searchType = null;
+        searchStatus = null;
+
+        this.initialize(null, null);
+    }
+
+    public void applyFilter(List<Orders> filterResult, OrderSearchModel searchModel) {
+        if (filterResult != null) {
+            searchCustomerName = searchModel.getCustomerName();
+            searchFromDate = searchModel.getFromDate();
+            searchToDate = searchModel.getToDate();
+            searchType = searchModel.getOrderType();
+            searchStatus = searchModel.getOrderStatus();
+
+            List<OrdersModel> ordersModelList = new ArrayList<>();
+            for (Orders item : filterResult) {
+                List<OrdersDetail> ordersDetailList = OrdersDetailRepository.getByOrdersId(item.getId());
+
+                OrdersModel ordersModel = new OrdersModel();
+                ordersModel.setCreatedDate(item.getCreatedDate());
+                ordersModel.setCustomerName(item.getCustomer().getFullName());
+                ordersModel.setDescription(item.getDescription());
+                ordersModel.setSumAmount(NumberHelper.addComma(String.valueOf(ordersDetailList.stream().mapToLong(OrdersDetail::getAmount).sum())));
+                ordersModel.setStatus(item.getStatus());
+                ordersModel.setType(item.getType());
+                ordersModel.setOrders(item);
+                ordersModelList.add(ordersModel);
+            }
+            // Populate table
+            TableHelper.setOrdersModelTable(ordersModelList, contentTable, createdDateCol, customerNameCol, descriptionCol, totalAmountCol, statusCol, typeCol);
         }
     }
 

@@ -1,13 +1,13 @@
 package repositories;
 
+import dataModel.search.OrderSearchModel;
 import entities.Orders;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.query.Query;
 import utils.HibernateUtils;
 
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 public class OrdersRepository {
     private static Session session;
@@ -102,6 +102,64 @@ public class OrdersRepository {
             Orders result = query.uniqueResult();
             session.getTransaction().commit();
             session.close();
+            return result;
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+            session.close();
+            return null;
+        }
+    }
+
+    public static List<Orders> advanceSearch(OrderSearchModel orderSearchModel) {
+        try {
+            session = HibernateUtils.getSessionFactory().openSession();
+            session.beginTransaction();
+
+            Map<String, Object> queryProperties = new HashMap<>();
+
+            // PREPARE QUERY CONDITION
+            List<String> conditions = new ArrayList<>();
+            String customerName = orderSearchModel.getCustomerName();
+            if (customerName != null && !customerName.isEmpty()) {
+                conditions.add("t.customer_id = (select c.id from customer c where c.full_name LIKE :name)");
+                queryProperties.put("name", "%" + customerName + "%");
+            }
+
+            Date fromDate = orderSearchModel.getFromDate();
+            if (fromDate != null) {
+                conditions.add("t.createdDate >= :fromDate");
+                queryProperties.put("fromDate", fromDate);
+            }
+
+            Date toDate = orderSearchModel.getToDate();
+            if (toDate != null) {
+                conditions.add("t.createdDate <= :toDate");
+                queryProperties.put("toDate", toDate);
+            }
+
+            String orderStatus = orderSearchModel.getOrderStatus();
+            if (orderStatus != null && !orderStatus.isEmpty() && !orderStatus.equals("Tất cả")) {
+                conditions.add("t.status = :orderStatus");
+                queryProperties.put("orderStatus", orderStatus);
+            }
+
+            String orderType = orderSearchModel.getOrderType();
+            if (orderType != null && !orderType.isEmpty() && !orderType.equals("Tất cả")) {
+                conditions.add("t.type = :type");
+                queryProperties.put("type", orderType);
+            }
+
+            String queryWhereStr = conditions.size() > 0 ? "where " + String.join(" and ", conditions) : "";
+            String queryStr = "SELECT t.* FROM orders t " + queryWhereStr;
+
+            Query<Orders> query = session.createNativeQuery(queryStr, Orders.class);
+            query.setProperties(queryProperties);
+
+            List<Orders> result = query.getResultList();
+
+            session.getTransaction().commit();
+            session.close();
+
             return result;
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
