@@ -7,6 +7,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -18,10 +19,7 @@ import utils.StageHelper;
 import utils.TableHelper;
 
 import java.net.URL;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Objects;
-import java.util.ResourceBundle;
+import java.util.*;
 
 @Service
 public class CustomerCategoryController implements Initializable {
@@ -41,6 +39,8 @@ public class CustomerCategoryController implements Initializable {
     private TableColumn<Customer, String> addressCol;
     @FXML
     private TableColumn<Customer, String> typeCol;
+    @FXML
+    private ComboBox<String> customerTypeFilterHolder;
 
     // For other class call function from this class
     public static CustomerCategoryController instance;
@@ -54,6 +54,10 @@ public class CustomerCategoryController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        // FILL CUSTOMER TYPE FILTER COMBOBOX
+        customerTypeFilterHolder.getItems().addAll("Tất cả", "Nhà cung cấp", "Khách hàng");
+        customerTypeFilterHolder.setValue("Tất cả");
+
         List<Customer> customerList = CustomerRepository.getAll();
         TableHelper.setCustomerTable(customerList, contentTable, nameCol, phoneCol, emailCol, addressCol, typeCol);
     }
@@ -72,8 +76,19 @@ public class CustomerCategoryController implements Initializable {
     }
 
     @FXML
+    void onPressShowAll(ActionEvent event) {
+        customerTypeFilterHolder.setValue("Tất cả");
+        searchBar.clear();
+
+        this.initialize(null, null);
+    }
+
+
+    @FXML
     void search(ActionEvent event) {
-        List<Customer> customerList = CustomerRepository.getByNameOrPhone(searchBar.getText());
+        List<Customer> customerList = customerTypeFilterHolder.getValue().equals("Tất cả")
+                ? CustomerRepository.getByNameOrPhone(searchBar.getText())
+                : CustomerRepository.getByNameOrPhoneWithType(searchBar.getText(), customerTypeFilterHolder.getValue());
         TableHelper.setCustomerTable(customerList, contentTable, nameCol, phoneCol, emailCol, addressCol, typeCol);
     }
 

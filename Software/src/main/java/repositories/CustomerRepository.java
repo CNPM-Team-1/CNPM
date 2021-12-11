@@ -51,6 +51,51 @@ public class CustomerRepository {
         }
     }
 
+    public static List<Customer> getByNameOrPhoneWithType(String keySearch, String customerType) {
+        try {
+            session = HibernateUtils.getSessionFactory().openSession();
+            session.beginTransaction();
+
+            Query<Customer> query = session.createQuery("" +
+                    "SELECT c " +
+                    "FROM Customer c " +
+                    "WHERE (c.fullName LIKE :keySearch OR c.phone LIKE :keySearch) AND c.type = :customerType");
+            query.setParameter("keySearch", "%" + keySearch + "%");
+            query.setParameter("customerType", customerType);
+            List<Customer> result = query.getResultList();
+
+            session.getTransaction().commit();
+            session.close();
+            return result;
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            session.close();
+            return null;
+        }
+    }
+
+    public static List<Customer> getByType(String customerType) {
+        try {
+            session = HibernateUtils.getSessionFactory().openSession();
+            session.beginTransaction();
+
+            Query<Customer> query = session.createQuery("" +
+                    "SELECT c " +
+                    "FROM Customer c " +
+                    "WHERE c.type = :customerType");
+            query.setParameter("customerType", customerType);
+            List<Customer> result = query.getResultList();
+
+            session.getTransaction().commit();
+            session.close();
+            return result;
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            session.close();
+            return null;
+        }
+    }
+
     public static Customer getByName(String name) {
         try {
             session = HibernateUtils.getSessionFactory().openSession();
