@@ -353,7 +353,7 @@ public class ImportsUpdateController implements Initializable {
                 for (ImportsDetail imDetail : importsDetails) {
                     if (item.getMerchandise().getId().equals(imDetail.getMerchandise().getId())) {
                         item.setQuantity(item.getQuantity() - imDetail.getQuantity());
-                        item.setAmount(item.getQuantity() * Long.parseLong(NumberHelper.removeComma(item.getMerchandise().getPrice().toString())));
+                        item.setAmount(item.getQuantity() * Long.parseLong(NumberHelper.removeComma(String.format("%.0f", item.getMerchandise().getPrice()))));
                         if (item.getQuantity() == 0) {
                             deliveredItem.add(item);
                         }

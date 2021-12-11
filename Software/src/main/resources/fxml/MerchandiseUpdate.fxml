@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="host" onMouseClicked="#requestFocus" prefHeight="323.0" prefWidth="559.0" styleClass="borderoutline" stylesheets="@../css/style.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.MerchandiseUpdateController">
+<AnchorPane fx:id="host" onMouseClicked="#requestFocus" prefHeight="323.0" prefWidth="559.0" styleClass="borderoutline" stylesheets="@../css/style.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.MerchandiseUpdateController">
    <children>
       <Label layoutX="14.0" layoutY="17.0" styleClass="top-font" stylesheets="@../css/style.css" text="Cập Nhật Thông Tin Hàng Hoá">
          <font>
@@ -101,7 +101,7 @@
                         <Font size="15.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="quantityHolder" focusTraversable="false" layoutX="111.0" layoutY="105.0" promptText="Nhập số lượng" styleClass="top-font" stylesheets="@../css/style.css" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                  <TextField fx:id="quantityHolder" editable="false" focusTraversable="false" layoutX="111.0" layoutY="105.0" promptText="Nhập số lượng" styleClass="top-font" stylesheets="@../css/style.css" GridPane.columnIndex="1" GridPane.rowIndex="2">
                      <font>
                         <Font size="14.0" />
                      </font>

@@ -106,10 +106,12 @@ public class MainNavigatorController implements Initializable {
                     case "Quản lí hoá đơn" -> leftNav.getChildren().remove(receiptButton);
                     case "Quản lí chức vụ" -> leftNav.getChildren().remove(rolesButton);
                     case "Thống kê" -> leftNav.getChildren().remove(statisticButton);
-                    case "Quản lí lịch làm" -> leftNav.getChildren().remove(timeTableButton);
+//                    case "Quản lí lịch làm" -> leftNav.getChildren().remove(timeTableButton);
                 }
             }
         }
+
+        leftNav.getChildren().remove(timeTableButton);
     }
 
     @FXML
