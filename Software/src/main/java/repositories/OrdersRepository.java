@@ -2,11 +2,12 @@ package repositories;
 
 import dataModel.search.OrderSearchModel;
 import entities.Orders;
-import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.query.Query;
 import utils.HibernateUtils;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.*;
 
 public class OrdersRepository {
@@ -116,25 +117,24 @@ public class OrdersRepository {
             session.beginTransaction();
 
             Map<String, Object> queryProperties = new HashMap<>();
+            DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 
             // PREPARE QUERY CONDITION
             List<String> conditions = new ArrayList<>();
             String customerName = orderSearchModel.getCustomerName();
             if (customerName != null && !customerName.isEmpty()) {
-                conditions.add("t.customer_id = (select c.id from customer c where c.full_name LIKE :name)");
+                conditions.add("t.customer_id IN (select c.id from customer c where c.full_name LIKE :name)");
                 queryProperties.put("name", "%" + customerName + "%");
             }
 
             Date fromDate = orderSearchModel.getFromDate();
             if (fromDate != null) {
-                conditions.add("t.createdDate >= :fromDate");
-                queryProperties.put("fromDate", fromDate);
+                conditions.add("t.created_date >= " + "'" + dateFormat.format(fromDate) + "'");
             }
 
             Date toDate = orderSearchModel.getToDate();
             if (toDate != null) {
-                conditions.add("t.createdDate <= :toDate");
-                queryProperties.put("toDate", toDate);
+                conditions.add("t.created_date <= " + "'" + dateFormat.format(toDate) + "'");
             }
 
             String orderStatus = orderSearchModel.getOrderStatus();

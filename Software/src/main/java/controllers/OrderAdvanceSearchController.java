@@ -18,7 +18,10 @@ import repositories.OrdersRepository;
 import utils.StageHelper;
 
 import java.net.URL;
+import java.time.LocalTime;
 import java.time.ZoneId;
+import java.time.ZoneOffset;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -84,6 +87,8 @@ public class OrderAdvanceSearchController implements Initializable {
 
     @FXML
     void applyFilter(ActionEvent event) {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyyMMdd");
+
         OrderSearchModel orderSearchModel = new OrderSearchModel();
         orderSearchModel.setCustomerName((customerNameHolder.getText() != null || !customerNameHolder.getText().isEmpty())
                 ? customerNameHolder.getText()
